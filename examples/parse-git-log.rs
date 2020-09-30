@@ -10,7 +10,25 @@ fn run(changelog: &str) -> std::io::Result<()> {
     let reader = BufReader::new(f);
 
     for line in reader.lines() {
-        println!("{:?}", GitLogCustomLine::parse(&line?)?);
+        let entry = &GitLogCustomLine::parse(&line?)?;
+        match entry.tagged_version() {
+            Some(version) => {
+                println!("\n## [v{}] - {}\n", version, &entry.timestamp[0..10]);
+            },
+            None => {
+                let subject = &entry.subject;
+                if subject.contains("Next devel") { continue };
+                match &entry.pr {
+                    None => { continue }
+                    Some(pr) => {
+                        println!("- PR#{}: {} / {}",
+                                 pr,
+                                 entry.subject,
+                                 entry.author_name)
+                    }
+                }
+            }
+        }
     }
     Ok(())
 }
@@ -76,7 +94,7 @@ impl GitLogCustomLine {
             },
             Some(n) => if rest.ends_with(")") && rest.len() - n < 9 {
                 // pull request ID at the end, after "merge by squashing"
-                (&rest[0..n], Some(rest[n+2..rest.len() - 1].to_string()))
+                (&rest[0..n], Some(rest[n+3..rest.len() - 1].to_string()))
             } else {
                 (rest, None)
             }
@@ -90,5 +108,16 @@ impl GitLogCustomLine {
             timestamp: timestamp.to_string(),
             pr,
         })
+    }
+
+    /// Returns version if specified by a tag
+    fn tagged_version(&self) -> Option<&str> {
+        const GIT_VERSION_TAG_PREFIX: &'static str = "tag: v";
+        for gitref in &self.refs {
+            if gitref.starts_with(GIT_VERSION_TAG_PREFIX) {
+                return Some(&gitref.as_str()[GIT_VERSION_TAG_PREFIX.len()..])
+            }
+        }
+        None
     }
 }

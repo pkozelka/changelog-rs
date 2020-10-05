@@ -1,6 +1,8 @@
 use git2::{Repository, Error, Oid};
 use chrono::{FixedOffset, TimeZone};
 use std::collections::HashMap;
+use changelog::builder::ChangeLogBuilder;
+use changelog::api::{VersionSpec, ChangeLog};
 
 fn main() {
     // let repo = match Repository::open("/home/pk/github.com/contentcheck-maven-plugin") {
@@ -10,7 +12,17 @@ fn main() {
         Err(e) => panic!("failed to open: {}", e),
     };
     let tags = list_tags(&repo).unwrap();
-    commits(&repo, &tags).unwrap();
+    let changelog = commits(&repo, &tags).unwrap();
+    for release in changelog.versions {
+        match release.version_spec {
+            VersionSpec::Unreleased { .. } => {
+                println!("## Unreleased");
+            }
+            VersionSpec::Release { version, tag, date } => {
+                println!("## {} - {}", version, &date[0..10]);
+            }
+        }
+    }
 }
 
 fn list_tags(repo: &Repository) -> Result<HashMap<Oid, String>, Error> {
@@ -30,14 +42,14 @@ fn list_tags(repo: &Repository) -> Result<HashMap<Oid, String>, Error> {
     Ok(tags)
 }
 
-fn commits(repo: &Repository, tags: &HashMap<Oid, String>) -> Result<(), Error>{
+fn commits(repo: &Repository, tags: &HashMap<Oid, String>) -> Result<ChangeLog, Error>{
 
+    let mut builder = ChangeLogBuilder::new();
+    builder.section(VersionSpec::Unreleased { major: None, branch: None });
     let head = repo.head()?;
     let mut commit = head.peel_to_commit()?;
-    return loop {
-        if commit.id().is_zero() {
-            break Ok(());
-        }
+    loop {
+        if commit.id().is_zero() { break; }
         {
             let mut msg = commit.message().unwrap_or("?").trim().lines();
             let subject = msg.next().unwrap_or("-");
@@ -65,14 +77,25 @@ fn commits(repo: &Repository, tags: &HashMap<Oid, String>) -> Result<(), Error>{
                 None => {}
                 Some(tag_name) => {
                     println!("\\--> Tag: {}", tag_name);
+                    let mut version = &tag_name[..];
+                    for c in version.chars() {
+                        if c.is_ascii_digit() { break };
+                        version = &version[1..];
+                    }
+                    builder.section(VersionSpec::Release {
+                        version: version.to_string(),
+                        tag: tag_name.to_string(),
+                        date: ts.to_string(),
+                    })
                 }
             }
         }
         commit = match commit.parent(0) {
             Ok(c) => c,
-            Err(_) => break Ok(()),
+            Err(_) => break,
         }
     }
+    Ok(builder.build())
 }
 
 fn _reflog(repo: &Repository) -> Result<(), git2::Error>{

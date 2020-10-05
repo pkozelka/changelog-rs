@@ -1,5 +1,5 @@
 pub mod api;
-mod builder;
+pub mod builder;
 
 fn main() {
     println!("Hello, world!");

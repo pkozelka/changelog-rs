@@ -9,3 +9,6 @@ edition = "2018"
 [dependencies]
 git2 = "0.13.11"
 chrono = "0.4.19"
+structopt = "0.3.18"
+log = "0.4.11"
+stderrlog = "0.5.0"

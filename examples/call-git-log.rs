@@ -18,7 +18,7 @@ fn main() {
             VersionSpec::Unreleased { .. } => {
                 println!("## Unreleased");
             }
-            VersionSpec::Release { version, tag, date } => {
+            VersionSpec::Release { version, tag:_, date } => {
                 println!("## {} - {}", version, &date[0..10]);
             }
         }
@@ -27,17 +27,31 @@ fn main() {
 
 fn list_tags(repo: &Repository) -> Result<HashMap<Oid, String>, Error> {
     println!("Tags:");
-    let mut tags: HashMap<Oid, String> = HashMap::new();
+    let mut tag_objects: HashMap<Oid, String> = HashMap::new();
     repo.tag_foreach(|oid, bytes| {
-        let tag_name = String::from_utf8_lossy(bytes);
-        if tag_name.starts_with("refs/tags/") {
-            tags.insert(oid, tag_name[10..].to_string());
-        }
+        let ref_name = String::from_utf8_lossy(bytes);
+        let tag_name = if ref_name.starts_with("refs/tags/") {
+            &ref_name[10..]
+        } else {
+            ref_name.as_ref()
+        };
+        tag_objects.insert(oid, tag_name.to_string());
         true
     })?;
 
-    for (tag_id, name) in &tags {
-        println!("tag: {} = {}", tag_id.to_string(), name)
+    let mut tags = HashMap::new();
+    for (oid, tag_name) in tag_objects {
+        match repo.find_tag(oid) {
+            Ok(heavy_tag) => {
+                // Heavy tag: oid is stored inside the object
+                let oid = heavy_tag.target()?.id();
+                tags.insert(oid, tag_name);
+            }
+            Err(_) => {
+                // Lightweight tag: its oid equals target
+                tags.insert(oid, tag_name);
+            }
+        }
     }
     Ok(tags)
 }
@@ -72,7 +86,7 @@ fn commits(repo: &Repository, tags: &HashMap<Oid, String>) -> Result<ChangeLog, 
                      author.name().unwrap_or("?"),
                      author.email().unwrap_or("?"),
                      subject, subject_trail);
-            // TODO: find tags matching this commit OID
+            //TODO create a YANKED release section if the text indicates release commit and a) tag containing word `yanked` exists b) there is no release tag
             match tags.get(&commit.id()) {
                 None => {}
                 Some(tag_name) => {

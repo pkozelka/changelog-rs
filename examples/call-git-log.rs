@@ -1,5 +1,6 @@
-use git2::{Repository, Error};
+use git2::{Repository, Error, Oid};
 use chrono::{FixedOffset, TimeZone};
+use std::collections::HashMap;
 
 fn main() {
     // let repo = match Repository::open("/home/pk/github.com/contentcheck-maven-plugin") {
@@ -8,10 +9,28 @@ fn main() {
         Ok(repo) => repo,
         Err(e) => panic!("failed to open: {}", e),
     };
-    commits(&repo).unwrap();
+    let tags = list_tags(&repo).unwrap();
+    commits(&repo, &tags).unwrap();
 }
 
-fn commits(repo: &Repository) -> Result<(), Error>{
+fn list_tags(repo: &Repository) -> Result<HashMap<Oid, String>, Error> {
+    println!("Tags:");
+    let mut tags: HashMap<Oid, String> = HashMap::new();
+    repo.tag_foreach(|oid, bytes| {
+        let tag_name = String::from_utf8_lossy(bytes);
+        if tag_name.starts_with("refs/tags/") {
+            tags.insert(oid, tag_name[10..].to_string());
+        }
+        true
+    })?;
+
+    for (tag_id, name) in &tags {
+        println!("tag: {} = {}", tag_id.to_string(), name)
+    }
+    Ok(tags)
+}
+
+fn commits(repo: &Repository, tags: &HashMap<Oid, String>) -> Result<(), Error>{
 
     let head = repo.head()?;
     let mut commit = head.peel_to_commit()?;
@@ -42,6 +61,12 @@ fn commits(repo: &Repository) -> Result<(), Error>{
                      author.email().unwrap_or("?"),
                      subject, subject_trail);
             // TODO: find tags matching this commit OID
+            match tags.get(&commit.id()) {
+                None => {}
+                Some(tag_name) => {
+                    println!("\\--> Tag: {}", tag_name);
+                }
+            }
         }
         commit = match commit.parent(0) {
             Ok(c) => c,

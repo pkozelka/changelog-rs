@@ -4,6 +4,10 @@ extern crate structopt;
 
 use std::io::Result;
 use crate::cli::Command;
+use changelog::builder::ChangeLogBuilder;
+use changelog::api::{VersionSpec, ChangeLog};
+use git2::Repository;
+use changelog::imports::from_git_repo::list_tags;
 
 fn main() {
     if let Err(e) = run_cli() {
@@ -19,7 +23,35 @@ fn run_cli() -> Result<()> {
     // process commands
     match args.cmd {
         Command::FromGitRepo { } => {
-            unimplemented!()
+            let repo = Repository::open(".").unwrap();
+            let tags = list_tags(&repo).unwrap();
+            let mut builder = ChangeLogBuilder::new();
+            builder.section(VersionSpec::unreleased());
+            builder.traverse_commits(&repo, &tags).unwrap();
+            let changelog = builder.build();
+            print_changelog(&changelog);
+            Ok(())
+        }
+    }
+}
+
+fn print_changelog(changelog: &ChangeLog) {
+    for release in &changelog.versions {
+        match &release.version_spec {
+            VersionSpec::Unreleased { .. } => {
+                println!("## Unreleased");
+            }
+            VersionSpec::Release { version, tag:_, timestamp } => {
+                let ts = timestamp.to_string();
+                println!("## {} - {}", version, &ts[0..10]);
+            }
+        }
+        if !release.items.is_empty() {
+            println!();
+            for item in &release.items {
+                println!("- {} / {}", item.text, item.authors.join(", "))
+            }
+            println!();
         }
     }
 }

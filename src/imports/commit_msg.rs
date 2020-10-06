@@ -1,6 +1,6 @@
 use std::str::Lines;
 
-use regex::{Regex, Match};
+use regex::Regex;
 
 pub enum CommitMessage {
     /// Regular commit that contributes to code and is equipped with some fields
@@ -43,8 +43,7 @@ pub struct CommitMessageAnalyzer {
     pr_mergecommit_regex: Regex,
     pr_squash_regex: Regex,
     pr_kk_closes: Regex,
-    // release_prefix: String,
-    // postrelease_prefix: String,
+    release_regex: Regex,
 }
 
 const GIT_REVERT_PREFIX: &str = "Revert \"";
@@ -56,6 +55,7 @@ impl CommitMessageAnalyzer {
             pr_mergecommit_regex: Regex::new(r"Merge pull request #(?P<pr>\d+) from (?P<branch>.*)")?,
             pr_squash_regex: Regex::new(r"^(?P<subject>.*) \(#(?P<pr>\d+)\)$")?,
             pr_kk_closes: Regex::new(r"(?P<drop>\.?\s+(?i:CLOSES?)\s*#\s*(?P<issue>\d+))")?,
+            release_regex: Regex::new(r"(?i:RELEASE[SD]?)\s+[\D]*(?P<version>[\.\-\d]+)")?,
         })
     }
 
@@ -69,10 +69,19 @@ impl CommitMessageAnalyzer {
         if msg.starts_with(GIT_REVERT_PREFIX) && msg.ends_with('"') {
             return CommitMessage::Revert { orig_msg: msg[GIT_REVERT_PREFIX.len()..msg.len() - 1].to_string() }
         }
-        // Github: merged pull-request
+        //
         let mut lines = msg.trim().lines();
         let first_line = lines.next().unwrap_or("");
 
+        // Release commit
+        if let Some(captures) = self.release_regex.captures(first_line) {
+            if let Some(m) = captures.name("version") {
+                let version = m.as_str().to_string();
+                return CommitMessage::Release { version };
+            }
+        }
+
+        // Github: merged pull-request
         if let Some((pr,subject)) = self.detect_pr_merge(first_line, &mut lines) {
             let mut refs = vec![format!("PR#{}", pr)];
             // here we can apply any additional regexes to receive more issues or other info from the message text
@@ -197,6 +206,20 @@ mod tests {
                 assert_eq!(refs[0], "PR#979");
                 assert_eq!(refs[1], "#977");
                 assert_eq!(subject, "[py] not throw exception from daimojo package");
+            }
+            _  => panic!("")
+        }
+    }
+
+    #[test]
+    fn rls_commit() {
+        let cmp = CommitMessageAnalyzer::init().unwrap();
+        let commit = cmp.analyze("[BUILD] Release v2.5.0");
+        match commit {
+            CommitMessage::Release { version } => {
+                println!("rls_commit: {}", version);
+
+                assert_eq!(version, "2.5.0");
             }
             _  => panic!("")
         }

@@ -44,6 +44,7 @@ pub struct CommitMessageAnalyzer {
     pr_squash_regex: Regex,
     pr_kk_closes: Regex,
     release_regex: Regex,
+    postrelease_regex: Regex,
 }
 
 const GIT_REVERT_PREFIX: &str = "Revert \"";
@@ -55,7 +56,8 @@ impl CommitMessageAnalyzer {
             pr_mergecommit_regex: Regex::new(r"Merge pull request #(?P<pr>\d+) from (?P<branch>.*)")?,
             pr_squash_regex: Regex::new(r"^(?P<subject>.*) \(#(?P<pr>\d+)\)$")?,
             pr_kk_closes: Regex::new(r"(?P<drop>\.?\s+(?i:CLOSES?)\s*#\s*(?P<issue>\d+))")?,
-            release_regex: Regex::new(r"(?i:RELEASE[SD]?)\s+[\D]*(?P<version>[\.\-\d]+)")?,
+            release_regex: Regex::new(r"(?i:RELEASE[SD]?)\s+[\D]*(?P<version>\d+[\\.\-][\\.\-\d]+)")?,
+            postrelease_regex: Regex::new(r"(?i:NEXT DEVEL CYCLE)\s+[\D]*(?P<version>.*)")?,
         })
     }
 
@@ -78,6 +80,14 @@ impl CommitMessageAnalyzer {
             if let Some(m) = captures.name("version") {
                 let version = m.as_str().to_string();
                 return CommitMessage::Release { version };
+            }
+        }
+
+        // Post-release commit
+        if let Some(captures) = self.postrelease_regex.captures(first_line) {
+            if let Some(m) = captures.name("version") {
+                let ref_ver = m.as_str().to_string();
+                return CommitMessage::PostRelease {  ref_ver };
             }
         }
 
@@ -220,6 +230,20 @@ mod tests {
                 println!("rls_commit: {}", version);
 
                 assert_eq!(version, "2.5.0");
+            }
+            _  => panic!("")
+        }
+    }
+
+    #[test]
+    fn post_rls_commit() {
+        let cmp = CommitMessageAnalyzer::init().unwrap();
+        let commit = cmp.analyze("Next devel cycle 1-SNAPSHOT");
+        match commit {
+            CommitMessage::PostRelease { ref_ver } => {
+                println!("post_rls_commit: {}", ref_ver);
+
+                assert_eq!(ref_ver, "1-SNAPSHOT");
             }
             _  => panic!("")
         }

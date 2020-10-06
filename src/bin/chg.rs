@@ -41,9 +41,9 @@ fn print_changelog(changelog: &ChangeLog) {
             VersionSpec::Unreleased { .. } => {
                 println!("## Unreleased");
             }
-            VersionSpec::Release { version, tag:_, timestamp } => {
+            VersionSpec::Release { version, tag:_, timestamp, yanked } => {
                 let ts = timestamp.to_string();
-                println!("## {} - {}", version, &ts[0..10]);
+                println!("## {} - {}{}", version, &ts[0..10], if *yanked { " [YANKED]" } else { "" } );
             }
         }
         if !release.items.is_empty() {

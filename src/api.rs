@@ -27,6 +27,8 @@ pub enum VersionSpec {
         version: String,
         tag: String,
         timestamp: DateTime<FixedOffset>,
+        /// yanked are versions that we had to withdraw due to a significant problem found after release
+        yanked: bool,
     },
 }
 
@@ -35,7 +37,7 @@ impl VersionSpec {
         Self::Unreleased { major: None, branch: None }
     }
 
-    pub fn release(tag: &str, timestamp: DateTime<FixedOffset>) -> Self {
+    pub fn release(tag: &str, timestamp: DateTime<FixedOffset>, yanked: bool) -> Self {
         let mut version = &tag[..];
         for c in version.chars() {
             if c.is_ascii_digit() { break };
@@ -44,7 +46,8 @@ impl VersionSpec {
         Self::Release {
             version: version.to_string(),
             tag: tag.to_string(),
-            timestamp
+            timestamp,
+            yanked,
         }
     }
 }

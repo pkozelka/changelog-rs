@@ -50,13 +50,6 @@ impl ChangeLogBuilder {
             {
                 let author = commit.author();
                 let ts = git_time_to_chrono(author.when());
-/*                println!("{} {} {} <{}>: {}",
-                         ts,
-                         &commit.id().to_string()[0..7],
-                         author.name().unwrap_or("?"),
-                         author.email().unwrap_or("?"),
-                         subject);
-*/                //TODO create a YANKED release section if the text indicates release commit and a) tag containing word `yanked` exists b) there is no release tag
                 let msg = commit.message().unwrap_or("");
                 let cm = cma.analyze(msg);
                 match tags.get(&commit.id()) {
@@ -73,6 +66,7 @@ impl ChangeLogBuilder {
                             }
                             CommitMessage::Release { version } => {
                                 warn!("Untagged release detected: {}", version);
+                                self.section(VersionSpec::release(version.as_str(), ts, true));
                             }
                             CommitMessage::PostRelease { ref_ver } => {
                                 debug!("Post-release detected, ignoring commit: {}", ref_ver);
@@ -83,8 +77,8 @@ impl ChangeLogBuilder {
                         }
                     },
                     Some(tag_name) => {
-                        // println!("\\--> Tag: {}", tag_name);
-                        self.section(VersionSpec::release(tag_name, ts));
+                        let yanked = tag_name.to_uppercase().contains("YANKED"); // TODO: opinion
+                        self.section(VersionSpec::release(tag_name, ts, yanked));
                     },
                 }
             }

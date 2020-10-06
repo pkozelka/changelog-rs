@@ -57,7 +57,7 @@ impl CommitMessageAnalyzer {
             pr_squash_regex: Regex::new(r"^(?P<subject>.*) \(#(?P<pr>\d+)\)$")?,
             pr_kk_closes: Regex::new(r"(?P<drop>\.?\s+(?i:CLOSES?)\s*#\s*(?P<issue>\d+))")?,
             release_regex: Regex::new(r"(?i:RELEASE[SD]?)\s+[\D]*(?P<version>\d+[\\.\-][\\.\-\d]+)")?,
-            postrelease_regex: Regex::new(r"(?i:NEXT DEVEL CYCLE)\s+[\D]*(?P<version>.*)")?,
+            postrelease_regex: Regex::new(r"(?i:NEXT DEVEL CYCLE)\s*[\D]*(?P<version>.*)")?,
         })
     }
 

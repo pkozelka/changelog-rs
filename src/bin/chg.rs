@@ -49,7 +49,11 @@ fn print_changelog(changelog: &ChangeLog) {
         if !release.items.is_empty() {
             println!();
             for item in &release.items {
-                println!("- {} / {}", item.text, item.authors.join(", "))
+                print!("- ");
+                if !item.refs.is_empty() {
+                    print!("{}: ", item.refs.join(", "));
+                }
+                println!("{} / {}", item.text, item.authors.join(", "))
             }
             println!();
         }
@@ -61,7 +65,7 @@ mod cli {
 
     /// Changelog toolkit
     #[derive(StructOpt, Debug)]
-    #[structopt(name = "chg")]
+    #[structopt(name = "chg", global_settings = & [structopt::clap::AppSettings::ColoredHelp])]
     pub struct Cli {
         #[structopt(subcommand)]  // Note that we mark a field as a subcommand
         pub cmd: Command,

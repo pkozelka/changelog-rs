@@ -35,7 +35,7 @@ pub enum CommitMessage {
     }
 }
 
-struct CommitMessageAnalyzer {
+pub struct CommitMessageAnalyzer {
     /// valid components
     // components: Vec<String>,
     // revision_prefix: String,

@@ -3,6 +3,7 @@ use chrono::{FixedOffset, TimeZone, DateTime};
 use std::collections::HashMap;
 use crate::builder::ChangeLogBuilder;
 use crate::api::{VersionSpec, ChangeItem, ChangeType};
+use crate::imports::commit_msg::{CommitMessageAnalyzer, CommitMessage};
 
 pub fn list_tags(repo: &Repository) -> Result<HashMap<Oid, String>, Error> {
     let mut tag_objects: HashMap<Oid, String> = HashMap::new();
@@ -40,27 +41,13 @@ fn git_time_to_chrono(time: git2::Time) -> DateTime<FixedOffset>{
     FixedOffset::east(offset_seconds).from_local_datetime(&nts).unwrap()
 }
 
-fn extract_subject(commit_message: &str) -> String {
-    let mut msg = commit_message.trim().lines();
-    let subject = msg.next().unwrap_or("-");
-    let mut linecnt = 0;
-    while msg.next().is_some() { linecnt += 1; }
-    let subject_trail = if linecnt == 0 {
-        "".to_string()
-    } else {
-        format!(" ... ({} more lines)", linecnt)
-    };
-    format!("{}{}", subject, subject_trail)
-}
-
 impl ChangeLogBuilder {
     pub fn traverse_commits(&mut self, repo: &Repository, tags: &HashMap<Oid, String>) -> Result<(), Error> {
         let head = repo.head()?;
         let mut commit = head.peel_to_commit()?;
-        loop {
-            if commit.id().is_zero() { break; }
+        let cma = CommitMessageAnalyzer::init().unwrap();
+        while !commit.id().is_zero() {
             {
-                let subject = extract_subject(commit.message().unwrap_or("?"));
                 let author = commit.author();
                 let ts = git_time_to_chrono(author.when());
 /*                println!("{} {} {} <{}>: {}",
@@ -70,15 +57,30 @@ impl ChangeLogBuilder {
                          author.email().unwrap_or("?"),
                          subject);
 */                //TODO create a YANKED release section if the text indicates release commit and a) tag containing word `yanked` exists b) there is no release tag
+                let msg = commit.message().unwrap_or("");
+                let cm = cma.analyze(msg);
                 match tags.get(&commit.id()) {
                     None => {
-                        self.item(ChangeItem {
-                            refs: vec![], // TODO
-                            change_type: ChangeType::Other, // TODO
-                            component: "?".to_string(), // TODO
-                            text: subject,
-                            authors: vec![author.name().unwrap_or("?").to_string()]
-                        }).unwrap(); // TODO
+                        match cm {
+                            CommitMessage::Contribution { component, refs, subject, details:_ } => {
+                                self.item(ChangeItem {
+                                    refs,
+                                    change_type: ChangeType::Other, // TODO
+                                    component,
+                                    text: subject,
+                                    authors: vec![author.name().unwrap_or("?").to_string()]
+                                }).unwrap(); // TODO
+                            }
+                            CommitMessage::Release { version } => {
+                                warn!("Untagged release detected: {}", version);
+                            }
+                            CommitMessage::PostRelease { ref_ver } => {
+                                debug!("Post-release detected, ignoring commit: {}", ref_ver);
+                            }
+                            CommitMessage::Revert { orig_msg } => {
+                                warn!("Revert detected but not implemented yet: '{}'", orig_msg);
+                            }
+                        }
                     },
                     Some(tag_name) => {
                         // println!("\\--> Tag: {}", tag_name);

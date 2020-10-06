@@ -1,6 +1,6 @@
 use std::str::Lines;
 
-use regex::Regex;
+use regex::{Regex, Match};
 
 pub enum CommitMessage {
     /// Regular commit that contributes to code and is equipped with some fields
@@ -42,6 +42,7 @@ pub struct CommitMessageAnalyzer {
     // issue_prefix: String,
     pr_mergecommit_regex: Regex,
     pr_squash_regex: Regex,
+    pr_kk_closes: Regex,
     // release_prefix: String,
     // postrelease_prefix: String,
 }
@@ -54,6 +55,7 @@ impl CommitMessageAnalyzer {
         Ok(Self {
             pr_mergecommit_regex: Regex::new(r"Merge pull request #(?P<pr>\d+) from (?P<branch>.*)")?,
             pr_squash_regex: Regex::new(r"^(?P<subject>.*) \(#(?P<pr>\d+)\)$")?,
+            pr_kk_closes: Regex::new(r"(?P<drop>\.?\s+(?i:CLOSES?)\s*#\s*(?P<issue>\d+))")?,
         })
     }
 
@@ -72,9 +74,28 @@ impl CommitMessageAnalyzer {
         let first_line = lines.next().unwrap_or("");
 
         if let Some((pr,subject)) = self.detect_pr_merge(first_line, &mut lines) {
+            let mut refs = vec![format!("PR#{}", pr)];
+            // here we can apply any additional regexes to receive more issues or other info from the message text
+            // for now, use thirdwing's (=KK) habit to add ' closes #1234' to the PR title
+            let subject = match self.pr_kk_closes.captures(&subject) {
+                Some(captures) => {
+                    match captures.name("issue") {
+                        Some(m) => {
+                            let (drop_start, drop_end) = match captures.name("drop") {
+                                None => (m.start(), m.end()),
+                                Some(m) => (m.start(), m.end()),
+                            };
+                            refs.push(format!("#{}", m.as_str()));
+                            format!("{}{}", &subject.as_str()[0..drop_start], &subject.as_str()[drop_end..])
+                        },
+                        None => subject
+                    }
+                },
+                None => subject,
+            };
             return CommitMessage::Contribution {
                 component: "".to_string(),
-                refs: vec![format!("PR#{}", pr)],
+                refs,
                 subject,
                 details: "".to_string()
             }
@@ -160,6 +181,22 @@ mod tests {
 
                 assert_eq!(refs[0], "PR#1073");
                 assert_eq!(subject, "[cpp] disable tree shap computing when tree model doesn't use input features");
+            }
+            _  => panic!("")
+        }
+    }
+    #[test]
+    fn pr_kk_close() {
+        let cmp = CommitMessageAnalyzer::init().unwrap();
+        let commit = cmp.analyze("[py] not throw exception from daimojo package. close# 977 (#979)");
+        match commit {
+            CommitMessage::Contribution { component, refs, subject, details:_ } => {
+                println!("pr_kk_close: {} [{}] {}", refs.join(", "), component, subject);
+
+                assert_eq!(refs.len(), 2);
+                assert_eq!(refs[0], "PR#979");
+                assert_eq!(refs[1], "#977");
+                assert_eq!(subject, "[py] not throw exception from daimojo package");
             }
             _  => panic!("")
         }

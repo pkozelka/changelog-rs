@@ -2,12 +2,15 @@
 extern crate log;
 extern crate structopt;
 
-use std::io::Result;
+use std::io::BufReader;
+use anyhow::Result;
 use crate::cli::Command;
 use changelog::builder::ChangeLogBuilder;
 use changelog::api::{VersionSpec, ChangeLog};
 use git2::Repository;
 use changelog::imports::from_git_repo::list_tags;
+use changelog::imports::from_changelog;
+use std::fs::File;
 
 fn main() {
     if let Err(e) = run_cli() {
@@ -30,6 +33,30 @@ fn run_cli() -> Result<()> {
             builder.traverse_commits(&repo, &tags).unwrap();
             let changelog = builder.build();
             print_changelog(&changelog);
+            Ok(())
+        }
+        Command::Info { file } => {
+            let f = File::open(file)?;
+            let changelog = from_changelog::parse(&mut BufReader::new(f))?;
+            for section in changelog.versions {
+                match section.version_spec {
+                    VersionSpec::Unreleased { .. } => {
+                        println!("Unreleased");
+                    }
+                    VersionSpec::Release { version, tag: _, timestamp, yanked } => {
+                        println!("{} version {}{}: {} items",
+                                 timestamp.naive_utc().date(),
+                                 version,
+                                 if yanked {"(YANKED!)"} else {""},
+                                 section.items.len()
+                        );
+
+                    }
+                }
+                for item in section.items {
+                    println!("* Refs:{:?}, '{}'", item.refs, item.text)
+                }
+            }
             Ok(())
         }
     }
@@ -62,6 +89,7 @@ fn print_changelog(changelog: &ChangeLog) {
 
 mod cli {
     use structopt::StructOpt;
+    use std::path::PathBuf;
 
     /// Changelog toolkit
     #[derive(StructOpt, Debug)]
@@ -82,6 +110,12 @@ mod cli {
         #[structopt(name = "git")]
         /// Read from git repo
         FromGitRepo {},
+
+        /// Show some info about current changelog
+        Info {
+            #[structopt(short="f", long="file", default_value="CHANGELOG.md")]
+            file: PathBuf,
+        },
     }
 
     impl Cli {

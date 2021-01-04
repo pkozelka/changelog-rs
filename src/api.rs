@@ -26,6 +26,7 @@ pub enum VersionSpec {
     Release {
         version: String,
         tag: String,
+        /// TODO consider using NaiveDate[Time] here
         timestamp: DateTime<FixedOffset>,
         /// yanked are versions that we had to withdraw due to a significant problem found after release
         yanked: bool,
@@ -62,6 +63,7 @@ pub struct ChangeItem {
 }
 
 /// Type of the change
+#[derive(Eq, PartialEq, Debug)]
 pub enum ChangeType {
     Other,
     Added,

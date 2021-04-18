@@ -2,7 +2,7 @@
 extern crate log;
 extern crate structopt;
 
-use std::io::BufReader;
+use std::io::{BufReader, Write};
 use anyhow::Result;
 use crate::cli::Command;
 use changelog::builder::ChangeLogBuilder;
@@ -25,14 +25,17 @@ fn run_cli() -> Result<()> {
     // process options
     // process commands
     match args.cmd {
-        Command::FromGitRepo { } => {
+        Command::NewChangelog { .. } => {
+            todo!()
+        }
+        Command::InitFromGit { } => {
             let repo = Repository::open(".").unwrap();
             let tags = list_tags(&repo).unwrap();
             let mut builder = ChangeLogBuilder::new();
             builder.section(VersionSpec::unreleased());
             builder.traverse_commits(&repo, &tags).unwrap();
             let changelog = builder.build();
-            print_changelog(&changelog);
+            print_changelog(&changelog, &mut std::io::stdout())?;
             Ok(())
         }
         Command::Info { file } => {
@@ -59,32 +62,36 @@ fn run_cli() -> Result<()> {
             }
             Ok(())
         }
+        Command::SyncFromGit { .. } => {
+            todo!()
+        }
     }
 }
 
-fn print_changelog(changelog: &ChangeLog) {
+fn print_changelog(changelog: &ChangeLog, out: &mut dyn Write) -> std::io::Result<()> {
     for release in &changelog.versions {
         match &release.version_spec {
             VersionSpec::Unreleased { .. } => {
-                println!("## Unreleased");
+                writeln!(out, "## Unreleased")?;
             }
             VersionSpec::Release { version, tag:_, timestamp, yanked } => {
                 let ts = timestamp.to_string();
-                println!("## {} - {}{}", version, &ts[0..10], if *yanked { " [YANKED]" } else { "" } );
+                writeln!(out, "## {} - {}{}", version, &ts[0..10], if *yanked { " [YANKED]" } else { "" } )?;
             }
         }
         if !release.items.is_empty() {
-            println!();
+            writeln!(out)?;
             for item in &release.items {
-                print!("- ");
+                write!(out, "- ")?;
                 if !item.refs.is_empty() {
-                    print!("{}: ", item.refs.join(", "));
+                    write!(out, "{}: ", item.refs.join(", "))?;
                 }
-                println!("{} / {}", item.text, item.authors.join(", "))
+                writeln!(out, "{} / {}", item.text, item.authors.join(", "))?;
             }
-            println!();
+            writeln!(out)?;
         }
     }
+    Ok(())
 }
 
 mod cli {
@@ -107,15 +114,19 @@ mod cli {
 
     #[derive(StructOpt, Debug)]
     pub enum Command {
-        #[structopt(name = "git")]
+        #[structopt(name = "new")]
+        NewChangelog {},
+        #[structopt(name = "init")]
         /// Read from git repo
-        FromGitRepo {},
+        InitFromGit {},
 
         /// Show some info about current changelog
         Info {
             #[structopt(short="f", long="file", default_value="CHANGELOG.md")]
             file: PathBuf,
         },
+        #[structopt(name = "sync")]
+        SyncFromGit {}
     }
 
     impl Cli {

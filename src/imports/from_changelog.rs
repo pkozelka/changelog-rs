@@ -2,7 +2,7 @@ use std::io::BufRead;
 use std::io::Result;
 
 use chrono::{DateTime, FixedOffset, NaiveDate};
-use regex::{Regex, Captures, Match};
+use regex::Regex;
 
 use crate::api::{ChangeLog, VersionSpec, ChangeItem, ChangeType};
 use crate::builder::ChangeLogBuilder;

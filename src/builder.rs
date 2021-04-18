@@ -1,6 +1,6 @@
-use crate::api::{ChangeLog, VersionSpec, ChangeItem, ChangeSet};
+use crate::api::{ChangeItem, ChangeLog, ChangeSet, VersionSpec};
 
-use std::io::{Result, Error, ErrorKind};
+use std::io::{Error, ErrorKind, Result};
 
 /// Stateful helper for building changelog while parsing it from a file.
 /// Line parsing is assumed and best supported.
@@ -13,12 +13,20 @@ pub struct ChangeLogBuilder {
 
 impl ChangeLogBuilder {
     pub fn new() -> Self {
-        Self { prolog: None, epilog: None, current_section: None, sections: vec![] }
+        Self {
+            prolog: None,
+            epilog: None,
+            current_section: None,
+            sections: vec![],
+        }
     }
 
     pub fn section(&mut self, header: VersionSpec) {
         self.current_section_close();
-        self.current_section = Some(ChangeSet { version_spec: header, items: vec![] });
+        self.current_section = Some(ChangeSet {
+            version_spec: header,
+            items: vec![],
+        });
     }
 
     fn current_section_close(&mut self) {
@@ -30,14 +38,19 @@ impl ChangeLogBuilder {
 
     pub fn item(&mut self, item: ChangeItem) -> Result<()> {
         let section = match &mut self.current_section {
-            None => return Err(Error::new(ErrorKind::Other, "No section precedes this item")),
-            Some(current) => current
+            None => {
+                return Err(Error::new(
+                    ErrorKind::Other,
+                    "No section precedes this item",
+                ))
+            }
+            Some(current) => current,
         };
         section.items.push(item);
         Ok(())
     }
 
-    pub fn note(&mut self, line: &str) -> Result<()>{
+    pub fn note(&mut self, line: &str) -> Result<()> {
         self.current_section_close();
         if self.sections.is_empty() {
             self.prolog.add_line(line);
@@ -67,20 +80,20 @@ impl MyOptString for Option<String> {
         match self {
             None => {
                 self.replace(line.to_string());
-            },
+            }
             Some(text) => {
                 text.push_str("\n");
                 text.push_str(line);
-            },
+            }
         }
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::builder::ChangeLogBuilder;
     use crate::api::VersionSpec::Unreleased;
     use crate::api::{ChangeItem, ChangeType};
+    use crate::builder::ChangeLogBuilder;
 
     #[test]
     fn usage_primitives() {
@@ -88,14 +101,19 @@ mod tests {
         // prolog
         builder.note("hello").unwrap();
         builder.note("Hello").unwrap();
-        builder.section(Unreleased { major: None, branch: None });
-        builder.item(ChangeItem {
-            refs: vec![],
-            change_type: ChangeType::Other,
-            component: "".to_string(),
-            text: "".to_string(),
-            authors: vec![]
-        }).unwrap();
+        builder.section(Unreleased {
+            major: None,
+            branch: None,
+        });
+        builder
+            .item(ChangeItem {
+                refs: vec![],
+                change_type: ChangeType::Other,
+                component: "".to_string(),
+                text: "".to_string(),
+                authors: vec![],
+            })
+            .unwrap();
         // epilog
         builder.note("World").unwrap();
         builder.note("world").unwrap();

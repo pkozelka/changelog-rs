@@ -1,9 +1,9 @@
-use git2::{Repository, Error, Oid};
-use chrono::{FixedOffset, TimeZone, DateTime};
-use std::collections::HashMap;
+use crate::api::{ChangeItem, ChangeType, VersionSpec};
 use crate::builder::ChangeLogBuilder;
-use crate::api::{VersionSpec, ChangeItem, ChangeType};
-use crate::imports::commit_msg::{CommitMessageAnalyzer, CommitMessage};
+use crate::imports::commit_msg::{CommitMessage, CommitMessageAnalyzer};
+use chrono::{DateTime, FixedOffset, TimeZone};
+use git2::{Error, Oid, Repository};
+use std::collections::HashMap;
 
 pub fn list_tags(repo: &Repository) -> Result<HashMap<Oid, String>, Error> {
     let mut tag_objects: HashMap<Oid, String> = HashMap::new();
@@ -35,14 +35,20 @@ pub fn list_tags(repo: &Repository) -> Result<HashMap<Oid, String>, Error> {
     Ok(tags)
 }
 
-fn git_time_to_chrono(time: git2::Time) -> DateTime<FixedOffset>{
+fn git_time_to_chrono(time: git2::Time) -> DateTime<FixedOffset> {
     let offset_seconds = time.offset_minutes() * 60;
     let nts = chrono::NaiveDateTime::from_timestamp(time.seconds() + offset_seconds as i64, 0);
-    FixedOffset::east(offset_seconds).from_local_datetime(&nts).unwrap()
+    FixedOffset::east(offset_seconds)
+        .from_local_datetime(&nts)
+        .unwrap()
 }
 
 impl ChangeLogBuilder {
-    pub fn traverse_commits(&mut self, repo: &Repository, tags: &HashMap<Oid, String>) -> Result<(), Error> {
+    pub fn traverse_commits(
+        &mut self,
+        repo: &Repository,
+        tags: &HashMap<Oid, String>,
+    ) -> Result<(), Error> {
         let head = repo.head()?;
         let mut commit = head.peel_to_commit()?;
         let cma = CommitMessageAnalyzer::init().unwrap();
@@ -55,14 +61,20 @@ impl ChangeLogBuilder {
                 match tags.get(&commit.id()) {
                     None => {
                         match cm {
-                            CommitMessage::Contribution { component, refs, subject, details:_ } => {
+                            CommitMessage::Contribution {
+                                component,
+                                refs,
+                                subject,
+                                details: _,
+                            } => {
                                 self.item(ChangeItem {
                                     refs,
                                     change_type: ChangeType::Other, // TODO
                                     component,
                                     text: subject,
-                                    authors: vec![author.name().unwrap_or("?").to_string()]
-                                }).unwrap(); // TODO
+                                    authors: vec![author.name().unwrap_or("?").to_string()],
+                                })
+                                .unwrap(); // TODO
                             }
                             CommitMessage::Release { version } => {
                                 warn!("Untagged release detected: {}", version);
@@ -75,11 +87,11 @@ impl ChangeLogBuilder {
                                 warn!("Revert detected but not implemented yet: '{}'", orig_msg);
                             }
                         }
-                    },
+                    }
                     Some(tag_name) => {
                         let yanked = tag_name.to_uppercase().contains("YANKED"); // TODO: opinion
                         self.section(VersionSpec::release(tag_name, ts, yanked));
-                    },
+                    }
                 }
             }
             commit = match commit.parent(0) {

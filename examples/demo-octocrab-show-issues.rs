@@ -7,8 +7,8 @@
 //!      ...
 //! ```
 
-use octocrab::OctocrabBuilder;
 use octocrab::params::State;
+use octocrab::OctocrabBuilder;
 
 #[tokio::main]
 async fn main() -> octocrab::Result<()> {
@@ -17,16 +17,21 @@ async fn main() -> octocrab::Result<()> {
     // let octocrab = octocrab::instance();
 
     // let issues = octocrab.issues("h2oai", "mojo2")
-    let issues = octocrab.issues("pkozelka", "contentcheck-maven-plugin")
+    let issues = octocrab
+        .issues("pkozelka", "contentcheck-maven-plugin")
         .list()
         .state(State::All)
-        .send().await?;
+        .send()
+        .await?;
     for rec in issues {
         let closed_info = match rec.closed_at {
             None => "",
             Some(_) => "(closed)",
         };
-        println!("#{}{}: {} / {} -> {:?}", rec.number, closed_info, rec.title, rec.user.login, rec.assignees)
+        println!(
+            "#{}{}: {} / {} -> {:?}",
+            rec.number, closed_info, rec.title, rec.user.login, rec.assignees
+        )
     }
 
     Ok(())

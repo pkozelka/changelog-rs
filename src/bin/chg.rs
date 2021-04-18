@@ -2,15 +2,15 @@
 extern crate log;
 extern crate structopt;
 
-use std::io::{BufReader, Write};
-use anyhow::Result;
 use crate::cli::Command;
+use anyhow::Result;
+use changelog::api::{ChangeLog, VersionSpec};
 use changelog::builder::ChangeLogBuilder;
-use changelog::api::{VersionSpec, ChangeLog};
-use git2::Repository;
-use changelog::imports::from_git_repo::list_tags;
 use changelog::imports::from_changelog;
+use changelog::imports::from_git_repo::list_tags;
+use git2::Repository;
 use std::fs::File;
+use std::io::{BufReader, Write};
 
 fn main() {
     if let Err(e) = run_cli() {
@@ -28,7 +28,7 @@ fn run_cli() -> Result<()> {
         Command::NewChangelog { .. } => {
             todo!()
         }
-        Command::InitFromGit { } => {
+        Command::InitFromGit {} => {
             let repo = Repository::open(".").unwrap();
             let tags = list_tags(&repo).unwrap();
             let mut builder = ChangeLogBuilder::new();
@@ -46,14 +46,19 @@ fn run_cli() -> Result<()> {
                     VersionSpec::Unreleased { .. } => {
                         println!("Unreleased");
                     }
-                    VersionSpec::Release { version, tag: _, timestamp, yanked } => {
-                        println!("{} version {}{}: {} items",
-                                 timestamp.naive_utc().date(),
-                                 version,
-                                 if yanked {"(YANKED!)"} else {""},
-                                 section.items.len()
+                    VersionSpec::Release {
+                        version,
+                        tag: _,
+                        timestamp,
+                        yanked,
+                    } => {
+                        println!(
+                            "{} version {}{}: {} items",
+                            timestamp.naive_utc().date(),
+                            version,
+                            if yanked { "(YANKED!)" } else { "" },
+                            section.items.len()
                         );
-
                     }
                 }
                 for item in section.items {
@@ -74,9 +79,20 @@ fn print_changelog(changelog: &ChangeLog, out: &mut dyn Write) -> std::io::Resul
             VersionSpec::Unreleased { .. } => {
                 writeln!(out, "## Unreleased")?;
             }
-            VersionSpec::Release { version, tag:_, timestamp, yanked } => {
+            VersionSpec::Release {
+                version,
+                tag: _,
+                timestamp,
+                yanked,
+            } => {
                 let ts = timestamp.to_string();
-                writeln!(out, "## {} - {}{}", version, &ts[0..10], if *yanked { " [YANKED]" } else { "" } )?;
+                writeln!(
+                    out,
+                    "## {} - {}{}",
+                    version,
+                    &ts[0..10],
+                    if *yanked { " [YANKED]" } else { "" }
+                )?;
             }
         }
         if !release.items.is_empty() {
@@ -95,14 +111,14 @@ fn print_changelog(changelog: &ChangeLog, out: &mut dyn Write) -> std::io::Resul
 }
 
 mod cli {
-    use structopt::StructOpt;
     use std::path::PathBuf;
+    use structopt::StructOpt;
 
     /// Changelog toolkit
     #[derive(StructOpt, Debug)]
     #[structopt(name = "chg", global_settings = & [structopt::clap::AppSettings::ColoredHelp])]
     pub struct Cli {
-        #[structopt(subcommand)]  // Note that we mark a field as a subcommand
+        #[structopt(subcommand)] // Note that we mark a field as a subcommand
         pub cmd: Command,
         /// Logging in verbose mode (-v = DEBUG, -vv = TRACE)
         #[structopt(short, long, parse(from_occurrences))]
@@ -122,11 +138,11 @@ mod cli {
 
         /// Show some info about current changelog
         Info {
-            #[structopt(short="f", long="file", default_value="CHANGELOG.md")]
+            #[structopt(short = "f", long = "file", default_value = "CHANGELOG.md")]
             file: PathBuf,
         },
         #[structopt(name = "sync")]
-        SyncFromGit {}
+        SyncFromGit {},
     }
 
     impl Cli {
@@ -135,23 +151,19 @@ mod cli {
             // initialize logging
             let level = 2 + cli.verbose - cli.silent;
             stderrlog::new()
-                .modules(vec![
-                    module,
-                    "changelog",
-                    module_path!(),
-                ])
+                .modules(vec![module, "changelog", module_path!()])
                 .quiet(level < 0)
                 .verbosity(level as usize)
                 .timestamp(stderrlog::Timestamp::Millisecond)
                 .init()
                 .unwrap();
-/*
-            trace!("trace");
-            debug!("debug");
-            info!("info");
-            warn!("warn");
-            error!("error s={} v={} x={}", cli.silent, cli.verbose, level);
-*/
+            /*
+                        trace!("trace");
+                        debug!("debug");
+                        info!("info");
+                        warn!("warn");
+                        error!("error s={} v={} x={}", cli.silent, cli.verbose, level);
+            */
             cli
         }
     }

@@ -30,9 +30,7 @@ pub enum CommitMessage {
     /// Special commit counteracting a recent one.
     /// Format is proposed by GIT as default, but can be altered by user.
     /// Example: `Release 1.2.3` or `[BUILD] Released version 1.2.3`
-    Revert {
-        orig_msg: String,
-    }
+    Revert { orig_msg: String },
 }
 
 pub struct CommitMessageAnalyzer {
@@ -50,13 +48,16 @@ pub struct CommitMessageAnalyzer {
 const GIT_REVERT_PREFIX: &str = "Revert \"";
 
 impl CommitMessageAnalyzer {
-
-    pub fn init() -> Result<Self,regex::Error> {
+    pub fn init() -> Result<Self, regex::Error> {
         Ok(Self {
-            pr_mergecommit_regex: Regex::new(r"Merge pull request #(?P<pr>\d+) from (?P<branch>.*)")?,
+            pr_mergecommit_regex: Regex::new(
+                r"Merge pull request #(?P<pr>\d+) from (?P<branch>.*)",
+            )?,
             pr_squash_regex: Regex::new(r"^(?P<subject>.*) \(#(?P<pr>\d+)\)$")?,
             pr_kk_closes: Regex::new(r"(?P<drop>\.?\s+(?i:CLOSES?)\s*#\s*(?P<issue>\d+))")?,
-            release_regex: Regex::new(r"(?i:RELEASE[SD]?)\s+[\D]*(?P<version>\d+[\\.\-][\\.\-\d]+)")?,
+            release_regex: Regex::new(
+                r"(?i:RELEASE[SD]?)\s+[\D]*(?P<version>\d+[\\.\-][\\.\-\d]+)",
+            )?,
             postrelease_regex: Regex::new(r"(?i:NEXT DEVEL CYCLE)\s*[\D]*(?P<version>.*)")?,
         })
     }
@@ -65,11 +66,18 @@ impl CommitMessageAnalyzer {
         let msg = msg.trim();
         // Empty message
         if msg.is_empty() {
-            return CommitMessage::Contribution { component: "".to_string(), refs: vec![], subject: "".to_string(), details: "".to_string() };
+            return CommitMessage::Contribution {
+                component: "".to_string(),
+                refs: vec![],
+                subject: "".to_string(),
+                details: "".to_string(),
+            };
         }
         // Reverting a commit
         if msg.starts_with(GIT_REVERT_PREFIX) && msg.ends_with('"') {
-            return CommitMessage::Revert { orig_msg: msg[GIT_REVERT_PREFIX.len()..msg.len() - 1].to_string() }
+            return CommitMessage::Revert {
+                orig_msg: msg[GIT_REVERT_PREFIX.len()..msg.len() - 1].to_string(),
+            };
         }
         //
         let mut lines = msg.trim().lines();
@@ -87,28 +95,30 @@ impl CommitMessageAnalyzer {
         if let Some(captures) = self.postrelease_regex.captures(first_line) {
             if let Some(m) = captures.name("version") {
                 let ref_ver = m.as_str().to_string();
-                return CommitMessage::PostRelease {  ref_ver };
+                return CommitMessage::PostRelease { ref_ver };
             }
         }
 
         // Github: merged pull-request
-        if let Some((pr,subject)) = self.detect_pr_merge(first_line, &mut lines) {
+        if let Some((pr, subject)) = self.detect_pr_merge(first_line, &mut lines) {
             let mut refs = vec![format!("PR#{}", pr)];
             // here we can apply any additional regexes to receive more issues or other info from the message text
             // for now, use thirdwing's (=KK) habit to add ' closes #1234' to the PR title
             let subject = match self.pr_kk_closes.captures(&subject) {
-                Some(captures) => {
-                    match captures.name("issue") {
-                        Some(m) => {
-                            let (drop_start, drop_end) = match captures.name("drop") {
-                                None => (m.start(), m.end()),
-                                Some(m) => (m.start(), m.end()),
-                            };
-                            refs.push(format!("#{}", m.as_str()));
-                            format!("{}{}", &subject.as_str()[0..drop_start], &subject.as_str()[drop_end..])
-                        },
-                        None => subject
+                Some(captures) => match captures.name("issue") {
+                    Some(m) => {
+                        let (drop_start, drop_end) = match captures.name("drop") {
+                            None => (m.start(), m.end()),
+                            Some(m) => (m.start(), m.end()),
+                        };
+                        refs.push(format!("#{}", m.as_str()));
+                        format!(
+                            "{}{}",
+                            &subject.as_str()[0..drop_start],
+                            &subject.as_str()[drop_end..]
+                        )
                     }
+                    None => subject,
                 },
                 None => subject,
             };
@@ -116,21 +126,21 @@ impl CommitMessageAnalyzer {
                 component: "".to_string(),
                 refs,
                 subject,
-                details: "".to_string()
-            }
+                details: "".to_string(),
+            };
         }
         // otherwise
         CommitMessage::Contribution {
             component: "N/A".to_string(),
             refs: vec![],
             subject: first_line.to_string(),
-            details: "".to_string()
+            details: "".to_string(),
         }
     }
 
     /// Find PR number and "clean" message subject.
     fn detect_pr_merge(&self, first_line: &str, lines: &mut Lines) -> Option<(String, String)> {
-        if let Some(captures)  = self.pr_mergecommit_regex.captures(first_line) {
+        if let Some(captures) = self.pr_mergecommit_regex.captures(first_line) {
             if let Some(m) = captures.name("pr") {
                 let pr = m.as_str().to_string();
                 // use first non-empty line
@@ -140,7 +150,7 @@ impl CommitMessageAnalyzer {
                     }
                 }
                 // ... or just the first line
-                return Some((pr, first_line.to_string()))
+                return Some((pr, first_line.to_string()));
             }
         }
         if let Some(captures) = self.pr_squash_regex.captures(first_line) {
@@ -171,53 +181,90 @@ mod tests {
 
                 assert_eq!(orig_msg, "Some ultracool stuff");
             }
-            _  => panic!("")
+            _ => panic!(""),
         }
     }
 
     #[test]
     fn pr_merge_commit() {
         let cmp = CommitMessageAnalyzer::init().unwrap();
-        let commit = cmp.analyze("Merge pull request #1234 from pk/some-pr-branch\n\nHere is the PR title");
+        let commit =
+            cmp.analyze("Merge pull request #1234 from pk/some-pr-branch\n\nHere is the PR title");
         match commit {
-            CommitMessage::Contribution { component, refs, subject, details:_ } => {
-                println!("pr_merge_commit: {} [{}] {}", refs.join(", "), component, subject);
+            CommitMessage::Contribution {
+                component,
+                refs,
+                subject,
+                details: _,
+            } => {
+                println!(
+                    "pr_merge_commit: {} [{}] {}",
+                    refs.join(", "),
+                    component,
+                    subject
+                );
 
                 assert_eq!(refs[0], "PR#1234");
                 assert_eq!(subject, "Here is the PR title");
             }
-            _  => panic!("")
+            _ => panic!(""),
         }
     }
 
     #[test]
     fn pr_merge_squash() {
         let cmp = CommitMessageAnalyzer::init().unwrap();
-        let commit = cmp.analyze("[cpp] disable tree shap computing when tree model doesn't use input features (#1073)");
+        let commit = cmp.analyze(
+            "[cpp] disable tree shap computing when tree model doesn't use input features (#1073)",
+        );
         match commit {
-            CommitMessage::Contribution { component, refs, subject, details:_ } => {
-                println!("pr_merge_squash: {} [{}] {}", refs.join(", "), component, subject);
+            CommitMessage::Contribution {
+                component,
+                refs,
+                subject,
+                details: _,
+            } => {
+                println!(
+                    "pr_merge_squash: {} [{}] {}",
+                    refs.join(", "),
+                    component,
+                    subject
+                );
 
                 assert_eq!(refs[0], "PR#1073");
-                assert_eq!(subject, "[cpp] disable tree shap computing when tree model doesn't use input features");
+                assert_eq!(
+                    subject,
+                    "[cpp] disable tree shap computing when tree model doesn't use input features"
+                );
             }
-            _  => panic!("")
+            _ => panic!(""),
         }
     }
     #[test]
     fn pr_kk_close() {
         let cmp = CommitMessageAnalyzer::init().unwrap();
-        let commit = cmp.analyze("[py] not throw exception from daimojo package. close# 977 (#979)");
+        let commit =
+            cmp.analyze("[py] not throw exception from daimojo package. close# 977 (#979)");
         match commit {
-            CommitMessage::Contribution { component, refs, subject, details:_ } => {
-                println!("pr_kk_close: {} [{}] {}", refs.join(", "), component, subject);
+            CommitMessage::Contribution {
+                component,
+                refs,
+                subject,
+                details: _,
+            } => {
+                println!(
+                    "pr_kk_close: {} [{}] {}",
+                    refs.join(", "),
+                    component,
+                    subject
+                );
 
                 assert_eq!(refs.len(), 2);
                 assert_eq!(refs[0], "PR#979");
                 assert_eq!(refs[1], "#977");
                 assert_eq!(subject, "[py] not throw exception from daimojo package");
             }
-            _  => panic!("")
+            _ => panic!(""),
         }
     }
 
@@ -231,7 +278,7 @@ mod tests {
 
                 assert_eq!(version, "2.5.0");
             }
-            _  => panic!("")
+            _ => panic!(""),
         }
     }
 
@@ -245,7 +292,7 @@ mod tests {
 
                 assert_eq!(ref_ver, "1-SNAPSHOT");
             }
-            _  => panic!("")
+            _ => panic!(""),
         }
     }
 }

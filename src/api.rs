@@ -1,5 +1,5 @@
+use chrono::{DateTime, FixedOffset};
 use std::collections::HashMap;
-use chrono::{FixedOffset, DateTime};
 
 /// Entire changelog.
 pub struct ChangeLog {
@@ -35,13 +35,18 @@ pub enum VersionSpec {
 
 impl VersionSpec {
     pub fn unreleased() -> Self {
-        Self::Unreleased { major: None, branch: None }
+        Self::Unreleased {
+            major: None,
+            branch: None,
+        }
     }
 
     pub fn release(tag: &str, timestamp: DateTime<FixedOffset>, yanked: bool) -> Self {
         let mut version = &tag[..];
         for c in version.chars() {
-            if c.is_ascii_digit() { break };
+            if c.is_ascii_digit() {
+                break;
+            };
             version = &version[1..];
         }
         Self::Release {

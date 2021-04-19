@@ -26,7 +26,11 @@ fn run_cli() -> Result<()> {
     // process commands
     match args.cmd {
         Command::NewChangelog { .. } => {
-            todo!()
+            let mut builder = ChangeLogBuilder::new();
+            builder.section(VersionSpec::unreleased());
+            let changelog = builder.build();
+            print_changelog(&changelog, &mut std::io::stdout())?;
+            Ok(())
         }
         Command::InitFromGit {} => {
             let repo = Repository::open(".").unwrap();
@@ -38,8 +42,8 @@ fn run_cli() -> Result<()> {
             print_changelog(&changelog, &mut std::io::stdout())?;
             Ok(())
         }
-        Command::Info { file } => {
-            let f = File::open(file)?;
+        Command::Info { } => {
+            let f = File::open(args.changelog_file)?;
             let changelog = from_changelog::parse(&mut BufReader::new(f))?;
             for section in changelog.versions {
                 match section.version_spec {
@@ -126,6 +130,8 @@ mod cli {
         /// Logging in silent mode (-s = WARN, -ss = ERROR, -sss = OFF)
         #[structopt(short, long, parse(from_occurrences))]
         silent: i8,
+        #[structopt(short = "f", long = "file", default_value = "CHANGELOG.md")]
+        pub changelog_file: PathBuf,
     }
 
     #[derive(StructOpt, Debug)]
@@ -135,12 +141,8 @@ mod cli {
         #[structopt(name = "init")]
         /// Read from git repo
         InitFromGit {},
-
         /// Show some info about current changelog
-        Info {
-            #[structopt(short = "f", long = "file", default_value = "CHANGELOG.md")]
-            file: PathBuf,
-        },
+        Info {},
         #[structopt(name = "sync")]
         SyncFromGit {},
     }

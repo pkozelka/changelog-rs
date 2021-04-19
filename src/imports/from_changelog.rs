@@ -1,11 +1,11 @@
 use std::io::BufRead;
-use std::io::Result;
 
 use chrono::{DateTime, FixedOffset, NaiveDate};
 use regex::Regex;
 
 use crate::api::{ChangeItem, ChangeLog, ChangeType, VersionSpec};
 use crate::builder::ChangeLogBuilder;
+use crate::error::ChgError;
 
 enum ParserState {
     Prolog,
@@ -13,7 +13,7 @@ enum ParserState {
     Epilog,
 }
 
-pub fn parse(reader: &mut dyn BufRead) -> Result<ChangeLog> {
+pub fn parse(reader: &mut dyn BufRead) -> Result<ChangeLog, ChgError> {
     let mut builder = ChangeLogBuilder::new();
     let lines = reader.lines();
     let mut state = ParserState::Prolog;
@@ -56,7 +56,7 @@ pub fn parse(reader: &mut dyn BufRead) -> Result<ChangeLog> {
 }
 
 impl ChangeItem {
-    fn parse_item(s: &str) -> Result<Option<Self>> {
+    fn parse_item(s: &str) -> Result<Option<Self>, ChgError> {
         if s.starts_with("- ") || s.starts_with("* ") {
             let r = Regex::new(
                 "((?P<refs>.*?):)?\\s*(?P<compo>\\[\\S+])?\\s*(?P<text>.*)/(?P<authors>.*)$",
@@ -105,7 +105,7 @@ impl ChangeItem {
 }
 
 impl VersionSpec {
-    fn parse_section_header(s: &str) -> Result<Self> {
+    fn parse_section_header(s: &str) -> Result<Self, ChgError> {
         if s == "Unreleased" {
             Ok(VersionSpec::Unreleased {
                 major: None,

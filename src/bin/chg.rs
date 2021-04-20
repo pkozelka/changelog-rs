@@ -2,15 +2,19 @@
 extern crate log;
 extern crate structopt;
 
-use crate::cli::Command;
+use std::fs::File;
+use std::io::{BufReader, Write};
+
 use anyhow::Result;
+use git2::Repository;
+
+use changelog::{ChangeLogConfig, ChgError};
 use changelog::api::{ChangeLog, VersionSpec};
 use changelog::builder::ChangeLogBuilder;
 use changelog::imports::from_changelog;
 use changelog::imports::from_git_repo::list_tags;
-use git2::Repository;
-use std::fs::File;
-use std::io::{BufReader, Write};
+
+use crate::cli::Command;
 
 fn main() {
     if let Err(e) = run_cli() {
@@ -81,7 +85,7 @@ fn run_cli() -> Result<()> {
     }
 }
 
-fn print_changelog(changelog: &ChangeLog, out: &mut dyn Write) -> std::io::Result<()> {
+fn print_changelog(changelog: &ChangeLog, out: &mut dyn Write) -> Result<(), ChgError> {
     for release in &changelog.versions {
         match &release.version_spec {
             VersionSpec::Unreleased { .. } => {
@@ -115,11 +119,14 @@ fn print_changelog(changelog: &ChangeLog, out: &mut dyn Write) -> std::io::Resul
             writeln!(out)?;
         }
     }
+    let config = ChangeLogConfig::default();
+    writeln!(out, "\n\n\n{}", config.to_string_embedded()?)?;
     Ok(())
 }
 
 mod cli {
     use std::path::PathBuf;
+
     use structopt::StructOpt;
 
     /// Changelog toolkit

@@ -19,6 +19,12 @@ pub enum ChgError {
 
     #[error("Invalid timestamp in release section header ('{0}'): {1}")]
     InvalidTimestamp(String, String),
+
+    #[error("Cannot deserialize config: {0}")]
+    ConfigReadError(String),
+
+    #[error("Cannot serialize config")]
+    ConfigWriteError,
 }
 
 impl From<std::io::Error> for ChgError {

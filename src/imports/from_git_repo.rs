@@ -4,6 +4,7 @@ use crate::imports::commit_msg::{CommitMessage, CommitMessageAnalyzer};
 use chrono::{DateTime, FixedOffset, TimeZone};
 use git2::{Error, Oid, Repository};
 use std::collections::HashMap;
+use crate::ChangeLogConfig;
 
 pub fn list_tags(repo: &Repository) -> Result<HashMap<Oid, String>, Error> {
     let mut tag_objects: HashMap<Oid, String> = HashMap::new();
@@ -115,6 +116,7 @@ impl ChangeLogBuilder {
                 Err(_) => break,
             }
         }
+        self.config = ChangeLogConfig::default();
         Ok(())
     }
 

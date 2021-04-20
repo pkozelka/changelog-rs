@@ -1,5 +1,6 @@
 use chrono::{DateTime, FixedOffset};
 use std::collections::HashMap;
+use crate::ChangeLogConfig;
 
 /// Entire changelog.
 pub struct ChangeLog {
@@ -7,6 +8,7 @@ pub struct ChangeLog {
     pub prolog: String,
     pub versions: Vec<ChangeSet>,
     pub epilog: String,
+    pub config: ChangeLogConfig,
 }
 
 /// Container of changes related to one version, either released or unreleased.

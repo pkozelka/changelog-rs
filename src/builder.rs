@@ -1,6 +1,7 @@
 use crate::api::{ChangeItem, ChangeLog, ChangeSet, VersionSpec};
 
 use std::io::{Error, ErrorKind, Result};
+use crate::ChangeLogConfig;
 
 /// Stateful helper for building changelog while parsing it from a file.
 /// Line parsing is assumed and best supported.
@@ -9,6 +10,7 @@ pub struct ChangeLogBuilder {
     epilog: Option<String>,
     current_section: Option<ChangeSet>,
     sections: Vec<ChangeSet>,
+    pub config: ChangeLogConfig,
 }
 
 impl ChangeLogBuilder {
@@ -18,6 +20,7 @@ impl ChangeLogBuilder {
             epilog: None,
             current_section: None,
             sections: vec![],
+            config: ChangeLogConfig::default(),
         }
     }
 
@@ -67,6 +70,7 @@ impl ChangeLogBuilder {
             prolog: self.prolog.unwrap_or("".to_string()),
             versions: self.sections,
             epilog: self.epilog.unwrap_or("".to_string()),
+            config: self.config,
         }
     }
 }

@@ -35,12 +35,13 @@ fn run_cli() -> Result<()> {
             print_changelog(&changelog, &mut std::io::stdout())?;
             Ok(())
         }
-        Command::InitFromGit {} => {
+        Command::InitFromGit { stop_version } => {
             let repo = Repository::open(args.dir).unwrap();
             let tags = list_tags(&repo).unwrap();
             let mut builder = ChangeLogBuilder::new();
             builder.section(VersionSpec::unreleased());
-            builder.traverse_commits(&repo, &tags).unwrap();
+            let stop_version = stop_version.as_ref().map(String::as_str);
+            builder.traverse_commits(&repo, &tags, stop_version).unwrap();
             let changelog = builder.build();
             print_changelog(&changelog, &mut std::io::stdout())?;
             Ok(())
@@ -149,7 +150,11 @@ mod cli {
         NewChangelog {},
         #[structopt(name = "init")]
         /// Read from git repo
-        InitFromGit {},
+        InitFromGit {
+            /// stop parsing git on some version (must match exactly!)
+            #[structopt(long = "stop-version")]
+            stop_version: Option<String>,
+        },
         /// Show some info about current changelog
         Info {},
         #[structopt(name = "sync")]

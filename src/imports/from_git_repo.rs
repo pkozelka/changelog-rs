@@ -48,6 +48,7 @@ impl ChangeLogBuilder {
         &mut self,
         repo: &Repository,
         tags: &HashMap<Oid, String>,
+        stop_version: Option<&str>,
     ) -> Result<(), Error> {
         let head = repo.head()?;
         let mut commit = head.peel_to_commit()?;
@@ -79,6 +80,12 @@ impl ChangeLogBuilder {
                             CommitMessage::Release { version } => {
                                 warn!("Untagged release detected: {}", version);
                                 self.section(VersionSpec::release(version.as_str(), ts, true));
+                                if let Some(stop_version) = stop_version {
+                                    if stop_version == version {
+                                        trace!("Stopping on version '{}' as requested", version);
+                                        break;
+                                    }
+                                }
                             }
                             CommitMessage::PostRelease { ref_ver } => {
                                 debug!("Post-release detected, ignoring commit: {}", ref_ver);

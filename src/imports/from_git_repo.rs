@@ -96,9 +96,16 @@ impl ChangeLogBuilder {
                         }
                     }
                     Some(tag_name) => {
-                        if let Some(version_id) = self.tag_name_to_version(tag_name) {
+                        if let Some(version) = self.tag_name_to_version(tag_name) {
                             let yanked = tag_name.to_uppercase().contains("YANKED"); // TODO: configurable
-                            self.section(VersionSpec::release_tagged(tag_name, version_id.as_str(), ts, yanked));
+                            self.section(VersionSpec::release_tagged(tag_name, version.as_str(), ts, yanked));
+
+                            if let Some(stop_version) = stop_version {
+                                if stop_version == version {
+                                    trace!("Stopping on version '{}' as requested", version);
+                                    break;
+                                }
+                            }
                         }
                     }
                 }

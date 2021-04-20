@@ -105,26 +105,64 @@ impl ChangeItem {
 }
 
 impl VersionSpec {
+
+    /// Parses section header string into a VersionSpec.
+    ///
+    /// Following formats are acceptable:
+    ///
+    /// * `1.2.123 - 2020-04-20`
+    /// * `1.2.3-1 2020-04-20`
+    /// * `1.2.333 2020-04-20 yanked`
+    /// * `1.2.3.b5.c7-a 2020-04-20 yanked`
+    /// * `Unreleased`
     fn parse_section_header(s: &str) -> Result<Self, ChgError> {
-        if s == "Unreleased" {
+        let s = s.trim();
+        if s.to_ascii_lowercase() == "unreleased" {
             Ok(VersionSpec::Unreleased {
                 major: None,
                 branch: None,
             })
         } else {
-            let r = Regex::new(
-                "(?P<version>[0-9.]+)\\s+-\\s+(?P<timestamp>\\d+-\\d+-\\d+)\\s*(?P<more>.*)$",
-            )
-            .unwrap();
-            let captures = r.captures(s).unwrap();
-            let version = captures.name("version").unwrap().as_str();
+            let mut section_tokens = s.trim().split(' ');
+
+            // version (required)
+            let version = section_tokens.next().ok_or_else(||ChgError::MissingVersionDateSeparator(s.to_owned()))?;
+            // - validate version string
+            if version.is_empty() {
+                return Err(ChgError::InvalidVersionID(version.to_owned(), s.to_owned()));
+            } else if let Some(c) = version.chars().next() {
+                // first character of the version must be a digit
+                if ! c.is_ascii_digit() {
+                    return Err(ChgError::InvalidVersionID(version.to_owned(), s.to_owned()))
+                }
+            }
+            // separator (optional)
+            let sep = section_tokens.next().ok_or_else(||ChgError::MissingVersionDateSeparator(s.to_owned()))?.trim();
+
+            // timestamp (required)
+            let timestamp = if sep == "-" {
+                section_tokens.next().ok_or_else(||ChgError::MissingTimestamp(s.to_owned()))?.trim()
+            } else {
+                sep
+            };
+
+            // - parse timestamp
+            let r = Regex::new("(?P<timestamp>\\d+-\\d+-\\d+)$").unwrap();
+            let captures = r.captures(timestamp).unwrap();
             let timestamp = captures.name("timestamp").unwrap().as_str();
             let timestamp = NaiveDate::parse_from_str(timestamp, "%Y-%m-%d")
-                .unwrap()
+                .or_else(|e|Err(ChgError::InvalidTimestamp(s.to_owned(), e.to_string())))?
                 .and_hms(0, 0, 0);
             let timestamp = DateTime::<FixedOffset>::from_utc(timestamp, FixedOffset::west(0));
-            let more = captures.name("more").unwrap().as_str();
-            let yanked = more.to_ascii_uppercase().contains("YANKED");
+
+            // yanked
+            let yanked = if let Some(more) = section_tokens.next(){
+                more.to_ascii_uppercase().contains("YANKED")
+            } else {
+                false
+            };
+
+            //
             Ok(VersionSpec::Release {
                 version: version.to_string(),
                 tag: "".to_string(),
@@ -172,6 +210,29 @@ mod tests {
                 assert_eq!(tag, "", "tag");
                 assert_eq!(yanked, false, "yanked");
                 let naive = NaiveDate::from_ymd(2020, 12, 10).and_hms(0, 0, 0);
+                let ts = DateTime::<FixedOffset>::from_utc(naive, FixedOffset::west(0));
+                assert_eq!(timestamp, ts);
+            }
+        }
+    }
+
+    #[test]
+    fn test_parse_section_header_released_noseparator_yanked() {
+        let header = VersionSpec::parse_section_header("1.22.333-alpha-1 2021-04-20 YANKED").unwrap();
+        match header {
+            VersionSpec::Unreleased { .. } => {
+                panic!("Release expected here")
+            }
+            VersionSpec::Release {
+                version,
+                tag,
+                timestamp,
+                yanked,
+            } => {
+                assert_eq!(version, "1.22.333-alpha-1", "version");
+                assert_eq!(tag, "", "tag");
+                assert_eq!(yanked, true, "yanked");
+                let naive = NaiveDate::from_ymd(2021, 04, 20).and_hms(0, 0, 0);
                 let ts = DateTime::<FixedOffset>::from_utc(naive, FixedOffset::west(0));
                 assert_eq!(timestamp, ts);
             }

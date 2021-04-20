@@ -26,6 +26,9 @@ fn run_cli() -> Result<()> {
     // process commands
     match args.cmd {
         Command::NewChangelog { .. } => {
+            if args.changelog_file.exists() {
+                Err(std::io::Error::new(std::io::ErrorKind::AlreadyExists, format!("Changelog already exists in {}", args.changelog_file.display())))?;
+            }
             let mut builder = ChangeLogBuilder::new();
             builder.section(VersionSpec::unreleased());
             let changelog = builder.build();
@@ -159,13 +162,6 @@ mod cli {
                 .timestamp(stderrlog::Timestamp::Millisecond)
                 .init()
                 .unwrap();
-            /*
-                        trace!("trace");
-                        debug!("debug");
-                        info!("info");
-                        warn!("warn");
-                        error!("error s={} v={} x={}", cli.silent, cli.verbose, level);
-            */
             cli
         }
     }

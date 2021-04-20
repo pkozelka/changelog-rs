@@ -36,7 +36,7 @@ fn run_cli() -> Result<()> {
             Ok(())
         }
         Command::InitFromGit {} => {
-            let repo = Repository::open(".").unwrap();
+            let repo = Repository::open(args.dir).unwrap();
             let tags = list_tags(&repo).unwrap();
             let mut builder = ChangeLogBuilder::new();
             builder.section(VersionSpec::unreleased());
@@ -133,8 +133,14 @@ mod cli {
         /// Logging in silent mode (-s = WARN, -ss = ERROR, -sss = OFF)
         #[structopt(short, long, parse(from_occurrences))]
         silent: i8,
+
+        /// Changelog file location and name
         #[structopt(short = "f", long = "file", default_value = "CHANGELOG.md")]
         pub changelog_file: PathBuf,
+
+        /// Project directory
+        #[structopt(long = "dir", default_value = ".")]
+        pub dir: PathBuf,
     }
 
     #[derive(StructOpt, Debug)]

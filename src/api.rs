@@ -41,6 +41,15 @@ impl VersionSpec {
         }
     }
 
+    pub fn release_tagged(tag: &str, version: &str, timestamp: DateTime<FixedOffset>, yanked: bool) -> Self {
+        Self::Release {
+            version: version.to_string(),
+            tag: tag.to_string(),
+            timestamp,
+            yanked,
+        }
+    }
+
     pub fn release(tag: &str, timestamp: DateTime<FixedOffset>, yanked: bool) -> Self {
         let mut version = &tag[..];
         for c in version.chars() {

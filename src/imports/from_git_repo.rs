@@ -96,8 +96,10 @@ impl ChangeLogBuilder {
                         }
                     }
                     Some(tag_name) => {
-                        let yanked = tag_name.to_uppercase().contains("YANKED"); // TODO: opinion
-                        self.section(VersionSpec::release(tag_name, ts, yanked));
+                        if let Some(version_id) = self.tag_name_to_version(tag_name) {
+                            let yanked = tag_name.to_uppercase().contains("YANKED"); // TODO: configurable
+                            self.section(VersionSpec::release_tagged(tag_name, version_id.as_str(), ts, yanked));
+                        }
                     }
                 }
             }
@@ -107,5 +109,13 @@ impl ChangeLogBuilder {
             }
         }
         Ok(())
+    }
+
+    fn tag_name_to_version(&self, tag_name: &str) -> Option<String> {
+        if tag_name.starts_with("v") { //TODO: configurable
+            Some(tag_name[1..].to_owned())
+        } else {
+            None
+        }
     }
 }

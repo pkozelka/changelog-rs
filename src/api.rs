@@ -15,12 +15,14 @@ pub struct ChangeLog {
 }
 
 /// Container of changes related to one version, either released or unreleased.
+#[derive(Debug)]
 pub struct ChangeSet {
     pub version_spec: VersionSpec,
     pub items: Vec<ChangeItem>,
 }
 
 /// Supports unreleased and released versions
+#[derive(Debug)]
 pub enum VersionSpec {
     /// Unreleased section. In workflows tracking multiple major versions, the major version can be supplied.
     Unreleased {
@@ -78,6 +80,7 @@ impl VersionSpec {
 }
 
 /// One change it the release.
+#[derive(Debug)]
 pub struct ChangeItem {
     pub refs: Vec<String>,
     pub change_type: ChangeType,

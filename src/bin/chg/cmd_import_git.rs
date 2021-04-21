@@ -10,15 +10,8 @@ pub fn cmd_import_git(
 ) -> std::io::Result<()> {
     let config = ChangeLogConfig::default();
     let changelog = ChangeLog::import_git_commits(dir, stop_version, &config);
-    let changelog = ChangeLog {
-        meta: Default::default(),
-        prolog: "".to_string(),
-        versions: changelog,
-        epilog: "".to_string(),
-        config,
-    };
     let mut file = File::create(changelog_file)?;
-    changelog.to_markdown(&mut file)?;
+    changelog.print_markdown(&mut file)?;
     // changelog.to_markdown(&mut std::io::stdout())
     file.flush()?;
     Ok(())

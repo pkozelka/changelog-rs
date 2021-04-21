@@ -1,4 +1,4 @@
-use crate::api::{ChangeItem, ChangeSet, ChangeType, VersionSpec};
+use crate::api::{ChangeItem, ChangeType, ReleaseHeader};
 use crate::builder::ChangeLogBuilder;
 use crate::imports::commit_msg::{CommitMessage, CommitMessageAnalyzer};
 use crate::{ChangeLog, ChangeLogConfig};
@@ -78,7 +78,11 @@ impl ChangeLogBuilder {
                             }
                             CommitMessage::Release { version } => {
                                 warn!("Untagged release detected: {}", version);
-                                self.section(VersionSpec::release(version.as_str(), ts, true));
+                                self.section(Some(ReleaseHeader::release(
+                                    version.as_str(),
+                                    ts,
+                                    true,
+                                )));
                                 if let Some(stop_version) = stop_version {
                                     if stop_version == version {
                                         trace!("Stopping on version '{}' as requested", version);
@@ -97,12 +101,12 @@ impl ChangeLogBuilder {
                     Some(tag_name) => {
                         if let Some(version) = self.tag_name_to_version(tag_name) {
                             let yanked = tag_name.to_uppercase().contains("YANKED"); // TODO: configurable
-                            self.section(VersionSpec::release_tagged(
+                            self.section(Some(ReleaseHeader::release_tagged(
                                 tag_name,
                                 version.as_str(),
                                 ts,
                                 yanked,
-                            ));
+                            )));
 
                             if let Some(stop_version) = stop_version {
                                 if stop_version == version {
@@ -119,7 +123,6 @@ impl ChangeLogBuilder {
                 Err(_) => break,
             }
         }
-        self.config = ChangeLogConfig::default();
         Ok(())
     }
 
@@ -138,15 +141,15 @@ impl ChangeLog {
         dir: D,
         stop_version: Option<String>,
         config: &ChangeLogConfig,
-    ) -> Vec<ChangeSet> {
+    ) -> Self {
         let repo = Repository::open(dir).unwrap();
         let tags = list_tags(&repo).unwrap();
         let mut builder = ChangeLogBuilder::new(config.clone());
-        builder.section(VersionSpec::unreleased());
+        builder.section(None);
         let stop_version = stop_version.as_ref().map(String::as_str);
         builder
             .traverse_commits(&repo, &tags, stop_version)
             .unwrap();
-        builder.build().versions
+        builder.build()
     }
 }

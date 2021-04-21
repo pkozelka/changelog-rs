@@ -2,7 +2,6 @@ use std::fs::File;
 use std::io::Write;
 use std::path::PathBuf;
 
-use changelog::api::VersionSpec;
 use changelog::builder::ChangeLogBuilder;
 use changelog::ChangeLogConfig;
 
@@ -15,10 +14,10 @@ pub fn cmd_new(changelog_file: &PathBuf) -> std::io::Result<()> {
     }
     let config = ChangeLogConfig::default();
     let mut builder = ChangeLogBuilder::new(config);
-    builder.section(VersionSpec::unreleased());
+    builder.section(None);
     let changelog = builder.build();
     let mut file = File::create(changelog_file)?;
-    changelog.to_markdown(&mut file)?;
+    changelog.print_markdown(&mut file)?;
     // changelog.to_markdown(&mut std::io::stdout())
     file.flush()?;
     Ok(())

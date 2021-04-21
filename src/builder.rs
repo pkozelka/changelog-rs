@@ -1,4 +1,4 @@
-use crate::api::{ChangeItem, ChangeLog, ChangeSet, VersionSpec};
+use crate::api::{ChangeItem, ChangeLog, ChangeSet, ReleaseHeader};
 
 use crate::ChangeLogConfig;
 use std::io::{Error, ErrorKind, Result};
@@ -6,36 +6,41 @@ use std::io::{Error, ErrorKind, Result};
 /// Stateful helper for building changelog while parsing it from a file.
 /// Line parsing is assumed and best supported.
 pub struct ChangeLogBuilder {
-    prolog: Option<String>,
-    epilog: Option<String>,
+    current_release: Option<ReleaseHeader>,
     current_section: Option<ChangeSet>,
-    sections: Vec<ChangeSet>,
-    pub config: ChangeLogConfig,
+    changelog: ChangeLog,
 }
 
 impl ChangeLogBuilder {
     pub fn new(config: ChangeLogConfig) -> Self {
         Self {
-            prolog: None,
-            epilog: None,
+            current_release: None,
             current_section: None,
-            sections: vec![],
-            config,
+            changelog: ChangeLog {
+                meta: Default::default(),
+                prolog: "".to_string(),
+                unreleased: None,
+                releases: vec![],
+                epilog: "".to_string(),
+                config: config.clone(),
+            },
         }
     }
 
-    pub fn section(&mut self, header: VersionSpec) {
+    pub fn section(&mut self, release: Option<ReleaseHeader>) {
         self.current_section_close();
-        self.current_section = Some(ChangeSet {
-            version_spec: header,
-            items: vec![],
-        });
+        self.current_release = release;
+        self.current_section = Some(ChangeSet { items: vec![] });
     }
 
     fn current_section_close(&mut self) {
-        // let current = std::mem::replace(&mut self.current_section, None);
         if let Some(current) = self.current_section.take() {
-            self.sections.push(current);
+            match self.current_release.take() {
+                None => {
+                    self.changelog.unreleased = Some(current);
+                }
+                Some(rvs) => self.changelog.releases.push((rvs, current)),
+            }
         }
     }
 
@@ -55,23 +60,17 @@ impl ChangeLogBuilder {
 
     pub fn note(&mut self, line: &str) -> Result<()> {
         self.current_section_close();
-        if self.sections.is_empty() {
-            self.prolog.add_line(line);
+        if self.changelog.releases.is_empty() && self.changelog.unreleased.is_none() {
+            self.changelog.prolog.add_line(line);
         } else {
-            self.epilog.add_line(line);
+            self.changelog.epilog.add_line(line);
         }
         Ok(())
     }
 
     pub fn build(mut self) -> ChangeLog {
         self.current_section_close();
-        ChangeLog {
-            meta: Default::default(),
-            prolog: self.prolog.unwrap_or("".to_string()),
-            versions: self.sections,
-            epilog: self.epilog.unwrap_or("".to_string()),
-            config: self.config,
-        }
+        self.changelog
     }
 }
 
@@ -79,17 +78,10 @@ trait MyOptString {
     fn add_line(&mut self, line: &str);
 }
 
-impl MyOptString for Option<String> {
+impl MyOptString for String {
     fn add_line(&mut self, line: &str) {
-        match self {
-            None => {
-                self.replace(line.to_string());
-            }
-            Some(text) => {
-                text.push_str("\n");
-                text.push_str(line);
-            }
-        }
+        self.push_str("\n");
+        self.push_str(line);
     }
 }
 
@@ -106,8 +98,7 @@ mod tests {
         // prolog
         builder.note("hello").unwrap();
         builder.note("Hello").unwrap();
-        builder.section(Unreleased {
-        });
+        builder.section(Unreleased {});
         builder
             .item(ChangeItem {
                 refs: vec![],
@@ -124,6 +115,6 @@ mod tests {
         let changelog = builder.build();
         println!("prolog: {}", changelog.prolog);
         println!("epilog: {}", changelog.epilog);
-        assert_eq!(changelog.versions.len(), 1);
+        assert_eq!(changelog.releases.len(), 1);
     }
 }

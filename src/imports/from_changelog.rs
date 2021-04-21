@@ -1,7 +1,7 @@
 use chrono::NaiveDate;
 use regex::Regex;
 
-use crate::api::{ChangeItem, ChangeType, VersionSpec};
+use crate::api::{ChangeItem, ChangeType, ReleaseHeader};
 use crate::builder::ChangeLogBuilder;
 use crate::error::ChgError;
 use crate::{ChangeLog, ChangeLogConfig};
@@ -35,7 +35,7 @@ impl ChangeLogBuilder {
             match state {
                 ParserState::Prolog | ParserState::Section => {
                     if line.starts_with("## ") {
-                        self.section(VersionSpec::parse_section_header(&line[3..])?);
+                        self.section(ReleaseHeader::parse_section_header(&line[3..])?);
                         state = ParserState::Section;
                         continue;
                     }
@@ -113,7 +113,7 @@ impl ChangeItem {
     }
 }
 
-impl VersionSpec {
+impl ReleaseHeader {
     /// Parses section header string into a VersionSpec.
     ///
     /// Following formats are acceptable:
@@ -123,11 +123,10 @@ impl VersionSpec {
     /// * `1.2.333 2020-04-20 yanked`
     /// * `1.2.3.b5.c7-a 2020-04-20 yanked`
     /// * `Unreleased`
-    fn parse_section_header(s: &str) -> Result<Self, ChgError> {
+    fn parse_section_header(s: &str) -> Result<Option<Self>, ChgError> {
         let s = s.trim();
         if s.to_ascii_lowercase() == "unreleased" {
-            Ok(VersionSpec::Unreleased {
-            })
+            Ok(None)
         } else {
             let mut section_tokens = s.trim().split(' ');
 
@@ -175,12 +174,12 @@ impl VersionSpec {
             };
 
             //
-            Ok(VersionSpec::Release {
+            Ok(Some(ReleaseHeader {
                 version: version.to_string(),
                 tag: "".to_string(),
                 timestamp,
                 yanked,
-            })
+            }))
         }
     }
 }
@@ -189,14 +188,14 @@ impl VersionSpec {
 mod tests {
     use chrono::{DateTime, FixedOffset, NaiveDate};
 
-    use crate::api::{ChangeItem, ChangeType, VersionSpec};
+    use crate::api::{ChangeItem, ChangeType, ReleaseHeader, VersionSpec};
 
     #[test]
     fn test_parse_section_header_unreleased() {
         let header = VersionSpec::parse_section_header("Unreleased").unwrap();
         match header {
             VersionSpec::Unreleased => {}
-            VersionSpec::Release { .. } => {
+            VersionSpec::Release(ReleaseHeader { .. }) => {
                 panic!("Unreleased expected here")
             }
         }
@@ -209,12 +208,12 @@ mod tests {
             VersionSpec::Unreleased { .. } => {
                 panic!("Release expected here")
             }
-            VersionSpec::Release {
+            VersionSpec::Release(ReleaseHeader {
                 version,
                 tag,
                 timestamp,
                 yanked,
-            } => {
+            }) => {
                 assert_eq!(version, "2.5.6", "version");
                 assert_eq!(tag, "", "tag");
                 assert_eq!(yanked, false, "yanked");
@@ -233,12 +232,12 @@ mod tests {
             VersionSpec::Unreleased { .. } => {
                 panic!("Release expected here")
             }
-            VersionSpec::Release {
+            VersionSpec::Release(ReleaseHeader {
                 version,
                 tag,
                 timestamp,
                 yanked,
-            } => {
+            }) => {
                 assert_eq!(version, "1.22.333-alpha-1", "version");
                 assert_eq!(tag, "", "tag");
                 assert_eq!(yanked, true, "yanked");

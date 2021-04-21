@@ -4,7 +4,6 @@ extern crate log;
 extern crate serde_derive;
 
 pub use api::ChangeLog;
-pub use api::VersionSpec;
 pub use config::ChangeLogConfig;
 pub use error::ChgError;
 

@@ -9,7 +9,8 @@ use crate::ChangeLogConfig;
 pub struct ChangeLog {
     pub meta: HashMap<String, String>,
     pub prolog: String,
-    pub versions: Vec<ChangeSet>,
+    pub unreleased: Option<ChangeSet>,
+    pub releases: Vec<(ReleaseHeader, ChangeSet)>,
     pub epilog: String,
     pub config: ChangeLogConfig,
 }
@@ -17,39 +18,22 @@ pub struct ChangeLog {
 /// Container of changes related to one version, either released or unreleased.
 #[derive(Debug)]
 pub struct ChangeSet {
-    pub version_spec: VersionSpec,
     pub items: Vec<ChangeItem>,
 }
 
-/// Supports unreleased and released versions
 #[derive(Debug)]
-pub enum VersionSpec {
-    /// Unreleased section.
-    Unreleased,
-    /// Released section.
-    Release {
-        version: String,
-        tag: String,
-        /// date of the release
-        timestamp: NaiveDate,
-        /// yanked are versions that we had to withdraw due to a significant problem found after release
-        yanked: bool,
-    },
+pub struct ReleaseHeader {
+    pub version: String,
+    pub tag: String,
+    /// date of the release
+    pub timestamp: NaiveDate,
+    /// yanked are versions that we had to unpublish, usually due to a significant problem found after release
+    pub yanked: bool,
 }
 
-impl VersionSpec {
-    pub fn unreleased() -> Self {
-        Self::Unreleased {
-        }
-    }
-
-    pub fn release_tagged(
-        tag: &str,
-        version: &str,
-        timestamp: NaiveDate,
-        yanked: bool,
-    ) -> Self {
-        Self::Release {
+impl ReleaseHeader {
+    pub fn release_tagged(tag: &str, version: &str, timestamp: NaiveDate, yanked: bool) -> Self {
+        Self {
             version: version.to_string(),
             tag: tag.to_string(),
             timestamp,
@@ -65,7 +49,7 @@ impl VersionSpec {
             };
             version = &version[1..];
         }
-        Self::Release {
+        Self {
             version: version.to_string(),
             tag: tag.to_string(),
             timestamp,
@@ -97,39 +81,37 @@ pub enum ChangeType {
 }
 
 impl ChangeLog {
-    pub fn to_markdown(&self, out: &mut dyn Write) -> std::io::Result<()> {
-        for release in &self.versions {
-            match &release.version_spec {
-                VersionSpec::Unreleased { .. } => {
-                    writeln!(out, "## Unreleased")?;
+    pub fn print_markdown(&self, out: &mut dyn Write) -> std::io::Result<()> {
+        if let Some(unreleased) = &self.unreleased {
+            writeln!(out, "## Unreleased")?;
+            Self::print_markdown_items(out, &unreleased)?;
+        }
+
+        for (ver, release) in &self.releases {
+            let ts = ver.timestamp.to_string();
+            writeln!(
+                out,
+                "## {} - {}{}",
+                ver.version,
+                &ts[0..10],
+                if ver.yanked { " [YANKED]" } else { "" }
+            )?;
+            Self::print_markdown_items(out, &release)?;
+        }
+        Ok(())
+    }
+
+    fn print_markdown_items(out: &mut dyn Write, changes: &ChangeSet) -> std::io::Result<()> {
+        if !changes.items.is_empty() {
+            writeln!(out)?;
+            for item in &changes.items {
+                write!(out, "- ")?;
+                if !item.refs.is_empty() {
+                    write!(out, "{}: ", item.refs.join(", "))?;
                 }
-                VersionSpec::Release {
-                    version,
-                    tag: _,
-                    timestamp,
-                    yanked,
-                } => {
-                    let ts = timestamp.to_string();
-                    writeln!(
-                        out,
-                        "## {} - {}{}",
-                        version,
-                        &ts[0..10],
-                        if *yanked { " [YANKED]" } else { "" }
-                    )?;
-                }
+                writeln!(out, "{} / {}", item.text, item.authors.join(", "))?;
             }
-            if !release.items.is_empty() {
-                writeln!(out)?;
-                for item in &release.items {
-                    write!(out, "- ")?;
-                    if !item.refs.is_empty() {
-                        write!(out, "{}: ", item.refs.join(", "))?;
-                    }
-                    writeln!(out, "{} / {}", item.text, item.authors.join(", "))?;
-                }
-                writeln!(out)?;
-            }
+            writeln!(out)?;
         }
         Ok(())
     }

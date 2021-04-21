@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use std::io::Write;
 
-use chrono::{DateTime, FixedOffset};
+use chrono::NaiveDate;
 
 use crate::ChangeLogConfig;
 
@@ -30,8 +30,8 @@ pub enum VersionSpec {
     Release {
         version: String,
         tag: String,
-        /// TODO consider using NaiveDate[Time] here
-        timestamp: DateTime<FixedOffset>,
+        /// date of the release
+        timestamp: NaiveDate,
         /// yanked are versions that we had to withdraw due to a significant problem found after release
         yanked: bool,
     },
@@ -46,7 +46,7 @@ impl VersionSpec {
     pub fn release_tagged(
         tag: &str,
         version: &str,
-        timestamp: DateTime<FixedOffset>,
+        timestamp: NaiveDate,
         yanked: bool,
     ) -> Self {
         Self::Release {
@@ -57,7 +57,7 @@ impl VersionSpec {
         }
     }
 
-    pub fn release(tag: &str, timestamp: DateTime<FixedOffset>, yanked: bool) -> Self {
+    pub fn release(tag: &str, timestamp: NaiveDate, yanked: bool) -> Self {
         let mut version = &tag[..];
         for c in version.chars() {
             if c.is_ascii_digit() {

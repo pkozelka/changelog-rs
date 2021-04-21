@@ -2,7 +2,7 @@ use crate::api::{ChangeItem, ChangeSet, ChangeType, VersionSpec};
 use crate::builder::ChangeLogBuilder;
 use crate::imports::commit_msg::{CommitMessage, CommitMessageAnalyzer};
 use crate::{ChangeLog, ChangeLogConfig};
-use chrono::{DateTime, FixedOffset, TimeZone};
+use chrono::NaiveDate;
 use git2::{Error, Oid, Repository};
 use std::collections::HashMap;
 use std::path::Path;
@@ -37,12 +37,9 @@ fn list_tags(repo: &Repository) -> Result<HashMap<Oid, String>, Error> {
     Ok(tags)
 }
 
-fn git_time_to_chrono(time: git2::Time) -> DateTime<FixedOffset> {
+fn git_time_to_chrono(time: git2::Time) -> NaiveDate {
     let offset_seconds = time.offset_minutes() * 60;
-    let nts = chrono::NaiveDateTime::from_timestamp(time.seconds() + offset_seconds as i64, 0);
-    FixedOffset::east(offset_seconds)
-        .from_local_datetime(&nts)
-        .unwrap()
+    chrono::NaiveDateTime::from_timestamp(time.seconds() + offset_seconds as i64, 0).date()
 }
 
 impl ChangeLogBuilder {

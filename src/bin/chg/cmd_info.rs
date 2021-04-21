@@ -22,7 +22,7 @@ pub fn cmd_info(changelog_file: &PathBuf) -> Result<(), ChgError> {
             } => {
                 println!(
                     "{} version {}{}: {} items",
-                    timestamp.naive_utc().date(),
+                    timestamp,
                     version,
                     if yanked { "(YANKED!)" } else { "" },
                     section.items.len()

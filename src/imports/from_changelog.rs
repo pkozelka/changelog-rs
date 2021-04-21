@@ -1,4 +1,4 @@
-use chrono::{DateTime, FixedOffset, NaiveDate};
+use chrono::NaiveDate;
 use regex::Regex;
 
 use crate::api::{ChangeItem, ChangeType, VersionSpec};
@@ -165,9 +165,7 @@ impl VersionSpec {
             let captures = r.captures(timestamp).unwrap();
             let timestamp = captures.name("timestamp").unwrap().as_str();
             let timestamp = NaiveDate::parse_from_str(timestamp, "%Y-%m-%d")
-                .or_else(|e| Err(ChgError::InvalidTimestamp(s.to_owned(), e.to_string())))?
-                .and_hms(0, 0, 0);
-            let timestamp = DateTime::<FixedOffset>::from_utc(timestamp, FixedOffset::west(0));
+                .or_else(|e| Err(ChgError::InvalidTimestamp(s.to_owned(), e.to_string())))?;
 
             // yanked
             let yanked = if let Some(more) = section_tokens.next() {

@@ -41,7 +41,7 @@ impl ReleaseHeader {
         }
     }
 
-    pub fn release(tag: &str, timestamp: NaiveDate, yanked: bool) -> Self {
+    pub fn release(tag: &str, timestamp: NaiveDate, yanked: bool) -> Option<Self> {
         let mut version = &tag[..];
         for c in version.chars() {
             if c.is_ascii_digit() {
@@ -49,11 +49,15 @@ impl ReleaseHeader {
             };
             version = &version[1..];
         }
-        Self {
-            version: version.to_string(),
-            tag: tag.to_string(),
-            timestamp,
-            yanked,
+        if version.is_empty() {
+            None
+        } else {
+            Some(Self {
+                version: version.to_string(),
+                tag: tag.to_string(),
+                timestamp,
+                yanked,
+            })
         }
     }
 }

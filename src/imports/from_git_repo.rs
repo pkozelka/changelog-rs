@@ -77,16 +77,21 @@ impl ChangeLogBuilder {
                                 .unwrap(); // TODO
                             }
                             CommitMessage::Release { version } => {
-                                warn!("Untagged release detected: {}", version);
-                                self.section(Some(ReleaseHeader::release(
-                                    version.as_str(),
-                                    ts,
-                                    true,
-                                )));
-                                if let Some(stop_version) = stop_version {
-                                    if stop_version == version {
-                                        trace!("Stopping on version '{}' as requested", version);
-                                        break;
+                                if let Some(rh) = ReleaseHeader::release(version.as_str(), ts, true)
+                                {
+                                    warn!(
+                                        "Untagged release detected: {} - will be considered yenked",
+                                        version
+                                    );
+                                    self.section(Some(rh));
+                                    if let Some(stop_version) = stop_version {
+                                        if stop_version == version {
+                                            trace!(
+                                                "Stopping on version '{}' as requested",
+                                                version
+                                            );
+                                            break;
+                                        }
                                     }
                                 }
                             }

@@ -127,8 +127,6 @@ impl VersionSpec {
         let s = s.trim();
         if s.to_ascii_lowercase() == "unreleased" {
             Ok(VersionSpec::Unreleased {
-                major: None,
-                branch: None,
             })
         } else {
             let mut section_tokens = s.trim().split(' ');
@@ -199,10 +197,7 @@ mod tests {
     fn test_parse_section_header_unreleased() {
         let header = VersionSpec::parse_section_header("Unreleased").unwrap();
         match header {
-            VersionSpec::Unreleased { major, branch } => {
-                assert_eq!(major, None);
-                assert_eq!(branch, None);
-            }
+            VersionSpec::Unreleased => {}
             VersionSpec::Release { .. } => {
                 panic!("Unreleased expected here")
             }

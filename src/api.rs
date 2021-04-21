@@ -24,11 +24,8 @@ pub struct ChangeSet {
 /// Supports unreleased and released versions
 #[derive(Debug)]
 pub enum VersionSpec {
-    /// Unreleased section. In workflows tracking multiple major versions, the major version can be supplied.
-    Unreleased {
-        major: Option<String>,
-        branch: Option<String>,
-    },
+    /// Unreleased section.
+    Unreleased,
     /// Released section.
     Release {
         version: String,
@@ -43,8 +40,6 @@ pub enum VersionSpec {
 impl VersionSpec {
     pub fn unreleased() -> Self {
         Self::Unreleased {
-            major: None,
-            branch: None,
         }
     }
 

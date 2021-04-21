@@ -107,8 +107,6 @@ mod tests {
         builder.note("hello").unwrap();
         builder.note("Hello").unwrap();
         builder.section(Unreleased {
-            major: None,
-            branch: None,
         });
         builder
             .item(ChangeItem {

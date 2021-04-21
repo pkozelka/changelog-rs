@@ -10,7 +10,6 @@ pub use error::ChgError;
 
 pub mod api;
 pub mod builder;
-pub mod imports;
-mod error;
 mod config;
-
+mod error;
+pub mod imports;

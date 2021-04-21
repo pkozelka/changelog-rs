@@ -1,8 +1,7 @@
 #[macro_use]
 extern crate serde_derive;
 
-const
-    CONFIG: &str = r##"
+const CONFIG: &str = r##"
 [git]
 version_pattern = "v*"
 [keys]
@@ -15,19 +14,19 @@ pr_key = "(?P<number>PR#\\d+)"
 // h2oai/h2oai#22327
 // #1234
 
-#[derive(Serialize,Deserialize,Debug, Default)]
+#[derive(Serialize, Deserialize, Debug, Default)]
 struct ChangeLogConfig {
     git: GitConfig,
     keys: KeysConfig,
 }
-#[derive(Serialize,Deserialize,Debug, Default)]
+#[derive(Serialize, Deserialize, Debug, Default)]
 struct GitConfig {
     version_pattern: String,
 }
 
-#[derive(Serialize,Deserialize,Debug, Default)]
+#[derive(Serialize, Deserialize, Debug, Default)]
 struct KeysConfig {
-    #[serde(default="xyz")]
+    #[serde(default = "xyz")]
     issue_link: String,
     issue_key: String,
     pr_link: String,

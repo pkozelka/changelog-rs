@@ -1,11 +1,10 @@
-use std::io::BufRead;
-
 use chrono::{DateTime, FixedOffset, NaiveDate};
 use regex::Regex;
 
-use crate::api::{ChangeItem, ChangeLog, ChangeType, VersionSpec};
+use crate::api::{ChangeItem, ChangeType, VersionSpec};
 use crate::builder::ChangeLogBuilder;
 use crate::error::ChgError;
+use crate::{ChangeLog, ChangeLogConfig};
 
 enum ParserState {
     Prolog,
@@ -13,46 +12,56 @@ enum ParserState {
     Epilog,
 }
 
-pub fn parse(reader: &mut dyn BufRead) -> Result<ChangeLog, ChgError> {
-    let mut builder = ChangeLogBuilder::new();
-    let lines = reader.lines();
-    let mut state = ParserState::Prolog;
-    // read prolog
-    for line in lines {
-        let line = line?.trim().to_string();
-        if line.is_empty() {
-            continue;
-        }
-
-        match state {
-            ParserState::Prolog | ParserState::Section => {
-                if line.starts_with("## ") {
-                    builder.section(VersionSpec::parse_section_header(&line[3..])?);
-                    state = ParserState::Section;
-                    continue;
-                }
-            }
-            ParserState::Epilog => { /* until the EOF */ }
-        }
-        match state {
-            ParserState::Section => {
-                let change_item = ChangeItem::parse_item(&line)?;
-                match change_item {
-                    None => {
-                        builder.note(&line)?;
-                        state = ParserState::Epilog;
-                    }
-                    Some(change_item) => {
-                        builder.item(change_item)?;
-                    }
-                }
-            }
-            _ => {
-                builder.note(&line)?;
-            }
-        }
+impl ChangeLog {
+    pub fn import_markdown(text: &str) -> Result<ChangeLog, ChgError> {
+        let config = ChangeLogConfig::parse_embedded(&text)?;
+        let mut builder = ChangeLogBuilder::new(config);
+        builder.parse(&text)?;
+        Ok(builder.build())
     }
-    Ok(builder.build())
+}
+
+impl ChangeLogBuilder {
+    pub fn parse(&mut self, reader: &str) -> Result<(), ChgError> {
+        let lines = reader.lines();
+        let mut state = ParserState::Prolog;
+        // read prolog
+        for line in lines {
+            let line = line.trim().to_string();
+            if line.is_empty() {
+                continue;
+            }
+
+            match state {
+                ParserState::Prolog | ParserState::Section => {
+                    if line.starts_with("## ") {
+                        self.section(VersionSpec::parse_section_header(&line[3..])?);
+                        state = ParserState::Section;
+                        continue;
+                    }
+                }
+                ParserState::Epilog => { /* until the EOF */ }
+            }
+            match state {
+                ParserState::Section => {
+                    let change_item = ChangeItem::parse_item(&line)?;
+                    match change_item {
+                        None => {
+                            self.note(&line)?;
+                            state = ParserState::Epilog;
+                        }
+                        Some(change_item) => {
+                            self.item(change_item)?;
+                        }
+                    }
+                }
+                _ => {
+                    self.note(&line)?;
+                }
+            }
+        }
+        Ok(())
+    }
 }
 
 impl ChangeItem {
@@ -105,7 +114,6 @@ impl ChangeItem {
 }
 
 impl VersionSpec {
-
     /// Parses section header string into a VersionSpec.
     ///
     /// Following formats are acceptable:
@@ -126,22 +134,30 @@ impl VersionSpec {
             let mut section_tokens = s.trim().split(' ');
 
             // version (required)
-            let version = section_tokens.next().ok_or_else(||ChgError::MissingVersionDateSeparator(s.to_owned()))?;
+            let version = section_tokens
+                .next()
+                .ok_or_else(|| ChgError::MissingVersionDateSeparator(s.to_owned()))?;
             // - validate version string
             if version.is_empty() {
                 return Err(ChgError::InvalidVersionID(version.to_owned(), s.to_owned()));
             } else if let Some(c) = version.chars().next() {
                 // first character of the version must be a digit
-                if ! c.is_ascii_digit() {
-                    return Err(ChgError::InvalidVersionID(version.to_owned(), s.to_owned()))
+                if !c.is_ascii_digit() {
+                    return Err(ChgError::InvalidVersionID(version.to_owned(), s.to_owned()));
                 }
             }
             // separator (optional)
-            let sep = section_tokens.next().ok_or_else(||ChgError::MissingVersionDateSeparator(s.to_owned()))?.trim();
+            let sep = section_tokens
+                .next()
+                .ok_or_else(|| ChgError::MissingVersionDateSeparator(s.to_owned()))?
+                .trim();
 
             // timestamp (required)
             let timestamp = if sep == "-" {
-                section_tokens.next().ok_or_else(||ChgError::MissingTimestamp(s.to_owned()))?.trim()
+                section_tokens
+                    .next()
+                    .ok_or_else(|| ChgError::MissingTimestamp(s.to_owned()))?
+                    .trim()
             } else {
                 sep
             };
@@ -151,12 +167,12 @@ impl VersionSpec {
             let captures = r.captures(timestamp).unwrap();
             let timestamp = captures.name("timestamp").unwrap().as_str();
             let timestamp = NaiveDate::parse_from_str(timestamp, "%Y-%m-%d")
-                .or_else(|e|Err(ChgError::InvalidTimestamp(s.to_owned(), e.to_string())))?
+                .or_else(|e| Err(ChgError::InvalidTimestamp(s.to_owned(), e.to_string())))?
                 .and_hms(0, 0, 0);
             let timestamp = DateTime::<FixedOffset>::from_utc(timestamp, FixedOffset::west(0));
 
             // yanked
-            let yanked = if let Some(more) = section_tokens.next(){
+            let yanked = if let Some(more) = section_tokens.next() {
                 more.to_ascii_uppercase().contains("YANKED")
             } else {
                 false
@@ -218,7 +234,8 @@ mod tests {
 
     #[test]
     fn test_parse_section_header_released_noseparator_yanked() {
-        let header = VersionSpec::parse_section_header("1.22.333-alpha-1 2021-04-20 YANKED").unwrap();
+        let header =
+            VersionSpec::parse_section_header("1.22.333-alpha-1 2021-04-20 YANKED").unwrap();
         match header {
             VersionSpec::Unreleased { .. } => {
                 panic!("Release expected here")

@@ -1,13 +1,14 @@
-use std::path::PathBuf;
-use std::fs::File;
-use changelog::imports::from_changelog;
-use std::io::BufReader;
-use changelog::VersionSpec;
+use changelog::builder::ChangeLogBuilder;
 use changelog::ChgError;
+use changelog::{ChangeLogConfig, VersionSpec};
+use std::path::PathBuf;
 
 pub fn cmd_info(changelog_file: &PathBuf) -> Result<(), ChgError> {
-    let f = File::open(changelog_file)?;
-    let changelog = from_changelog::parse(&mut BufReader::new(f))?;
+    let text = std::fs::read_to_string(changelog_file)?;
+    let config = ChangeLogConfig::default();
+    let mut builder = ChangeLogBuilder::new(config);
+    builder.parse(&text)?;
+    let changelog = builder.build();
     for section in changelog.versions {
         match section.version_spec {
             VersionSpec::Unreleased { .. } => {

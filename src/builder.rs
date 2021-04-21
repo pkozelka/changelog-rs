@@ -1,7 +1,7 @@
 use crate::api::{ChangeItem, ChangeLog, ChangeSet, VersionSpec};
 
-use std::io::{Error, ErrorKind, Result};
 use crate::ChangeLogConfig;
+use std::io::{Error, ErrorKind, Result};
 
 /// Stateful helper for building changelog while parsing it from a file.
 /// Line parsing is assumed and best supported.
@@ -14,13 +14,13 @@ pub struct ChangeLogBuilder {
 }
 
 impl ChangeLogBuilder {
-    pub fn new() -> Self {
+    pub fn new(config: ChangeLogConfig) -> Self {
         Self {
             prolog: None,
             epilog: None,
             current_section: None,
             sections: vec![],
-            config: ChangeLogConfig::default(),
+            config,
         }
     }
 
@@ -98,10 +98,11 @@ mod tests {
     use crate::api::VersionSpec::Unreleased;
     use crate::api::{ChangeItem, ChangeType};
     use crate::builder::ChangeLogBuilder;
+    use crate::ChangeLogConfig;
 
     #[test]
     fn usage_primitives() {
-        let mut builder = ChangeLogBuilder::new();
+        let mut builder = ChangeLogBuilder::new(ChangeLogConfig::default());
         // prolog
         builder.note("hello").unwrap();
         builder.note("Hello").unwrap();

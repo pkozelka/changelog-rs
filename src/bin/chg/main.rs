@@ -6,9 +6,10 @@ use anyhow::Result;
 
 use crate::cli::Command;
 
-mod cmd_new;
 mod cmd_import_git;
 mod cmd_info;
+mod cmd_new;
+mod cmd_sync;
 
 fn main() {
     if let Err(e) = run_cli() {
@@ -23,20 +24,14 @@ fn run_cli() -> Result<()> {
     // process options
     // process commands
     match args.cmd {
-        Command::NewChangelog {} => {
-            cmd_new::cmd_new(&args.changelog_file)
-                .map_err(|e|e.into())
-        }
+        Command::NewChangelog {} => cmd_new::cmd_new(&args.changelog_file).map_err(|e| e.into()),
         Command::InitFromGit { stop_version } => {
             cmd_import_git::cmd_import_git(&args.changelog_file, &args.dir, stop_version)
-                .map_err(|e|e.into())
+                .map_err(|e| e.into())
         }
-        Command::Info { } => {
-            cmd_info::cmd_info(&args.changelog_file)
-                .map_err(|e|e.into())
-        }
+        Command::Info {} => cmd_info::cmd_info(&args.changelog_file).map_err(|e| e.into()),
         Command::SyncFromGit { .. } => {
-            todo!()
+            cmd_sync::cmd_sync(&args.changelog_file, &args.dir).map_err(|e| e.into())
         }
     }
 }

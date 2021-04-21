@@ -4,12 +4,17 @@ use std::path::PathBuf;
 
 use changelog::api::VersionSpec;
 use changelog::builder::ChangeLogBuilder;
+use changelog::ChangeLogConfig;
 
 pub fn cmd_new(changelog_file: &PathBuf) -> std::io::Result<()> {
     if changelog_file.exists() {
-        Err(std::io::Error::new(std::io::ErrorKind::AlreadyExists, format!("Changelog already exists in {}", changelog_file.display())))?;
+        Err(std::io::Error::new(
+            std::io::ErrorKind::AlreadyExists,
+            format!("Changelog already exists in {}", changelog_file.display()),
+        ))?;
     }
-    let mut builder = ChangeLogBuilder::new();
+    let config = ChangeLogConfig::default();
+    let mut builder = ChangeLogBuilder::new(config);
     builder.section(VersionSpec::unreleased());
     let changelog = builder.build();
     let mut file = File::create(changelog_file)?;

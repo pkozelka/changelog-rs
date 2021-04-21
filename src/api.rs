@@ -1,5 +1,8 @@
-use chrono::{DateTime, FixedOffset};
 use std::collections::HashMap;
+use std::io::Write;
+
+use chrono::{DateTime, FixedOffset};
+
 use crate::ChangeLogConfig;
 
 /// Entire changelog.
@@ -88,4 +91,43 @@ pub enum ChangeType {
     Deprecated,
     Removed,
     Refactored,
+}
+
+impl ChangeLog {
+    pub fn to_markdown(&self, out: &mut dyn Write) -> std::io::Result<()> {
+        for release in &self.versions {
+            match &release.version_spec {
+                VersionSpec::Unreleased { .. } => {
+                    writeln!(out, "## Unreleased")?;
+                }
+                VersionSpec::Release {
+                    version,
+                    tag: _,
+                    timestamp,
+                    yanked,
+                } => {
+                    let ts = timestamp.to_string();
+                    writeln!(
+                        out,
+                        "## {} - {}{}",
+                        version,
+                        &ts[0..10],
+                        if *yanked { " [YANKED]" } else { "" }
+                    )?;
+                }
+            }
+            if !release.items.is_empty() {
+                writeln!(out)?;
+                for item in &release.items {
+                    write!(out, "- ")?;
+                    if !item.refs.is_empty() {
+                        write!(out, "{}: ", item.refs.join(", "))?;
+                    }
+                    writeln!(out, "{} / {}", item.text, item.authors.join(", "))?;
+                }
+                writeln!(out)?;
+            }
+        }
+        Ok(())
+    }
 }

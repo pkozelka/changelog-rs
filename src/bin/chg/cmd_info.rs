@@ -2,7 +2,7 @@ use std::path::PathBuf;
 use std::fs::File;
 use changelog::imports::from_changelog;
 use std::io::BufReader;
-use changelog::api::VersionSpec;
+use changelog::VersionSpec;
 use changelog::ChgError;
 
 pub fn cmd_info(changelog_file: &PathBuf) -> Result<(), ChgError> {

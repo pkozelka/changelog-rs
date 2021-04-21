@@ -2,7 +2,7 @@ use std::path::PathBuf;
 use git2::Repository;
 use changelog::imports::from_git_repo::list_tags;
 use changelog::builder::ChangeLogBuilder;
-use changelog::api::VersionSpec;
+use changelog::VersionSpec;
 use std::fs::File;
 use std::io::Write;
 

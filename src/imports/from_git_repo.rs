@@ -43,6 +43,12 @@ fn git_time_to_chrono(time: git2::Time) -> NaiveDate {
 }
 
 impl ChangeLogBuilder {
+    /// Traverses commit from current HEAD backwards, until a release commit with `stop_version` is encountered, or until the end.
+    ///
+    /// TODO pre-process tags to
+    /// * a) only contain release tags
+    /// * b) relate them to main path in case they are on release branch (like 2.5.12 in mojo2)
+    /// Any release commits with no related tags are considered yanked. So are commits with special yanked tags.
     fn traverse_commits(
         &mut self,
         repo: &Repository,
@@ -56,51 +62,12 @@ impl ChangeLogBuilder {
             {
                 let author = commit.author();
                 let ts = git_time_to_chrono(author.when());
-                let msg = commit.message().unwrap_or("");
-                let cm = cma.analyze(msg);
                 match tags.get(&commit.id()) {
                     None => {
-                        match cm {
-                            CommitMessage::Contribution {
-                                component,
-                                refs,
-                                subject,
-                                details: _,
-                            } => {
-                                self.item(ChangeItem {
-                                    refs,
-                                    change_type: ChangeType::Other, // TODO
-                                    component,
-                                    text: subject,
-                                    authors: vec![author.name().unwrap_or("?").to_string()],
-                                })
-                                .unwrap(); // TODO
-                            }
-                            CommitMessage::Release { version } => {
-                                if let Some(rh) = ReleaseHeader::release(version.as_str(), ts, true)
-                                {
-                                    warn!(
-                                        "Untagged release detected: {} - will be considered yenked",
-                                        version
-                                    );
-                                    self.section(Some(rh));
-                                    if let Some(stop_version) = stop_version {
-                                        if stop_version == version {
-                                            trace!(
-                                                "Stopping on version '{}' as requested",
-                                                version
-                                            );
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                            CommitMessage::PostRelease { ref_ver } => {
-                                debug!("Post-release detected, ignoring commit: {}", ref_ver);
-                            }
-                            CommitMessage::Revert { orig_msg } => {
-                                warn!("Revert detected but not implemented yet: '{}'", orig_msg);
-                            }
+                        let msg = commit.message().unwrap_or("");
+                        let cm = cma.analyze(msg);
+                        if !self.handle_untagged_commit(stop_version, author.name().unwrap_or("?"), ts, cm) {
+                            break;
                         }
                     }
                     Some(tag_name) => {
@@ -123,12 +90,59 @@ impl ChangeLogBuilder {
                     }
                 }
             }
-            commit = match commit.parent(0) {
-                Ok(c) => c,
-                Err(_) => break,
-            }
+            if commit.parent_count() == 0 { break }
+            commit = commit.parent(0)?;
         }
         Ok(())
+    }
+
+    /// Processes commit without a release tag.
+    ///
+    /// Returns false if processing further commits should stop (based on [`stop_version`])
+    fn handle_untagged_commit(&mut self, stop_version: Option<&str>, author: &str, ts: NaiveDate, cm: CommitMessage) -> bool {
+        match cm {
+            CommitMessage::Contribution {
+                component,
+                refs,
+                subject,
+                details: _,
+            } => {
+                self.item(ChangeItem {
+                    refs,
+                    change_type: ChangeType::Other, // TODO
+                    component,
+                    text: subject,
+                    authors: vec![author.to_string()],
+                })
+                    .unwrap(); // TODO
+            }
+            CommitMessage::Release { version } => {
+                if let Some(rh) = ReleaseHeader::release(version.as_str(), ts, true)
+                {
+                    warn!(
+                        "Untagged release detected: {} - will be considered yenked",
+                        version
+                    );
+                    self.section(Some(rh));
+                    if let Some(stop_version) = stop_version {
+                        if stop_version == version {
+                            trace!(
+                                "Stopping on version '{}' as requested",
+                                version
+                            );
+                            return false;
+                        }
+                    }
+                }
+            }
+            CommitMessage::PostRelease { ref_ver } => {
+                debug!("Post-release detected, ignoring commit: {}", ref_ver);
+            }
+            CommitMessage::Revert { orig_msg } => {
+                warn!("Revert detected but not implemented yet: '{}'", orig_msg);
+            }
+        }
+        return true;
     }
 
     fn tag_name_to_version(&self, tag_name: &str) -> Option<String> {

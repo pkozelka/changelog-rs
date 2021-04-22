@@ -1,18 +1,20 @@
+use std::path::PathBuf;
+
 use changelog::api::{ChangeSet, ReleaseHeader};
 use changelog::{ChangeLog, ChgError};
-use std::path::PathBuf;
+use std::collections::HashSet;
 
 /// Synchronize new commits into existing `CHANGELOG.md` file.
 /// Internally, the process is creating two instances of [`Vec<ChangeSet>`] and carefully adding stuff from one to the other
 pub fn cmd_sync(changelog_file: &PathBuf, dir: &PathBuf) -> Result<(), ChgError> {
     let text = std::fs::read_to_string(changelog_file)?;
-    let changelog = ChangeLog::import_markdown(&text)?;
+    let mut changelog = ChangeLog::import_markdown(&text)?;
     let stop_version = match changelog.releases.get(0) {
         None => None,
         Some((rvs, _)) => Some(rvs.version.clone()),
     };
     let commits = ChangeLog::import_git_commits(dir, stop_version, &changelog.config);
-    compare(&changelog, &commits)?; //TODO
+    compare(&mut changelog, &commits)?; //TODO
     Ok(())
 }
 
@@ -29,22 +31,86 @@ pub fn cmd_sync(changelog_file: &PathBuf, dir: &PathBuf) -> Result<(), ChgError>
 /// * b) `new` comes with one or more releases - then the `Unreleased` changeset is matched against first(oldest) additional release; it's good when there is an item prooving the match
 /// * c) release histories are disjunct => error, cannot update
 /// * d) LATEST_RELEASE of `old` is not present in new => error, cannot update
-fn compare(old: &ChangeLog, new: &ChangeLog) -> Result<(), ChgError> {
+fn compare(old: &mut ChangeLog, new: &ChangeLog) -> Result<(), ChgError> {
+    // bring missing (NEW) released items into OLD unreleased section, and move it to OLD releases
+    // bring following complete releases omitted in OLD side (if any)
+    // bring missing NEW unreleased items into OLD unreleased section
+
     let (old_rvs, _old_changeset) = old
         .releases
         .get(0)
         .expect("TODO: Old changeset has no release yet"); // TODO
-                                                           // find all new changesets
-    let newcs: Vec<&(ReleaseHeader, ChangeSet)> = new
+    let (new_rvs, _new_changeset) = new
         .releases
-        .iter()
-        .take_while(|(rvs, _)| rvs.version != old_rvs.version)
-        .collect();
+        .get(0)
+        .expect("TODO: New changeset has no release yet"); // TODO
 
-    println!("OLD LAST VERSION: {}", old_rvs.version);
-    println!("NEWCS:");
-    for (rvs, _) in newcs {
-        println!("* {:?}", rvs)
+    if old_rvs.version == new_rvs.version {
+        // only sync new unreleased into old unreleased
+        let mut old_unreleased = match &old.unreleased {
+            None => ChangeSet { items: vec![] },
+            Some(_) => old.unreleased.take().unwrap(),
+        };
+        changeset_sync(&mut old_unreleased, new.unreleased.as_ref().unwrap());
+        old.unreleased = Some(old_unreleased);
+    } else {
+        // find all new changesets
+        let mut newcs: Vec<&(ReleaseHeader, ChangeSet)> = new
+            .releases
+            .iter()
+            .take_while(|(rvs, _)| rvs.version != old_rvs.version)
+            .collect();
+        newcs.reverse();
+
+        // 1. old unreleased receives oldest new release
+        let mut old_unreleased = match &old.unreleased {
+            None => ChangeSet { items: vec![] },
+            Some(_) => old.unreleased.take().unwrap(),
+        };
+        let (new_release_header, new_release_changeset) = newcs.remove(0);
+        trace!("1. syncing unreleased news from {}", new_release_header.version);
+        changeset_sync(&mut old_unreleased, new_release_changeset);
+
+        // 2. old unreleased becomes release
+        trace!("2. switching old unreleased to release: {}", new_release_header.version);
+        old.releases.insert(0, (new_release_header.clone(), old_unreleased));
+        // 3. other new releases are copied to old releases, keeping order
+        for r in newcs {
+            trace!("3. copying entire section {}", r.0.version);
+            old.releases.insert(0, r.clone());
+        }
+        // 4. new unreleased is copied to old unreleased
+        if let Some(unreleased) = &new.unreleased {
+            trace!("4. adding new unreleased section ({} items)", unreleased.items.len());
+            for item in &unreleased.items {
+                trace!("   * {:?}", item);
+            }
+            old.unreleased = new.unreleased.clone();
+        }
     }
     Ok(())
+}
+
+fn changeset_sync(this: &mut ChangeSet, from: &ChangeSet) {
+    // gather all urls on `this` side
+    let mut this_urls = HashSet::new();
+    {
+        for item in &this.items {
+            for href in &item.refs {
+                this_urls.insert(href.clone());
+            }
+        }
+    }
+    // go through `from` items; for each with missing url on `this`, add it
+    for item in from.items.iter().rev() {
+        for href in &item.refs {
+            if !this_urls.contains(href) {
+                this.items.insert(0, item.clone());
+                //TODO also save a command!
+                trace!("adding '{:?}' because of {}", item, href);
+                for r in &item.refs { this_urls.insert(r.clone()); }
+                break;
+            }
+        }
+    }
 }

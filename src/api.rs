@@ -16,12 +16,12 @@ pub struct ChangeLog {
 }
 
 /// Container of changes related to one version, either released or unreleased.
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct ChangeSet {
     pub items: Vec<ChangeItem>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct ReleaseHeader {
     pub version: String,
     pub tag: String,
@@ -63,7 +63,7 @@ impl ReleaseHeader {
 }
 
 /// One change it the release.
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 pub struct ChangeItem {
     pub refs: Vec<String>,
     pub change_type: ChangeType,
@@ -73,7 +73,7 @@ pub struct ChangeItem {
 }
 
 /// Type of the change
-#[derive(Eq, PartialEq, Debug)]
+#[derive(Eq, PartialEq, Debug, Copy, Clone)]
 pub enum ChangeType {
     Other,
     Added,

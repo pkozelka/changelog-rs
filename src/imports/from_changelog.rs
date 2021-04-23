@@ -161,8 +161,10 @@ impl ReleaseHeader {
 
             // - parse timestamp
             let r = Regex::new("(?P<timestamp>\\d+-\\d+-\\d+)$").unwrap();
-            let captures = r.captures(timestamp).unwrap();
-            let timestamp = captures.name("timestamp").unwrap().as_str();
+            let timestamp = r.captures(timestamp)
+                .and_then(|captures| captures.name("timestamp"))
+                .and_then(|m| Some(m.as_str()))
+                .ok_or(ChgError::InvalidTimestamp(timestamp.to_owned(), s.to_owned()))?;
             let timestamp = NaiveDate::parse_from_str(timestamp, "%Y-%m-%d")
                 .or_else(|e| Err(ChgError::InvalidTimestamp(s.to_owned(), e.to_string())))?;
 
@@ -186,29 +188,22 @@ impl ReleaseHeader {
 
 #[cfg(test)]
 mod tests {
-    use chrono::{DateTime, FixedOffset, NaiveDate};
+    use chrono::NaiveDate;
 
-    use crate::api::{ChangeItem, ChangeType, ReleaseHeader, VersionSpec};
+    use crate::api::{ChangeItem, ChangeType, ReleaseHeader};
 
     #[test]
     fn test_parse_section_header_unreleased() {
-        let header = VersionSpec::parse_section_header("Unreleased").unwrap();
-        match header {
-            VersionSpec::Unreleased => {}
-            VersionSpec::Release(ReleaseHeader { .. }) => {
-                panic!("Unreleased expected here")
-            }
-        }
+        let header = ReleaseHeader::parse_section_header("Unreleased").unwrap();
+        assert!(header.is_none(), "Unreleased expected here");
     }
 
     #[test]
     fn test_parse_section_header_released() {
-        let header = VersionSpec::parse_section_header("2.5.6 - 2020-12-10").unwrap();
+        let header = ReleaseHeader::parse_section_header("2.5.6 - 2020-12-10").unwrap();
         match header {
-            VersionSpec::Unreleased { .. } => {
-                panic!("Release expected here")
-            }
-            VersionSpec::Release(ReleaseHeader {
+            None => panic!("Release expected here"),
+            Some(ReleaseHeader {
                 version,
                 tag,
                 timestamp,
@@ -217,8 +212,7 @@ mod tests {
                 assert_eq!(version, "2.5.6", "version");
                 assert_eq!(tag, "", "tag");
                 assert_eq!(yanked, false, "yanked");
-                let naive = NaiveDate::from_ymd(2020, 12, 10).and_hms(0, 0, 0);
-                let ts = DateTime::<FixedOffset>::from_utc(naive, FixedOffset::west(0));
+                let ts = NaiveDate::from_ymd(2020, 12, 10);
                 assert_eq!(timestamp, ts);
             }
         }
@@ -226,13 +220,10 @@ mod tests {
 
     #[test]
     fn test_parse_section_header_released_noseparator_yanked() {
-        let header =
-            VersionSpec::parse_section_header("1.22.333-alpha-1 2021-04-20 YANKED").unwrap();
+        let header = ReleaseHeader::parse_section_header("1.22.333-alpha-1 2021-04-20 YANKED").unwrap();
         match header {
-            VersionSpec::Unreleased { .. } => {
-                panic!("Release expected here")
-            }
-            VersionSpec::Release(ReleaseHeader {
+            None => panic!("Release expected here"),
+            Some(ReleaseHeader {
                 version,
                 tag,
                 timestamp,
@@ -241,8 +232,7 @@ mod tests {
                 assert_eq!(version, "1.22.333-alpha-1", "version");
                 assert_eq!(tag, "", "tag");
                 assert_eq!(yanked, true, "yanked");
-                let naive = NaiveDate::from_ymd(2021, 04, 20).and_hms(0, 0, 0);
-                let ts = DateTime::<FixedOffset>::from_utc(naive, FixedOffset::west(0));
+                let ts = NaiveDate::from_ymd(2021, 04, 20);
                 assert_eq!(timestamp, ts);
             }
         }

@@ -87,7 +87,6 @@ impl MyOptString for String {
 
 #[cfg(test)]
 mod tests {
-    use crate::api::VersionSpec::Unreleased;
     use crate::api::{ChangeItem, ChangeType};
     use crate::builder::ChangeLogBuilder;
     use crate::ChangeLogConfig;
@@ -98,7 +97,7 @@ mod tests {
         // prolog
         builder.note("hello").unwrap();
         builder.note("Hello").unwrap();
-        builder.section(Unreleased {});
+        builder.section(None);
         builder
             .item(ChangeItem {
                 refs: vec![],
@@ -115,6 +114,6 @@ mod tests {
         let changelog = builder.build();
         println!("prolog: {}", changelog.prolog);
         println!("epilog: {}", changelog.epilog);
-        assert_eq!(changelog.releases.len(), 1);
+        assert!(changelog.unreleased.is_some());
     }
 }

@@ -113,6 +113,9 @@ impl ChangeLog {
                 if !item.refs.is_empty() {
                     write!(out, "{}: ", item.refs.join(", "))?;
                 }
+                if !item.component.is_empty() {
+                    write!(out, "[{}] ", item.component)?;
+                }
                 writeln!(out, "{} / {}", item.text, item.authors.join(", "))?;
             }
             writeln!(out)?;

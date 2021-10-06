@@ -19,6 +19,10 @@ pub enum CommitMessage {
     /// Format is heavily project-dependent, sometimes even manually composed.
     Release {
         /// released version
+        ///
+        /// Examples:
+        /// * `Release 1.2.3`
+        /// * `[BUILD] Released version 1.2.3`
         version: String,
     },
     /// The commit switching project version back to "development" version (SNAPSHOT etc.)
@@ -29,7 +33,6 @@ pub enum CommitMessage {
     },
     /// Special commit counteracting a recent one.
     /// Format is proposed by GIT as default, but can be altered by user.
-    /// Example: `Release 1.2.3` or `[BUILD] Released version 1.2.3`
     Revert { orig_msg: String },
 }
 

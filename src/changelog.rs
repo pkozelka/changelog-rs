@@ -48,6 +48,8 @@ impl ChangeLog {
                 .take_while(|(rvs, _)| rvs.version != old_rvs.version)
                 .collect();
             newcs.reverse();
+            trace!("New changesets: {}", newcs.len());
+            trace!("Existing changesets: {}", self.releases.len());
 
             // 1. old unreleased receives oldest new release
             let mut old_unreleased = match &self.unreleased {
@@ -75,9 +77,11 @@ impl ChangeLog {
                 self.unreleased = new.unreleased.clone();
             }
         }
+        trace!("Existing changesets: {}", self.releases.len());
         Ok(())
     }
 }
+
 fn changeset_sync(this: &mut ChangeSet, from: &ChangeSet) {
     // gather all urls on `this` side
     let mut this_urls = HashSet::new();
@@ -90,6 +94,11 @@ fn changeset_sync(this: &mut ChangeSet, from: &ChangeSet) {
     }
     // go through `from` items; for each with missing url on `this`, add it
     for item in from.items.iter().rev() {
+        if item.refs.is_empty() {
+            //TODO somehow, check if that item already exists
+            this.items.insert(0, item.clone());
+            trace!("adding '{:?}' because it has no urls", item);
+        }
         for href in &item.refs {
             if !this_urls.contains(href) {
                 this.items.insert(0, item.clone());

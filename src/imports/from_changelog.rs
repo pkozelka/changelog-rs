@@ -68,7 +68,7 @@ impl ChangeItem {
     fn parse_item(s: &str) -> Result<Option<Self>, ChgError> {
         if s.starts_with("- ") || s.starts_with("* ") {
             let r = Regex::new(
-                "((?P<refs>.*?):)?\\s*(?P<compo>\\[\\S+])?\\s*(?P<text>.*)/(?P<authors>.*)$",
+                "((?P<refs>\\w.*?):)?\\s*(?P<compo>\\[\\S+])?\\s*(?P<text>.*)/(?P<authors>.*)$",
             )
             .unwrap();
             let s = &s[2..];
@@ -253,5 +253,22 @@ mod tests {
         assert_eq!(item.text, "parse the UUID of mojo. close #628");
         assert_eq!(item.authors.len(), 1, "Authors: {:?}", item.authors);
         assert_eq!(item.authors[0], "Qiang Kou", "Authors: {:?}", item.authors);
+    }
+
+    #[test]
+    fn test_parse_item_with_fire() {
+        let item = ChangeItem::parse_item(
+            "- [HOTFIX] :fire: Wrong grep expression in our Jenkinsfile / mmalohlava",
+        )
+        .unwrap();
+        println!("Parsed item: {:?}", item);
+        assert_eq!(item.is_some(), true, "No section item was parsed");
+        let item = item.unwrap();
+        assert_eq!(item.refs.len(), 0, "Refs: {:?}", item.refs);
+        assert_eq!(item.component, "HOTFIX", "component");
+        assert_eq!(item.change_type, ChangeType::Other);
+        assert_eq!(item.text, ":fire: Wrong grep expression in our Jenkinsfile");
+        assert_eq!(item.authors.len(), 1, "Author count: {:?}", item.authors);
+        assert_eq!(item.authors[0], "mmalohlava", "Authors: {:?}", item.authors);
     }
 }

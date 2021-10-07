@@ -1,4 +1,4 @@
-use changelog::api::ChangeSet;
+use changelog::changeset::ChangeSet;
 use changelog::{ChangeLog, ChgError};
 use std::path::PathBuf;
 

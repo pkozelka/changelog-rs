@@ -1,7 +1,6 @@
-use std::collections::HashSet;
-
 use crate::{ChangeLog, ChgError};
-use crate::api::{ChangeSet, ReleaseHeader};
+use crate::api::ReleaseHeader;
+use crate::changeset::ChangeSet;
 
 impl ChangeLog {
     /// Finds missing items in the changelog.
@@ -38,7 +37,7 @@ impl ChangeLog {
                 None => ChangeSet { items: vec![] },
                 Some(_) => self.unreleased.take().unwrap(),
             };
-            changeset_sync(&mut old_unreleased, new.unreleased.as_ref().unwrap());
+            old_unreleased.sync_from(new.unreleased.as_ref().unwrap());
             self.unreleased = Some(old_unreleased);
         } else {
             // find all new changesets
@@ -58,7 +57,7 @@ impl ChangeLog {
             };
             let (new_release_header, new_release_changeset) = newcs.remove(0);
             trace!("1. syncing unreleased news from {}", new_release_header.version);
-            changeset_sync(&mut old_unreleased, new_release_changeset);
+            old_unreleased.sync_from(new_release_changeset);
 
             // 2. old unreleased becomes release
             trace!("2. switching old unreleased to release: {}", new_release_header.version);
@@ -82,29 +81,3 @@ impl ChangeLog {
     }
 }
 
-fn changeset_sync(this: &mut ChangeSet, from: &ChangeSet) {
-    // gather all urls on `this` side
-    let mut this_urls = HashSet::new();
-    {
-        for item in &this.items {
-            for href in &item.refs {
-                this_urls.insert(href.clone());
-            }
-        }
-    }
-    // go through `from` items; for each with missing url on `this`, add it
-    for item in from.items.iter().rev() {
-        if item.refs.is_empty() {
-            //TODO somehow, check if that item already exists
-            this.items.insert(0, item.clone());
-        }
-        for href in &item.refs {
-            if !this_urls.contains(href) {
-                this.items.insert(0, item.clone());
-                //TODO also save a command!
-                for r in &item.refs { this_urls.insert(r.clone()); }
-                break;
-            }
-        }
-    }
-}

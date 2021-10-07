@@ -4,6 +4,7 @@ use std::io::Write;
 use chrono::NaiveDate;
 
 use crate::ChangeLogConfig;
+use crate::changeset::ChangeSet;
 
 /// Entire changelog.
 pub struct ChangeLog {
@@ -13,12 +14,6 @@ pub struct ChangeLog {
     pub releases: Vec<(ReleaseHeader, ChangeSet)>,
     pub epilog: String,
     pub config: ChangeLogConfig,
-}
-
-/// Container of changes related to one version, either released or unreleased.
-#[derive(Debug, Clone)]
-pub struct ChangeSet {
-    pub items: Vec<ChangeItem>,
 }
 
 #[derive(Debug, Clone)]

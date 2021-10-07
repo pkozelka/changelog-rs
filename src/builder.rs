@@ -1,7 +1,8 @@
-use crate::api::{ChangeItem, ChangeLog, ChangeSet, ReleaseHeader};
-
-use crate::ChangeLogConfig;
 use std::io::{Error, ErrorKind, Result};
+
+use crate::api::{ChangeItem, ChangeLog, ReleaseHeader};
+use crate::ChangeLogConfig;
+use crate::changeset::ChangeSet;
 
 /// Stateful helper for building changelog while parsing it from a file.
 /// Line parsing is assumed and best supported.

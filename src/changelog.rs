@@ -97,13 +97,11 @@ fn changeset_sync(this: &mut ChangeSet, from: &ChangeSet) {
         if item.refs.is_empty() {
             //TODO somehow, check if that item already exists
             this.items.insert(0, item.clone());
-            trace!("adding '{:?}' because it has no urls", item);
         }
         for href in &item.refs {
             if !this_urls.contains(href) {
                 this.items.insert(0, item.clone());
                 //TODO also save a command!
-                trace!("adding '{:?}' because of {}", item, href);
                 for r in &item.refs { this_urls.insert(r.clone()); }
                 break;
             }

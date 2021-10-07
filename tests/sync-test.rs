@@ -1,4 +1,14 @@
 use changelog::{ChangeLog, ChgError};
+use std::fs::File;
+
+fn init_logging() {
+    stderrlog::new()
+        .modules(vec!["changelog", module_path!()])
+        .verbosity(5)
+        .timestamp(stderrlog::Timestamp::Millisecond)
+        .init()
+        .unwrap();
+}
 
 #[test]
 fn empty() {
@@ -52,3 +62,18 @@ fn header_garbage() {
     assert_eq!("\n# Changelog", changelog.prolog, "prolog");
 }
 
+#[test]
+fn two_files() -> anyhow::Result<()> {
+    init_logging();
+    let t1 = std::fs::read_to_string("tests/ch-2.5.15.md")?;
+    let t2 = std::fs::read_to_string("tests/CHANGELOG.md")?;
+    let mut c1 = ChangeLog::import_markdown(&t1)?;
+    let c2 = ChangeLog::import_markdown(&t2)?;
+    c1.sync_from(&c2)?;
+    let mut out = File::create("target/from-2.5.15.md")?;
+    c1.print_markdown(&mut out)?;
+    println!("result: {}", c1.releases.len());
+    // c1.print_markdown(&mut std::io::stdout())?;
+    // c2.print_markdown(&mut std::io::stdout())?;
+    Ok(())
+}

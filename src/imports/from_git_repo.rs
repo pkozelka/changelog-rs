@@ -1,4 +1,4 @@
-use crate::api::{ChangeItem, ChangeType, ReleaseHeader};
+use crate::{ChangeItem, ChangeType, ReleaseHeader};
 use crate::builder::ChangeLogBuilder;
 use crate::imports::commit_msg::{CommitMessage, CommitMessageAnalyzer};
 use crate::{ChangeLog, ChangeLogConfig};

@@ -72,7 +72,7 @@ fn two_files() -> anyhow::Result<()> {
     c1.sync_from(&c2)?;
     let mut out = File::create("target/from-2.5.15.md")?;
     c1.print_markdown(&mut out)?;
-    println!("result: {}", c1.releases.len());
+    log::info!("result: {}", c1.releases.len());
     // c1.print_markdown(&mut std::io::stdout())?;
     // c2.print_markdown(&mut std::io::stdout())?;
     Ok(())

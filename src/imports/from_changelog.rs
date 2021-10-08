@@ -1,10 +1,9 @@
 use chrono::NaiveDate;
 use regex::Regex;
 
-use crate::api::{ChangeItem, ChangeType, ReleaseHeader};
+use crate::{ChangeItem, ChangeLog, ChangeLogConfig, ChangeType, ReleaseHeader};
 use crate::builder::ChangeLogBuilder;
 use crate::error::ChgError;
-use crate::{ChangeLog, ChangeLogConfig};
 
 enum ParserState {
     Prolog,
@@ -190,7 +189,7 @@ impl ReleaseHeader {
 mod tests {
     use chrono::NaiveDate;
 
-    use crate::api::{ChangeItem, ChangeType, ReleaseHeader};
+    use crate::{ChangeItem, ChangeType, ReleaseHeader};
 
     #[test]
     fn test_parse_section_header_unreleased() {

@@ -3,12 +3,11 @@ extern crate log;
 #[macro_use]
 extern crate serde_derive;
 
-pub use api::ChangeLog;
+pub use changelog::{ChangeItem, ChangeLog, ChangeType, ReleaseHeader};
+pub use changeset::ChangeSet;
 pub use config::ChangeLogConfig;
 pub use error::ChgError;
-pub use changeset::ChangeSet;
 
-pub mod api;
 pub mod builder;
 mod changelog;
 pub mod changeset;

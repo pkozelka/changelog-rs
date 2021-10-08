@@ -1,7 +1,6 @@
 use std::io::{Error, ErrorKind, Result};
 
-use crate::api::{ChangeItem, ChangeLog, ReleaseHeader};
-use crate::ChangeLogConfig;
+use crate::{ChangeItem, ChangeLog, ChangeLogConfig, ReleaseHeader};
 use crate::changeset::ChangeSet;
 
 /// Stateful helper for building changelog while parsing it from a file.
@@ -88,9 +87,10 @@ impl MyOptString for String {
 
 #[cfg(test)]
 mod tests {
+    use crate::{ChangeItem, ChangeLogConfig};
     use crate::api::{ChangeItem, ChangeType};
     use crate::builder::ChangeLogBuilder;
-    use crate::ChangeLogConfig;
+    use crate::changelog::ChangeType;
 
     #[test]
     fn usage_primitives() {

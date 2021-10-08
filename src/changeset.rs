@@ -1,5 +1,5 @@
-use crate::api::ChangeItem;
 use std::collections::HashSet;
+use crate::ChangeItem;
 
 /// Container of changes related to one version, either released or unreleased.
 #[derive(Debug, Clone)]

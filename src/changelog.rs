@@ -87,6 +87,7 @@ impl ChangeLog {
 }
 
 /// Entire changelog.
+#[derive(Debug)]
 pub struct ChangeLog {
     pub meta: HashMap<String, String>,
     pub prolog: String,

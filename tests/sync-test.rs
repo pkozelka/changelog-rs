@@ -48,7 +48,7 @@ fn invalid_timestamp() {
             assert_eq!(rh, "1.2.3-alpha-1 whatever nonsense");
         }
         Err(e) => panic!("Different error expected - got {:?}", e),
-        Ok(_) => panic!("Error expected"),
+        Ok(r) => panic!("Error expected but got {:?}", r),
     }
 }
 

@@ -4,6 +4,7 @@ use regex::Regex;
 use crate::{ChangeItem, ChangeLog, ChangeLogConfig, ChangeType, ReleaseHeader};
 use crate::builder::ChangeLogBuilder;
 use crate::error::ChgError;
+use std::io::{BufRead, Cursor};
 
 enum ParserState {
     Prolog,
@@ -14,19 +15,25 @@ enum ParserState {
 impl ChangeLog {
     pub fn import_markdown(text: &str) -> Result<ChangeLog, ChgError> {
         let config = ChangeLogConfig::parse_embedded(&text)?;
-        let mut builder = ChangeLogBuilder::new(config);
-        builder.parse(&text)?;
+        let mut cursor = Cursor::new(text);
+        let builder = ChangeLogBuilder::import(&mut cursor, config)?;
         Ok(builder.build())
     }
 }
 
 impl ChangeLogBuilder {
-    pub fn parse(&mut self, reader: &str) -> Result<(), ChgError> {
+    pub fn import(reader: impl BufRead, config: ChangeLogConfig) -> Result<Self, ChgError> {
+        let mut this = Self::new(config);
+        this.parse(reader)?;
+        Ok(this)
+    }
+
+    fn parse(&mut self, reader: impl BufRead) -> Result<(), ChgError> {
         let lines = reader.lines();
         let mut state = ParserState::Prolog;
         // read prolog
         for line in lines {
-            let line = line.trim().to_string();
+            let line = line?.trim().to_string();
             if line.is_empty() {
                 continue;
             }

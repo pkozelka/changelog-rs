@@ -87,10 +87,8 @@ impl MyOptString for String {
 
 #[cfg(test)]
 mod tests {
-    use crate::{ChangeItem, ChangeLogConfig};
-    use crate::api::{ChangeItem, ChangeType};
+    use crate::{ChangeItem, ChangeLogConfig, ChangeType};
     use crate::builder::ChangeLogBuilder;
-    use crate::changelog::ChangeType;
 
     #[test]
     fn usage_primitives() {

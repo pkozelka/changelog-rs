@@ -19,7 +19,7 @@ impl ChangeLogBuilder {
             changelog: ChangeLog {
                 meta: Default::default(),
                 prolog: "".to_string(),
-                releases: vec![],
+                changesets: vec![],
                 epilog: "".to_string(),
                 config: config.clone(),
             },
@@ -34,7 +34,7 @@ impl ChangeLogBuilder {
 
     fn current_section_close(&mut self) {
         if let Some(current) = self.current_section.take() {
-            self.changelog.releases.push(current);
+            self.changelog.changesets.push(current);
         }
     }
 
@@ -54,7 +54,7 @@ impl ChangeLogBuilder {
 
     pub fn note(&mut self, line: &str) -> Result<()> {
         self.current_section_close();
-        if self.changelog.releases.is_empty() {
+        if self.changelog.changesets.is_empty() {
             self.changelog.prolog.add_line(line);
         } else {
             self.changelog.epilog.add_line(line);
@@ -108,6 +108,6 @@ mod tests {
         let changelog = builder.build();
         println!("prolog: {}", changelog.prolog);
         println!("epilog: {}", changelog.epilog);
-        assert!(!changelog.releases[0].header.is_release());
+        assert!(!changelog.changesets[0].header.is_release());
     }
 }

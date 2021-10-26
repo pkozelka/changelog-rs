@@ -28,11 +28,11 @@ impl ChangeLog {
         // bring missing NEW unreleased items into OLD unreleased section
 
         let (old_rvs, _old_changeset) = self
-            .releases
+            .changesets
             .get(0)
             .expect("TODO: Old changeset has no release yet"); // TODO
         let (new_rvs, _new_changeset) = new
-            .releases
+            .changesets
             .get(0)
             .expect("TODO: New changeset has no release yet"); // TODO
 
@@ -47,7 +47,7 @@ impl ChangeLog {
         } else {
             // find all new changesets
             let mut newcs: Vec<ChangeSet> = new
-                .releases
+                .changesets
                 .iter()
                 .take_while(|changeset| {
                     match &changeset.header {
@@ -61,7 +61,7 @@ impl ChangeLog {
                 .collect();
             newcs.reverse();
             trace!("New changesets: {}", newcs.len());
-            trace!("Existing changesets: {}", self.releases.len());
+            trace!("Existing changesets: {}", self.changesets.len());
 
             // 1. old unreleased receives oldest new release
             let mut old_unreleased = match &self.unreleased {
@@ -74,11 +74,11 @@ impl ChangeLog {
 
             // 2. old unreleased becomes release
             trace!("2. switching old unreleased to release: {}", new_release_header.version);
-            self.releases.insert(0, (new_release_header.clone(), old_unreleased));
+            self.changesets.insert(0, (new_release_header.clone(), old_unreleased));
             // 3. other new releases are copied to old releases, keeping order
             for r in newcs {
                 trace!("3. copying entire section {:?}", r.header);
-                self.releases.insert(0, r.clone());
+                self.changesets.insert(0, r.clone());
             }
             // 4. new unreleased is copied to old unreleased
             if let Some(unreleased) = &new.unreleased {
@@ -89,7 +89,7 @@ impl ChangeLog {
                 self.unreleased = new.unreleased.clone();
             }
         }
-        trace!("Existing changesets: {}", self.releases.len());
+        trace!("Existing changesets: {}", self.changesets.len());
         Ok(())
     }
 }
@@ -99,7 +99,7 @@ impl ChangeLog {
 pub struct ChangeLog {
     pub meta: HashMap<String, String>,
     pub prolog: String,
-    pub releases: Vec<ChangeSet>,
+    pub changesets: Vec<ChangeSet>,
     pub epilog: String,
     pub config: ChangeLogConfig,
 }
@@ -169,7 +169,7 @@ pub enum ChangeType {
 
 impl ChangeLog {
     pub fn print_markdown(&self, out: &mut dyn Write) -> std::io::Result<()> {
-        for release in &self.releases {
+        for release in &self.changesets {
             Self::print_markdown_items(out, &release)?;
         }
         Ok(())

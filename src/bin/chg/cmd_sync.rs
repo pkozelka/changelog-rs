@@ -7,7 +7,7 @@ use changelog::{ChangeLog, ChgError};
 pub fn cmd_sync(changelog_file: &PathBuf, dir: &PathBuf) -> Result<(), ChgError> {
     let text = std::fs::read_to_string(changelog_file)?;
     let mut changelog = ChangeLog::import_markdown(&text)?;
-    let stop_version = match changelog.releases.get(0) {
+    let stop_version = match changelog.changesets.get(0) {
         None => None,
         Some((rvs, _)) => Some(rvs.version.clone()),
     };

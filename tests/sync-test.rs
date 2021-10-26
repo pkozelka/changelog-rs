@@ -1,5 +1,6 @@
-use changelog::{ChangeLog, ChgError};
 use std::fs::File;
+
+use changelog::{ChangeLog, ChgError};
 
 fn init_logging() {
     stderrlog::new()
@@ -57,8 +58,8 @@ fn header_garbage() {
     let changelog = ChangeLog::import_markdown(r###"# Changelog
 ## 1.2.3-alpha-1 1972-05-31 noise
 "###).unwrap();
-    assert!(changelog.releases[0].is_release(), "No unreleased sections expected");
-    assert_eq!(1, changelog.releases.len());
+    assert!(changelog.changesets[0].is_release(), "No unreleased sections expected");
+    assert_eq!(1, changelog.changesets.len());
     assert_eq!("\n# Changelog", changelog.prolog, "prolog");
 }
 
@@ -72,7 +73,7 @@ fn two_files() -> anyhow::Result<()> {
     c1.sync_from(&c2)?;
     let mut out = File::create("target/from-2.5.15.md")?;
     c1.print_markdown(&mut out)?;
-    log::info!("result: {}", c1.releases.len());
+    log::info!("result: {}", c1.changesets.len());
     // c1.print_markdown(&mut std::io::stdout())?;
     // c2.print_markdown(&mut std::io::stdout())?;
     Ok(())

@@ -1,6 +1,7 @@
-use changelog::changeset::ChangeSet;
-use changelog::{ChangeLog, ChgError};
 use std::path::PathBuf;
+
+use changelog::{ChangeLog, ChgError};
+use changelog::changeset::ChangeSet;
 
 pub fn cmd_info(changelog_file: &PathBuf) -> Result<(), ChgError> {
     let text = std::fs::read_to_string(changelog_file)?;
@@ -9,7 +10,7 @@ pub fn cmd_info(changelog_file: &PathBuf) -> Result<(), ChgError> {
         println!("Unreleased");
         print_changeset(&unreleased);
     }
-    for (rvs, changeset) in &changelog.releases {
+    for (rvs, changeset) in &changelog.changesets {
         println!(
             "{} version {}{}: {} items",
             rvs.timestamp,

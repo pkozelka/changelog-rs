@@ -5,6 +5,7 @@ use crate::{ChangeItem, ChangeLog, ChangeLogConfig, ChangeType, ReleaseHeader};
 use crate::builder::ChangeLogBuilder;
 use crate::error::ChgError;
 use std::io::{BufRead, Cursor};
+use crate::changeset::ChangesetHeader;
 
 enum ParserState {
     Prolog,
@@ -41,7 +42,7 @@ impl ChangeLogBuilder {
             match state {
                 ParserState::Prolog | ParserState::Section => {
                     if line.starts_with("## ") {
-                        self.section(ReleaseHeader::parse_section_header(&line[3..])?);
+                        self.section(ChangesetHeader::parse_section_header(&line[3..])?);
                         state = ParserState::Section;
                         continue;
                     }
@@ -119,7 +120,7 @@ impl ChangeItem {
     }
 }
 
-impl ReleaseHeader {
+impl ChangesetHeader {
     /// Parses section header string into a VersionSpec.
     ///
     /// Following formats are acceptable:
@@ -129,10 +130,10 @@ impl ReleaseHeader {
     /// * `1.2.333 2020-04-20 yanked`
     /// * `1.2.3.b5.c7-a 2020-04-20 yanked`
     /// * `Unreleased`
-    fn parse_section_header(s: &str) -> Result<Option<Self>, ChgError> {
+    fn parse_section_header(s: &str) -> Result<Self, ChgError> {
         let s = s.trim();
         if s.to_ascii_lowercase() == "unreleased" {
-            Ok(None)
+            Ok(ChangesetHeader::Unreleased)
         } else {
             let mut section_tokens = s.trim().split(' ');
 
@@ -182,7 +183,7 @@ impl ReleaseHeader {
             };
 
             //
-            Ok(Some(ReleaseHeader {
+            Ok(ChangesetHeader::Release(ReleaseHeader {
                 version: version.to_string(),
                 tag: "".to_string(),
                 timestamp,
@@ -197,19 +198,20 @@ mod tests {
     use chrono::NaiveDate;
 
     use crate::{ChangeItem, ChangeType, ReleaseHeader};
+    use crate::changeset::ChangesetHeader;
 
     #[test]
     fn test_parse_section_header_unreleased() {
-        let header = ReleaseHeader::parse_section_header("Unreleased").unwrap();
-        assert!(header.is_none(), "Unreleased expected here");
+        let header = ChangesetHeader::parse_section_header("Unreleased").unwrap();
+        assert!(!header.is_release(), "Unreleased expected here");
     }
 
     #[test]
     fn test_parse_section_header_released() {
-        let header = ReleaseHeader::parse_section_header("2.5.6 - 2020-12-10").unwrap();
+        let header = ChangesetHeader::parse_section_header("2.5.6 - 2020-12-10").unwrap();
         match header {
-            None => panic!("Release expected here"),
-            Some(ReleaseHeader {
+            ChangesetHeader::Unreleased => panic!("Release expected here"),
+            ChangesetHeader::Release(ReleaseHeader {
                 version,
                 tag,
                 timestamp,
@@ -226,10 +228,10 @@ mod tests {
 
     #[test]
     fn test_parse_section_header_released_noseparator_yanked() {
-        let header = ReleaseHeader::parse_section_header("1.22.333-alpha-1 2021-04-20 YANKED").unwrap();
+        let header = ChangesetHeader::parse_section_header("1.22.333-alpha-1 2021-04-20 YANKED").unwrap();
         match header {
-            None => panic!("Release expected here"),
-            Some(ReleaseHeader {
+            ChangesetHeader::Unreleased => panic!("Release expected here"),
+            ChangesetHeader::Release(ReleaseHeader {
                 version,
                 tag,
                 timestamp,

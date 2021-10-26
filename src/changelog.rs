@@ -4,7 +4,7 @@ use std::io::Write;
 use chrono::NaiveDate;
 
 use crate::ChangeLogConfig;
-use crate::changeset::ChangeSet;
+use crate::changeset::{ChangeSet, ChangesetHeader};
 use crate::ChgError;
 
 impl ChangeLog {
@@ -39,17 +39,25 @@ impl ChangeLog {
         if old_rvs.version == new_rvs.version {
             // only sync new unreleased into old unreleased
             let mut old_unreleased = match &self.unreleased {
-                None => ChangeSet { items: vec![] },
+                None => ChangeSet { header: ChangesetHeader::Unreleased, items: vec![] },
                 Some(_) => self.unreleased.take().unwrap(),
             };
             old_unreleased.sync_from(new.unreleased.as_ref().unwrap());
             self.unreleased = Some(old_unreleased);
         } else {
             // find all new changesets
-            let mut newcs: Vec<&(ReleaseHeader, ChangeSet)> = new
+            let mut newcs: Vec<ChangeSet> = new
                 .releases
                 .iter()
-                .take_while(|(rvs, _)| rvs.version != old_rvs.version)
+                .take_while(|changeset| {
+                    match &changeset.header {
+                        ChangesetHeader::Unreleased => true,
+                        ChangesetHeader::Release(rvs) => {
+                            rvs.version != old_rvs.version
+                        }
+                    }
+                })
+                .map(|changeset|*changeset)
                 .collect();
             newcs.reverse();
             trace!("New changesets: {}", newcs.len());
@@ -57,7 +65,7 @@ impl ChangeLog {
 
             // 1. old unreleased receives oldest new release
             let mut old_unreleased = match &self.unreleased {
-                None => ChangeSet { items: vec![] },
+                None => ChangeSet { header: ChangesetHeader::Unreleased, items: vec![] },
                 Some(_) => self.unreleased.take().unwrap(),
             };
             let (new_release_header, new_release_changeset) = newcs.remove(0);
@@ -69,7 +77,7 @@ impl ChangeLog {
             self.releases.insert(0, (new_release_header.clone(), old_unreleased));
             // 3. other new releases are copied to old releases, keeping order
             for r in newcs {
-                trace!("3. copying entire section {}", r.0.version);
+                trace!("3. copying entire section {:?}", r.header);
                 self.releases.insert(0, r.clone());
             }
             // 4. new unreleased is copied to old unreleased
@@ -91,8 +99,7 @@ impl ChangeLog {
 pub struct ChangeLog {
     pub meta: HashMap<String, String>,
     pub prolog: String,
-    pub unreleased: Option<ChangeSet>,
-    pub releases: Vec<(ReleaseHeader, ChangeSet)>,
+    pub releases: Vec<ChangeSet>,
     pub epilog: String,
     pub config: ChangeLogConfig,
 }
@@ -117,7 +124,7 @@ impl ReleaseHeader {
         }
     }
 
-    pub fn release(tag: &str, timestamp: NaiveDate, yanked: bool) -> Option<Self> {
+    pub fn release(tag: &str, timestamp: NaiveDate, yanked: bool) -> ChangesetHeader {
         let mut version = &tag[..];
         for c in version.chars() {
             if c.is_ascii_digit() {
@@ -126,9 +133,9 @@ impl ReleaseHeader {
             version = &version[1..];
         }
         if version.is_empty() {
-            None
+            ChangesetHeader::Unreleased
         } else {
-            Some(Self {
+            ChangesetHeader::Release(Self {
                 version: version.to_string(),
                 tag: tag.to_string(),
                 timestamp,
@@ -162,26 +169,28 @@ pub enum ChangeType {
 
 impl ChangeLog {
     pub fn print_markdown(&self, out: &mut dyn Write) -> std::io::Result<()> {
-        if let Some(unreleased) = &self.unreleased {
-            writeln!(out, "## Unreleased")?;
-            Self::print_markdown_items(out, &unreleased)?;
-        }
-
-        for (ver, release) in &self.releases {
-            let ts = ver.timestamp.to_string();
-            writeln!(
-                out,
-                "## {} - {}{}",
-                ver.version,
-                &ts[0..10],
-                if ver.yanked { " [YANKED]" } else { "" }
-            )?;
+        for release in &self.releases {
             Self::print_markdown_items(out, &release)?;
         }
         Ok(())
     }
 
     fn print_markdown_items(out: &mut dyn Write, changes: &ChangeSet) -> std::io::Result<()> {
+        match &changes.header {
+            ChangesetHeader::Unreleased => {
+                writeln!(out, "## Unreleased")?;
+            }
+            ChangesetHeader::Release(ver) => {
+                let ts = ver.timestamp.to_string();
+                writeln!(
+                    out,
+                    "## {} - {}{}",
+                    ver.version,
+                    &ts[0..10],
+                    if ver.yanked { " [YANKED]" } else { "" }
+                )?;
+            }
+        }
         if !changes.items.is_empty() {
             writeln!(out)?;
             for item in &changes.items {

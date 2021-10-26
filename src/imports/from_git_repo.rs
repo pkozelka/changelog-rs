@@ -6,6 +6,7 @@ use chrono::NaiveDate;
 use git2::{Error, Oid, Repository};
 use std::collections::HashMap;
 use std::path::Path;
+use crate::changeset::ChangesetHeader;
 
 fn list_tags(repo: &Repository) -> Result<HashMap<Oid, String>, Error> {
     let mut tag_objects: HashMap<Oid, String> = HashMap::new();
@@ -73,7 +74,7 @@ impl ChangeLogBuilder {
                     Some(tag_name) => {
                         if let Some(version) = self.tag_name_to_version(tag_name) {
                             let yanked = tag_name.to_uppercase().contains("YANKED"); // TODO: configurable
-                            self.section(Some(ReleaseHeader::release_tagged(
+                            self.section(ChangesetHeader::Release(ReleaseHeader::release_tagged(
                                 tag_name,
                                 version.as_str(),
                                 ts,
@@ -117,13 +118,13 @@ impl ChangeLogBuilder {
                     .unwrap(); // TODO
             }
             CommitMessage::Release { version } => {
-                if let Some(rh) = ReleaseHeader::release(version.as_str(), ts, true)
+                if let ChangesetHeader::Release(rh) = ReleaseHeader::release(version.as_str(), ts, true)
                 {
                     warn!(
                         "Untagged release detected: {} - will be considered yenked",
                         version
                     );
-                    self.section(Some(rh));
+                    self.section(ChangesetHeader::Release(rh));
                     if let Some(stop_version) = stop_version {
                         if stop_version == version {
                             trace!(
@@ -164,7 +165,7 @@ impl ChangeLog {
         let repo = Repository::open(dir).unwrap();
         let tags = list_tags(&repo).unwrap();
         let mut builder = ChangeLogBuilder::new(config.clone());
-        builder.section(None);
+        builder.section(ChangesetHeader::Unreleased);
         let stop_version = stop_version.as_ref().map(String::as_str);
         builder
             .traverse_commits(&repo, &tags, stop_version)

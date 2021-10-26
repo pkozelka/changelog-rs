@@ -57,7 +57,7 @@ fn header_garbage() {
     let changelog = ChangeLog::import_markdown(r###"# Changelog
 ## 1.2.3-alpha-1 1972-05-31 noise
 "###).unwrap();
-    assert!(changelog.unreleased.is_none(), "No unreleased sections expected");
+    assert!(changelog.releases[0].is_release(), "No unreleased sections expected");
     assert_eq!(1, changelog.releases.len());
     assert_eq!("\n# Changelog", changelog.prolog, "prolog");
 }

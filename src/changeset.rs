@@ -1,9 +1,10 @@
 use std::collections::HashSet;
-use crate::ChangeItem;
+use crate::{ChangeItem, ReleaseHeader};
 
 /// Container of changes related to one version, either released or unreleased.
 #[derive(Debug, Clone)]
 pub struct ChangeSet {
+    pub header: ChangesetHeader,
     pub items: Vec<ChangeItem>,
 }
 
@@ -32,6 +33,21 @@ impl ChangeSet {
                     break;
                 }
             }
+        }
+    }
+}
+
+#[derive(Debug, Clone)]
+pub enum ChangesetHeader {
+    Unreleased,
+    Release(ReleaseHeader),
+}
+
+impl ChangesetHeader {
+    pub fn is_release(&self) -> bool {
+        match self {
+            ChangesetHeader::Unreleased => false,
+            ChangesetHeader::Release(_) => true
         }
     }
 }

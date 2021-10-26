@@ -1,7 +1,7 @@
 use std::io::{Error, ErrorKind, Result};
 
 use crate::{ChangeItem, ChangeLog, ChangeLogConfig, ReleaseHeader};
-use crate::changeset::ChangeSet;
+use crate::changeset::{ChangeSet, ChangesetHeader};
 
 /// Stateful helper for building changelog while parsing it from a file.
 /// Line parsing is assumed and best supported.
@@ -19,7 +19,6 @@ impl ChangeLogBuilder {
             changelog: ChangeLog {
                 meta: Default::default(),
                 prolog: "".to_string(),
-                unreleased: None,
                 releases: vec![],
                 epilog: "".to_string(),
                 config: config.clone(),
@@ -27,20 +26,15 @@ impl ChangeLogBuilder {
         }
     }
 
-    pub fn section(&mut self, release: Option<ReleaseHeader>) {
+    pub fn section(&mut self, header: ChangesetHeader) {
         self.current_section_close();
-        self.current_release = release;
-        self.current_section = Some(ChangeSet { items: vec![] });
+        self.current_release = None; //TODO Eliminate!!!
+        self.current_section = Some(ChangeSet { header, items: vec![] });
     }
 
     fn current_section_close(&mut self) {
         if let Some(current) = self.current_section.take() {
-            match self.current_release.take() {
-                None => {
-                    self.changelog.unreleased = Some(current);
-                }
-                Some(rvs) => self.changelog.releases.push((rvs, current)),
-            }
+            self.changelog.releases.push(current);
         }
     }
 
@@ -60,7 +54,7 @@ impl ChangeLogBuilder {
 
     pub fn note(&mut self, line: &str) -> Result<()> {
         self.current_section_close();
-        if self.changelog.releases.is_empty() && self.changelog.unreleased.is_none() {
+        if self.changelog.releases.is_empty() {
             self.changelog.prolog.add_line(line);
         } else {
             self.changelog.epilog.add_line(line);
@@ -89,6 +83,7 @@ impl MyOptString for String {
 mod tests {
     use crate::{ChangeItem, ChangeLogConfig, ChangeType};
     use crate::builder::ChangeLogBuilder;
+    use crate::changeset::ChangesetHeader;
 
     #[test]
     fn usage_primitives() {
@@ -96,7 +91,7 @@ mod tests {
         // prolog
         builder.note("hello").unwrap();
         builder.note("Hello").unwrap();
-        builder.section(None);
+        builder.section(ChangesetHeader::Unreleased);
         builder
             .item(ChangeItem {
                 refs: vec![],
@@ -113,6 +108,6 @@ mod tests {
         let changelog = builder.build();
         println!("prolog: {}", changelog.prolog);
         println!("epilog: {}", changelog.epilog);
-        assert!(changelog.unreleased.is_some());
+        assert!(!changelog.releases[0].header.is_release());
     }
 }

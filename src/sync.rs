@@ -126,3 +126,114 @@ fn scan_versions(a: &[ChangeSet]) -> (HashMap<&str, usize>, usize) {
     (map, unreleased_heading)
 }
 
+#[cfg(test)]
+mod tests {
+    use chrono::NaiveDate;
+
+    use crate::{ChangeItem, ChangeSet, ChangeType, ReleaseHeader};
+    use crate::changeset::ChangesetHeader;
+    use crate::changeset::ChangesetHeader::*;
+    use crate::sync::sync_one_from;
+
+    fn init_logging() {
+        stderrlog::new()
+            .modules(vec!["changelog", module_path!()])
+            .verbosity(5)
+            .timestamp(stderrlog::Timestamp::Millisecond)
+            .init()
+            .unwrap();
+        log::debug!("logging {}", module_path!());
+    }
+
+    fn someday() -> NaiveDate {
+        NaiveDate::from_ymd(2021, 11, 2)
+    }
+
+    fn tst_item(text: &str) -> ChangeItem {
+        ChangeItem {
+            refs: vec![],
+            change_type: ChangeType::Other,
+            component: "".to_string(),
+            text: text.to_string(),
+            authors: vec![],
+        }
+    }
+
+    fn rlsh(version: &str) -> ChangesetHeader {
+        Release(ReleaseHeader {
+            version: version.to_string(),
+            tag: "".to_string(),
+            timestamp: someday(),
+            yanked: false,
+        })
+    }
+
+    fn print(title: &str, changesets: &[ChangeSet]) {
+        println!("--- {} ---", title);
+        for changeset in changesets {
+            match &changeset.header {
+                Unreleased => println!("Unreleased"),
+                Release(rh) => println!("Release {}", rh.version)
+            }
+            for item in &changeset.items {
+                println!("* {}", item.text);
+            }
+        }
+    }
+
+    #[test]
+    fn test_sync_steps() -> anyhow::Result<()> {
+        init_logging();
+        trace!("hi");
+        let c1 = vec![
+            ChangeSet { header: Unreleased, items: vec![tst_item("u1, unreleased")] },
+            ChangeSet { header: rlsh("1.0.7"), items: vec![tst_item("r107, main change")] },
+            ChangeSet { header: rlsh("1.0.6"), items: vec![tst_item("r106, sixth change")] },
+            ChangeSet { header: rlsh("1.0.5"), items: vec![tst_item("r105, fifth change")] },
+            ChangeSet { header: rlsh("1.0.4"), items: vec![tst_item("r104, fourth change")] },
+            ChangeSet { header: rlsh("1.0.3"), items: vec![tst_item("r103, third change")] },
+            ChangeSet { header: rlsh("1.0.2"), items: vec![tst_item("r102, second change")] },
+            ChangeSet { header: rlsh("1.0.1"), items: vec![tst_item("r101, first change")] },
+            ChangeSet { header: rlsh("1.0.0"), items: vec![tst_item("r100, initial change")] },
+        ];
+
+        let mut changelog = Vec::new();
+        assert_eq!(changelog.len(), 0, "new changelog must be empty");
+
+        assert!(sync_one_from(&mut changelog, &c1)?);
+        assert_eq!(changelog.len(), 1, "new changelog size mismatch");
+
+        assert!(sync_one_from(&mut changelog, &c1)?);
+        assert_eq!(changelog.len(), 2, "new changelog size mismatch");
+
+        assert!(sync_one_from(&mut changelog, &c1)?);
+        print("v3", &changelog);
+        assert_eq!(changelog.len(), 3, "new changelog size mismatch");
+
+        assert!(sync_one_from(&mut changelog, &c1)?);
+        assert_eq!(changelog.len(), 4, "new changelog size mismatch");
+
+        assert!(sync_one_from(&mut changelog, &c1)?);
+        assert_eq!(changelog.len(), 5, "new changelog size mismatch");
+
+        assert!(sync_one_from(&mut changelog, &c1)?);
+        assert_eq!(changelog.len(), 6, "new changelog size mismatch");
+
+        assert!(sync_one_from(&mut changelog, &c1)?);
+        assert_eq!(changelog.len(), 7, "new changelog size mismatch");
+
+        assert!(sync_one_from(&mut changelog, &c1)?);
+        print("v8", &changelog);
+        assert_eq!(changelog.len(), 8, "new changelog size mismatch");
+
+        assert!(sync_one_from(&mut changelog, &c1)?);
+        print("v9 (1)", &changelog);
+        assert_eq!(changelog.len(), 9, "new changelog size mismatch");
+
+        assert!(sync_one_from(&mut changelog, &c1)?);
+        print("v9 (2)", &changelog);
+        assert_eq!(changelog.len(), 9, "new changelog size mismatch");
+
+        Ok(())
+    }
+}

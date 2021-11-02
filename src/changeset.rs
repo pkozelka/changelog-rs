@@ -1,4 +1,5 @@
 use std::collections::HashSet;
+
 use crate::{ChangeItem, ReleaseHeader};
 
 /// Container of changes related to one version, either released or unreleased.
@@ -34,6 +35,7 @@ impl ChangeSet {
                 }
             }
         }
+        self.header = from.header.clone();
     }
 }
 

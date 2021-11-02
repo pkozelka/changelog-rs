@@ -27,6 +27,9 @@ pub enum ChgError {
 
     #[error("Cannot serialize config")]
     ConfigWriteError,
+
+    #[error("ERROR: {0}")]
+    Other(String),
 }
 
 impl From<std::io::Error> for ChgError {

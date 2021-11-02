@@ -10,6 +10,7 @@ pub use error::ChgError;
 
 pub mod builder;
 mod changelog;
+mod sync;
 pub mod changeset;
 mod config;
 mod error;

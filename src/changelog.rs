@@ -6,90 +6,28 @@ use chrono::NaiveDate;
 use crate::ChangeLogConfig;
 use crate::changeset::{ChangeSet, ChangesetHeader};
 use crate::ChgError;
+use crate::sync::sync_one_from;
 
 impl ChangeLog {
-    /// Finds missing items in the changelog.
-///
-/// The general assumptions are:
-/// - `old` is manually updated and must be fully respected
-/// - `new` is auto-generated content, and is rather a recommendation
-/// - presence of items is based on presence of URLs (issues, PRs, other)
-/// - `new` contains most records of `old` (but some may have been manually added or removed)
-///
-/// Situations:
-/// * a) both changelogs have the same LATEST_RELEASE version
-/// * b) `new` comes with one or more releases - then the `Unreleased` changeset is matched against first(oldest) additional release; it's good when there is an item prooving the match
-/// * c) release histories are disjunct => error, cannot update
-/// * d) LATEST_RELEASE of `old` is not present in new => error, cannot update
+    /// Synchronize ONE version from newly generated items into self.
+    ///
+    /// The general assumptions are:
+    /// - `old` is manually updated and must be fully respected
+    /// - `new` is auto-generated content, and is rather a recommendation
+    /// - presence of items is based on presence of URLs (issues, PRs, other)
+    /// - `new` contains most records of `old` (but some may have been manually added or removed)
+    ///
+    /// Situations:
+    /// * a) both changelogs have the same LATEST_RELEASE version
+    /// * b) `new` comes with one or more releases - then the `Unreleased` changeset is matched against first(oldest) additional release; it's good when there is an item prooving the match
+    /// * c) release histories are disjunct => error, cannot update
+    /// * d) LATEST_RELEASE of `old` is not present in new => error, cannot update
     pub fn sync_from(&mut self, new: &ChangeLog) -> Result<(), ChgError> {
-        // bring missing (NEW) released items into OLD unreleased section, and move it to OLD releases
-        // bring following comple
-        // te releases omitted in OLD side (if any)
-        // bring missing NEW unreleased items into OLD unreleased section
-
-        let (old_rvs, _old_changeset) = self
-            .changesets
-            .get(0)
-            .expect("TODO: Old changeset has no release yet"); // TODO
-        let (new_rvs, _new_changeset) = new
-            .changesets
-            .get(0)
-            .expect("TODO: New changeset has no release yet"); // TODO
-
-        if old_rvs.version == new_rvs.version {
-            // only sync new unreleased into old unreleased
-            let mut old_unreleased = match &self.unreleased {
-                None => ChangeSet { header: ChangesetHeader::Unreleased, items: vec![] },
-                Some(_) => self.unreleased.take().unwrap(),
-            };
-            old_unreleased.sync_from(new.unreleased.as_ref().unwrap());
-            self.unreleased = Some(old_unreleased);
-        } else {
-            // find all new changesets
-            let mut newcs: Vec<ChangeSet> = new
-                .changesets
-                .iter()
-                .take_while(|changeset| {
-                    match &changeset.header {
-                        ChangesetHeader::Unreleased => true,
-                        ChangesetHeader::Release(rvs) => {
-                            rvs.version != old_rvs.version
-                        }
-                    }
-                })
-                .map(|changeset|*changeset)
-                .collect();
-            newcs.reverse();
-            trace!("New changesets: {}", newcs.len());
-            trace!("Existing changesets: {}", self.changesets.len());
-
-            // 1. old unreleased receives oldest new release
-            let mut old_unreleased = match &self.unreleased {
-                None => ChangeSet { header: ChangesetHeader::Unreleased, items: vec![] },
-                Some(_) => self.unreleased.take().unwrap(),
-            };
-            let (new_release_header, new_release_changeset) = newcs.remove(0);
-            trace!("1. syncing unreleased news from {}", new_release_header.version);
-            old_unreleased.sync_from(new_release_changeset);
-
-            // 2. old unreleased becomes release
-            trace!("2. switching old unreleased to release: {}", new_release_header.version);
-            self.changesets.insert(0, (new_release_header.clone(), old_unreleased));
-            // 3. other new releases are copied to old releases, keeping order
-            for r in newcs {
-                trace!("3. copying entire section {:?}", r.header);
-                self.changesets.insert(0, r.clone());
-            }
-            // 4. new unreleased is copied to old unreleased
-            if let Some(unreleased) = &new.unreleased {
-                trace!("4. adding new unreleased section ({} items)", unreleased.items.len());
-                for item in &unreleased.items {
-                    trace!("   * {:?}", item);
-                }
-                self.unreleased = new.unreleased.clone();
-            }
+        if self.changesets.is_empty() {
+            return Err(ChgError::Other("Cannot sync into empty changelog".to_string()));
         }
-        trace!("Existing changesets: {}", self.changesets.len());
+
+        sync_one_from(&mut self.changesets, &new.changesets)?;
         Ok(())
     }
 }

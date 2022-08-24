@@ -1,0 +1,46 @@
+## Unreleased
+
+- implemented core sync/compare logic / Petr Kozelka
+- empty version in tag name means it's not a version tag / Petr Kozelka
+- big refactor of data model - now changelog has one optional unreleased section, and a list of releases; just this. / Petr Kozelka
+- use NaiveDate for release timestamp / Petr Kozelka
+- Unreleased: eliminated "major" and "branch" / Petr Kozelka
+- sync / compare drafted impl / Petr Kozelka
+- reorganized code to support the sync functionality / Petr Kozelka
+- minor reorg: expose VersionSpec at lib crate root / Petr Kozelka
+- CLI commands code split into separate modules / Petr Kozelka
+- playing with serde / Petr Kozelka
+- added support for embedded config / Petr Kozelka
+- experimenting with embeddable configuration / Petr Kozelka
+- fix: stop on both tagged and untagged versions / Petr Kozelka
+- InitFromGit: generalized tag name to version conversion / Petr Kozelka
+- InitFromGit: added option to stop parsing git on some version / Petr Kozelka
+- InitFromGit: added option to specify project directory / Petr Kozelka
+- changelog parsing improved to be more tolerant, and produce specific errors / Petr Kozelka
+- cli: implemented "new" / Petr Kozelka
+- added error handling with thiserror crate / Petr Kozelka
+- cargo fmt / Petr Kozelka
+- added commands new, init, sync according to README, with todo! inside / Petr Kozelka
+- RDD notes in README / Petr Kozelka
+- Implemented command "info", mainly to see how parsing works / Petr Kozelka
+- Trying to use public crates to access github apis / Petr Kozelka
+- Added detection of YANKED releases - when missing tag, or tag name containing YANKED / Petr Kozelka
+- Added detection of post-release commit message / Petr Kozelka
+- Added detection of release commit message / Petr Kozelka
+- support KK's close issue instruction in commit msg / Petr Kozelka
+- Added Github CI / Petr Kozelka
+- Added functionality of CommitMessageAnalyzer into the parser / Petr Kozelka
+- Added commit message analyzer - incomplete / Petr Kozelka
+- Added first import option implementation based on call-git-log example / Petr Kozelka
+- added structopt skeleton for CLI support / Petr Kozelka
+- added proper support for heavy tags / Petr Kozelka
+- list parsed sections / Petr Kozelka
+- call-git-log: read and use tags / Petr Kozelka
+- initial API for changelog handling / Petr Kozelka
+- initial readme / Petr Kozelka
+- use git2 library to parse local repository / Petr Kozelka
+- show gitlog in changelog format / Petr Kozelka
+- experimental git parsers / Petr Kozelka
+- initialized Cargo project / Petr Kozelka
+- Initialized the repository / Petr Kozelka
+

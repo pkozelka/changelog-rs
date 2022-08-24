@@ -47,3 +47,10 @@ Updates changelog with new commit messages from git.
 An attempt will be made to only add what is really missing.
 Last release found in changelog will be the stopping point for git scanning.
 Any commits referencing issues which are already in `Unreleased` part will be unchanged.
+
+## TODO
+
+installer like https://www.metawork.com/ has
+```
+eval "$(curl -fsSL get.metawork.com)"
+```

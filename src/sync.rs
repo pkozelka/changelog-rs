@@ -60,6 +60,7 @@ pub(super) fn sync_one_from(this: &mut Vec<ChangeSet>, newcs: &[ChangeSet]) -> R
                     this.insert(0, from.clone());
                 } else {
                     // both have unreleased section
+                    todo!()
                 }
             } else {
                 let from = &newcs[new_shared_index - 1];

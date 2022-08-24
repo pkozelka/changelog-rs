@@ -1,0 +1,1137 @@
+2020-09-23T12:19:08+02:00  (HEAD -> master, origin/master, origin/HEAD) 186a1dc1f34300def8b7f4eefb0732f954504a1c petr.kozelka@h2o.ai Petr Kozelka: CsvComparingBatchHandler: improvemed report notation
+2020-09-29T15:27:02+02:00  13f27e4ac3dd3e8fdd70916011f9a89c66bf2a9d petr.kozelka@h2o.ai Petr Kozelka: MojoFrameBuilder: better info in exception message
+2020-08-28T13:28:24+02:00  86f19983029f2a7620952698670ca68e3eb00572 petr.kozelka@h2o.ai Petr Kozelka: PipelineViewerTest: improved notation of transforms
+2020-09-29T10:35:38+02:00  248c665365206df01044025b1f1830b9d3e65e45 pkozelka@gmail.com Petr Kozelka: protobuf: wrap all license fields in separate License structure (#1089)
+2020-09-28T22:54:49-07:00  93ca6dc0c5ebc572ad34d1b8baf29473cbd6f209 michal@0xdata.com Michal Malohlava: [CUSTOM OP] Enforce naming convention for custom transformers. (#1085)
+2020-09-25T19:16:13+02:00  6ddde5936a4c8af43374fa69793cf70aaec912cd pkozelka@gmail.com Petr Kozelka: Added Pipeline.license_serial_number to hold serial number of the DAI license key, and other fields related to license (#1087)
+2020-09-25T17:08:07+02:00  f4c2323b0cf2d541daca559cf6fd6bff20fc30d2 pkozelka@gmail.com Petr Kozelka: SHAP: Fail on non-SHAP operation in pipeline (#1054)
+2020-09-24T14:36:16+02:00  898f315651e1e0f28f4f5fcff655e883d46f30b9 pkozelka@gmail.com Petr Kozelka: TreeShap: minor refactors (#1084)
+2020-09-23T20:06:46-07:00  6d455fd1ef7dd8aba8641debe3bd537f63322d98 michal@h2o.ai mmalohlava: [DEVEL] Next development version
+2020-09-02T00:08:11+02:00  262d3ca5ace6a7be49a6c581b4fff3a4f95c039a petr.kozelka@h2o.ai Petr Kozelka: MojoFrameBuilder: improved exception message
+2020-08-26T23:37:33+02:00  6d76a30f1b0390b485f271cf8dec308359747744 petr.kozelka@h2o.ai Petr Kozelka: MojoTransformationGroup: implement proper hashCode, equals and toString
+2020-09-18T06:43:27-07:00  (tag: v2.5.2) 17cd56e7243e78578cf7c9a0c9905c06393aa22a michal@h2o.ai mmalohlava: [BUILD] Release 2.5.2
+2020-09-18T06:42:06-07:00  1a2521d9a6b7867035f79fcd0606a505923833a2 michal@0xdata.com Michal Malohlava: [ITEST] Add more integration tests. (#1070)
+2020-09-18T00:42:41-07:00  39674d9cbe423aee95bf22dc298933eb9dfc2b9c michal@0xdata.com Michal Malohlava: [CUSTOM] Custom h2o-3 transformer (encapsulates supervised models) (#1082)
+2020-09-17T00:22:29-07:00  daf9c3625be3f8b4ea05b79f28ed183758582620 michal@0xdata.com Michal Malohlava: Wonng setup for keep class setup for opencsv package. (#1079)
+2020-09-17T00:22:10-07:00  c1a055dc37fcc6b4d333df74de11be5983ef2db2 michal@0xdata.com Michal Malohlava: [CPP] Debugging utility. (#1081)
+2020-09-12T06:58:04+02:00  0a723dfa2f74f0f237e6cfc2e390e510f27d8879 pkozelka@gmail.com Petr Kozelka: TreeShap: fixed bug in conversion from C++ code (#1075)
+2020-09-11T17:45:55+02:00  fa5667bc1ea3d47a9794ee3bc70ff5da8fa3ee36 pkozelka@gmail.com Petr Kozelka: fixed bug in counting totalDataRows (#1074)
+2020-09-10T10:26:53-07:00  c8970cfbd4d92c7d806b56c0f38c1b8734db66a3 qkou@qkou.info Qiang Kou: Next devel cycle 2-SNAPSHOT
+2020-09-09T21:31:08-07:00  (tag: v2.5.1) 3879e733fc60d9e9aced81d05b24c10130ae02ae qkou@qkou.info Qiang Kou: [BUILD] Release v2.5.1
+2020-09-10T01:58:19+02:00  98bbe7db061d089260d11b52dab9b7ae01f4ac35 pkozelka@gmail.com Petr Kozelka: Tree models: make featureMap optional param (#1072)
+2020-09-09T16:06:43-07:00  5e619617eae6b2756c5491405d18fc2b7a93d8a8 qkou@qkou.info Qiang Kou (KK): [cpp] disable tree shap computing when tree model doesn't use input features (#1073)
+2020-09-07T22:49:00-07:00  265f19a80fe00ff08a7ca13aa2725d9c5c6cf298 michal@0xdata.com Michal Malohlava: [h2o3] Upgrade h2o-genmodel to 3.30.1.2 (#1067)
+2020-09-02T19:30:08+02:00  50e03200350fc7947569166ca67d7281fd19487e petr.kozelka@h2o.ai Petr Kozelka: TreeBooster: fixed little bug preventing to use source columns of type double (Float64)
+2020-09-02T23:26:46-07:00  e109ceec6ee369de7bf77a5e87e631a46bfad526 michal@0xdata.com Michal Malohlava: Initial module with ExecuteMojo utility. (#1064)
+2020-09-01T08:48:01+02:00  eeb60f03e4b71e7cf29db723b61d8babd05765d4 pkozelka@gmail.com Petr Kozelka: Compatibility fixes for version 2.5.0 (#1065)
+2020-08-31T15:45:49+02:00  85e7f2618e86909482c918f7f35520adea586d2b pkozelka@gmail.com Petr Kozelka: bugfix in MojoFrameMeta: use LinkedHasMap to ensure keeping order in getColumnNames()
+2020-08-28T14:50:09-07:00  a4acff1ac8bac98b01986075307bcd27de5759bf qkou@qkou.info Qiang Kou: Next devel cycle 1-SNAPSHOT
+2020-08-28T10:47:59-07:00  (tag: v2.5.0) 279e0a507c7abbafadd7db7ff460c5166d68e850 qkou@qkou.info Qiang Kou: [BUILD] Release v2.5.0
+2020-08-27T01:48:02+02:00  e67f2b84c834525538428812e4d55b08569c3d32 pkozelka@gmail.com Petr Kozelka: Parse and expose transformation group in MojoTransformMeta (#1063)
+2020-08-27T01:45:54+02:00  423f64b6166b4e484adfdb18f20682f73095d7fb pkozelka@gmail.com Petr Kozelka: Expose columns in PipelineLoader (#1061)
+2020-08-26T13:18:07+02:00  69f923112bf9cab03fcb82c39f30df358a7058d1 pkozelka@gmail.com Petr Kozelka: Unify tree-shaking optimization in protocol-agnostic manner (#1060)
+2020-08-26T01:40:44+02:00  185ea0a6f96334609f5e6b9f7062169230354aa4 pkozelka@gmail.com Petr Kozelka: Merge pull request #1058 from h2oai/pk/column-list
+2020-08-17T18:27:57+02:00  adc04c73469f9cac1dbd880d201d15372d3913bb pkozelka@gmail.com Petr Kozelka: implemented simple example of pipeline viewer using loader api
+2020-08-21T14:53:39-07:00  b1343322497b4ac576e84866ff09946e2e443395 qkou@qkou.info Qiang Kou (KK): [cpp] trimming whitespace before roberta tokenizing (#1057)
+2020-08-21T21:40:24+02:00  e10a8053938101d136e541a622927192481e446f pkozelka@gmail.com Petr Kozelka: Minor cleanups in mojoframe classes (#1056)
+2020-08-21T18:01:04+02:00  b6c2312355c805b22e66ead975d6ef0e039892d9 pkozelka@gmail.com Petr Kozelka: Properly split methods from ArrayUtils between api and impl modules (#1055)
+2020-08-20T02:21:52+02:00  37d7f412de53affdc972937b294e2776f3f6f69c pkozelka@gmail.com Petr Kozelka: Merge pull request #1053 from h2oai/pk/post-shap
+2020-08-19T22:29:53+02:00  0aba496447899108c35e6b1f5c45fba515f857d2 pkozelka@gmail.com Petr Kozelka: Design and implement SHAP feature (#971)
+2020-08-18T14:14:09-07:00  eec24338ddaa9386f2b0d248dca595fc1435474b qkou@qkou.info Qiang Kou (KK): [cpp] trimming whitespace in license string (#1051)
+2020-07-03T17:34:10+02:00  d4f09b86457efa50923fd843e7e0deedce52d513 petr.kozelka@h2o.ai Petr Kozelka: Make feature list more predictable
+2020-08-16T02:06:44+02:00  61a0be187cad80f6f7088e036af8e7f4921887e0 petr.kozelka@h2o.ai Petr Kozelka: minor test adjustments
+2020-08-18T07:54:16+02:00  0d23c7c76fc852db33a58295eb17a66ba9f017d7 pkozelka@gmail.com Petr Kozelka: BigTestForDirs improvement: show used transforms
+2020-08-18T06:37:42+02:00  2f2cd9f7a55d09999a6e4f9c29e9b2037149d5ee pkozelka@gmail.com Petr Kozelka: Fail when there is no featureMap param in Model (#1050)
+2020-08-13T11:18:18-07:00  adccf7779b0fc345b399488f13eff17dc7ee183d qkou@qkou.info Qiang Kou (KK): [c++] support bool in runtime. close #1047 (#1048)
+2020-08-11T20:16:07+02:00  583c6cbfd6812b7caa2c6bcce930ad9d4be77aca pkozelka@gmail.com Petr Kozelka: Minor cleanups (#1046)
+2020-08-11T11:14:53-07:00  1107bc341a406e2396e681267c0cbb9e24346a7d qkou@qkou.info Qiang Kou: Next devel cycle 11-SNAPSHOT
+2020-08-10T15:54:41-07:00  (tag: v2.4.10) 8895cb326429017ff94e71e76f33eaceb39a9d23 qkou@qkou.info Qiang Kou: [BUILD] Release v2.4.10
+2020-08-07T16:38:26-07:00  9a9e16df524c87b1410542171a56bdb8b4be4980 qkou@qkou.info Qiang Kou: [DOC] add download links for PPC and OSX. close #1020
+2020-08-07T11:26:01-07:00  558c40c982e761bab074f84472db14e12e406fce qkou@qkou.info Qiang Kou (KK): [BUILD] use pre-built opencv (#1043)
+2020-08-07T09:16:23+02:00  4d353fdc645e114b11f414ae53c559c861561f38 pkozelka@gmail.com Petr Kozelka: Minor cleanup in MojoColumn (#1044)
+2020-08-05T23:46:42+02:00  4c6e262450cc31c3c8ef1f17cc0e13513f3381af pkozelka@gmail.com Petr Kozelka: Merge pull request #1037 from h2oai/pk/pre-shap-loadinfo
+2020-08-04T16:39:06-07:00  06b507a769cffad9ac62542c368d410fda865aac qkou@qkou.info Qiang Kou (KK): [bulid] update links in download page (#1040)
+2020-08-05T01:32:19+02:00  ada86c4165581bd96c50a15b098f50d5ccd937d0 pkozelka@gmail.com Petr Kozelka: [Java] removed junk code from LinearBooster (#1039)
+2020-08-04T10:32:39-07:00  411f849a2eaf7c2c48f3eec080c9af1868389e5a qkou@qkou.info Qiang Kou: Next devel cycle 10-SNAPSHOT
+2020-08-03T13:53:55-07:00  f01b078253bb723a7e34f31587256f7fcc4ed826 qkou@qkou.info Qiang Kou (KK): [doc] build download page (#1035)
+2020-08-03T18:32:17+02:00  77a225894959e7afd03347f66901da2159679c10 pkozelka@gmail.com Petr Kozelka: resolved "warning: variable 'status' set but not used [-Wunused-but-set-variable]" (#1038)
+2020-07-14T13:40:14+02:00  f665c60297b5ff6aa3aa4a80ab2c42bcfca75ca7 petr.kozelka@h2o.ai Petr Kozelka: fixed typo in cli docs
+2020-07-31T22:34:40-07:00  7b0117c4bc3fcae7a3766bf13fe0b7a879d3eb59 qkou@qkou.info Qiang Kou (KK): [build] make sure docker is not mount as root (#1036)
+2020-07-30T19:01:43+02:00  985aeff8744140a07b50127437633db6ec79a8de pkozelka@gmail.com Petr Kozelka: MojoTransformSigmoidBuilder: fixed naming of generated class (#1034)
+2020-07-30T03:57:45+02:00  96b3c3a0a907dd1097aff3894dfb83854125f863 pkozelka@gmail.com Petr Kozelka: Enhanced Sigmoid operation to support Float32 type (#1033)
+2020-07-30T00:38:45+02:00  3cc5955292909685b2f114345a2fc5e30cd4ae57 pkozelka@gmail.com Petr Kozelka: Enhance Softmax operation with support for Float32 (#1031)
+2020-07-29T13:34:36-07:00  2ae5df2b10c7749c58bc9098437e2de7b7c8c35a qkou@qkou.info Qiang Kou (KK): build for py38 (#1032)
+2020-07-28T16:35:21-07:00  e22e0aae9da42f54b50dafc8b93181daec086922 qkou@qkou.info Qiang Kou: bpe result in roberta can be unknown in the vocabulary
+2020-07-27T16:04:37-07:00  (tag: v2.4.9) ab973c9e5fb36634eee323a86f63b28df28fb239 qkou@qkou.info Qiang Kou: [BUILD] Release v2.4.9
+2020-07-26T18:48:35-07:00  94ee772fff50afb8ed64d9db0a900467ce61fe81 qkou@qkou.info Qiang Kou (KK): [BUILD] enable PPC build (#1029)
+2020-07-24T11:03:56-07:00  beb138377daee450b8d9b1a50caa3f0ed1574052 qkou@qkou.info Qiang Kou (KK): [cpp] fix libdaimojo (#1028)
+2020-07-23T21:12:18-07:00  99f838d7f78bc3ac82658adbd54140959a11c396 qkou@qkou.info Qiang Kou (KK): [BUILD] build python wheel for multiple python versions on Linux (#1027)
+2020-07-22T22:27:05-07:00  a400c2ded64b27b9c2508f198293367a6aded3a9 qkou@qkou.info Qiang Kou (KK): [cpp] image transformer should reture None if image path is empty (#1026)
+2020-07-22T14:19:38-07:00  19646ca6107dcfefc54c8e85d692982e84419887 qkou@qkou.info Qiang Kou (KK): [py] remove -stdlib=libc++ from linking flag (#1025)
+2020-07-22T09:22:39-07:00  133040bbde78c4217e621f56e5001c7cbeef5e5e qkou@qkou.info Qiang Kou: [BUILD] disable PPC build for now.
+2020-07-22T00:51:21-07:00  222acce976b18268ab71d7055877a3907bb9b265 qkou@qkou.info Qiang Kou (KK): [cpp] use libcryptopp for license checking (#1024)
+2020-07-21T10:47:32-07:00  94baea7861a8e220baeeecefae4173567a9dd12c qkou@qkou.info Qiang Kou: [BUILD] bulid OSX pkg first, so we won't be blocked by PPC machines
+2020-07-20T13:39:58-07:00  1f70b2304d1438bc8832f9d3adb472075a00d992 qkou@qkou.info Qiang Kou: Next devel cycle 9-SNAPSHOT
+2020-07-19T18:24:49-07:00  (tag: v2.4.8) ceb3b244d42bfa585a6bd357ea54a1830299bc9c qkou@qkou.info Qiang Kou: [BUILD] Release v2.4.8
+2020-07-17T15:15:46-07:00  391f066f96932d04249f44871a7bc46b2feb7b69 qkou@qkou.info Qiang Kou (KK): disable vsx on powerpc (#1018)
+2020-07-15T15:57:42-07:00  611c1f5032f668a89b1cdfe8bce787935bc49470 qkou@qkou.info Qiang Kou (KK): [cpp] using libjpeg-turbo for loading jpeg images. (#1016)
+2020-07-14T22:40:36-05:00  d6a30db5a89fb2232f0dc1c6142ea16533249572 jasmine.p.parekh@gmail.com Jasmine Parekh: Updated test_mojo_compatibility.py file to collect timings for each t… (#1006)
+2020-07-13T12:31:06-07:00  3e5668e238704e60cd57bdae3f58adb9b52d631c qkou@qkou.info Qiang Kou (KK): [cpp] use INTER_NEAREST in image resizing. close #1014 (#1015)
+2020-07-09T10:50:02-07:00  e609e5537a065994c3dfcdd0150bb8731369386f qkou@qkou.info Qiang Kou: Next devel cycle 8-SNAPSHOT
+2020-07-08T17:06:59-07:00  (tag: v2.4.7) 275e7688b35b0788a51892966333d56fe63b8b19 qkou@qkou.info Qiang Kou: [BUILD] Release v2.4.7
+2020-07-08T16:52:23-07:00  7dad81893867f80fb84583324edd881bfcd744a6 qkou@qkou.info Qiang Kou (KK): [cpp] link to libjpeg for loading images (#1013)
+2020-07-08T08:32:10-07:00  62b2c0372b8acc049abfe186d1f694a394b04d1d qkou@qkou.info Qiang Kou (KK): [cpp] fix string hasher in ftrl model (#1012)
+2020-07-06T10:58:15+02:00  3f4095bff9d9c9511aebdb78e372c0707400ce1d pkozelka@gmail.com Petr Kozelka: Documentation for commandline options (#1010)
+2020-07-04T17:22:07-07:00  e186a5d1feceb6985403d6b403a96a746168c183 qkou@qkou.info Qiang Kou: Next devel cycle 7-SNAPSHOT
+2020-07-04T00:06:53-07:00  (tag: v2.4.6) 244f8cb823fc2aa334dbdc8297346b628ffe2123 qkou@qkou.info Qiang Kou: [BUILD] Release v2.4.6
+2020-07-02T14:52:04-07:00  32c8fd8c754063a119d684b8d4f9a6ca9c61f15e qkou@qkou.info Qiang Kou (KK): [cpp] no in-place modification in mojo runtime (#1009)
+2020-06-30T11:23:14-07:00  ece405dab6fa8dec191c95a36d75c72cd97937c3 qkou@qkou.info Qiang Kou (KK): [cpp] switch to opencv for image resizing operation (#1005)
+2020-06-26T18:03:51+02:00  4b62d14303ef4c1cc1348a118af3b0f589464139 pkozelka@gmail.com Petr Kozelka: Introduced BatchedCsvReader for convenient batched CSV reading (#1004)
+2020-06-24T11:11:10-07:00  53002e84216ba7eb01c10f8060efb68fc2210b0b qkou@qkou.info Qiang Kou: Next devel cycle 6-SNAPSHOT
+2020-06-24T00:50:03-07:00  (tag: v2.4.5) 109c06b91faf46cc57ecf462b39c0a6e5a65fd29 qkou@qkou.info Qiang Kou: [BUILD] Release v2.4.5
+2020-06-23T19:40:14-07:00  7cacfed04e593711a623d2145b650c4d2f293c5b michal@0xdata.com Michal Malohlava:  [DEPS] Replace the private KLime dependency with the latest version of OSS H2O-3 GenModel. (#999)
+2020-06-23T18:06:33-07:00  8411d562b649991adecb8cb185654cb0f02f68dc michal@0xdata.com Michal Malohlava: [MOJO2-992] Fix parser bug when the categorical column is listed as the last column. (#997)
+2020-06-23T15:58:22-07:00  ede0f33f8b492e1c026a123c00d4ad80b7467ffa qkou@qkou.info Qiang Kou (KK): only pick CLS token in bert transformer. close #1002 (#1003)
+2020-06-18T20:58:31-07:00  09cf577d3f082fdf666fdf07ac43bf2e86924c2e michal@0xdata.com Michal Malohlava: [ITEST] Add DAI v187 state. (#1000)
+2020-06-18T15:16:14-07:00  27370b7b322c8927a449d8a4ef965514f3914a4a qkou@qkou.info Qiang Kou (KK): [cpp] trim text before tokenizing. close #995 (#996)
+2020-06-18T07:37:37-07:00  ad77fd8f35eeed1a28751cd0bc1dac6f8283d214 qkou@qkou.info Qiang Kou (KK): fix order of attention_mask and token_type_ids. close #993 (#994)
+2020-06-16T09:31:23-07:00  fd5b7c2037977e8fe4b6c74fb17beadf1f3f1e13 qkou@qkou.info Qiang Kou: Next devel cycle 5-SNAPSHOT
+2020-06-16T10:00:43+02:00  50794255bafba3d4708ad2d39f24eb3f7d509368 pkozelka@gmail.com Petr Kozelka: Revert "[RELEASE] Temporarily remove KLime from build process. (#990)"
+2020-06-15T23:12:31-07:00  92b469361070318cb8a08d086046eb95b0b75bd8 qkou@qkou.info Qiang Kou: [BUILD] Release v2.4.4
+2020-06-15T23:11:16-07:00  52d60d8554da0b35e9f4acb86abeba490ec91fde qkou@qkou.info Qiang Kou (KK): [RELEASE] Temporarily remove KLime from build process. (#990)
+2020-06-16T03:24:25+02:00  cc6e160e29347149ad98dc84b94ca37e20af43d8 pkozelka@gmail.com Petr Kozelka: Remove CapnpWriter and related obsolete code (#986)
+2020-06-15T14:44:05-07:00  13460b51bd93e61dde71abe23d29e3ac8122323d qkou@qkou.info Qiang Kou (KK): [py] package libtorch in whl for osx (#987)
+2020-06-09T13:26:19-07:00  8c33c358b06a6c5552416140680ba5986e1ee938 michal@0xdata.com Michal Malohlava: [ITEST] Backward compatibility state for 1.8.6 and 1.8.6.3 (#984)
+2020-06-08T17:50:42-07:00  ccd4e95b443292a530936fa283409b688ad1cce0 qkou@qkou.info Qiang Kou (KK): [IDL] add numeric statistics info from training set (#559)
+2020-06-08T13:43:45-07:00  c26f87559e68a11f3d05a71548d3ea766e76898c qkou@qkou.info Qiang Kou: Next devel cycle 4-SNAPSHOT
+2020-06-08T11:48:04-07:00  4c3ce571e0d27de21d316270e5ad9aa05820e20d qkou@qkou.info Qiang Kou: [BUILD] Release v2.4.3
+2020-06-08T12:15:18+02:00  8037ce8c043ac9a8ae54dc814293caecbbf3350b pkozelka@gmail.com Petr Kozelka: Cleanup in tree-related code (#981)
+2020-06-06T19:57:02-07:00  ca9f4a8964101156883399d5ab8e186bf97b20f6 qkou@qkou.info Qiang Kou (KK): [cpp] base margin in linear regression model is missing. close #982 (#983)
+2020-06-04T18:03:22-07:00  bb33232b524ae0b07198a3e068c29a29778080cc qkou@qkou.info Qiang Kou (KK): [cpp] image might have different num of channels. close #975 (#980)
+2020-06-04T12:56:10-07:00  ba9c64b2bb288b67ab2a5a6ab16b972375d7d2d0 qkou@qkou.info Qiang Kou (KK): [py] not throw exception from daimojo package. close #977 (#979)
+2020-06-03T21:35:01-07:00  8f309b55f1d17a8fd5bc1e607fb5e406aa45d37a qkou@qkou.info Qiang Kou (KK): [cpp] add caffe mode in imagenet preprocessing. close #976 (#978)
+2020-06-01T18:17:26-07:00  6dde24578a95d7cb9eb9d54596f800b05832bfeb mr.navdeepgill@gmail.com Navdeep Gill: Revert "[RELEASE] Temporarily remove KLime from build process. (#973)" (#974)
+2020-05-30T17:54:08-07:00  bf2fa863dc8eddef9a6d57f4f17dd0ff59d8b143 michal@h2o.ai mmalohlava: [VERSION] Fix patch specification.
+2020-05-30T16:49:22-07:00  c690702c5eaad039a0f6371a4c0336511494da31 qkou@qkou.info Qiang Kou: Next devel cycle 3-SNAPSHOT
+2020-05-29T17:42:40-07:00  eae9c415d43881973125b2f6cdfc2490941ed5ed michal@0xdata.com Michal Malohlava: [RELEASE] Temporarily remove KLime from build process. (#973)
+2020-05-26T19:02:08-07:00  dba38ef935a24f59aec5cf1077735cb9c4ab9f1e qkou@qkou.info Qiang Kou (KK): [cpp] make CalculateContributions template with T (#972)
+2020-05-22T22:07:00+02:00  c188bdac7b679c5b8a1f99baf410efb6353ffe69 pkozelka@gmail.com Petr Kozelka: Merge pull request #932 from h2oai/pk/pipeline-loading
+2020-05-22T10:13:43-07:00  20017cab29c0104303f24cefaf5330965b4ae2aa qkou@qkou.info Qiang Kou (KK): [cpp] move u_cleanup into deconstructor of pipeline. close #953 (#969)
+2020-05-21T18:33:18-07:00  a5f274861c874caee474408f06a7502c47cef258 qkou@qkou.info Qiang Kou (KK): [cpp] bundle libtorch in daimojo pkg (#968)
+2020-05-18T19:22:10-07:00  144fc0506f62fd1149813efa370170eb1d4742bd qkou@qkou.info Qiang Kou (KK): [cpp] add test for xception model (#967)
+2020-05-15T16:21:30-07:00  21634024bcb75e5cd0b4a722c8f4e97a6215a6f6 qkou@qkou.info Qiang Kou (KK): [cpp] clean up the bert tokenizer implementatoin (#966)
+2020-05-15T14:07:59+02:00  c72808f921ecede5b19eb104441de472a712f65b pkozelka@gmail.com Petr Kozelka: minor code cleanup in MojoFrameMeta: (#965)
+2020-05-14T15:47:42-07:00  (tag: v2.4.2) e42d303fcd6a4559e05d40ecada6ea985770a998 qkou@qkou.info Qiang Kou: [BUILD] Release v2.4.2
+2020-05-14T14:16:43-07:00  c49c1dde6d0f0368014c117d92a8922d48714339 qkou@qkou.info Qiang Kou (KK): [cpp] fix image pixel value manipulation  (#964)
+2020-05-13T23:41:04-07:00  b53132ae1228b1cfde6515825e98c15887252d7c qkou@qkou.info Qiang Kou (KK): [cpp] add simple test for image processing (#962)
+2020-05-13T18:37:00-07:00  3df2a1d0473f4c9fea33a1dd1c4b8f4940ef955d qkou@qkou.info Qiang Kou (KK): [py] add get_pipeline_transformer_size into daimojo pkg (#963)
+2020-05-13T11:00:18-07:00  ee158ef0dadfc9eae1b753cbf7a90d4ad464490d qkou@qkou.info Qiang Kou (KK): [cpp] refactor tf scorer to handle imaging data (#961)
+2020-05-13T08:57:16+02:00  0c525d37148d58d7a4cf95d7c7842b9a1703c951 pkozelka@gmail.com Petr Kozelka: CSV processing: support selected input columns on output (#957)
+2020-05-12T11:28:40-07:00  ee5faab5ffecc06f3e5fbbdbd6f7e793178d3126 qkou@qkou.info Qiang Kou (KK): [cpp] add ImageNet preprocessing transformer (#960)
+2020-05-08T19:30:25-07:00  623c2c97b49d7b2b1eefa8d73d573394eb5ff123 qkou@qkou.info Qiang Kou (KK): [cpp] image resizing transformer (#959)
+2020-05-06T16:11:05+02:00  ff0012d19fb4928fc2d741af4db3e70f56ac5890 pkozelka@gmail.com Petr Kozelka: build.gradle: remove trailing whitespaces
+2020-05-05T20:13:29+02:00  8f84ad3982126d50a4afc590ae9123a5fa5bb712 pkozelka@gmail.com Petr Kozelka: cleanup: remove SimpleMojoBackend, it's not used anymore (#956)
+2020-05-04T17:00:26-07:00  d0cdb19a6151a240d7bbd6ca17c86beb3047e58b qkou@qkou.info Qiang Kou (KK): [cpp] add image data type (#955)
+2020-05-01T18:01:56-07:00  f07418826bcf832ff1135d3f998e50ef729c1dce qkou@qkou.info Qiang Kou (KK): [cpp] add roberta base tokenizer (#954)
+2020-04-30T10:58:03+02:00  3961013c58ef58515c6271f3e1ab7c6c25935f98 pkozelka@gmail.com Petr Kozelka: Cleanup in MojoPipelineProtoImpl (#949)
+2020-04-30T01:39:19+02:00  f52326ba3749d9e13269658cd868ae4e23fa7462 pkozelka@gmail.com Petr Kozelka: Implemented H2O3BackendAdapter for easier integration into pipeline providers (#950)
+2020-04-29T16:04:55-07:00  62d070b913a28c5dff3bdcaa17c6e936ad468a76 qkou@qkou.info Qiang Kou (KK): [cpp] add xlm roberta tokenizer (#952)
+2020-04-29T06:07:24+02:00  5f56c6a73571496cc84fb8fd87a6736e11d553e7 pkozelka@gmail.com Petr Kozelka: Merge pull request #921 from h2oai/pk/newapi-readers
+2020-04-28T17:04:20-07:00  d6ce2ad2536a033b97e66cc6457fbc794c9eb049 qkou@qkou.info Qiang Kou (KK): [cpp] add xlnet tokenizer (#947)
+2020-04-28T10:40:46-07:00  6d4736f8eac270146bea0225c701155d5caaad31 qkou@qkou.info Qiang Kou: Next devel cycle 2-SNAPSHOT
+2020-04-28T15:48:46+02:00  3e4a8cdf2e818d55073871bbbff55189185add8d pkozelka@gmail.com Petr Kozelka: Merge pull request #945 from h2oai/pk/cleanup-MojoPipeline
+2020-04-27T15:43:25-07:00  (tag: v2.4.1) e0296a578d056e2f8e18528f37b8cd11a939dac6 qkou@qkou.info Qiang Kou: [BUILD] Release v2.4.1
+2020-04-27T15:34:33-07:00  4d21452179e7ea562a0dfa0a43d4ffa1a8a0ef9e qkou@qkou.info Qiang Kou (KK): [cpp] add camembert tokenizer (#946)
+2020-04-27T13:08:00+02:00  f1deac806b7b9a938621eca2e5df3bf472c71b27 pkozelka@gmail.com Petr Kozelka: Remove dead code from MojoFrameMetaBuilder (#944)
+2020-04-27T11:20:52+02:00  4213c7953bfcf80a0e82d7b07574796215dbbc0c pkozelka@gmail.com Petr Kozelka: issue 888: csv with unescaped newline - not supported right now (#906)
+2020-04-25T17:28:39-07:00  333fd94ff37c0b1be307f3ab68f174e95ce66aa7 qkou@qkou.info Qiang Kou (KK): [cpp] update packaging docker image (#943)
+2020-04-24T14:57:00-07:00  469867ae3be18a2e38e2d2292a17afb5f213cc0a qkou@qkou.info Qiang Kou (KK): [cpp] add albert tokenizer (#942)
+2020-04-24T19:42:03+02:00  cf52b105252dddd2d5c7065aa9e08459c0406a80 pkozelka@gmail.com Petr Kozelka: Jenkinsfile: added !micro, to avoid pytorch problem with Illegal instruction (#939)
+2020-04-24T10:02:31-07:00  60d2fe40a9cf46741d298937888a36e8ff132e62 mr.navdeepgill@gmail.com Navdeep Gill: Implement support for k-LIME MOJO (#910)
+2020-04-23T14:42:49-07:00  4ba533f6c3dff37ae27ea5d77e80a452e3e15473 qkou@qkou.info Qiang Kou (KK): [CI] release libdaimojo on S3 (#937)
+2020-04-23T10:00:46-07:00  7b721488eca4a92d982cacbe92b4fbebb5cd8bd7 qkou@qkou.info Qiang Kou (KK): [cpp] separate Bert Tokenizer and SentencePiece Models (#936)
+2020-04-22T09:36:59+02:00  965006e52bbdf1fe9a7533f7983dc11d5c81230f pkozelka@gmail.com Petr Kozelka: Merge pull request #933 from h2oai/pk/rm-dead-toml-code
+2020-04-21T16:49:18-07:00  77427871bd6c260ba4e8d04c08ae21bcc3bad28b qkou@qkou.info Qiang Kou (KK): [cpp] upgrade pytorch to 1.3.0 (#814)
+2020-04-21T21:00:21+02:00  80409ef357caa1fb873714b12489e22005141c41 pkozelka@gmail.com Petr Kozelka: Merge pull request #893 from h2oai/pk/itest-java
+2020-04-20T16:57:59-07:00  641aba1415f2de6f94d0e3cdd5b0d889b0a28e10 qkou@qkou.info Qiang Kou (KK): [cpp] add distilbert tokenizer (#930)
+2020-04-20T19:59:46+02:00  bc9fd1828f1a1ad6c61e54e9f5ee6e2f8f2fd3a4 pkozelka@gmail.com Petr Kozelka: Removed dead tests (#931)
+2020-04-20T12:41:34+02:00  b8ed9a102b9951a59773cf71fd683cb46c920b66 pkozelka@gmail.com Petr Kozelka: MojoTransformMomentTest: optimized imports to remove dead class dependencies (tiny)
+2020-04-17T14:48:02-07:00  b77a9d7a18906b1a4957b5b8fd7e63e5684e3add qkou@qkou.info Qiang Kou (KK): [py] including transformer vocab files in daimojo pkg (#927)
+2020-04-16T15:26:15-07:00  0c8e61165eb42584d5ec87f0d70a1f092250bd56 qkou@qkou.info Qiang Kou (KK): [cpp] delete tmp files generated in tensorflow transformer (#923)
+2020-04-16T14:12:33-07:00  dc3093b29a5e5eabc5e06b82b681e54b8e4112e4 qkou@qkou.info Qiang Kou (KK): [cpp] warning for custom op in pipeline (#924)
+2020-04-15T19:43:06-07:00  1c12ca96fbb80c28be7a62b3ea19104b8e8bb035 qkou@qkou.info Qiang Kou (KK): [cpp] suffix of shared lib on OS X can be .so or .dylib. close #928 (#929)
+2020-04-13T22:35:41-07:00  da881ce1c0970d7ba5966561a336db695b322256 qkou@qkou.info Qiang Kou (KK): [cpp] update bert tokenizer following python pkg (#922)
+2020-04-10T16:08:32+02:00  54ed8a034cfc74e551f4cbeb152cabd1c78861e8 pkozelka@gmail.com Petr Kozelka: eliminated error-prone separator configurability (#919)
+2020-04-10T10:39:15+02:00  8ed33ad4303e6b3b15c5eef19e7daff2dae80244 pkozelka@gmail.com Petr Kozelka: Remove dead code (#916)
+2020-04-09T18:12:28-07:00  a0fb663637db7b87f2fabbb410dcc7855a60ebb3 qkou@qkou.info Qiang Kou (KK): [WIP][cpp] switch to json format for lightgbm model serialization. close #853 (#920)
+2020-04-07T08:13:53+02:00  994b1a63aba33dd6a6be46f75f4484690045cedf pkozelka@gmail.com Petr Kozelka: [java] Have stronger typing in MojoPipeline.loadFrom (#914)
+2020-04-06T16:30:14-07:00  3feb7820c7da95c601985694d9399c973c41c642 qkou@qkou.info Qiang Kou (KK): base score should be used as base margin if later is not available (#915)
+2020-04-03T16:13:49-07:00  0b9bf81bda17ee922bcd4493291f86521ccbc47f michal@0xdata.com Michal Malohlava: [FIX] Load datetime from Protobuf (#912)
+2020-04-01T15:40:50-07:00  24619bb72f9cc22b7e505b65f263a08e32e73b3c qkou@qkou.info Qiang Kou: Next devel cycle 1-SNAPSHOT
+2020-04-01T13:11:57-07:00  (tag: v2.4.0) 745b933bd27d6228b7452e58a91434cbe771f448 qkou@qkou.info Qiang Kou: [BUILD] Release v2.4.0
+2020-03-27T20:20:45+01:00  27f72976991c263554a321c2b56a2e193fec5a73 pkozelka@gmail.com Petr Kozelka: Explicitly check that CSV has same number of columns as its header row (#909)
+2020-03-26T13:44:58-07:00  88ac9c7e0d1f810499680017876e7cf1a29f8d19 edgar@orendainx.com Edgar Orendain: Exposed H2O-3 UUID (#907)
+2020-03-26T11:07:50-07:00  a64b9072ef17bc03d19e2ea13ad0be6addaca7ce qkou@qkou.info Qiang Kou: [py] add py/model2proto/bin/tree2txt
+2020-03-26T10:51:18-07:00  c4d2f1f6d8c060f488de63dbd4da2c7bd01dfea8 qkou@qkou.info Qiang Kou (KK): [DOC] update tree shap value notebook (#905)
+2020-03-26T11:59:25+01:00  b0434ec41b4b4096cbc5654ad0346bbb1e42a960 pkozelka@gmail.com Petr Kozelka: Drop unnecessary SimpleCSV class (#901)
+2020-03-26T01:34:52+01:00  cf5444daf1bd12e820f3c49ec08a2c3ec9b07114 pkozelka@gmail.com Petr Kozelka: Eliminated Javassist from MojoTransformIsNaBuilder (#795)
+2020-03-25T19:43:26+01:00  640310efdc3f57986a05d08ddf776a823a8f22b8 pkozelka@gmail.com Petr Kozelka: Batched validation of predictions (#904)
+2020-03-25T19:37:06+01:00  d9c6808176b9e479b3fec02fad393e63e6b4bac8 pkozelka@gmail.com Petr Kozelka: [java] tiny fix in deprecation of MojoPipelineReaderBackendFactory#createReaderBackend (#903)
+2020-03-23T23:09:59-07:00  b3d2011097cee12624dfabc293573b5875598017 qkou@qkou.info Qiang Kou (KK): [IDL] store transformed feature names. close #900 (#902)
+2020-03-20T10:57:44-07:00  db7e1f8edda4914efcd104b75265b6f2edc11275 michal@0xdata.com Michal Malohlava: [ITEST] Include 1.8.5.1 migration state (#898)
+2020-03-20T00:27:01+01:00  030d2d97b14ca6834e5a9b7a0fd665b6cfc41b85 pkozelka@gmail.com Petr Kozelka: Mini batching (#883)
+2020-03-19T13:34:49-07:00  a73050e2551aeaa00b82cf9fb6c24666030aabc4 michal@0xdata.com Michal Malohlava: [ITEST] Include 1.8.5.1 migration state (#897)
+2020-03-18T16:57:22-07:00  f02d9156a7b5463c9ae2fbefeab194b0c35ccd65 qkou@qkou.info Qiang Kou (KK): [cpp] tree shap values of linear ensemble model (#891)
+2020-03-16T13:27:47-07:00  74c024dceb36bfd5432df788d511ef6b8623df43 qkou@qkou.info Qiang Kou: [py] remove reference of mojo visualization code
+2020-03-15T13:32:55-07:00  407528946baab1ef58137334bebd4251f885c416 qkou@qkou.info Qiang Kou: [py] visualization code has been moved into h2oai repo
+2020-03-15T13:32:02-07:00  e85f80a1c4c61186996885860e904b6a8f190fb2 qkou@qkou.info Qiang Kou (KK): [cpp] not return transformed dataframe. close #894 (#895)
+2020-03-11T18:22:44-07:00  2dcb6cc7afb483b61e011e658d88d85a965320ba qkou@qkou.info Qiang Kou: [R] fix roxygen2 upgrade
+2020-03-11T12:38:45-07:00  9ea76b6030e008aed38c4e776480d183ce2c3f1b qkou@qkou.info Qiang Kou (KK): [cpp] more append methods for MojoFrame (#892)
+2020-03-10T17:03:22-07:00  e73828c5b45bc60c878ea05efc68bc484f5903f7 qkou@qkou.info Qiang Kou (KK): [cpp] sub pipelines can have the same pred_contrib_names (#890)
+2020-03-10T12:42:00-07:00  ee0b2447f70e2890f6e8f7b80480cd2d505237f2 qkou@qkou.info Qiang Kou (KK): [cpp] remove undocumented verbose option (#889)
+2020-03-09T14:05:40-07:00  86886757d52be0795fb1bbba1371b5819e1b0714 qkou@qkou.info Qiang Kou: Next devel cycle 2-SNAPSHOT
+2020-03-09T12:36:44-07:00  (tag: v2.3.1) 647e1b77919af174b3d971ef7d52b2f985fc441d qkou@qkou.info Qiang Kou: [BUILD] Release v2.3.1
+2020-03-05T12:44:55-08:00  0c6308ba194813087a6ee0e1bee5c509791b03e8 qkou@qkou.info Qiang Kou (KK): Improved parameters for CustomOp extensions (#884)
+2020-03-03T16:10:35-08:00  41ceb9aa842becf2bdbab71d8ab516aa582fce02 qkou@qkou.info Qiang Kou (KK): [cpp] using Google's double conversion library instead of Netlib's dtoa (#882)
+2020-03-02T17:26:58-08:00  4ed50700e7245e87947cb4274294e090d7665467 qkou@qkou.info Qiang Kou (KK): [cpp] use dtoa from python to convert floating point num to string. close #833 (#881)
+2020-02-27T16:37:03-08:00  1350284427107dcad1346c47fdf266ce0027aec0 nkalonia1@gmail.com nkalonia1: [Java] Addition of tensorflow transformer to Java runtime (#810)
+2020-02-27T10:19:46-08:00  01f913e298fb59644bd2bc008776d27a1fc7b860 qkou@qkou.info Qiang Kou: notebook for treeshap value demo
+2020-02-27T17:23:29+01:00  e089b73237e86fd3404c62dad023874685f34a9c pkozelka@gmail.com Petr Kozelka: Mojo must not be locked to single processing backend (#857)
+2020-02-25T16:20:35-08:00  436d1d342e3d10070c23445551d7f8e6b9e0f4d7 qkou@qkou.info Qiang Kou (KK): [py] check DAI version when pred_contribs=True (#879)
+2020-02-25T14:04:36-08:00  7fa01467601366f6567916b24dd36c82aaafefaf qkou@qkou.info Qiang Kou (KK): [py] return prediction, pred_contribs and transformed data when pred_contribs=True. (#878)
+2020-02-24T23:21:57-08:00  024de5dd4903dba00424a61da229e70e12246a3b qkou@qkou.info Qiang Kou (KK): [R] generate Rd files using roxygen2. close #876 (#877)
+2020-02-24T16:35:29-08:00  e9d4f9e2c66931ee4aa5edcbe91a70a7fa0ac6d1 qkou@qkou.info Qiang Kou (KK): Next devel cycle 1-SNAPSHOT
+2020-02-24T15:39:56-08:00  (tag: v2.3.0) 80a9f5b85c9f8331b925d5736b5bb38f16d1f3ee qkou@qkou.info Qiang Kou (KK): [BUILD] Release v2.3.0
+2020-02-21T22:36:48-08:00  e242c00c023e3875f6fe97c985c01586c36af6f7 michal@0xdata.com Michal Malohlava: Fix of h2o-3 runtime dependencies. (#869)
+2020-02-21T12:26:10-08:00  bc11cd589e0b3dbd9c9fa688842667e284e7852b qkou@qkou.info Qiang Kou (KK): [cpp] simplify tree serialization code (#875)
+2020-02-20T22:23:13-08:00  8cf5439e1bffb7cd6daf85b4eb9225cee4e9c0ee qkou@qkou.info Qiang Kou (KK): Upgrade xgboost to 1.0.0. close #870 (#873)
+2020-02-20T15:34:36-08:00  0d9e6bf9eebe497d66b7c05775331d418c2ec378 michal@0xdata.com Michal Malohlava: [ITEST] Include 1.8.4.1 for migration testing. (#872)
+2020-02-19T17:49:18-08:00  3bc35223c04ebfcc8a12dc8706a037711bf75c4a qkou@qkou.info Qiang Kou (KK): [cpp] TreeShap value test for lgbm model with multiple outputs (#868)
+2020-02-19T14:43:22-08:00  9b44b0022eaf20c049460c575fc406e0aa065686 qkou@qkou.info Qiang Kou (KK): [cpp] TreeShap value test for lgbm model with single output (#867)
+2020-02-19T10:43:02-08:00  ba6d2cfdd24c654d2d2896bdb270b7c8e98c6866 qkou@qkou.info Qiang Kou (KK): [cpp] test for TreeShap values from xgboost model with multiple outputs (#866)
+2020-02-18T22:51:39-08:00  1b0d846c4e8b7b22bd0c4cbb4907096fdeb7fc07 qkou@qkou.info Qiang Kou (KK): [cpp] test for TreeShap values from xgboost dart model with multiple outputs (#865)
+2020-02-18T15:00:58-08:00  d8c6e59eb5ee2d911f6691837ede63727fe10196 qkou@qkou.info Qiang Kou (KK): [cpp] test for TreeShap values from xgboost dart model (#864)
+2020-02-16T19:12:54-08:00  12754d2c8c618b37178df4faf0a7e8bd0268d341 qkou@qkou.info Qiang Kou (KK): [cpp] add one test for TreeSHAP values (#862)
+2020-02-13T17:29:54-08:00  4ab8df6612fd98e6b5ebda5aacdfa638c6de1fc8 qkou@qkou.info Qiang Kou (KK): [cpp] TreeShap values from mojo file (#861)
+2020-02-13T14:21:05-08:00  cf8cffe7b0ca693c4549bfe30dadbb1a6fef2831 qkou@qkou.info Qiang Kou (KK): [cpp] leaf nodes also need data count for SHAP values (#860)
+2020-02-11T16:46:29-08:00  c3dc997fe6c2d715b0faccccbd3d33c7d3a6a486 qkou@qkou.info Qiang Kou (KK): [cpp] save base_score and expected value for tree model (#859)
+2020-02-10T14:27:20-08:00  e4ec71dbae50c5266d9fc64cb8bb4977ff52bc9d qkou@qkou.info Qiang Kou (KK): [cpp] add pred_contribs parameter (#858)
+2020-02-07T15:50:24-08:00  568a7d227dd993aa77b285d92743242674148cc2 qkou@qkou.info Qiang Kou (KK): [cpp] get transformed names from pipeline (#856)
+2020-02-07T13:07:03-08:00  9d2f6f05621f0263103da9102eacbcc5054297d5 qkou@qkou.info Qiang Kou (KK): [cpp] add TreeSHAP computation from xgboost (#854)
+2020-02-06T17:31:33-08:00  75f2bf627b150eeeeace58a2944bbc548ee04a6c qkou@qkou.info Qiang Kou (KK): [BUILD] remove model2capnp (#851)
+2020-02-06T14:30:07-08:00  cb37d12b905b534f5c1bc0bd515219762fec9120 nkalonia1@gmail.com nkalonia1: Turns out my implementation of `%b` didn't handle the case for "Jan" properly. Fixed and added test (#852). close #832
+2020-02-05T17:31:07-08:00  67d8c137308e9a8b0d00487e3c8c30ee090a03e0 qkou@qkou.info Qiang Kou (KK): [cpp] switch to json for xgboost model serialization. close #842 (#849)
+2020-02-04T04:48:08+01:00  bcc1959122671b9c959307217b609cfcc47f92dc pkozelka@gmail.com Petr Kozelka: [java] Cosmetic fix: avoid empty catch block, use the exception (#846)
+2020-01-31T21:34:55-08:00  849457f07a29b3742a6e19d4f6dcac3d53acf549 qkou@qkou.info Qiang Kou (KK): [cpp] use -1 as NA value for std::tm
+2020-01-31T18:59:29-08:00  5fb32b51d5ac0c482c745576e2f3df2a1916c591 michal@0xdata.com Michal Malohlava: [JAVA] Implements a service to create custom transformation builders. (#787)
+2020-01-30T19:37:44+01:00  5c062b6d0bcf11ce09349a54bc16fcd47eb89d85 pkozelka@gmail.com Petr Kozelka: [java] fixed timezone handling, by eliminated static initializer of the default timezone and using preferred TZ (UTC) explicitly (#797)
+2020-01-29T18:15:54-08:00  f6341bf5ff1017777fa4fc0409ef97efa5fecf7c qkou@qkou.info Qiang Kou (KK): Next devel cycle 1-SNAPSHOT
+2020-01-29T17:20:31-08:00  (tag: v2.2.0) 2366192a018374333c8be36dc7d7576a3569aaa4 qkou@qkou.info Qiang Kou (KK): [BUILD] Release v2.2.0
+2020-01-29T14:01:52-08:00  072ccc0c84f4182ee567b5f8804726e53381994b michal@0xdata.com Michal Malohlava: [ITEST] Include 1.8.1 state for integration testing. (#812)
+2020-01-27T12:16:27-08:00  cf19e11e22be45bffd249ae3d2ae2e9bae08b46b qkou@qkou.info Qiang Kou (KK): [cpp] not include lightgbm in model2proto (#843)
+2020-01-27T19:58:13+01:00  eb536ada2a0738ae58c704a1cf19369c3b85af9b pkozelka@gmail.com Petr Kozelka: [java] Removed dead code (#836)
+2020-01-24T09:03:52-08:00  dbea5302aa32be4251428257ea90f39586f09054 qkou@qkou.info Qiang Kou (KK): [c++] PathElement and related functions (#840)
+2020-01-21T16:24:26-08:00  c0137fc9e5de5299fd7385c885f5c5f7fca81e96 qkou@qkou.info Qiang Kou (KK): [c++] add has_treeshap method into transformer and pipeline (#839)
+2020-01-21T12:48:25-08:00  293638470bad9102a05e82e053b76c1928fcc6af qkou@qkou.info Qiang Kou (KK): [IDL] DAI version in mojo file (#829)
+2020-01-17T16:29:51-08:00  c1a95d0b46946e2676b2c140e30b19769f04f1c4 qkou@qkou.info Qiang Kou (KK): [cpp] make const binary transformer valid between different types. close #834 (#837)
+2020-01-17T12:47:01-08:00  a51cf274d4d2ddb188f23f2b7b07950009af13ea qkou@qkou.info Qiang Kou: Next devel cycle 20-SNAPSHOT
+2020-01-16T21:28:14-08:00  7c5549fe2b2c1ca2820e0b754cd3391156324a78 qkou@qkou.info Qiang Kou: [BUILD] Release v2.1.19
+2020-01-16T21:27:08-08:00  d5ab78e130f7f24364998ef6093244d7d96eeddc qkou@qkou.info Qiang Kou (KK): [cpp] remove usage of mktime, which will convert tm into local time (#835)
+2020-01-16T11:36:09-08:00  eddd92da2e1b439072723c693946ef85f08a040d michal@h2o.ai mmalohlava: [BUILD] Archive obfuscation mapping.
+2020-01-14T17:26:23-08:00  e55e5da4d0f269e71e4d1559a60e12c33f0a98de qkou@qkou.info Qiang Kou (KK): Next devel cycle 19-SNAPSHOT
+2020-01-14T15:50:13-08:00  (tag: v2.1.18) 08b202a994e5c1ca35403e129cff4d513994cbbd qkou@qkou.info Qiang Kou (KK): [BUILD] Release v2.1.18
+2020-01-14T09:33:09-08:00  f1516447c1766488c37eebb46b5e4314c4631fb9 qkou@qkou.info Qiang Kou (KK): [cpp] make tm_mday to be 1 if day field is missing. close #828 (#830)
+2020-01-13T14:51:24-08:00  51f5191ca079d3a8e7a4da494ce1345a13f61225 michal@h2o.ai mmalohlava: [HOTFIX] :fire: Wrong grep expression in our Jenkinsfile
+2020-01-09T13:08:06-08:00  a9fd599db9138a2207ca21397eff2d27fdee892f michal@0xdata.com Michal Malohlava: [LICENSE] Add default license lookup into ~/.driverlessai/license.sig (#826)
+2020-01-08T16:07:51-08:00  ab56d77796bd601033be0e6e8993185de3838331 nkalonia1@gmail.com nkalonia1: Merge pull request #805 from h2oai/pk/agg-trunc-error
+2020-01-07T09:33:41-08:00  af978b492d7a6728f9875d08fcdf0f42fceef4d0 qkou@qkou.info Qiang Kou (KK): [cpp] do not use push_back for vector of flexible types (#822)
+2020-01-06T09:18:56-08:00  7e21211fded745ff243bd1e30f704b48238d7f3c qkou@qkou.info Qiang Kou: Next devel cycle 18-SNAPSHOT
+2020-01-04T16:52:06-08:00  (tag: v2.1.17) de6da93a074812fec1d73fe60f48a5536c4e10e1 qkou@qkou.info Qiang Kou: [BUILD] Release v2.1.17
+2020-01-04T13:07:58-08:00  (tag: v2.1.16) 1ce5bd8482b4fd6ff75aba4523054010e5ec4dd9 qkou@qkou.info Qiang Kou: [BUILD] Release v2.1.16
+2020-01-04T12:56:10-08:00  4314485993028ae31684925294f4194b16e18809 qkou@qkou.info Qiang Kou (KK): [cpp] fix memory leak in C API (#823)
+2020-01-03T16:43:52-08:00  f0bdffc693f6335f434b0904fba008bd5dca1a9f nkalonia1@gmail.com nkalonia1: [cpp] Return int64 NA when hashing NA values in FTRL (#820)
+2020-01-03T10:31:15-08:00  a8e20821e6531ddffc24e5c81a538e18079f34d5 qkou@qkou.info Qiang Kou (KK): [cpp] not capture input/output names in transformers (#821)
+2020-01-02T11:57:04-08:00  df48122618245dcf1334578dac65693ba532659b qkou@qkou.info Qiang Kou: Next devel cycle 16-SNAPSHOT
+2020-01-02T10:40:02-08:00  (tag: v2.1.15) 68e2f4d3f0b3bd10aa199bf5f44ae3ecc2848609 qkou@qkou.info Qiang Kou: [BUILD] Release v2.1.15
+2020-01-02T10:02:56-08:00  e0723b92ea00aa036ffdf26d6796a4fdf4fa3c86 qkou@qkou.info Qiang Kou: [test] update licence checking test
+2019-12-31T15:26:44-08:00  (tag: v2.1.14) 41c18302361964420f1d96e84593e74962216ef1 qkou@qkou.info Qiang Kou: [BUILD] Release v2.1.14
+2019-12-30T14:46:15-08:00  75c4ae6349b6da0528e4e6366af0b7eeeb1857a3 nkalonia1@gmail.com nkalonia1: [Java] Remove use of `Long.remainderUnsigned` java FTRL code (#816)
+2019-12-30T11:27:33-08:00  2f496e75d67037a6020aef604df0108b982c5126 qkou@qkou.info Qiang Kou (KK): [cpp] reduce memory usage for array of strings (#819)
+2019-12-30T09:50:37-08:00  083763a2147b0aa2f1861bdecbe59ca8e4a2f216 qkou@qkou.info Qiang Kou: [cpp] add missing decref/incref for std::tm in flexible type
+2019-12-27T18:14:23-08:00  c9a4bd867c28883c52c89d96f10a61e213d091c9 qkou@qkou.info Qiang Kou (KK): change tm to pointer (#818)
+2019-12-23T15:32:55-08:00  e936c23e685e5da84562e04b4223230da87c4745 qkou@qkou.info Qiang Kou: [test] upgrade java runtime version in C++ unit test
+2019-12-23T09:44:02-08:00  576b5a1d0e6dd46037a0ea66d0a58a6294f93d53 qkou@qkou.info Qiang Kou: Next devel cycle 14-SNAPSHOT
+2019-12-20T17:05:04-08:00  0aef8df907a435e1ce631544df8dd2b1742a0da8 qkou@qkou.info Qiang Kou: [py] add latency measurement into py/daimojo/bin/mojo_scoring_cli
+2019-12-20T14:02:07-08:00  3d7a1f2514f8e16930667a9d2ae0ca8b4f5bb3c5 michal@0xdata.com Michal Malohlava: [BUILD] Change build settings
+2019-12-20T10:59:41-08:00  (tag: v2.1.13) 9ccae6298c252fcb8baccf340d05480a0cd32dd3 qkou@qkou.info Qiang Kou: [BUILD] Release v2.1.13
+2019-12-20T10:57:56-08:00  525df632c6d80995173001336443ad2cd07ac1b7 qkou@qkou.info Qiang Kou (KK): [java] matrix product between int columns and double/float matrix (#809)
+2019-12-20T09:33:26-08:00  8f074ff07558e9240308e3c2af021b6aa645176f qkou@qkou.info Qiang Kou (KK): [test] add test for the tree structure in protobuf against json from LightGBM (#815)
+2019-12-19T15:47:48-08:00  67a3b8c085fc2bfd9614a0f4084f11e7849e2699 qkou@qkou.info Qiang Kou: remove usage of keras2tf
+2019-12-19T14:12:45-08:00  ec15619c7e11e428ff0e113327f61d74643eb340 qkou@qkou.info Qiang Kou (KK): remove unused keras2tf
+2019-12-17T15:33:36-08:00  fee3e256f23f7e1f098159d11a506d0caf19fbd0 michal@0xdata.com Michal Malohlava: [UBENCH] A simple framework to perform microbenchmarks using JMH. (#801)
+2019-12-17T20:32:44+01:00  790ff981a5f383babdd161435464410c81af3279 pkozelka@gmail.com Petr Kozelka: Mark type Bool as not numeric (#807)
+2019-12-16T15:10:29-08:00  e58eceee9e6289b16986b6d65125af7d6643ba82 qkou@qkou.info Qiang Kou: fix s3 upload
+2019-12-13T14:53:14-08:00  dc4bbdd848ee958210f07eecc55d510defa56065 qkou@qkou.info Qiang Kou (KK): [BUILD] update the python/R artifact releasing (#799)
+2019-12-13T14:05:59-08:00  2c60535eb8d2458fa543b4d9348b6e5fa3f9fb1c qkou@qkou.info Qiang Kou (KK): [cpp][py] simplify CMake settings for different platforms (#808)
+2019-12-13T10:03:04-08:00  51b2b509bdbf0a2737571cbe74a31f5d440cf587 qkou@qkou.info Qiang Kou (KK): [cpp] update for Windows compiling (#806)
+2019-12-12T12:27:38-08:00  920949e0580e7ffa39e0698045ce63f43975f522 qkou@qkou.info Qiang Kou (KK): [cpp] provide wrapper for platform-dependent code  (#800)
+2019-12-11T15:57:15-08:00  b85f3d3be719f973341d78358fada12d836deb17 qkou@qkou.info Qiang Kou (KK): [cpp] switch to std::getenv
+2019-12-10T13:36:03-08:00  aaecb97d388253f71d1be557ba2ded8fdaa7077f tomk@tomk.net Tom Kraljevic: Merge pull request #789 from h2oai/tomk-h2o-3-mojo
+2019-12-10T12:32:41-08:00  2c0a2f62535324299fe485209706cab859ebb5e6 qkou@qkou.info Qiang Kou (KK): [cpp] enable matrix product between integer rows and float/double matrix (#773)
+2019-12-09T16:48:52-08:00  aaa0f5986f3faa404eed0f07ca77f32bc9ac3e9c qkou@qkou.info Qiang Kou (KK): [cpp][R] switch to C++ 98 for daimojo R pkg. close #764 (#766)
+2019-12-09T15:48:04-08:00  a93a6815c6b65f477a80369eaa66cc0fb6d4c1dc qkou@qkou.info Qiang Kou (KK): [build] improve building speed (#798)
+2019-12-09T14:11:55-08:00  85b64ad6110f2a2e522aaddf9478261025772314 qkou@qkou.info Qiang Kou: [TEST] add tiny ftrl mojos for testing
+2019-12-06T16:27:15-08:00  9d5065c67b58dedc9883553dd7f7ca0e5b1a4622 nkalonia1@gmail.com nkalonia1: Updates to Jenkinsfile to run Java MOJO tests on multiple Java versions (#765)
+2019-12-06T11:15:37-08:00  5bbd120fd4b5dd77c4420cd351748fd9d74ebf9d qkou@qkou.info Qiang Kou: [vis] hotfix for binary ensemble model
+2019-12-05T16:29:30-08:00  9067c3cd52c02f7455a112405d1979208de1d47f qkou@qkou.info Qiang Kou: Next devel cycle 13-SNAPSHOT
+2019-12-05T11:57:45-08:00  (tag: v2.1.12) d695db114ba5a66e2301971bc05012a292bb6044 qkou@qkou.info Qiang Kou: [BUILD] Release v2.1.12
+2019-12-05T11:00:31-08:00  fa26cf45103661a5201c57069e119d295de10cc3 qkou@qkou.info Qiang Kou (KK): [cpp] add linear model for XGB. close #793 (#794)
+2019-12-04T17:16:16-08:00  22d4d34722f76218f7f822cb49f69bb57c73ff76 qkou@qkou.info Qiang Kou (KK): [VIS] make sure output names of sub-pipeline are correct (#792)
+2019-12-04T10:48:55-08:00  20bbac4301f4adc3cc1aef14fd3b3f95338b46b3 qkou@qkou.info Qiang Kou (KK): [R] pkg name now has arch and OS names (#790)
+2019-12-02T17:33:03-08:00  554316f0499596234d3ed9fffe87a20348d19219 qkou@qkou.info Qiang Kou (KK): [VIS] update the visualization code for CV structure (#788)
+2019-12-02T11:51:17-08:00  eb95383a03cd1a8c754fc92b6f91aabb11b2b622 qkou@qkou.info Qiang Kou: [OSX][R] release source R pkg for OSX from Jenkins
+2019-12-02T11:11:16-08:00  ebf4b5bfcd16b8f26548c95ca09d851e5fc66f73 qkou@qkou.info Qiang Kou: [OSX][R] release binary R pkg for OSX from Jenkins
+2019-12-02T11:09:07-08:00  ac7f4f2c1fd10c3f681ec58a58c4efeecabc135b qkou@qkou.info Qiang Kou: [R] no need to link against BLAS/gfortran
+2019-12-02T10:11:24-08:00  856e50ba24104aeba5cbad79fb99c9af633c9994 qkou@qkou.info Qiang Kou (KK): [OSX][R] release the source pkg from Jenkins (#786)
+2019-12-01T21:10:57-08:00  539a657470aa5b5b833e255665b7313bcd313435 qkou@qkou.info Qiang Kou (KK): [R] release R pkg for OSX from Jenkins (#785)
+2019-11-29T10:04:37-08:00  573c33778ccd1196ef32d4191dc274aad25ba0e2 qkou@qkou.info Qiang Kou (KK): [CI] include libtensorflow in OSX release (#784)
+2019-11-26T16:13:16-08:00  09643ce029cc9d02ff2c1d93087a2fd618d2f0e1 qkou@qkou.info Qiang Kou (KK): [CI] release OSX python scoring whl from jenkins (#781)
+2019-11-24T12:58:48-08:00  3f29b00e9fdedcf8135eeb556dde5f18a6203cd8 qkou@qkou.info Qiang Kou (KK): [vis] generate dot file for XGBoost/LightGBM tree model (#780)
+2019-11-22T15:54:19-08:00  295720ffe960006d23a51a4604b22e3bca09c5b6 qkou@qkou.info Qiang Kou (KK): [vis] tweak the visualization code. close #778 (#779)
+2019-11-19T16:23:12-08:00  529689311f83fd35111e274a3054bf643030876c qkou@qkou.info Qiang Kou: Next devel cycle 12-SNAPSHOT
+2019-11-19T15:05:11-08:00  (tag: v2.1.11) 5b18c0258efde71cb7c14363e01d5bb05036d5fd qkou@qkou.info Qiang Kou: [BUILD] Release v2.1.11
+2019-11-19T15:03:38-08:00  46cce05f13440e66c66620b01f88980712137ef2 qkou@qkou.info Qiang Kou (KK): [Java] fix FTRL implementation (#777)
+2019-11-15T16:53:23-08:00  8f0a0e7087c88b45eac4a3fe75301ae2d3d4a339 qkou@qkou.info Qiang Kou: Next devel cycle 11-SNAPSHOT
+2019-11-15T16:00:24-08:00  (tag: v2.1.10) 7e677d624093aca3af37ceab2efe59d7de3cb32e qkou@qkou.info Qiang Kou: [BUILD] Release v2.1.10
+2019-11-15T14:58:59-08:00  3b82cce2405b6f64dbdb1a73b37118eb0267660b nkalonia1@gmail.com nkalonia1: [Java] Implementation of the FTRL transformer (#751)
+2019-11-15T14:12:46-08:00  ba8b4e1fea26f295a3e3646869ba62faa38a1a3b michal@0xdata.com Michal Malohlava: [BUILD] Remove generated proto code from the repository (#752)
+2019-11-15T12:49:02-08:00  ae05cab1cbf7c2a12673d3755c5124f2c799ceb4 michal@0xdata.com Michal Malohlava: [ITEST] Fix generation of temporary directories (#776)
+2019-11-15T11:20:15-08:00  44a1e8970cf144c8e8240543b50996b729fba9ac qkou@qkou.info Qiang Kou (KK): [BUILD] not using e machines for testing, since they don't support AVX (#771)
+2019-11-15T09:59:54-08:00  ce04bc7cba4702d911ca0e06f6ac707faa1def67 qkou@qkou.info Qiang Kou (KK): [TEST] speed up generation of testing cases (#775)
+2019-11-14T14:58:48-08:00  cc90a745a3d5d3d0da0995e5bb5185de61e3f889 michal@0xdata.com Michal Malohlava: [ITEST] Extend integration tests to support mojo output from multiple (#774)
+2019-11-14T11:14:23-08:00  46b57f8ab124b172f92fe3f89c6d3b3a40d9fd16 qkou@qkou.info Qiang Kou: [PY] not using GPU when converting keras models into TF format
+2019-11-13T17:20:29-08:00  813f761b687b33cdf31e63fce74b7e55ebb98168 7327813+anuvaidya@users.noreply.github.com anuvaidya: [ITEST] include 1.8.0 for backward compatibility (#747)
+2019-11-13T12:25:22-08:00  ff8b5d9556bb1195272a31a13ceabb2dc0efe12e michal@0xdata.com Michal Malohlava: [TEST] Stress parallel MOJO load. (#768)
+2019-11-12T19:03:21-08:00  c5e8bf295f924600127dbf1c782ef186a1573129 qkou@qkou.info Qiang Kou: [PY] convert argparse results into float
+2019-11-12T10:41:17-08:00  a3a4105a858479e39b483e170f089f14ece2cb23 qkou@qkou.info Qiang Kou (KK): [BUILD] switch to ppc64le/centos (#770)
+2019-11-11T20:39:57-08:00  e948744e1022b3b32798420644ae12688c1d8d4b qkou@qkou.info Qiang Kou (KK): [PY] add keras2tf script to save keras model in a separate process (#769)
+2019-11-11T16:32:52-08:00  506add01af3a77faa6e8f6147d09cf90e45b207e qkou@qkou.info Qiang Kou (KK): Next devel cycle 10-SNAPSHOT
+2019-11-08T16:26:15-08:00  556905de8cc826ff9ed69443dee5a710f26d27c5 michal@h2o.ai mmalohlava: [BUILD][PUBLISH] Increase internal gradle socket timeouts to 5minutes.
+2019-11-08T14:03:21-08:00  (tag: v2.1.9) 37ce763cbe01106c6ae9d71aa13b4f9cf36899ab qkou@qkou.info Qiang Kou (KK): [BUILD] Release v2.1.9
+2019-10-30T07:27:16+01:00  e81e27a92aaee5fd469bfd222a1d5f58cba59b53 jakub.hava@gmail.com Jakub Háva: Mojo pipeline is not serializable (#745)
+2019-10-25T10:58:37-07:00  7a94abc69b6f9548c10d87dbdaedcef34592cab9 qkou@qkou.info Qiang Kou (KK): Include liblightgbm in model2proto (#761)
+2019-10-24T15:29:04-07:00  d521ee7cc9a759e7d3902576bcd719bae1c34875 qkou@qkou.info Qiang Kou: [BUILD] fix model2proto building
+2019-10-24T14:33:04-07:00  60755d3a35b75664ad6632a4117b1a665e74ace8 qkou@qkou.info Qiang Kou (KK): Support "==" decision type in lightgbm model serialization. close #759 (#760)
+2019-10-22T12:37:14-04:00  7e0f5cf932727a4c8ba781813f26f3dd9aa5cd69 51244975+achraf-mer@users.noreply.github.com achraf-mer: [TEST] Include 1.6.5 in mojo backward compatibility tests (#758)
+2019-10-21T09:00:46-07:00  6b3a1079ddf7b237a1178e64a01d21830843230a qkou@qkou.info Qiang Kou (KK): Mojo visualization using group information (#757)
+2019-10-18T20:17:35-07:00  d1efc95446344ea7ec85dca55e7d0b1a2b709e4d nkalonia1@gmail.com nkalonia1: [Java] Added a "strict" mode to MojoRowBuilder (#755)
+2019-10-17T16:16:37-07:00  b75899166e55c5b522643857e86474a17cc8225b qkou@qkou.info Qiang Kou (KK): [IDL] add transformation group (#756)
+2019-10-14T19:29:10-07:00  2f8a321b21f302e2c88ba467b34efd13d4531127 qkou@qkou.info Qiang Kou (KK): [cpp] fixes for bert scoring (#753)
+2019-10-10T17:20:37-07:00  72cd1f25f5b6e7095ffc244b5f6eca9df6175f40 qkou@qkou.info Qiang Kou (KK): [cpp] change output of pytorch tokenizer to (input, segment, mask) (#750)
+2019-10-10T15:16:44-07:00  60a4f72ccbddff7627002cef17bde99e6fad737e qkou@qkou.info Qiang Kou (KK): [cpp] Pytorch scoring support and an MLP example. close #738 (#739)
+2019-10-07T16:24:15-07:00  69f64eccebbd687f6989759f619a9304137d33ce michal@h2o.ai mmalohlava: [BUILD] Next devel version.
+2019-10-07T13:30:54-07:00  (tag: v2.1.8) 8ea08114b32e0ec363cc0851e48800d04840d395 michal@h2o.ai mmalohlava: [BUILD] Release v2.1.8
+2019-10-07T11:30:12-07:00  bfd4d15b97c40dfbe5b7d566a543383ab3940ae8 qkou@qkou.info Qiang Kou (KK): [cpp] Bert tokenizer (#746)
+2019-10-06T20:00:42-07:00  d79b102494b31c55307a20eed3e975c8404ea43f nkalonia1@gmail.com nkalonia1: [Java] Bundle a renamed protobuf library into mojo2-runtime-impl jar (#723)
+2019-10-04T22:59:56-07:00  f234de4de174384c7992f2682063635bfa661d18 michal@0xdata.com Michal Malohlava: [DOCS] Publish API Javadoc as part of jenkins (#743)
+2019-10-03T16:53:33-07:00  cf4495519543db60ffe4578b91b40c1bdcd97f04 qkou@qkou.info Qiang Kou (KK): [cpp] flexible_type implementation cleanup. close #165 (#737)
+2019-10-02T13:51:18-07:00  7f3d394dad7b58d573e76459376a699adc873728 michal@h2o.ai mmalohlava: Next devel cycle 8-SNAPSHOT
+2019-10-02T13:26:01-07:00  (tag: v2.1.7) c66e6bda667ba59a9fa3ba78dc7a72494754dee8 michal@h2o.ai mmalohlava: [BUILD] Release v2.1.6
+2019-10-02T13:08:12-07:00  f28abecfa7b50e9b56d1e0054c6ce0fd09ee41d2 nkalonia1@gmail.com nkalonia1: Lock the usage of `classMap` to prevent multiple pipeline builds from attempting to concurrently create the same class. (#744)
+2019-10-01T10:05:23-07:00  6eef58324528a79737a160d0b6bf1c239a0f8eab qkou@qkou.info Qiang Kou (KK): [cpp] using macro to remove duplicated code in mathematical transformers. (#731)
+2019-09-22T22:08:17-07:00  1589dde4fff3dd2e82043e79d2ef370dec0abce9 qkou@qkou.info Qiang Kou: [BUILD] Next dev cycle 2.1.7-SNAPSHOT
+2019-09-22T21:05:38-07:00  (tag: v2.1.6) d84c44e1e6ef369468190396e014d40af42e2728 qkou@qkou.info Qiang Kou: [BUILD] Release v2.1.6
+2019-09-19T15:00:36-07:00  a4ad9645cbce9538f3146370f9eb39c7e47b5c58 michal@0xdata.com Michal Malohlava: [ITESTS] Include version 1.6.4, 1.7.0 and 1.7.1 in backward (#710)
+2019-09-18T12:33:18-07:00  2ba76738d06f6fd112d818ec8dd72b8266d5ce47 qkou@qkou.info Qiang Kou (KK): [cpp] ftrl testing case update (#735)
+2019-09-17T16:46:22-07:00  4637d87c802108d86d112c2418350a8e3083cf5c qkou@qkou.info Qiang Kou (KK): [cpp] Fix FTRL MOJO for OriginalTransformers by saving feature names (#734)
+2019-09-16T19:57:04-07:00  d0f0ba3d5c844b6d5c832ba48de53e4469934054 qkou@qkou.info Qiang Kou (KK): [py] not using numpy in daimojo pkg
+2019-09-13T15:16:26-07:00  2fec15f8eaafef32ac876cd04aa5dc532663b90c qkou@qkou.info Qiang Kou (KK): [TEST] add lightgbm random forest examples (#730)
+2019-09-13T14:13:48-07:00  cc5ac4bc3ce219152e5ae2626f9f217ba99e16dd qkou@qkou.info Qiang Kou: [BUILD] Next dev cycle 2.1.6-SNAPSHOT
+2019-09-13T10:26:38-07:00  caea9c157287e3aa9f2eecc2ab2492858a031d9a michal@h2o.ai mmalohlava: [BUILD] Hotfix :fire: - remove hardcoded IP of nexus repo.
+2019-09-12T13:34:05-07:00  (tag: v2.1.5) b0d860a7b9c77c87068d528bf4a7cb440cb04124 qkou@qkou.info Qiang Kou: [BUILD] Release v2.1.5
+2019-09-11T18:59:35-07:00  e7a2c20f3a0ccb38a4b9dd6ccd823efd352579ba nishant@h2o.ai Nishant Kalonia: [BUILD] Next dev cycle 2.1.5-SNAPSHOT
+2019-09-11T18:58:25-07:00  (tag: v2.1.4) b5682cd063f87998761f55f05ab27a55bff4ccb1 nishant@h2o.ai Nishant Kalonia: [BUILD] Release v2.1.4
+2019-09-11T18:42:02-07:00  9981b15420c459760a481208699b18113f006e00 nkalonia1@gmail.com nkalonia1: Merge pull request #729 from h2oai/nk/endian_fix
+2019-09-11T11:55:21-07:00  0185d22d57e8a169984b373051abb91bd222e2cc qkou@qkou.info Qiang Kou (KK): [py] update utility scripts (#728)
+2019-09-09T15:59:01-07:00  8fcddb92f17d2a4be5e47e8b9c0f58ea058093f1 qkou@qkou.info Qiang Kou: [LGBM] add testing data for xentropy objective function
+2019-09-09T20:57:41-07:00  07e00dd8952bba1d5b41ac648dfa2632354fcf04 qkou@qkou.info Qiang Kou (KK): [cpp] fix log transformer. float -> double is allowed (#726)
+2019-09-09T10:51:40-07:00  78bb5c7d1090deeffe01ed307895b52e765efbd1 qkou@qkou.info Qiang Kou (KK): [cpp] allow integer types as input of log transformer. close #724 (#725)
+2019-09-06T16:00:05-07:00  8c73eb9e714bd63e1e9a487fb5418042323e5ca7 qkou@qkou.info Qiang Kou (KK): Revert "[cpp] freeze tensorflow graph for scoring (#719)" (#721)
+2019-09-05T15:55:33-07:00  fa82cf7f16064b03335968ab43377531a8f59967 nkalonia1@gmail.com nkalonia1: Merge pull request #720 from h2oai/iss718
+2019-09-05T14:15:58-07:00  e1f53d8921550ec3a74595c064ab7f0ebc9f1899 qkou@qkou.info Qiang Kou (KK): [cpp] add an option to show running time for each transformer.close # 669 (#722)
+2019-09-04T14:49:08-07:00  a9b12cbae1070a272418264cfb2f81b4b6697008 qkou@qkou.info Qiang Kou (KK): [cpp] freeze tensorflow graph for scoring (#719)
+2019-08-30T15:07:37-07:00  6006782af6a90265dcc7dcc492437aa72d6ebc4c qkou@qkou.info Qiang Kou (KK): [cpp] Ftrl model scoring update (#717)
+2019-08-29T15:31:23-07:00  5363b397eeb51d02b465aad78953448052d9cdc7 qkou@qkou.info Qiang Kou (KK): [cpp] add testing cases for FTRL regression/multinomial models. (#716)
+2019-08-29T10:16:49-07:00  f7da90ee8350558a0f6401dde969ee011af076b3 qkou@qkou.info Qiang Kou (KK): [cpp] FTRL model scoring (#714)
+2019-08-28T15:25:57-07:00  61cc6efb8b97ca681a474f9f5390a2e9e99cef49 nishant@h2o.ai nkalonia1: Allow Int32 to Time64 conversions in AsTypeBuilder assertions (#715)
+2019-08-27T15:56:26-07:00  e11d93451849556a4c0c265afce341d4a80dfeeb qkou@qkou.info Qiang Kou: [CI] fix failures in python package building
+2019-08-26T12:43:30-07:00  0a0f95cdb1ff78a0d6e3703d325ca273288ccff2 qkou@qkou.info Qiang Kou (KK): [cpp] switch to murmur hashing used in datatable FTRL (#712)
+2019-08-23T22:53:51-07:00  faa7c3971d04218e32ec55c5609cab3b7aa927b9 qkou@qkou.info Qiang Kou (KK): [MOJO] update char-level tokenizer to accpet emoji (#711)
+2019-08-23T10:55:14-07:00  4dd98436434b36ff36acbde7d960dbcdf6245061 qkou@qkou.info Qiang Kou (KK): [cpp] refactor tf scoring code into a separate class (#707)
+2019-08-23T10:18:57-07:00  34943738ff6bfa8433f1f1ca4b5c7286641d3941 qkou@qkou.info Qiang Kou (KK): [cpp] refactor keras tokenizer into a separate class (#709)
+2019-08-21T13:40:01-07:00  d52112d0356f6fb0a58b209fa104163019369e78 qkou@qkou.info Qiang Kou (KK): [cpp] workaroud for h2oai/h2oai#9909 (#706)
+2019-08-19T12:54:49-07:00  e3b7839c36f9d34b1a862cf458cb7d712054febf michal@h2o.ai Michal Malohlava: [TEST] Add test to verify multiload of mojos (#704)
+2019-08-16T19:15:38-07:00  63cc41d60e6a1f7fcadc35c01f2161bcebcbe58b qkou@qkou.info Qiang Kou (KK): Revert "[cpp] using frozen graphs in TF scoring (#702)" (#703)
+2019-08-15T22:00:35-07:00  7858b9cb7ce66461a586078a93f8739be366bc6e qkou@qkou.info Qiang Kou (KK): [cpp] using frozen graphs in TF scoring (#702)
+2019-08-15T09:30:45-07:00  02a32276c12f11b1f292bec137fa3839ef1d183f qkou@qkou.info Qiang Kou (KK): [cpp] unicode handling in keras tokenizer. close #697 (#698)
+2019-08-14T20:02:28-07:00  2ff4be24a24096012b56fc89294b0f30c6ae6d6a qkou@qkou.info Qiang Kou (KK): [tensorflow] fix libtensorflow loading in subpipeline (#701)
+2019-08-13T14:57:21-07:00  fd42d7999a3182b408a761931458f6cc3e961ed4 nishant@h2o.ai nkalonia1: Merge pull request #696 from h2oai/java_tf_error
+2019-08-11T22:40:42-07:00  17031649d5f648f9b2e160498b625d74c7c8ed86 michal@h2o.ai mmalohlava: [BUILD] Next dev cycle 2.1.4-SNAPSHOT
+2019-08-12T12:03:47-07:00  8b5439f7368d9590eebd419dafbd91c46f9c0b9d qkou@qkou.info Qiang Kou (KK): [cpp] remove unused functions from flexible_type (#677)
+2019-08-11T22:37:43-07:00  e8c279d0f93de4ebbc569bc5571a8f936ef2778c michal@h2o.ai mmalohlava: [BUILD] Release v2.1.3
+2019-08-11T22:40:42-07:00  b50951c330e557ad82e07d3f298ad85321dbce27 michal@h2o.ai mmalohlava: [BUILD] Next dev cycle 2.1.4-SNAPSHOT
+2019-08-11T22:37:43-07:00  (tag: v2.1.3) a1636e676982edfcebd3d39fa2fe1e215e274f6f michal@h2o.ai mmalohlava: [BUILD] Release v2.1.3
+2019-08-11T22:36:27-07:00  720e4ac4d3f9b8a0b76581b0de4be2aaac8eb640 michal@h2o.ai Michal Malohlava: [HOTFIX] :ambulance: fix in memory loader (#691)
+2019-08-11T21:46:03-07:00  83af7d864dcb940559ea05ee553190a44b139fec nishant@h2o.ai nkalonia1: [Java] Fix class casting issue when reading some TOML MOJOs (#688)
+2019-08-09T15:24:07-07:00  1d11b07cd733e47e436442a5ab03f247ed750481 qkou@qkou.info Qiang Kou (KK): [py] add sep option for csv parsing (#692)
+2019-08-08T16:30:06-07:00  37501c84096a52729cdbb7579f76b5837f6ad73e qkou@qkou.info Qiang Kou (KK): [R] include libtensorflow in R pkg. close #687 (#689)
+2019-08-06T22:54:15-07:00  20eb73a50a68a163d743b69fcead1eaff4f05190 michal@h2o.ai mmalohlava: [BUILD] Next dev cycle 2.1.3-SNAPSHOT
+2019-08-06T21:56:06-07:00  (tag: v2.1.2) c48d6472cccf54c0fb01b4d3dd69ff8d58c67bd5 michal@h2o.ai mmalohlava: [RELEASE] 2.1.2 for LTS 1.6.
+2019-08-06T18:31:50-07:00  c287fe710d3f97bbc7383e8445f06588168821ad nishant@h2o.ai nkalonia1: Fix method call typo (#686)
+2019-08-06T17:44:39-07:00  05886cb35eca447352803cd9a34565c0c867bc94 nishant@h2o.ai nkalonia1: Merge pull request #685 from h2oai/watermark_pipeline_check
+2019-08-06T16:26:36-07:00  862fc071605240f0ee0a0c064999d4e3e3dac92a michal@h2o.ai Michal Malohlava: [ITEST] Enable assertions (#684)
+2019-08-06T15:19:14-07:00  9bc9df27c08ecd097b8aa0967f0fb9d989ab1fef nishant@h2o.ai Nishant Kalonia: [java] bug fixes in some assert statements
+2019-08-05T15:23:15-07:00  6231ae389b429650a4096b42c8f7dece678c6880 qkou@qkou.info Qiang Kou: [BUILD] Next devel cycle 2.1.2-SNAPSHOT
+2019-08-05T12:55:16-07:00  (tag: v2.1.1) 5ca1edcd8022063273a119be6f7cad7083f4f719 qkou@qkou.info Qiang Kou: [BUILD] Release 2.1.1
+2019-08-02T19:06:15-07:00  4e6bf9955d3790d98841a257338bb83ccd954b87 michal@h2o.ai Michal Malohlava: Introduce perpetual MOJO (#682)
+2019-08-02T13:12:04-07:00  9ac87859b89b6c3d5594c08027f3ed7cd6213eec qkou@qkou.info Qiang Kou: [py] update setup.py for daimojo
+2019-08-01T14:46:59-07:00  9b7b94e8dae350027b1e455cc8a0dbb2a927f36f qkou@qkou.info Qiang Kou (KK): [py] add header=True for mojo_scoring_cli
+2019-07-29T14:02:16-07:00  fb435600f9f2e30f6e87ce8a535529338489cc6d qkou@qkou.info Qiang Kou: [py] add #! for mojo_scoring_cli
+2019-07-29T12:51:04-07:00  0d5810ae03b4ba7eda50e6f0bd372d5c16138c78 qkou@qkou.info Qiang Kou (KK): [py] update packaging script for py package. close #680 (#681)
+2019-07-26T15:12:46-07:00  29efd52965519ae2440edaf03b36737ba3247e67 qkou@qkou.info Qiang Kou (KK): [cpp] include libtensorflow in python scoring package (#679)
+2019-07-23T19:04:46-07:00  db840804ae187754f7214733d1234433f5bc8472 michal@h2o.ai mmalohlava: :ambulance: extend deadline to run full suite of tests
+2019-07-23T10:08:14-07:00  5f833d9d8cb9e8d1023a642e4b84b830016cd3c6 qkou@qkou.info Qiang Kou (KK): [TEST] update testing for xgboost models with unused nodes
+2019-07-22T14:52:38-07:00  da27de7fca8cdf3921f6391972c7405a825e8496 qkou@qkou.info Qiang Kou: [BUILD] Next devel cycle 2.1.1-SNAPSHOT
+2019-07-22T12:34:45-07:00  (tag: v2.1.0) a4d62885e4fa0f6be1a330eb761d504100d1e0b4 qkou@qkou.info Qiang Kou: [BUILD] Release 2.1.0
+2019-07-22T16:23:00-03:00  0e24f043bdd2d9223132243dd9e64cd065a0b9c9 nishant@h2o.ai nkalonia1: Merge pull request #674 from h2oai/java_unused_node_fix
+2019-07-19T21:06:27-07:00  8f73ec730972c6d169c2bc29b4f7f65709a66980 qkou@qkou.info Qiang Kou (KK): [TEST] add testing case for unused nodes in xgboost model (#672)
+2019-07-19T11:43:15-07:00  8c738241f7f46667d44e84b1e25ba1c38b2fb17d qkou@qkou.info Qiang Kou (KK): [DEPS] update lightgbm and xgboost following h2o4gpu (#670)
+2019-07-18T16:14:51-07:00  cc3d7392cb064474eae553c1bf8d71040a0a34f1 nishant@h2o.ai Nishant Kalonia: [java] removed unused import statement
+2019-07-18T20:13:05-03:00  dd94aa929bf8a121fd0717c5b5ad96d217787194 nishant@h2o.ai nkalonia1: Merge pull request #671 from h2oai/java_csv_fix
+2019-07-17T17:17:11-07:00  09465749022a5bdd45f340fb8d0ab4537e3a9848 qkou@qkou.info Qiang Kou (KK): [cpp] input and output of sqrt transformer can be different types (#668)
+2019-07-16T11:39:56-07:00  f0c7f74a80d1911c2f7690127ee4a94ad61884f5 qkou@qkou.info Qiang Kou (KK): [cpp] better error message for tensorflow transformer (#667)
+2019-07-15T15:31:57-07:00  b66985ce07525304b947e694ccbf5af64d1d0ef7 qkou@qkou.info Qiang Kou (KK): [R] use data.frame in base package. close #658 (#666)
+2019-07-12T15:34:43-07:00  6289feecc93f7890beae9754a099c7d537fc007e qkou@qkou.info Qiang Kou (KK): [cpp] add missing num_words in keras tokenizer (#663)
+2019-07-11T15:48:22-07:00  8344041e956d14fede9e5d747e6c36fce8baf085 qkou@qkou.info Qiang Kou (KK): [cpp] upgrade tensorflow to 1.13.1 following DAI. (#662)
+2019-07-10T18:43:56-07:00  336de572219b22ee35447d06885ec58f5be0afe9 nishant@h2o.ai nkalonia1: Refactor java TOML implementation to utilize new protobuf structure (#622)
+2019-07-10T15:07:41-07:00  f0bdc28c3c52d05854861ed09a8d44c453c073fa qkou@qkou.info Qiang Kou (KK): [cpp] add keras tokenizer transformer (#661)
+2019-07-10T10:07:03-07:00  ba70e0ecc50eb71f1a9c995ab280cf4733453b12 qkou@qkou.info Qiang Kou: [BUILD] Next devel cycle 2.0.3-SNAPSHOT
+2019-07-10T10:05:30-07:00  (tag: v2.0.2) 9ed2a2e2b258716f0ca30423cbfd385faabe39f2 qkou@qkou.info Qiang Kou: [BUILD] Release 2.0.2
+2019-07-09T14:43:56-07:00  554534be20a8b0e8389fd7437aeebfe4d5edd581 qkou@qkou.info Qiang Kou (KK): [cpp] delete treelite dependency (#659)
+2019-07-09T12:53:52-07:00  99dffd60bbe8d13f5bc71b65e466cd4d625d674c qkou@qkou.info Qiang Kou (KK): [test] add scripts to generate testing data for tensorflow NLP models (#660)
+2019-07-08T13:26:29-07:00  838ef47dc01868c77942fdc8c815437e3981bf68 qkou@qkou.info Qiang Kou (KK): [cpp] flexible type and transformer clean up (#657)
+2019-07-03T10:58:51-07:00  f085bb2fbaa3f1720286f29fe6ba632573f20a8b nishant@h2o.ai Nishant Kalonia: [java] fix bug where ConstBinaryOp transformer fails when creating DIVIDE instance with epsilon
+2019-07-03T10:54:02-07:00  87a59d280bf82b86cfdd149d93bf0d415e26f815 qkou@qkou.info Qiang Kou (KK): [cpp] add copy and move constructor for flexible col type (#656)
+2019-07-02T14:20:43-07:00  772f5d36fb068f65d4ef40f136020164bfc77f00 qkou@qkou.info Qiang Kou (KK): [cpp] add flexible_col and simple tests for it (#655)
+2019-07-02T09:40:57-07:00  5886e50182544811ae37e524e4dfbdc578bc5e7a qkou@qkou.info Qiang Kou (KK): [cpp] add move ctor for flexible type (#621)
+2019-07-01T22:50:50-07:00  52715d73ee361a6934ff17cf8fbcf2fa7229e251 qkou@qkou.info Qiang Kou (KK): [cpp] fill na op cleanup (#653)
+2019-07-01T17:40:18-07:00  9870a06a23390a67064f9c4380aa566f1cd667e1 qkou@qkou.info Qiang Kou (KK): [cpp] median op cleanup (#652)
+2019-07-01T17:04:52-07:00  ded82bbce683dd819eb35238aeb19aa02b6374e8 qkou@qkou.info Qiang Kou (KK): [cpp] impute na and moment cleanup (#651)
+2019-07-01T16:38:25-07:00  54cf1f9f5441aca67b3825f4eec30a0f57e2ebc9 qkou@qkou.info Qiang Kou (KK): [cpp] using type info in clip transform (#650)
+2019-07-01T14:20:02-07:00  9fde8738a26246a13f9968a80070415ebecb5f2a qkou@qkou.info Qiang Kou: [TEST] update license checking test
+2019-06-30T12:56:22-07:00  899efbff67acd133e78ebac188f6643058be6e99 qkou@qkou.info Qiang Kou (KK): [cpp] output of normalize can be float32/float64 (#649)
+2019-06-30T10:26:27-07:00  0aeee92d8ee72093a33b4908daebbd6ef4c68bd8 qkou@qkou.info Qiang Kou (KK): [cpp] make output of CountVectorizer can be any numerical types (#648)
+2019-06-30T09:50:17-07:00  7832669d5d0d2993a6a18c37515d430fe2193af6 qkou@qkou.info Qiang Kou (KK): [cpp] softmax is only for float32/float64 (#647)
+2019-06-30T00:38:58-07:00  ed563cb7d7cec9331ae2f3e467320efffcf94302 qkou@qkou.info Qiang Kou (KK): [cpp] scale op is only for numerical types and output can only be float32/float64 (#646)
+2019-06-29T22:08:58-07:00  691ff00145c9a678d7b0f71c27f3bfb171591866 qkou@qkou.info Qiang Kou (KK): [cpp] binary op only handles numerical types (#645)
+2019-06-29T10:28:48-07:00  121b5dae33f31e49efee82c219fe8087a3d18c16 qkou@qkou.info Qiang Kou (KK): [cpp] log is only for float32/float64 types (#644)
+2019-06-29T09:45:55-07:00  1d0256d0da05538e8537db36995274a931737321 qkou@qkou.info Qiang Kou (KK): [cpp] use type info in const binary op (#642)
+2019-06-29T09:00:27-07:00  c06c85dca791b2cab4f65cf8011882b07927cb9f qkou@qkou.info Qiang Kou (KK): [cpp] expm1 can only be used for float32/float64 (#643)
+2019-06-28T20:32:44-07:00  c97f37968166ab5b9609d09c8b9dc02761eb9131 qkou@qkou.info Qiang Kou (KK): [cpp] make as type transform 1 to 1 (#640)
+2019-06-28T14:11:16-07:00  9d682b6f05cbe7f5dd2f4f27f90d8236d190a163 qkou@qkou.info Qiang Kou: [cpp] remove snapshot from C++ lib version
+2019-06-27T10:54:19-07:00  da5627b205f2f68baba51c3120a9074ef431326d qkou@qkou.info Qiang Kou: [TEST] remvoe R/python valgrind test. It may hang.
+2019-06-28T01:52:57+08:00  b9da7275f4c2a2c1befd5eb05dd71a0d564b08fa michal@h2o.ai Michal Malohlava: Update test_mojo_compatibility.py (#638)
+2019-06-27T10:28:29-07:00  1009c06b111ec3d98a4d65502d2cea73f2e60462 qkou@qkou.info Qiang Kou: [BUILD] Next devel cycle 2.0.2-SNAPSHOT
+2019-06-26T17:58:06-07:00  (tag: v2.0.1) 3003111bd5b5777fcaa78607527ccf02e041259c qkou@qkou.info Qiang Kou (KK): [BUILD] Release 2.0.1
+2019-06-26T16:23:39-07:00  d15679ba95a1c98e73141d7c4ccd1f7ba2f9886a nishant@h2o.ai nkalonia1: Merge pull request #635 from h2oai/java_proto_model
+2019-06-26T16:03:01-07:00  529a1ba26575f4e45a643f3165b5b2ccdec4e7dc nishant@h2o.ai Nishant Kalonia: [java] Default runtime to read protobuf. Attempts to read toml if protobuf fails. (Closes #636)
+2019-06-26T14:22:19-07:00  d7f05a4e48e6ec45753be1a2ecd10d7d1cc3fd7c qkou@qkou.info Qiang Kou (KK): fix jenkins building
+2019-06-25T20:53:08-07:00  65229df7af07604798dd6ce0482f757814759506 qkou@qkou.info Qiang Kou (KK): [MOJO] datetime can also be NA (#634)
+2019-06-25T13:05:27-07:00  745a96c6b7ac84ac1dde275fa7a24cfa1428d5f9 qkou@qkou.info Qiang Kou (KK): [cpp] keys and values in map op can be empty (#632)
+2019-06-24T14:15:22-07:00  624303a05a1a3c5a453b445bcd9992f1bf177eba qkou@qkou.info Qiang Kou (KK): [BUILD] Next devel cycle 2.0.1-SNAPSHOT
+2019-06-24T09:42:38-07:00  (tag: v2.0.0) 2771ab0332cea7b6288c3fdd08e33794d38120a8 qkou@qkou.info Qiang Kou (KK): [BUILD] Release 2.0.0 (#631)
+2019-06-23T11:10:26-07:00  a051c94378da45956cd24304fc1033701b9fd7ec qkou@qkou.info Qiang Kou (KK): [JAVA] use the new IDL version and patch version (#630)
+2019-06-22T14:15:41-07:00  80e5138d163e908bb03431c4e9ef29f49a600fc6 qkou@qkou.info Qiang Kou (KK): [JAVA] parse the UUID of mojo. close #628 (#629)
+2019-06-21T17:50:02-07:00  95ba5e73a312d487f34570c0dec3ce71e87a4355 qkou@qkou.info Qiang Kou (KK): [R] add installation instruction (#627)
+2019-06-21T15:27:05-07:00  08f7765fd6bb8f7452307dcf5648e85eef6a0ba5 qkou@qkou.info Qiang Kou (KK): [cpp] add PATCH_VERSION.txt and use it in C++ runtime version number (#626)
+2019-06-21T09:39:55+02:00  2f5203fa46395cdc6369de45594e410d918372db michal@h2o.ai Michal Malohlava: Update VERSION.txt (#625)
+2019-06-20T14:54:42-07:00  b37981891d05ee463ffd7aa7c7a5240c469bdb4b nishant@h2o.ai nkalonia1: [JAVA] allow double types to parsed as a float value (#606)
+2019-06-20T14:20:24-07:00  65d9c205e39b2e26745cce8a51b48f8a5548fe85 qkou@qkou.info Qiang Kou (KK): [TEST] add testing data for missing types in lightgbm (#624)
+2019-06-19T15:19:37-07:00  9624635bb3e079b29cbb2f432d777104e66a665a qkou@qkou.info Qiang Kou (KK): [BUILD] Next devel cycle 0.13.27-SNAPSHOT
+2019-06-18T16:32:58-07:00  (tag: v0.13.26) 8ef3cfd26464b4d1d95b3bbf28d150182db6a4bc qkou@qkou.info Qiang Kou: [BUILD] Release 0.13.26
+2019-06-18T15:22:57-07:00  54014f425f384fe316847085af26625bfb380afb nishant@h2o.ai nkalonia1: Merge pull request #555 from h2oai/java_mojo_proto
+2019-06-18T12:36:06-07:00  988227ee72898515c302d6088f87ddd3e6d4cd51 qkou@qkou.info Qiang Kou (KK): [JAVA] parse %y format following Linux strptime (#610)
+2019-06-18T09:17:39-07:00  7448681924d2d97e9c19890e6e437d4abc0651be qkou@qkou.info Qiang Kou (KK): [TEST] add C api test using two sigma dataset (#620)
+2019-06-15T16:56:03-07:00  00be50d5b95c45321152973a5417972770567717 qkou@qkou.info Qiang Kou (KK): [TEST] add two more testing mojo files from twosigma dataset (#618)
+2019-06-15T16:13:43-07:00  065f87b18f52d489f78b31ac6ee05f52337f274e qkou@qkou.info Qiang Kou (KK): [cpp] fix unicode handling in map op (#617)
+2019-06-14T14:54:13-07:00  eda9d6467aaa55fe73bfdc76e37e88b59abcda93 qkou@qkou.info Qiang Kou (KK): [py/R] better error message for license checking
+2019-06-13T16:19:05-07:00  4444b54bda3b8eee9857e4e6616fe1d7af55d28e qkou@qkou.info Qiang Kou (KK):  [cpp] fix the different behavior of ngram between C++ and Java runtime  (#615)
+2019-06-11T12:30:35-07:00  f043df41ed71742ffd3c51b796e8e2aa7a5aadf0 qkou@qkou.info Qiang Kou: [DOC] readme for upgrading xgboost and lightgbm
+2019-06-11T12:05:50-07:00  ddc3458877722a793b54aa27fe13fa4a593cdccf qkou@qkou.info Qiang Kou (KK): [cpp] add weight drop of dart booster from xgboost. close #613 (#611)
+2019-06-11T10:39:25-07:00  1c3d17964cc9566be4fb110c9cf4892bd12568d1 qkou@qkou.info Qiang Kou: [DOC] add license info for C++ dependencies
+2019-06-07T13:51:33-07:00  39be41de2d46f7e077d25d4a76fc3339994d2b71 qkou@qkou.info Qiang Kou (KK): [TEST] add xgboost dart test. close #608 (#609)
+2019-06-04T10:15:00+02:00  18e819099221e3b0025e46fa84b154a49d28726c ondrej.sery@h2o.ai Ondrej Sery: [BUILD] Next devel cycle 0.13.26-SNAPSHOT
+2019-06-04T09:31:57+02:00  (tag: v0.13.25) c9047f180bc3f5778f45df31653aa17e124ae379 ondrej.sery@h2o.ai Ondrej Sery: [BUILD] Release 0.13.25
+2019-06-04T09:31:01+02:00  f0e6665d408f87516177d9e0ac16f9b41a67c8ff 38768065+osery@users.noreply.github.com Ondrej Sery: Obfuscate the jar pushed to public maven. (#603)
+2019-06-03T17:41:27+02:00  f45be9f86cf6d0a307520676b0971112811c6581 38768065+osery@users.noreply.github.com Ondrej Sery: Fix non-release build. (#602)
+2019-06-03T13:05:58+02:00  fc1b52d48b902aa623ad112fa8eb9831014b56b0 ondrej.sery@h2o.ai Ondrej Sery: [BUILD] Next devel cycle 0.13.25-SNAPSHOT
+2019-06-03T10:10:52+02:00  (tag: v0.13.24) 11bd70c8e603791397d2bfea7869c41cd6120c68 ondrej.sery@h2o.ai Ondrej Sery: [BUILD] Release 0.13.24
+2019-06-02T22:25:47-07:00  94344077d2e97152530181b9bb5aff0b1d874126 qkou@qkou.info Qiang Kou (KK): [cpp] misc cleanup (#601)
+2019-05-31T18:27:56+02:00  a48c8bf2ba7ed8b1423b9edd69fe728793e242fb 38768065+osery@users.noreply.github.com Ondrej Sery: Add empty jars to bypass the Sonatype checks. (#598)
+2019-05-30T22:48:51+02:00  4c7ec6d3b718c1e25fc1c0a905fdd76f6b4dc54a ondrej.sery@h2o.ai Ondrej Sery: [BUILD] Next devel cycle 0.13.24-SNAPSHOT
+2019-05-30T22:13:03+02:00  (tag: v0.13.23) 4c75c7438ca5929df1b472152c87743b6190c6d0 ondrej.sery@h2o.ai Ondrej Sery: [BUILD] Release 0.13.23
+2019-05-30T21:49:17+02:00  281e28a30fb8758c200c93794a8754b4eca8479e ondrej.sery@h2o.ai Ondrej Sery: Fix typo in publishing repositories.
+2019-05-30T21:14:24+02:00  (tag: v0.13.22) c04291f8732424f4476beca8014463564c8f9b02 ondrej.sery@h2o.ai Ondrej Sery: [BUILD] Release 0.13.22
+2019-05-30T11:38:48-07:00  95809a0c84608af803611cd809561e0089d3cef9 qkou@qkou.info Qiang Kou (KK): [TEST] more R pkg tests. close #582 (#596)
+2019-05-28T13:09:49-07:00  0df4870ce6f3e32129f34c4a84cfec457900241d qkou@qkou.info Qiang Kou (KK): [TEST] add twosigma test for c api (#595)
+2019-05-28T11:28:25-07:00  95eb07a5f0f754a7f9ce0df977787cacaba2a5e8 qkou@qkou.info Qiang Kou (KK): [py] update mem check in python scoring pkg (#594)
+2019-05-28T09:46:25-07:00  a1bab8041816d25f7b6ea1e663f9918073d6e6ec qkou@qkou.info Qiang Kou (KK): [R] add R unit test and memory check (#591)
+2019-05-27T15:15:12-07:00  d9c0b98c501d112b039122ed67611182000f542d qkou@qkou.info Qiang Kou (KK): [TEST] add memory check for python scoring pkg (#592)
+2019-05-27T11:51:36+02:00  c8eaaf9db22d0e1b8a5990277a74eff8587bc742 38768065+osery@users.noreply.github.com Ondrej Sery: Move project specific publishing info into their build files. (#576)
+2019-05-27T11:31:15+02:00  bac9bfda5beafca676a1bdf453b331618eda6a97 38768065+osery@users.noreply.github.com Ondrej Sery: Link the -impl pom to the commercial H2O.ai license. (#575)
+2019-05-24T20:00:18-07:00  3ca27ace225ae08c69e7024b867e1c785f940756 qkou@qkou.info Qiang Kou (KK): [cpp] int32/int64 to datetime with format string (#588)
+2019-05-24T19:40:46-07:00  adf49b6b165cc9d07daf58b02c9e87f21a000b82 qkou@qkou.info Qiang Kou (KK): [cpp] using unique ptr for Transformbase (#589)
+2019-05-24T17:44:30-07:00  6f664ea7ecf02c5ed3d5c17f7626fc7f65900c2f qkou@qkou.info Qiang Kou (KK): [TEST] update the docker image for testing (#587)
+2019-05-25T01:02:26+02:00  436fbb46da015dd6ee581fc625634663055509de jakub.hava@gmail.com Jakub Háva: Fix writing mojo to Toml String (#550)
+2019-05-24T14:12:07-07:00  a6dd017fc8883135c70ec037fd871790a4dd327a qkou@qkou.info Qiang Kou (KK): [cpp] add uuid to c api (#585)
+2019-05-24T12:35:50-07:00  dcbb9cdd951ce0cc87105bb96f6302f8d2a2951a qkou@qkou.info Qiang Kou (KK): [R] switch to C api in R pkg to avoid ABI problem. close #565 (#580)
+2019-05-24T15:01:30+02:00  b863cfac736898705d055751013e64742495240e 38768065+osery@users.noreply.github.com Ondrej Sery: Make mojo impl .jar public. (#570)
+2019-05-23T21:29:55-07:00  f1b4e4cce566977431f0c35f0e647103236063db michal@h2o.ai mmalohlava: [BUILD] Next devel cycle
+2019-05-23T18:59:21-07:00  (tag: v0.13.21) add390f03fbfa4d05f928b34a4f09fe647ece71e michal@h2o.ai mmalohlava: Introduce patch 21 version
+2019-05-23T15:05:51-07:00  93813c4f7b3187ed298c1348513f3663acaddcf3 qkou@qkou.info Qiang Kou (KK): [TEST] add more unit test for C api. close #581 (#583)
+2019-05-23T09:33:37-07:00  9311c1db2824cf9015f48fc1dbc4e841f1777916 qkou@qkou.info Qiang Kou (KK): [cpp] cleanup usage of shared ptr in tree model (#579)
+2019-05-22T15:47:06-07:00  2ad90246b138877b84812d32fbefe101cb3a2549 qkou@qkou.info Qiang Kou (KK): Driverless AI evaluation agreement for python/R scoring pkg and C scoring lib. (#577)
+2019-05-22T15:07:16-07:00  da1113ef1b22ba950d743a07b1471c0471273b56 qkou@qkou.info Qiang Kou (KK): [cpp] expose more functions in C api (#574)
+2019-05-22T12:32:39-07:00  adb86e42e77fe720bd5e83d92e053cf351ec6b91 nishant@h2o.ai nkalonia1: Hacky attempt to make the toml parser stream file (#564)
+2019-05-21T23:37:34-07:00  58d263c8cdead2a53edc6c8429906930a4ea731f michal@h2o.ai Michal Malohlava: [ITESTS] Include 1.6.0, 1.6.1.1, 1.6.2 into itests (#569)
+2019-05-20T16:03:33-07:00  2df420d5900bac09c10a187fc33157a22708401c michal@h2o.ai mmalohlava: [DOCKER] :ant: Fix references to `docker.h2o.ai`
+2019-05-14T11:25:09-07:00  28f698e0659b993932708c4fabf6f34c0f538ef8 anmol@h2oai.com Anmol Bal: updated registry to harbor.h2o.ai
+2019-05-14T09:43:32-07:00  72f179426ddf982756c050bd7588413cc60da421 qkou@qkou.info Qiang Kou: update xgboost and lightGBM with h2o4gpu
+2019-05-13T13:20:33-07:00  0b3502ff8daf7fbbf92d8ceb8b97482cc25966d7 qkou@qkou.info Qiang Kou (KK): [DOC] update the daimojo python example (#567)
+2019-05-06T11:44:30+08:00  72ba7b20e862b85c35bda82c44edc676b66928e2 qkou@qkou.info Qiang Kou (KK): [cpp] add testing case for datetime format "%m/%d/%y" (#562)
+2019-05-06T09:11:04+08:00  5e61e92372ab31a613e5f9a09cafcac526849ac3 qkou@qkou.info Qiang Kou: [BUILD] Next dev cycle
+2019-05-05T16:38:25+08:00  (tag: v0.13.20) b9d3e87d44a62eba3775624e04561863fb2e1097 qkou@qkou.info Qiang Kou (KK): [java] fix parsing the datetime format %y (#560)
+2019-04-27T16:41:14+08:00  (tag: v0.19.6) 9baa9ff21243640a62a90068a67c58b0301e6bca qkou@qkou.info Qiang Kou (KK): [R] R package name mojo -> daimojo (#558)
+2019-04-26T21:35:42+08:00  0166b3a80bb910fba262e311d7630fa634d52761 qkou@qkou.info Qiang Kou (KK): [R] fix R pkg building script (#557)
+2019-04-25T17:06:30+08:00  cac413687c4ffb102b9fb6269eb61016d6133376 qkou@qkou.info Qiang Kou (KK): [R] publish the R package to S3 (#556)
+2019-04-22T17:44:51-07:00  331becff3ae93e247325cbfaca7e495f18c2a692 michal@h2o.ai Michal Malohlava: [ITESTS] Enable migration state for 1.5.5 (#548)
+2019-04-19T10:54:40+08:00  278b9ec0432347204555350ba6c87be387369614 qkou@qkou.info Qiang Kou (KK): [cpp] move unicode preprocessing into VocabularyCounter. close #549 (#551)
+2019-04-17T11:57:42+08:00  6fd10d890e11573d6afc9b907695ee297ab92f17 qkou@qkou.info Qiang Kou: [BUILD] Next dev cycle
+2019-04-14T15:13:27+08:00  (tag: v0.13.19) 045a24dd0011f3a2119a352dc705aab8592b472a qkou@qkou.info Qiang Kou: [DOC] add docs for releasing new version of java runtime
+2019-04-10T16:19:55+08:00  (tag: v0.19.5) 934e9998fe252d5ac5a476efa4aa7f333f1d8bd7 qkou@qkou.info Qiang Kou (KK): [cpp] int32 to datetime transformer. (#553)
+2019-04-10T10:56:05+08:00  c47276d1635e1b6fe08312bcf73b1de626f09e2f qkou@qkou.info Qiang Kou: [BUILD] Next dev cycle
+2019-04-10T10:50:08+08:00  dba57df497f4cbc14fbf4fd12fbe4e7b799a0388 qkou@qkou.info Qiang Kou (KK):  [java] add int32 to datetime transfomer. close #510  (#552)
+2019-04-05T17:26:07-07:00  b46f2d50f0bdfe77639ab0d0116e9c91d0ac75c7 qkou@qkou.info Qiang Kou: [py] dai_mojo -> daimojo
+2019-04-05T17:00:53-07:00  (tag: v0.19.4) d69cf73a8ae78e72f6586f6ca481e0b94a4cdebe qkou@qkou.info Qiang Kou (KK): [py] change package name to daimojo. close #538 (#546)
+2019-04-03T17:42:17-07:00  9b0b98de7b93510bbcba7d71cd0b2399d6021fc8 qkou@qkou.info Qiang Kou (KK): [py] separate wheels for different architecture (#545)
+2019-04-01T16:22:54-07:00  337305504beeb4ef533820192c5e55593c52f9cc qkou@qkou.info Qiang Kou (KK): [py] bundle so files for x86 and power in the same wheel (#541)
+2019-04-01T11:33:21-07:00  0a9625aed168227adaee3b6109c954d5bb89186d qkou@qkou.info Qiang Kou (KK): [R] package update and add README (#540)
+2019-03-29T11:15:31-07:00  b6356d7f7185b1282c1651fc201c58a1acfa2200 qkou@qkou.info Qiang Kou (KK): [cpp] do not threw exception when no license found. close #536 (#539)
+2019-03-27T21:33:44-07:00  6f0ec9269ec8bee21eabf00c15a7be252fa8edf7 qkou@qkou.info Qiang Kou (KK): [py] move visualization code into model2proto pkg (#535)
+2019-03-27T15:52:55-07:00  380da35cf407d5e01f6ddaa95f6a0716b135e30e qkou@qkou.info Qiang Kou (KK): [R] mojo scoring package in R. close #426 (#532)
+2019-03-26T15:14:21-07:00  082567289ee035fbe92e93b595e2a45108b12ccc qkou@qkou.info Qiang Kou (KK): [cpp] use mutable get in passing data from python to C++ (#525)
+2019-03-25T16:45:05-07:00  b100709cec840183688eb9fedfda86f9d03ae242 qkou@qkou.info Qiang Kou (KK): [cpp] tree model refactor. close #404 (#524)
+2019-03-25T15:14:27-07:00  0bb906cebeffb83d86e52aeebbd34ee81f00e3eb qkou@qkou.info Qiang Kou (KK): [cpp] put col type info into each transformer (#523)
+2019-03-22T22:20:11-07:00  b9db464012333bc470188be06d1be1eaf4e79a4c qkou@qkou.info Qiang Kou (KK): [cpp] clean up kmeans transform  (#521)
+2019-03-22T15:26:53-07:00  abf46003a3e2a413505ddad808d86db6a9b625f1 qkou@qkou.info Qiang Kou (KK):  [cpp] cleanup normalization transform. close #519  (#520)
+2019-03-22T13:19:17-07:00  b50210a07f7ae376a89bf15c3eea85a0640996d1 qkou@qkou.info Qiang Kou (KK): [cpp] clean up matrix product transformer. close #516 (#517)
+2019-03-22T12:19:19-07:00  9966fe7310d87bb2214ec47f938e892682ba4838 michal@h2o.ai Michal Malohlava: [ITESTS] Enable backward compatibility testing for DAI 1.5.2, 1.5.3, and 1.5.4 (#499)
+2019-03-21T10:01:19-07:00  53ce4a2eaa86a704e13dcd183f5339972a491be4 qkou@qkou.info Qiang Kou (KK): [cpp] license checking in C++. close #513 (#514)
+2019-03-19T17:56:38-07:00  4f9623cc0f064b1a576cb31c2eeae1d3c1c50768 qkou@qkou.info Qiang Kou: add a simple visualization script protobuf-based mojo
+2019-03-18T15:37:18-07:00  b43f3e6efc536c5c3bb3b07f4f5a43cb3ebf26dc qkou@qkou.info Qiang Kou (KK): [cpp] binary tree implementation. close #202 (#505)
+2019-03-18T12:49:34-07:00  46cdba2a542e1512c0e4c18937d61e1c77c773af qkou@qkou.info Qiang Kou (KK): [TEST] add one more testing case (#509)
+2019-03-18T11:57:47-07:00  (tag: v2.19.3) 0afbbde537c31e4d06a862a805e6ded2f2c45d60 qkou@qkou.info Qiang Kou (KK): [cpp] computing the kmeans distance following scikit-learn (#508)
+2019-03-14T16:21:34-07:00  b8a803dcd394b1ac97693f8b33037ab476f47ad6 qkou@qkou.info Qiang Kou (KK): [cpp] tree model implementation cleanup (#504)
+2019-03-14T09:56:54-07:00  (tag: v2.19.2) 0d88c58dc6ae9f7031708c66ed1bd65615eebc63 qkou@qkou.info Qiang Kou (KK): [cpp] add license for open source code used in this repo (#503)
+2019-03-11T14:02:13-07:00  9615292184df66ebd716c4d2c2a64d32cdc46c10 qkou@qkou.info Qiang Kou (KK): [cpp] fix glm from xgboost (#497)
+2019-03-08T16:11:03-08:00  8a3092e319a52a38dfba4df84313303ddfb06c61 qkou@qkou.info Qiang Kou (KK): [cpp] fix the comparison between NAs (#496)
+2019-03-08T09:55:25-08:00  18eac314669d19bfbbeeddda4df7287da83f69b4 qkou@qkou.info Qiang Kou (KK): [py] add -DNDEBUG in whl building. (#495)
+2019-03-07T21:04:34-08:00  cd7317012cb4356258b4e3dd279da6149139dc93 qkou@qkou.info Qiang Kou (KK): [cpp] switch to static linking. close #486 (#493)
+2019-03-06T16:59:27-08:00  516888d3d1ce90a605247d1d57cc4a09b00ed19a qkou@qkou.info Qiang Kou (KK): [cpp] build libtensorflow without AVX2 to support old CPUs. close #490 (#491)
+2019-03-04T16:47:28-08:00  c8feedf7534b9d5ff59f1a299f55dce24d645f8a qkou@qkou.info Qiang Kou (KK): [cpp] C api for mojo runtime. close# 487 (#489)
+2019-03-04T15:56:20-08:00  6eb17b1fc274877c91b1703ef26eeb38383881d9 michal@h2o.ai mmalohlava: [BUILD] Next dev cycle
+2019-03-01T15:39:19-08:00  c5793e8663e5f60f5d126803e06d2b8559c98cce qkou@qkou.info Qiang Kou (KK): [cpp] preliminary tf support (#484)
+2019-02-27T22:33:10-08:00  ca2d338c6daee6bd6ac2afd6e75e227a55d40a48 qkou@qkou.info Qiang Kou (KK): [cpp] remove ShutdownProtobufLibrary in testing code.
+2019-02-27T22:03:46-08:00  d8decd3d83b825db20fbdbe2f9d2984fb5851b75 qkou@qkou.info Qiang Kou (KK): [cpp] switch to protobuf3.6.0 to be consistent with tensorflow 1.11.0 (#481)
+2019-02-22T10:48:11-08:00  088b4ca9879409ee51fb60ae649023eeaf73780b qkou@qkou.info Qiang Kou (KK): [cpp] add proto definition for tensorflow op (#477)
+2019-02-18T11:09:25-08:00  d5b325ff08435fd117f85117d07623d72d2dcc48 qkou@qkou.info Qiang Kou (KK): [cpp] clean up tree model implementation. (#469)
+2019-02-14T11:58:44+01:00  (tag: v0.13.18) 40158a7d5543fe8d6e7112c1c816cd726ab08ebf jakub.hava@gmail.com Jakub Háva: Release 0.13.18 (#475)
+2019-02-13T17:40:51-08:00  60f4d06f186b3bce3c9ccdcb8a8dc44687b531f1 qkou@qkou.info Qiang Kou (KK): [cpp] update moment transformer test with java (#474)
+2019-02-13T15:28:35-08:00  570f392b298d64c94c0f1414d7a721ef31cc77ae michal@h2o.ai mmalohlava: [ITESTS] Fix improper collection of dataset location
+2019-02-13T15:29:33-08:00  73a56b4addb829e681c6882f53e4a80035b9be1a michal@h2o.ai mmalohlava: [BUILD] Next devel cycle
+2019-02-13T14:42:24-08:00  (tag: v0.13.17) 91581b132ef5de6dc918839a0dde5c529766c977 michal@h2o.ai mmalohlava: Bump version of MOJO to 0.13.17
+2019-02-13T15:06:11-08:00  f41e4b10bdbeea8ff08bbd1847df51e6b86f0889 michal@h2o.ai Michal Malohlava: [FIX] Fixes wrong array size in MomentumTransformer (#473)
+2019-02-12T17:16:31-08:00  7bee0f9c496fe070214ccfeaf96f7b904e2fd579 qkou@qkou.info Qiang Kou (KK): [cpp] remove linear model implementation (#472)
+2019-02-12T15:46:23-08:00  77613382e0d897fcce04937b1585becd9cafb7d1 qkou@qkou.info Qiang Kou (KK): [cpp] remove float tree for lightGBM (#470)
+2019-02-11T15:16:57-08:00  af4b506961f0117f800dca6ea29c1e76f1278307 qkou@qkou.info Qiang Kou (KK): [cpp] xgb/lightgbm code cleanup (#468)
+2019-02-11T13:24:18-08:00  42df2055a4259595fecefd41eee0115908155fe1 qkou@qkou.info Qiang Kou (KK): [TEST] generate java runtime result during unit test (#465)
+2019-02-07T13:38:39-08:00  (tag: v0.13.16) 2dea54fb79eec7f82f336ecfdef4f16433849efc qkou@qkou.info Qiang Kou (KK): Revert "Make the first breakpoint left-inclusive"  (#467)
+2019-01-31T17:19:02-08:00  a782cf5a131a2af3a2ae710f30b558f2f3edaced qkou@qkou.info Qiang Kou (KK): [cpp] make first breakpoint left-inclusive (#464)
+2019-01-31T15:05:22-08:00  (tag: v0.13.15) 0f4a11861820966cdf0b6f9e5dc0a5e4495a014f qkou@qkou.info Qiang Kou (KK): [Java] version bump (#463)
+2019-01-31T14:39:11-08:00  c5105a1d9180376a2c0d2450dcebdbcd773cd3a3 qkou@qkou.info Qiang Kou (KK): Make the first breakpoint left-inclusive
+2019-01-30T13:07:47-08:00  c290b8218fe86fc43ec9b509062286004ee071c7 michal@h2o.ai Michal Malohlava: Include MOJO from version 1.5.0 for bw-compatibility testing (#461)
+2019-01-29T17:06:53-08:00  5d26b735ca4bb23f9eb0a163e80deb37ab653225 qkou@qkou.info Qiang Kou (KK):  [TEST] test_mojo_time_series_walmart  (#460)
+2019-01-29T14:37:51-08:00  ab73e56a4cc8d5467f83fcf248e42d0dcb217176 qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_weather_multiclass_8 (#459)
+2019-01-29T09:15:42-08:00  506e3bbcc93b1b12d3fd80609795e18453535b9c qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_twosigma_1 (#458)
+2019-01-28T22:59:37-08:00  7c105a00413500a335c4d661c72a2babf9cb42fa michal@h2o.ai Michal Malohlava: [BUILD] Include mojo from 1.5.0 in bw-compatibility testing (#453)
+2019-01-28T15:34:27-08:00  23a0bc662a88a22e31f4aab94ed8552b7551c20f qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_weather_regression_1_Ymd_ts (#438)
+2019-01-28T13:52:35-08:00  85a2fd7dd96bec079bfe73c4bc6057679c76baba qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_paribas_binary_2 (#456)
+2019-01-28T13:31:38-08:00  2a45b6f14e2615588c0b1e4001529a90f78ba684 qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_churn_date_1 (#455)
+2019-01-28T12:55:11-08:00  bf38e9ed8a72cf8f754bd966cbf4b8de10fa6d9e qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_mercedes_regression_1 (#454)
+2019-01-28T10:31:49-08:00  5121911c44c34b9acdc79d02a724bffce3213bcb qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_weather_missing_columns (#452)
+2019-01-26T09:10:43-08:00  408f63e54bd0e49e8ad3c894a85fd458617bd314 qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_weather_regression_8 (#450)
+2019-01-25T17:08:17-08:00  105311223dda3e0bd593f8b75926ef461e22618e qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_weather_binary_8 (#449)
+2019-01-25T15:45:01-08:00  77197ca24def8190704aba2f17ec849c50f54af7 qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_weather_regression_5 (#448)
+2019-01-25T14:52:59-08:00  e838e03f09c4e437f2ea312d09942e602feb1cd8 qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_weather_multiclass_5 (#447)
+2019-01-25T10:30:07-08:00  2f6dba2121219bc68232c1b119198a75b47d71d8 qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_weather_binary_5 (#446)
+2019-01-24T20:39:37-08:00  f3a128f0dd5252784c425fdaec3df17aca97ddcf qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_weather_multiclass_lgbm (#445)
+2019-01-24T20:22:48-08:00  5fbef7ecbf7a2de9273cead2ed8b0c6fcf00e5b1 qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_weather_multiclass_linear (#444)
+2019-01-24T17:21:23-08:00  3d8a7a3cedfa4b36dc74f7d9b2f3c255ca3db44f qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_weather_multiclass_1 (#443)
+2019-01-24T12:11:06-08:00  2e2a3986f469eb0f906774610c660e2063dd6e3a qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_weather_regression_lgbm (#442)
+2019-01-23T22:34:45-08:00  b26de30be0defe5a2bfda0a7409ce720ff39b0ae qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_weather_regression_linear (#441)
+2019-01-23T21:44:10-08:00  d8a5fd402dba32f40d8cacfd64a7c4dc58c505e5 qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_credit_binary_linear (#440)
+2019-01-22T18:07:42-08:00  ff5e61e97a4fb53dc2dcf5b3375cb81c7f1a0cf3 qkou@qkou.info Qiang Kou (KK): [XGB] upgrade xgboost with DAI (#439)
+2019-01-22T09:07:40-08:00  c6653b50fb83afa57ccd6e8e9868a063d746ec07 qkou@qkou.info Qiang Kou (KK): [cpp] add conversion from int64 to datetime. close #436 (#437)
+2019-01-21T16:48:47-08:00  4d23c1bfe0ca18d1376a8c487ba7f08c4d29e9b5 qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_weather_regression_1 (#435)
+2019-01-21T15:58:44-08:00  a25f2576a09bd2d4dfbdabfddbea4292b2896be2 qkou@qkou.info Qiang Kou (KK): [TEST] update unit test for gblinear model (#434)
+2019-01-20T21:35:15-08:00  37bbfde7f910fe742da56d33b407d8707fa02db2 qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_weather_binary_lgbm (#433)
+2019-01-20T18:16:05-08:00  e07901174b3f89cc7a6cdec3f973f0a62f2f1fe4 qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_weather_binary_linear (#432)
+2019-01-20T15:19:08-08:00  aff5faf39c79ac9c3c064a775f8cb17a7d7101ce qkou@qkou.info Qiang Kou (KK): [TEST] test_mojo_weather_binary_1 (#431)
+2019-01-20T14:45:57-08:00  717d6255e774e02770a9bc07ed7d7ab2ffa79b79 qkou@qkou.info Qiang Kou (KK): [cpp] use a customized version of to_string for float/double. close #429 (#430)
+2019-01-15T18:54:12-08:00  175c68741a73c371dc5f01258eb34a8df1abe24d nishant@h2o.ai Nishant Kalonia: Next development cycle
+2019-01-15T18:53:11-08:00  (tag: v0.13.13) 8dd3c4ea3651576c00b5424a0b60f1350a4f90fd nishant@h2o.ai Nishant Kalonia: Version up to 0.13.13
+2019-01-15T18:51:47-08:00  fe94a422bc83bdf31527b707ad0f1e4c2fd227b6 nishant@h2o.ai Nishant Kalonia: Fix bug where runtime crashes when trying to parse boolean values
+2019-01-09T20:55:21-08:00  3dd5bb5fb0f037a7283e44fe586683bec8f9f841 qkou@qkou.info Qiang Kou (KK): [test] add mojo weather multiclass 5 test (#423)
+2019-01-09T15:44:46-08:00  a05beb87758c0663226b997378d1d5655d508e98 qkou@qkou.info Qiang Kou (KK): [test] add mojo weather multiclass lgbm test (#422)
+2019-01-09T15:12:37-08:00  d1b3fd1261c3042585c2eda92b81b364f4ad12e3 qkou@qkou.info Qiang Kou (KK): [test] add mojo weather multiclass 1 test (#420)
+2019-01-09T14:26:58-08:00  06fce19ef0a71bb56d6d1efda24cc560443ca24c qkou@qkou.info Qiang Kou (KK): [test] add mojo weather multiclass 1 test (#420)
+2019-01-09T13:21:04-08:00  7c8401af0dc239bbba1929e8553b4123725e21c0 qkou@qkou.info Qiang Kou (KK): [py] remove miniconda. close #418 (#419)
+2019-01-09T09:50:01-08:00  c5b7641f29b4c11ec80afc405c348f99ed024e52 qkou@qkou.info Qiang Kou (KK): [cpp] upload shared lib to S3 (#392)
+2019-01-08T22:22:45-08:00  2d66b0d17f70acd820fde59445c3caff13124f88 qkou@qkou.info Qiang Kou (KK): [test] add mojo weather regression lgbm test (#417)
+2019-01-08T21:56:45-08:00  1ee07b1474d47d0a37c28c32da6b21a2784b16fb qkou@qkou.info Qiang Kou (KK): [test] add mojo weather regression linear test (#416)
+2019-01-08T20:52:00-08:00  9d33d7fb8a90a46e1039262b7aa219740c9d502c qkou@qkou.info Qiang Kou (KK): [test] add mojo weather regression 1 Ymd ts causal test (#415)
+2019-01-08T15:14:07-08:00  8b96eb14d0b6064ee9d2447de8e4c66430114afa qkou@qkou.info Qiang Kou (KK): [py] remove '-g' compiling option from python setup.py. close #413
+2019-01-08T14:08:44-08:00  c3d34316920ec2f9f1ac3ab147f8103a7e492d49 qkou@qkou.info Qiang Kou (KK): [test] add mojo weather regression 1 ymd ts test (#412)
+2019-01-08T13:32:39-08:00  0e40fc5dd54632bb753e82b7daab541fe98417d3 qkou@qkou.info Qiang Kou (KK): [test] add mojo weather regression 1 test (#411)
+2019-01-08T13:14:24-08:00  2f8f2e4ae741ce978f5fa9ceca93ca88de6496d3 qkou@qkou.info Qiang Kou (KK): [test] add mojo weather binary 8 test (#410)
+2019-01-08T12:58:26-08:00  78985c3c44b301d6968271586afe0abe9e190492 qkou@qkou.info Qiang Kou (KK): [test] add mojo weather binary lgbm test (#409)
+2019-01-08T12:38:53-08:00  7d7ca52cb0959b5616f9de7c00b67ccd3fa37cea qkou@qkou.info Qiang Kou (KK): [test] add mojo weather binary 5 test (#408)
+2019-01-08T12:17:40-08:00  b124b914aa813412d8d62f48805269fc88b23e89 qkou@qkou.info Qiang Kou (KK): [test] add mojo weather binary linear test (#407)
+2019-01-07T23:12:31-08:00  8e2689d25416f0d5159fdafc35c81e8064ec4069 qkou@qkou.info Qiang Kou (KK): test_mojo_weather_binary_1 (#406)
+2019-01-07T22:11:59-08:00  744549c3d2d1a52b8790ff276dfc1fc34c40226c qkou@qkou.info Qiang Kou (KK): [test] test using credit card data set (#405)
+2019-01-07T12:02:17-08:00  89f00d7ddb3c4785a68e8840e7f7919dd10a2737 qkou@qkou.info Qiang Kou (KK): [test] add unit test for replace with key '-inf'. close #402 (#403)
+2019-01-06T11:34:16-08:00  0ab3c49d2ce6885c6805783c0294e0855277048a qkou@qkou.info Qiang Kou (KK): Revert "[cpp] make sure exp/expm1/log/sqrt can handle integer input types. close #398 (#399)" (#401)
+2019-01-06T11:00:36-08:00  63120c9cab240e479040aae65a4cc641a19ea602 qkou@qkou.info Qiang Kou (KK): [cpp] fix AsType over NA values. close#397 (#400)
+2019-01-05T19:05:15-08:00  77e0bba88f5744c29ad9ad291c81148110f5ff28 qkou@qkou.info Qiang Kou (KK): [cpp] make sure exp/expm1/log/sqrt can handle integer input types. close #398 (#399)
+2019-01-04T15:11:34-08:00  dfdfa9ecf6d826cd2ac24f8b2aa86234e5b36765 qkou@qkou.info Qiang Kou (KK): [test] one more testing to scale transform: float32 output (#395)
+2019-01-04T09:54:15-08:00  2a2897c6adab861da5b28fb08a6ff530008866c7 qkou@qkou.info Qiang Kou (KK): [cpp] convert from pb types to flex types in constructing pipeline (#394)
+2019-01-04T09:20:56-08:00  134230077eccf0e07f57f4475d159f4d6460be5f qkou@qkou.info Qiang Kou (KK): [cpp] build the shared lib (#393)
+2019-01-03T14:45:56-08:00  0c24afc509cdf3379bb7005f6259a6617bc7735e qkou@qkou.info Qiang Kou (KK): [DOC] simple README for C++ runtime (#391)
+2019-01-03T14:20:37-08:00  b6623024ad473b4b42b7f788237f3e5aa90ac63c qkou@qkou.info Qiang Kou (KK): [py] one more unit test on XGB
+2019-01-03T11:12:56-08:00  7333e94047eb166aacd9057dcd3f800a33d34fec qkou@qkou.info Qiang Kou (KK): [py] checking license from environmental variable. close #388 (#389)
+2018-12-28T21:24:38-08:00  2bc460996b63ae0dbc2b4c5d20308cd649570843 qkou@qkou.info Qiang Kou (KK): [cpp] switch to GCC 4.8.5 (#386)
+2018-12-28T17:24:43-08:00  a3ca9f8b7c7d1c7698bd39c17b7984462fd5f331 qkou@qkou.info Qiang Kou (KK): [py] upload mojo python pkg to S3 (#385)
+2018-12-28T11:27:46-08:00  1df2e045ae4ea56b2ca1620a797bef34687d738c qkou@qkou.info Qiang Kou (KK): [py] unit test against Java runtime using bcwd data set (#384)
+2018-12-28T09:43:40-08:00  3e8422bf6c0688c04e71a20f7fdbb99b0ad56e1d qkou@qkou.info Qiang Kou (KK): [py] remove default parameters in export_lgbm_model. close #358 (#383)
+2018-12-27T14:59:38-08:00  e2b26926c5e8045bff1bbaa07f5007b9aeba3fba qkou@qkou.info Qiang Kou (KK): [IDL] The replacement value in Fill NA op can be a string. close #380 (#382)
+2018-12-27T09:43:23-08:00  960745166a2f156f582bad4790d58385085dfcea qkou@qkou.info Qiang Kou (KK): [py] add a preprocessing step on the datetime string. close #372 (#378)
+2018-12-26T14:55:54-08:00  5c7fa5ec0e788e66348b98be98707c9554a83f29 qkou@qkou.info Qiang Kou (KK): [py] setup python unit test for mojo package (#377)
+2018-12-23T15:39:45-08:00  814baeb78ae5184b4766849c4ab865ddb38246e9 qkou@qkou.info Qiang Kou (KK): [cpp] add python testing case for NA handling (#375)
+2018-12-22T15:22:58-08:00  3aac6b0457a634eaa8ac427ed94a2d911cd95cc7 qkou@qkou.info Qiang Kou (KK): [cpp] NA handling as datatable does. close #344 (#374)
+2018-12-20T21:33:23-08:00  5ad64ef6093826de15b594c46312e66c804f507d qkou@qkou.info Qiang Kou (KK): [cpp] support format string in AsType. close #369 (#371)
+2018-12-19T22:49:34-08:00  8cbefc78cc98e5f7f13f2bef1408bb6c1054ba6c qkou@qkou.info Qiang Kou (KK): [IDL] bump up the version of protobuf definition (#368)
+2018-12-19T18:34:14-08:00  8d92e7ba1da30478aa4108ead5c030fa9deed6d6 nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-12-19T18:32:49-08:00  ce3537e70617d8fd342004b0b1141a7a9315b377 nishant@h2o.ai Nishant Kalonia: Version up to 0.13.12
+2018-12-19T18:01:52-08:00  f8884e0a95413c2f79a4dd6897759f2ff707a07d nkalonia1@gmail.com nkalonia1: Merge pull request #227 from h2oai/format_strs
+2018-12-19T17:56:35-08:00  24866e6193a43ba230ccebab995d3d1a764d36c2 nkalonia1@gmail.com nkalonia1: Merge pull request #367 from h2oai/double_mat
+2018-12-19T15:53:54-08:00  7da7fbc9d81828ee550dd2210f62bb0b376b427d qkou@qkou.info Qiang Kou (KK):  [py] using pybind11 for python binding. close #364  (#366)
+2018-12-19T15:26:11-08:00  bbe8e7014e5aa1ffe5d87f453534002c1c6182d8 qkou@qkou.info Qiang Kou (KK): [cpp] move ISNA/GETNA to flexible type implementation (#365)
+2018-12-18T16:34:37-08:00  4399d4760834a2830307cf5b1614cfea3a1ddf41 qkou@qkou.info Qiang Kou (KK): [cpp] add warning log (#363)
+2018-12-18T14:10:44-08:00  b2816fc26e0e404d2fd83ca1f26023ce4e9d0be1 qkou@qkou.info Qiang Kou (KK): [py] update mojo python pkg (#362)
+2018-12-17T22:25:31-08:00  fc7c4b94bb60dfa9068e2b40b373eda71114ea7d qkou@qkou.info Qiang Kou (KK): [cpp] first draft of the python wrapper (#360)
+2018-12-17T21:03:33-08:00  09fcb367e5e68a8142abc0521549e24f690d7145 qkou@qkou.info Qiang Kou (KK): [cpp] update debug log to output more information. (#361)
+2018-12-17T14:55:48-08:00  31dae31857cfd54fcc5816d96bd7962762dad021 qkou@qkou.info Qiang Kou (KK): [cpp] fix ConstBinaryOp with left substract (#359)
+2018-12-16T22:55:55-08:00  399ec5ed8da2569bc1a06b00ebed529b912d444a michal@h2o.ai Michal Malohlava: [ITESTS] Enable bw compatibility tests for 1.4.1 and 1.4.2 (#340)
+2018-12-15T18:27:39-08:00  2c217d041ac826b04904b83ca0118830d50dc476 qkou@qkou.info Qiang Kou (KK): [cpp] extracting the zip file into memory before constructing the pipeline. close #355 (#357)
+2018-12-14T19:44:53-08:00  3c7e7820dbaa9d2bcf224b33a6c317eb6abb7cfc qkou@qkou.info Qiang Kou (KK): [cpp] add assertion for protobuf parsing (#356)
+2018-12-14T13:37:21-08:00  e3c5fedbba733346ad7836a9317cdaef4f9392ee qkou@qkou.info Qiang Kou (KK): [cpp] use flexible types as xgb model input. (#353)
+2018-12-14T11:46:43-08:00  4bb7cfa3a9d3d220fdf7e04f10fa28bf74b153f5 qkou@qkou.info Qiang Kou (KK): [cpp] make sure the simple logger controlled by NDEBUG. close #348 (#354)
+2018-12-13T10:33:24-08:00  b91a232a6c4894023cf4e848317d1dd01ca94c81 qkou@qkou.info Qiang Kou (KK): [cpp] flexible type explicit conversion (#351)
+2018-12-12T15:54:08-08:00  acc1b5f247570a3fa0846a7de80f153bf0b345d9 qkou@qkou.info Qiang Kou (KK): [cpp] change xgb into snake case. (#349)
+2018-12-12T13:21:42-08:00  81f98e8ba49d21ea725bf640f144973f57b3bb06 qkou@qkou.info Qiang Kou (KK): [c++] load data from datatable. close #182 (#345)
+2018-12-11T16:06:37-08:00  fd61595eac3712ee1fea0933c03adfd4f62b3541 qkou@qkou.info Qiang Kou (KK): [cpp] fix ExecPipe transform. close #346 (#347)
+2018-12-10T11:17:29-08:00  5b85bb20e38c19f8baca9cc2e99ae5ffec10f0a5 qkou@qkou.info Qiang Kou (KK): [cpp] the last values in interval map can be None. close #339 (#342)
+2018-12-09T14:03:12-08:00  e82597da55b76d16b8c09cdce9b353b1cd161724 qkou@qkou.info Qiang Kou (KK): [cpp] tree model cleanup. remove impl classes. (#338)
+2018-12-09T09:19:45-08:00  6023b131bdf4143e33a52812e6e4385db3d03d75 qkou@qkou.info Qiang Kou (KK): update default path for pipeline.pb (#341)
+2018-12-06T13:07:02-08:00  73a3ef4d286bb65818dbe9c95c5cb6c5cc454553 qkou@qkou.info Qiang Kou (KK): [cpp] tree model converter cleanup (#337)
+2018-12-06T10:44:31-08:00  5a668b63f26f4824a447e62992e30273996849b3 qkou@qkou.info Qiang Kou (KK): [py] simplify unit test (#336)
+2018-12-05T16:22:09-08:00  bebd75fc3678563dc3ad51d83a00dca946900994 qkou@qkou.info Qiang Kou (KK): [py] upload model2proto pkg to S3 (#332)
+2018-12-05T15:21:36-08:00  7547c0e08d4be607d17653f83563ed7b8ffb0946 qkou@qkou.info Qiang Kou (KK): [IDL] allow both float and double in matrix product and kmeans. close #328 (#334)
+2018-12-05T15:08:03-08:00  42b7c8074fbd5c067214d745d27762c505c06102 qkou@qkou.info Qiang Kou (KK): [IDL] fix vocabulary format in countVectorizer. close #330 (#331)
+2018-12-04T13:05:20-08:00  436b17c50e85a97c4351cce743d33dabd05ed245 qkou@qkou.info Qiang Kou (KK): [cpp] change matrix to row-major (#326)
+2018-12-04T09:34:35-08:00  b04672f6b1b9d2f92d5040b1bddc164665e54fe7 qkou@qkou.info Qiang Kou (KK):  [cpp] read mojo pipeline from zip files. close #221  (#327)
+2018-11-30T10:09:46-08:00  37c8d74ec21f617204d53376cfa7d52991a49d3d qkou@qkou.info Qiang Kou (KK): [cpp] update test for normalize (#325)
+2018-11-30T09:58:48-08:00  e0cea1edefa9b093c4e77048c67c68ba1b6ff7e6 qkou@qkou.info Qiang Kou (KK): [cpp] update test for ExecPipe. close #288 (#324)
+2018-11-30T09:31:36-08:00  76ada7eded05127c739cae333cb5196723b54ad9 qkou@qkou.info Qiang Kou (KK): [cpp] update test for kmeans (#323)
+2018-11-29T17:15:26-08:00  24072c945f6e1e35b43e92fd2939ae9c5b8aa277 qkou@qkou.info Qiang Kou (KK): [cpp] update test for MatrixProduct (#322)
+2018-11-29T16:53:31-08:00  f0254b898bd5be9152d0b597848c0bad564b43d7 qkou@qkou.info Qiang Kou (KK): [cpp] update test for moment and power transforms (#319)
+2018-11-29T15:56:07-08:00  e599db3c657dbc7f094372541bb6cae1fd33beb3 qkou@qkou.info Qiang Kou (KK): [cpp] update test for replace (#321)
+2018-11-29T15:22:53-08:00  66775127054c10938b034dd3efa3e72085426f91 qkou@qkou.info Qiang Kou (KK): [cpp] update test for replace (#320)
+2018-11-29T14:06:28-08:00  35e2bb529f599ea8833d2f1f35fb804dad785989 qkou@qkou.info Qiang Kou (KK): [IDL] use google timestamp for creation time (#317)
+2018-11-29T13:57:42-08:00  2a31eadbbecabb4346a9affb1cdf452cff78a3e1 qkou@qkou.info Qiang Kou (KK): [cpp] update test for exp and log transforms (#318)
+2018-11-29T10:39:02-08:00  b82c3d6d8cf43cb3c78becc76cee2ecf0d5ceaa5 qkou@qkou.info Qiang Kou (KK): [py] set dependencies for model2proto pkg. close #309 (#316)
+2018-11-29T10:13:51-08:00  488c5d4eb3028582a3dbfd4bbd36c36b895ccaee qkou@qkou.info Qiang Kou (KK): [cpp] add NewColumn transform. close #230 (#315)
+2018-11-28T14:59:34-08:00  9c3269c0603ee0a77c99da70aba8a3140d90d682 qkou@qkou.info Qiang Kou (KK): [cpp] add test for xgboost linear model (#314)
+2018-11-28T14:09:28-08:00  ab8ab59794dd25101a2904bf13792327654dc2af qkou@qkou.info Qiang Kou (KK): [cpp] update test for median op (#313)
+2018-11-28T13:13:21-08:00  372a9a89e6c396315172e063a5d3a9e13338c7bd qkou@qkou.info Qiang Kou (KK): [cpp] update test for sigmoid op (#310)
+2018-11-28T12:52:55-08:00  94293b95d363a60a64754125ce2d534ca9447ab1 qkou@qkou.info Qiang Kou (KK): [IDL] update col type (#312)
+2018-11-27T16:39:21-08:00  394545bc19ed7153bcebcbe183f96ef52469627d qkou@qkou.info Qiang Kou (KK): [cpp] transform cleanup (#311)
+2018-11-27T15:28:25-08:00  798105dbeef527c78092819966ddb6cb9b6be262 qkou@qkou.info Qiang Kou (KK): [cpp] update test for softmax (#308)
+2018-11-26T16:17:52-08:00  7cb19a272835420864dc771af7b92f2026f0fc6b qkou@qkou.info Qiang Kou (KK): [cpp] add LightGBM test using titanic data set (#307)
+2018-11-26T13:43:34-08:00  191883f33edd1a671329aa4ed432146158494612 qkou@qkou.info Qiang Kou (KK): [IDL] using snake case for oneof field (#306)
+2018-11-26T13:03:30-08:00  473f0ff8ccdd295fc34c95c58a21123ab58af505 qkou@qkou.info Qiang Kou (KK): [cpp] update test for datepart op  (#305)
+2018-11-21T17:28:56-08:00  d2d6a26703ee14fff41e3a5fc14ae2d0bec093e9 qkou@qkou.info Qiang Kou (KK): [cpp] xgb testing using titanic data set (#304)
+2018-11-21T09:20:36-08:00  0baad3e4f0cec44c1d05b84f85a546c41c9c803e qkou@qkou.info Qiang Kou (KK):  [cpp] update test for map op (#303)
+2018-11-20T14:15:55-08:00  dad4d1bc7139f6ab2572365d084b26a34084de54 qkou@qkou.info Qiang Kou (KK): [py] the model2proto package (#295)
+2018-11-20T14:07:32-08:00  21531540f9093edda232658aca64b9b3d61b59d6 qkou@qkou.info Qiang Kou (KK): [IDL] wrapping data type and file name into a message type (#300)
+2018-11-20T12:35:30-08:00  fb88f87a06ce001f0792ee0fbe213d51e17df36b qkou@qkou.info Qiang Kou (KK): [cpp] use protobuf for vocabulary in count vectorizer (#302)
+2018-11-20T11:15:42-08:00  e2af4e4d92f549f28a7b18add2cf395bc011ebee qkou@qkou.info Qiang Kou (KK): [IDL] add unknown into enum values (#299)
+2018-11-20T10:20:04-08:00  f64471a6db9f6cd59c827284ee161bd566a67c2e qkou@qkou.info Qiang Kou (KK): [IDL] add brief comments (#301)
+2018-11-19T14:37:51-08:00  bca968680f6d148323f0e9603bd3603614a7876a qkou@qkou.info Qiang Kou (KK): [cpp] update tests for NA (#298)
+2018-11-19T10:40:19-08:00  e9abb0366cf72ef35e76f5b1562dbea4f3269bb1 qkou@qkou.info Qiang Kou (KK):  [cpp] update test for CountVectorizer  (#297)
+2018-11-19T10:29:43-08:00  8b3d1f311a05f37c4a05e9397846e5c2dda09025 qkou@qkou.info Qiang Kou (KK): [IDL] longer variable names for clarity (#293)
+2018-11-17T22:18:29-08:00  174369a83613653a8631ab11348b21d252a89945 qkou@qkou.info Qiang Kou (KK): [cpp] update test for binary op and clip op (#296)
+2018-11-17T20:56:11-08:00  4f90580f860f3e28228558cc0e1e1d711930d5ff qkou@qkou.info Qiang Kou (KK): [cpp] update test for xgb and sqrt (#294)
+2018-11-16T13:28:13-08:00  dbc4beda4089fe8e648fb81840f9c555d7f04a5c qkou@qkou.info Qiang Kou (KK): [py] more examples using python to generate protobuf (#292)
+2018-11-16T12:36:28-08:00  ae78cd83bfa03e69ef9bff88346b87a8dc52cf23 qkou@qkou.info Qiang Kou (KK): [cpp] add scale test in py (#291)
+2018-11-16T11:25:16-08:00  7ac367f65f8577cb448681537562f1220cc3de76 qkou@qkou.info Qiang Kou (KK): [cpp] update as type to accept multiple inputs (#290)
+2018-11-16T10:11:45-08:00  21f907afd4f00637d6dcb693e723a0349efb097c qkou@qkou.info Qiang Kou (KK): [IDL] consistency of operation names (#287)
+2018-11-15T17:36:49-08:00  1a37f22d6f969e627786d2add98de427c4b00457 qkou@qkou.info Qiang Kou (KK): [cpp] generate proto files using python in unit test (#289)
+2018-11-15T12:55:42-08:00  894976c45de6cd8ec6093e015eb329f461e5d245 qkou@qkou.info Qiang Kou (KK):  [IDL] consistency of file names (#286)
+2018-11-15T11:14:11-08:00  54574c1f94c419c61aa1da8b227f85542eb2ffb8 qkou@qkou.info Qiang Kou (KK): [cpp] xgb2protobuf and lgbm2protobuf (#283)
+2018-11-15T10:01:20-08:00  d5bb0089c31886ed8a09ff87255cd7ef90fcf44a qkou@qkou.info Qiang Kou (KK): [cpp] update jenkins for c++ test coverage (#285)
+2018-11-13T16:51:05-08:00  3b6c7059680e5528d768206c152645adbc466e21 qkou@qkou.info Qiang Kou (KK): update location of third party dependencies (#280)
+2018-11-13T12:22:24-08:00  1bf26e86f789e9f9e9565112e89d5ffb67d65500 qkou@qkou.info Qiang Kou (KK): [cpp] fix XGBoost model (#279)
+2018-11-13T11:35:55-08:00  27f682411083a782c5efe2a40e3692de81e32c25 qkou@qkou.info Qiang Kou (KK): [IDL] protobuf schema update (#278)
+2018-11-12T12:23:08-08:00  e06e010ec2cfc9fae13555ef494553090096e9b2 qkou@qkou.info Qiang Kou (KK): [cpp] change "XGBoost" -> "GBM" (#274)
+2018-11-12T10:15:42-08:00  84d71530031ea3211c64ae58dc9b6f907f7b28b4 qkou@qkou.info Qiang Kou (KK): [cpp] add byte buffer (#273)
+2018-11-10T17:32:27-08:00  2a3c1cbfada5ddab91bd96642150f684d3457c18 qkou@qkou.info Qiang Kou (KK): [cpp] xgb model using protobuf (#271)
+2018-11-09T16:45:21-08:00  2a23f900ab142534f2bd28bfeaf9fb726e92e39c nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-11-09T14:55:37-08:00  (tag: v0.13.11) 77787502c74268de7cfd4b91fe6a15fbc432fccb nishant@h2o.ai Nishant Kalonia: Version up to 0.13.11
+2018-11-09T16:36:49-08:00  21b962e68b2f4d50f36e9be8891a171aa5fbdb2c nishant@h2o.ai Nishant Kalonia: More optimization bug fixes. (Execpipe cannot have dummy columns)
+2018-11-09T15:37:02-08:00  28d58df6a605383a3d14c9339afb28d593561ab3 nishant@h2o.ai Nishant Kalonia: Revert "Version up to 0.13.11"
+2018-11-09T15:36:17-08:00  dbfffb827f86245eba3ff1af6e57291cb03ed81b nishant@h2o.ai Nishant Kalonia: Optimization bug fix
+2018-11-09T14:55:37-08:00  895886ce7a984e95228c4b26f64dce544746fef6 nishant@h2o.ai Nishant Kalonia: Version up to 0.13.11
+2018-11-09T14:54:32-08:00  c91d0f80836f1a6f747a68ef8a18dd1e73dbc193 nishant@h2o.ai Nishant Kalonia: Skip c++ build until docker issue is resolved
+2018-11-09T14:44:04-08:00  21ff8ccea3270699462d258e336b8cec177b83ff nkalonia1@gmail.com nkalonia1: Merge pull request #270 from h2oai/speedup2
+2018-11-09T11:38:12-08:00  3ecd6e3adedcba95e12c6f58a689b300350f3c84 michal@h2o.ai Michal Malohlava: [ITESTS] Version 1.3.1 and 1.4.0 enabled (#268)
+2018-11-09T10:16:18-08:00  a63b5fd2907499b79df32186beb4ad9d78c25960 michal@h2o.ai Michal Malohlava: Revert "Memory/speed improvements" (#269)
+2018-11-08T18:44:16-08:00  c318188b7310a1ab30f290c1957618a4aae36055 nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-11-08T18:42:58-08:00  (tag: v0.13.10) 53fd2f65f965c7aa86b081fbcb11805ba086d1ee nishant@h2o.ai Nishant Kalonia: Version up to 0.13.10
+2018-11-08T18:41:05-08:00  593dbcdd2204dd8ca5aa4a94911844ecad01725f nkalonia1@gmail.com nkalonia1: Merge pull request #239 from h2oai/speedup
+2018-11-08T13:29:29-08:00  ff99d7a4783cc4d66100431af9f1d463536855b6 qkou@qkou.info Qiang Kou (KK): [cpp] exec pipe using protobuf (#267)
+2018-11-08T12:50:00-08:00  d2c630c173cc4889592f0a081f6628cc32e24b03 qkou@qkou.info Qiang Kou (KK): [cpp] map using protobuf (#266)
+2018-11-08T11:23:15-08:00  b3802458f0bc0c245198860251f715f19add3e27 qkou@qkou.info Qiang Kou (KK):  [cpp] using protobuf to store column data  (#265)
+2018-11-08T09:47:45-08:00  0322b314645ae43ed0b9b1095946742951bec4ed qkou@qkou.info Qiang Kou (KK): [cpp] interval map using protobuf (#263)
+2018-11-07T16:18:55-08:00  6949001adece5618a27f19a813e36b3a327db64f qkou@qkou.info Qiang Kou (KK): [cpp] replace using protobuf (#262)
+2018-11-07T15:17:39-08:00  d95f315f704218f8b96dc9b1f2025c463ce88f49 qkou@qkou.info Qiang Kou (KK): [cpp] close fstream after writing protobuf (#261)
+2018-11-07T14:59:09-08:00  d931ef9487def35840ef10af94e3a2768d1f9d79 qkou@qkou.info Qiang Kou (KK): [cpp] count vectorizer using protobuf (#260)
+2018-11-07T13:53:39-08:00  aac804a00cbc952a6bf88612f56193fc295fe4e6 qkou@qkou.info Qiang Kou (KK): [cpp] proto schema update (#259)
+2018-11-06T16:04:42-08:00  ef7f311e3e876297fea721e2b49d4ea474ceff16 qkou@qkou.info Qiang Kou (KK): [cpp] matrix product using protobuf (#258)
+2018-11-06T10:50:10-08:00  e0c76b638e161693929a604d4b984c968a570520 qkou@qkou.info Qiang Kou (KK): [cpp] kmeans using protobuf (#257)
+2018-11-05T16:38:52-08:00  2cebdad13a26c41beb1f43741b2ebd0b5a4c2fb5 qkou@qkou.info Qiang Kou (KK): [cpp] imputena using protobuf (#256)
+2018-11-05T16:08:37-08:00  f48e3c3813eee134f351af73c1f7271bde55e44f qkou@qkou.info Qiang Kou (KK): [cpp] clip using protobuf (#255)
+2018-11-05T15:12:40-08:00  3e98efa8817f94352be81bde6a1b05677611b49d qkou@qkou.info Qiang Kou (KK): [cpp] fillna using protobuf (#254)
+2018-11-05T14:38:18-08:00  f9d5d52988602b364bef291dff6091801148eefb qkou@qkou.info Qiang Kou (KK): [cpp] IsNa using protobuf (#253)
+2018-11-05T14:00:27-08:00  4bdbd53ca3f3518e9b8c5848ca4cf20e4391b650 qkou@qkou.info Qiang Kou (KK): [cpp] normalize using protobuf (#252)
+2018-11-05T13:15:35-08:00  2df6614a18eda94b44984082f66a903794eb1df3 qkou@qkou.info Qiang Kou (KK): [cpp] moment using protobuf (#251)
+2018-11-05T12:14:21-08:00  d7cca9dd3f40316a53f94a35fbd78e7257ef1650 qkou@qkou.info Qiang Kou (KK): [cpp] datepart using protobuf (#250)
+2018-11-05T10:59:27-08:00  36506bffd40823ac69eb7a74344841f23c5e98b2 qkou@qkou.info Qiang Kou (KK): [cpp] median using protobuf (#249)
+2018-11-05T10:05:36-08:00  c0dd924098183a15b947454b7c8493a6c3579b94 qkou@qkou.info Qiang Kou (KK): [cpp] softmax using protobuf (#248)
+2018-11-02T17:39:55-07:00  d2341a1af3652a802be700dbe2cc1303f914ada5 qkou@qkou.info Qiang Kou (KK): [cpp] agg using protobuf (#247)
+2018-11-02T16:11:54-07:00  e22b18b9dd963de631205992446631479fd518be qkou@qkou.info Qiang Kou (KK): [cpp] log/sqrt using protobuf (#246)
+2018-11-02T15:40:59-07:00  9b2a445bc4b17ab96b535f043cfd7172e2b7edca qkou@qkou.info Qiang Kou (KK): [cpp] power using protobuf (#245)
+2018-11-02T14:45:19-07:00  50fee8ec519cb1a6cf3cb54dcd0751d309d7f60d qkou@qkou.info Qiang Kou (KK): [cpp] Sigmoid using protobuf (#244)
+2018-11-02T14:02:44-07:00  fe69cf6fbb7c98ef5dbdeaaa2f2f9328f87d6219 qkou@qkou.info Qiang Kou (KK): [cpp] Scale using protobuf (#243)
+2018-11-02T12:59:13-07:00  9b9e6c1a0e2ba795b31fdd47b44b98b2a692c68f qkou@qkou.info Qiang Kou (KK): fix uninitialised values reported by valgrind (#242)
+2018-11-01T17:34:01-07:00  9e885803c21fc77383afeb82994386553359f017 qkou@qkou.info Qiang Kou (KK): [cpp] exp/expm1 using protobuf (#241)
+2018-11-01T16:59:23-07:00  c93c40d337572d1670334c0d3b62e3744d866228 qkou@qkou.info Qiang Kou (KK): [cpp] astype using protobuf (#240)
+2018-11-01T16:01:47-07:00  1aabfdb7a4e0cece0df484502f14908aa44a24f6 qkou@qkou.info Qiang Kou (KK): [cpp] BinaryOp using protobuf (#238)
+2018-11-01T15:35:45-07:00  0ab39e1eaa012203256772844c2b3189d6954a1c nkalonia1@gmail.com nkalonia1: Merge pull request #229 from h2oai/iss75
+2018-11-01T14:39:58-07:00  544cb3a9ed0da39d86c6614fe79b5169ff2142ee qkou@qkou.info Qiang Kou (KK): [cpp] remove unused files (#237)
+2018-11-01T14:11:32-07:00  e68e3c83af7d7b14af67554604ff695308717fcb qkou@qkou.info Qiang Kou (KK): [cpp] const binary op using protobuf (#236)
+2018-11-01T10:35:53-07:00  e64d8e22792728e18316988320badfa51a6f5735 nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-11-01T10:34:13-07:00  (tag: v0.13.9) c45e3e3f8b4ecc52bef00dd1c1f76d2661db5e06 nishant@h2o.ai Nishant Kalonia: Version up to 0.13.9
+2018-10-31T15:30:05-07:00  3cc24b9a221766b326fe57b882c4534b126e1349 nishant@h2o.ai Nishant Kalonia: Fix bug where key is requested twice
+2018-10-31T17:08:02-07:00  e4a6ee67646743e20c2f2712d77d266208932e15 qkou@qkou.info Qiang Kou (KK): [cpp] start to refactor using protobuf (#234)
+2018-10-31T13:23:27-07:00  ad73a2ec2d2490ebf14e528fd54664c4c2328f78 nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-10-31T13:21:46-07:00  (tag: v0.13.8) bbaf0319ef6c22382c7d6006b1e8ac2c66eeb1ab nishant@h2o.ai Nishant Kalonia: Version up to 0.13.8
+2018-10-31T13:19:56-07:00  72a4e534cf5232837fa861ef857a4687c9728054 nkalonia1@gmail.com nkalonia1: Merge pull request #233 from h2oai/java_fill_transform
+2018-10-30T17:50:12-07:00  0b2b20176d2777e54672c0ebb28e0b617b27bc69 qkou@qkou.info Qiang Kou (KK): [cpp] revisit casting rules (#232)
+2018-10-29T12:52:15-07:00  d05618c5f5a369ea2f91d033654b91205a6bac17 qkou@qkou.info Qiang Kou (KK): [cpp] csv parser (#228)
+2018-10-26T18:19:25-07:00  359dd57f0eeb88ce3cf35b739360f19865403b44 qkou@qkou.info Qiang Kou (KK): [cpp] license checking using openssl. close #207 (#226)
+2018-10-26T09:48:49-07:00  a1d2107eecd4076f90cea5615077d5f2e308009b qkou@qkou.info Qiang Kou (KK): [cpp] transform map (#222)
+2018-10-25T09:46:48-07:00  af55c68a91fe753184a63200d36359fad4e6ceb8 qkou@qkou.info Qiang Kou (KK): [cpp] transform intervalmap (#220)
+2018-10-24T16:05:53-07:00  c01ec0596853827a876f1f7d18752aab97055446 nishant@h2o.ai Nishant Kalonia: Revert "Revert "Next development cycle""
+2018-10-24T16:05:25-07:00  58e6cb439ba42a61dabe90dc21b1374d82cd7980 nishant@h2o.ai Nishant Kalonia: Revert "Next development cycle"
+2018-10-24T16:01:32-07:00  d2969210bd2f8e99f40d9aa626edfc5b7e6b59a7 qkou@qkou.info Qiang Kou (KK): [cpp] transform Replace (#219)
+2018-10-24T15:45:48-07:00  0173968937e65a1ee1c7891ae2a436ae73aac365 nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-10-24T15:44:00-07:00  (tag: v0.13.7) d86448ea04b74270da203054debba3ece8886e4c nishant@h2o.ai Nishant Kalonia: Version up to 0.13.7
+2018-10-24T14:40:10-07:00  56937779d9937b972e6c0700bfbc921151bb57e4 qkou@qkou.info Qiang Kou (KK): [cpp] fix copy ctor for flexible type (#218)
+2018-10-24T12:34:36-07:00  3da989080c584b38b024df49b95d948a2e9ff2cb qkou@qkou.info Qiang Kou (KK): [cpp] text transform using icu. close #210 (#217)
+2018-10-24T00:41:15+02:00  483658b0d794bd5c06dedac86740737ccad354b3 jakub.hava@gmail.com Jakub Háva: Handle type consistently in type API (#213)
+2018-10-22T15:23:07-07:00  b8ed6a58825ec4ca2ed21f868de17fb936955869 qkou@qkou.info Qiang Kou (KK): [cpp] hashing fun for flex type (#215)
+2018-10-22T15:01:52-07:00  23174addb60b75b54a3774e62aafebf1c2b11132 qkou@qkou.info Qiang Kou (KK): [cpp] ICU needs manual cleanup (#214)
+2018-10-19T16:20:23-07:00  6c923b960c75321f327bff5d6e423eacba5cbbeb qkou@qkou.info Qiang Kou (KK): [cpp] update cmake and dockerfile for icu (#212)
+2018-10-17T10:44:38-07:00  179bd5e4bbe6570ad6c69dda5cf6db131a9e36dd qkou@qkou.info Qiang Kou (KK): [cpp] read tree model from capnp file (#208)
+2018-10-16T11:34:06-07:00  32a35d8b6c3d86d3e41e44190dccd41f59922ded qkou@qkou.info Qiang Kou (KK): [c++] update capnp schema for c++ (#205)
+2018-10-16T10:43:59-07:00  84b2004ffc44af6277d0767a9783ddd08135ef21 qkou@qkou.info Qiang Kou (KK): [cpp] update the parser to accept None (#206)
+2018-10-15T14:04:57-07:00  c35e7ffcb6522629ba870d3065302c102083afc8 qkou@qkou.info Qiang Kou (KK): [cpp] add the C++ toml parser source code (#204)
+2018-10-15T12:39:12-07:00  cb8b4115d8c5de7b2e36bb62b76d359af830d988 qkou@qkou.info Qiang Kou (KK): [cpp] simplest xgb transform (#203)
+2018-10-11T18:25:59-07:00  dc5efa50ea08c61a41a61ca07945c7a5eaad811e nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-10-11T18:24:29-07:00  (tag: v0.13.6) 63706e52038b9c32b78dd459238136ab07ad5dbf nishant@h2o.ai Nishant Kalonia: Version up to 0.13.6
+2018-10-11T16:31:10-07:00  7258e28c7f01c05c1f859bb73472f746d24ac6e0 qkou@qkou.info Qiang Kou (KK): [cpp] tree model structure (#201)
+2018-10-11T15:18:04-07:00  5402ea7b778ca00cd281a7b04cfa796fff6fab49 qkou@qkou.info Qiang Kou (KK): [cpp] linear booster and tree booster (#200)
+2018-10-11T14:11:38-07:00  63c6eadd9d6ef812d0be9289f1593cda8a71cdb7 nishant@h2o.ai Nishant Kalonia: Add new date parsing format per the request of Arno. To be removed when format strings are implemented
+2018-10-11T13:54:38-07:00  76e09033a0b89e1438a85e9940e6941c024a2d97 michalr@h2o.ai Michal Raška: [BUILD] Don't send email notifs from pipeline. (#199)
+2018-10-11T13:05:46-07:00  18641df0275dff84de634cfc3f9781ff395766c3 qkou@qkou.info Qiang Kou (KK): [c++] tree data structure (#198)
+2018-10-10T19:22:20-07:00  6352442dc1bb462081022684569b01ffd380e35b nishant@h2o.ai Nishant Kalonia: Fixed bug in compressed pipeline implementation where some columns would be used as both inputs and outputs to the same transformer
+2018-10-10T15:27:03-07:00  39f2c3d5db8a56fe3fb7e74c28401c83c1551e0c nishant@h2o.ai Nishant Kalonia: Fix id retreival in binary format trees
+2018-10-10T16:21:50-07:00  d76df15af6f0ad3dd6053ab06fcac93d37decad1 qkou@qkou.info Qiang Kou (KK): [cpp] transform KMeans (#196)
+2018-10-10T13:47:26-07:00  df017aef50d4a424c91c265683cb02f59058f084 qkou@qkou.info Qiang Kou (KK): [cpp] transform ImputeNa (#195)
+2018-10-10T11:50:44-07:00  a6d16aea7d6606e525bcb20038709af3c598247c qkou@qkou.info Qiang Kou (KK): [cpp] transform MatrixProduct (#193)
+2018-10-10T09:56:13-07:00  17d3d6fd6efa2f340bd025aaad49332362e03af7 qkou@qkou.info Qiang Kou (KK): [cpp] fix moment and normalize (#192)
+2018-10-09T14:54:33-07:00  820a22c43b9c6c3be67302da3ad5e66469f91b15 qkou@qkou.info Qiang Kou (KK): [cpp] update mojo frame and model (#191)
+2018-10-09T13:23:39-07:00  542e1ddb5b2165235d12a5f57ae996f545887da1 qkou@qkou.info Qiang Kou (KK): [cpp] transform Clip (#190)
+2018-10-09T11:48:02-07:00  521a11d0acb1a28c11f6f01186dcf590517774aa qkou@qkou.info Qiang Kou (KK): [cpp] transform Reciprocal (#189)
+2018-10-08T17:20:54-07:00  afa09eb3890061bcb03ca2e40849acb86fe8d4fe qkou@qkou.info Qiang Kou (KK): [cpp] transform IsNa and FIllNa (#188)
+2018-10-08T16:17:10-07:00  52976863aaa112de911965c2a00af5df4b91df7c qkou@qkou.info Qiang Kou (KK): [cpp] transform Normalize (#187)
+2018-10-08T15:12:45-07:00  645ffa2b42363270f40ba37a0b93c49e83dcdd9a qkou@qkou.info Qiang Kou (KK): [cpp] abs for flexible type (#186)
+2018-10-08T14:40:31-07:00  b928ffba4869b2198bfbe463d8b44e8488319d10 qkou@qkou.info Qiang Kou (KK): [cpp] transform Moment (#185)
+2018-10-08T13:29:52-07:00  1787de0bf4666eaa58b90fccf758cdedb4292960 qkou@qkou.info Qiang Kou (KK): [cpp] transform Datepart (#184)
+2018-10-08T12:12:58-07:00  c5de39f38798b44745a48bacca2daa45032f8c4a qkou@qkou.info Qiang Kou (KK): [cpp] transform Median (#183)
+2018-10-08T11:08:30-07:00  f8c3bda333d1bcf406da9599487ace0763d56a96 qkou@qkou.info Qiang Kou (KK):  [cpp] use std::tm instead of boost::ptime. close #162  (#181)
+2018-10-08T09:55:07-07:00  b15920d03c08da8508f9cbae97d52611d1e5a228 qkou@qkou.info Qiang Kou (KK): [cpp] fix softmax. close #179 (#180)
+2018-10-05T18:13:59-07:00  ac741a990e4ab803b7c75cd4f1d167d1f7e267f8 jakub.hava@gmail.com Jakub Háva: Fix releasing (#178)
+2018-10-05T17:28:19-07:00  5bf55f7e32e224848c7916ae8557d0621eff9cc9 nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-10-05T17:34:13-07:00  7a0b4400a10bd01b7923ca21fba751069afded74 nishant@h2o.ai Nishant Kalonia: Revert "Next development cycle"
+2018-10-05T17:28:19-07:00  019acc64617ee63ce5bf9e1abfc038e459b8eead nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-10-05T17:27:07-07:00  (tag: v0.13.5) 02f2aa18b73b6c5732c19aca5f458619aed4299a nishant@h2o.ai Nishant Kalonia: Version up to 0.13.5
+2018-10-05T15:17:34-07:00  81532c71cb471d0b26cf043ba1cbfd809b619df6 qkou@qkou.info Qiang Kou (KK): [cpp] fix uninitialized values reported by valgrind (#177)
+2018-10-05T14:30:00-07:00  e68c839f67ad4bbb6ae94eed890a253bc330c16b qkou@qkou.info Qiang Kou (KK): [cpp] transform Agg (#176)
+2018-10-05T12:48:01-07:00  bddca5f00470b5c67a281929dbe54639fdb9935b qkou@qkou.info Qiang Kou (KK): [cpp] transform Softmax (#173)
+2018-10-05T11:03:41-07:00  aca236071fd04d72c700053bddf075dd7e3bcafa qkou@qkou.info Qiang Kou (KK): [cpp] iterator and related operators (#172)
+2018-10-05T09:54:34-07:00  1cd09c7faf3afece9d4aa0dd2eb7a6bcae161853 qkou@qkou.info Qiang Kou (KK): [cpp] comparison between flexible types (#171)
+2018-10-04T15:34:34-07:00  f598fba0354613dad2dac81803cd8361890083a0 qkou@qkou.info Qiang Kou (KK): [cpp] transform Sqrt (#170)
+2018-10-04T14:54:29-07:00  44f239c4ce4b1bded78e0d22f28f7777fb12842d qkou@qkou.info Qiang Kou (KK): [cpp] transform Log (#169)
+2018-10-04T14:26:23-07:00  fee6a07e7a5fb1ae9dab866ad9fc1cb170df411a qkou@qkou.info Qiang Kou (KK): [cpp] transform Power (#168)
+2018-10-04T14:05:06-07:00  0eff33a2284e47751c32d1b00e16520f5b7cbd39 qkou@qkou.info Qiang Kou (KK): [cpp] transform Exp1M (#167)
+2018-10-04T13:33:48-07:00  5427a369f46e18af8f08805ae51f930693fa0c3d qkou@qkou.info Qiang Kou (KK): [cpp] transform Exp (#166)
+2018-10-04T13:05:56-07:00  31ff982c1e60a834f5dab0b358a7cb58c77bf170 qkou@qkou.info Qiang Kou (KK): [cpp] Sigmoid (#164)
+2018-10-04T10:56:49-07:00  49b1a27fa8b5aeeea4bf4eb92217600ac08c054c qkou@qkou.info Qiang Kou (KK): [cpp] Scale (#163)
+2018-10-04T09:33:22-07:00  f0717c8c288fda8fa7a940992100dad9d77c16f3 qkou@qkou.info Qiang Kou (KK): [cpp] ConstBinaryOp (#152)
+2018-10-03T19:47:32-07:00  670ea31cca964204e1c89f2abf41beaa3c203f10 jakub.hava@gmail.com Jakub Háva: Upgrade Gradle (#159)
+2018-10-03T19:36:12-07:00  7bbce6bf7371eb3bfe4cbf696828b626ba93ac29 jakub.hava@gmail.com Jakub Háva: Fail jenkins API release if we are on SNAPSHOT (#157)
+2018-10-03T19:31:59-07:00  720a7f49f4130a094b73266343634f7a34982fa1 jakub.hava@gmail.com Jakub Háva: Remove accidentally added gradle files (#158)
+2018-10-03T19:23:52-07:00  788e5001ae442dbf1d7f58e72e3adf84dbf6620d jakub.hava@gmail.com Jakub Háva: rename doRelase to doAPIRelease(#156)
+2018-10-03T17:25:58-07:00  63505c20909dcad2ef8594ceba37ce43cb652e31 jakub.hava@gmail.com Jakub Háva: Publishing to Nexus (#115)
+2018-10-03T15:53:40-07:00  e0dd89802764fb39e13200e1343c43292d16769c qkou@qkou.info Qiang Kou (KK): [cpp] flexible type pow (#151)
+2018-10-03T15:34:17-07:00  2823b9f7a5cbb796106bdef1bf6b5077f8ab6d94 jakub.hava@gmail.com Jakub Háva: Cleanup before releasing the API (#147)
+2018-10-03T15:17:52-07:00  d0d74cafc35748452249ab767b41cda72ab1c4b2 michal@h2o.ai Michal Malohlava: [API] Removes code generation details from ColumnType API (#121)
+2018-10-03T14:51:06-07:00  eb88169c40765350e21174ec91b42a83eacbe825 qkou@qkou.info Qiang Kou (KK): [cpp] divide with constant (#150)
+2018-10-03T13:56:07-07:00  6e7930e3103f755aaf86459f2090ee4554650153 qkou@qkou.info Qiang Kou (KK): [cpp] flexible type negation (#149)
+2018-10-03T10:50:58-07:00  4335f8ab513a6fbe88a1bc98b4419cbd125179bb qkou@qkou.info Qiang Kou (KK): [cpp] fix memory leak in C++. close #145  (#148)
+2018-09-28T16:27:42-07:00  4ebed9aade53431f2259641df547bc68184b05fb qkou@qkou.info Qiang Kou (KK): [cpp] transform BinaryOp (#144)
+2018-09-28T14:18:56-07:00  4b1e6f809b9a937b565044d1f1fe88d6503341ab qkou@qkou.info Qiang Kou (KK): [cpp] operator/ (#143)
+2018-09-28T11:12:24-07:00  7ffafe5d1395a5ddfcad637aca9b2baf66461155 qkou@qkou.info Qiang Kou (KK): [cpp] operator* (#142)
+2018-09-28T10:41:40-07:00  d424d8cb54d3a3021c2dc20afe65bb0a4817dcd7 qkou@qkou.info Qiang Kou (KK): [cpp] operator- (#141)
+2018-09-28T10:02:45-07:00  1fdf3b28b55e3e40cbbba0d39263d6396cc980b0 qkou@qkou.info Qiang Kou (KK): [cpp] operator * (#140)
+2018-09-27T14:53:38-07:00  7c4ad341c970102a8872ba7349ca45d1e0c7e71b qkou@qkou.info Qiang Kou (KK): [cpp] a simple logger in C++ (#139)
+2018-09-27T13:44:47-07:00  e8b63efd8618dc5ad1aeaaea286845f6b5bc1cf8 qkou@qkou.info Qiang Kou (KK): [cpp] AsType transform (#138)
+2018-09-27T09:47:32-07:00  626e7a8ed08c9669f160f5ccf195311a06c5d80d qkou@qkou.info Qiang Kou (KK): [cpp] frame and transform definition (#137)
+2018-09-26T17:11:52-07:00  3410d0745bc5297f19a7127041162d2f97b77784 nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-09-26T17:10:21-07:00  (tag: v0.13.4) 5cabe4cd766e998bbb5c28d26f9559c91cc3da8c nishant@h2o.ai Nishant Kalonia: Update to version 0.13.4
+2018-09-26T16:57:37-07:00  0a927aa1f575ce1f558322476101a510a868b8d7 nishant@h2o.ai Nishant Kalonia: Added code to hande single-node lgbm trees and empty pipelines
+2018-09-26T15:01:43-07:00  6fe0f89e34673cd190d9103d88ac9cff9178df42 qkou@qkou.info Qiang Kou (KK): [cpp] c++ test coverage report (#136)
+2018-09-26T13:49:33-07:00  2fe477124f7e0f7229aab81f101bb6c642b7217a qkou@qkou.info Qiang Kou (KK): [cpp] flex type prototype (#135)
+2018-09-21T17:39:08-07:00  8a836f399b9f78b83526655803caa25f3262e63b nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-09-21T17:34:22-07:00  (tag: v0.13.3) 6c2c738baf4bd83b00b680acc5f231f9d5a2f2e9 nishant@h2o.ai Nishant Kalonia: Version up to 0.13.3
+2018-09-21T17:26:45-07:00  b00f175ac5d4de488a62b2b58e2d569a61bff0e3 nkalonia1@gmail.com nkalonia1: Merge pull request #133 from h2oai/lgbm2capnp
+2018-09-20T19:38:35-07:00  bf085005a4ef54aeb0fb4a135ffe4d6f5ec1807b nkalonia1@gmail.com nkalonia1: Merge pull request #131 from h2oai/memory_reduce
+2018-09-17T19:11:07-07:00  cd4eed446e08cc7007b102ecadb52751023fb009 nishant@h2o.ai Nishant Kalonia: Added date-parsing format. This format is used by datatable when converting dates to strings
+2018-09-10T19:47:51-07:00  bc12f25c8138ce3a4d8c5db10c7224175d177e1b nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-09-10T19:46:56-07:00  (tag: v0.13.2) be6991e884751c9cee539e1414f551a93128ac0e nishant@h2o.ai Nishant Kalonia: Version up to 0.13.2
+2018-09-10T19:45:59-07:00  582984b656124c8b8f6d9a45560da536cacd7073 nkalonia1@gmail.com nkalonia1: Merge pull request #129 from h2oai/multiclass_fix
+2018-09-10T17:54:12-07:00  cb99152fb83d1ed56ed3bdb63cf77ae24c9990b6 nishant@h2o.ai Nishant Kalonia: Handle case when there are zero features in Model
+2018-09-10T17:40:02-07:00  b30417b1f4e4ea3989942e209de05794d7bbc92d nishant@h2o.ai Nishant Kalonia: Fix bug where NAs where appearing in Linear MOJO results
+2018-09-10T16:31:45-07:00  90a8a9f22aad7b130e9ce19df43cb7b6557dc36f michal@h2o.ai mmalohlava: [ITESTS] Use 1.3.0 version for migration testing
+2018-09-10T15:56:09-07:00  0e2f9991b24d52289942db5a10786a057256abb2 nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-09-10T15:55:09-07:00  (tag: v0.13.1) 7a2da2f81af1421d47a01968296e4e714a6d561e nishant@h2o.ai Nishant Kalonia: Version up to 0.13.1
+2018-09-10T15:53:36-07:00  edcb7216eaeeb9a1c9c6b2f0f25defb5edceaa52 nkalonia1@gmail.com nkalonia1: Merge pull request #128 from h2oai/runtime_fix
+2018-09-07T18:36:56-07:00  e020537adac2e44f1e384307a7a9d13a12cfc1e1 michal@h2o.ai mmalohlava: [BUILD] Run integration tests based on pipeline options
+2018-09-07T18:10:58-07:00  1df8f4e7e05d28aab250c82c58f1ad8782327025 nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-09-07T18:09:52-07:00  (tag: v0.13.0) d0e93e22805c2fb6fb4aecc198ca7a8f9c464e92 nishant@h2o.ai Nishant Kalonia: Version up to 0.13.0
+2018-09-07T17:57:31-07:00  0ae79397bea5183dde5e5ae484fc207552887786 nkalonia1@gmail.com nkalonia1: Merge pull request #117 from h2oai/treelite2capnp
+2018-09-05T18:36:09-07:00  a51aaa438b1609e9bcc066ecfdb4cd89e0075174 michal.malohlava@gmail.com Michal Malohlava: [FIX] Remove synchronization from ColumnFactory (#123)
+2018-08-30T11:27:02-04:00  e1983681cede9e92c02ea2aff9489b7f2dd97474 michal.malohlava@gmail.com Michal Malohlava: [TYPEs] More flexible casting between numeric types (#125)
+2018-08-29T05:47:51-07:00  b2a2b674c7c4451140c2ef3b9ccbf329db5256eb michal@h2o.ai mmalohlava: Next devel cycle
+2018-08-28T16:50:37-07:00  (tag: v0.12.2) 714f8b601c8d2db510dbdd2571f1468db85bd69b michal@h2o.ai mmalohlava: Release 0.12.2
+2018-08-24T16:53:07-07:00  17f4a40d0d9ec3a7ef8b10dcd7def62c855b5345 michal.malohlava@gmail.com Michal Malohlava: [FIX] :bug: Use parameter defined in PR-119 (#120)
+2018-08-23T18:48:35-07:00  57df9263ec64fe8c29ad1f40ac0a77fc44342ebe michal.malohlava@gmail.com Michal Malohlava: Increase traversalLimitInWords for top-level reader. (#119)
+2018-08-13T18:48:15-07:00  6ae4679ec2aeba703d54b751ad709de17221f304 michal.malohlava@gmail.com Michal Malohlava: [ITEST] Enable MOJO backward compatibility tests. (#116)
+2018-08-03T16:53:14-07:00  6d41bbbbad602c42406725a6a953108fd5559d0e michal@h2o.ai mmalohlava: Next development cycle
+2018-08-03T13:47:32-07:00  (tag: v0.12.1) 785de632f03a80a10b4dc107ad0ff96b44e35593 michal@h2o.ai mmalohlava: Release 0.12.1
+2018-08-03T11:50:58-07:00  13c8931d4869bb0eb0754ba99588b16aa2ab8ba4 michal@h2o.ai mmalohlava: Revert "Collect javadoc api"
+2018-08-03T11:45:39-07:00  a0941f680dcd67cea6336c2ffd969798a2619e5f michal@h2o.ai mmalohlava: Collect javadoc api
+2018-07-31T15:30:02-07:00  00cb122819d96daaf82991306ec02d4601d29ace michal@h2o.ai mmalohlava: Create javadoc jar file
+2018-07-30T18:40:55-07:00  105fa94979dba7c306206a0a26fc081bb52d4fd4 nkalonia1@gmail.com nkalonia1: First draft in refactoring for XgbLinear implementation (#114)
+2018-07-11T18:42:27-07:00  c1ed7ff8ca3e2240b062e00c35fc1f771c77e867 michal.malohlava@gmail.com Michal Malohlava: Extract IDL definitions into a separated module with its own version (#113)
+2018-07-09T15:08:17-07:00  74affe084326fb20b0e6e27dd1db31ae2d77e8fa michal.malohlava@gmail.com Michal Malohlava: Split of MOJO code into API and implementation (#100)
+2018-07-06T16:43:55-07:00  c4518c3a1f59222dfbc9e6ff5c1086717517030b michal.malohlava@gmail.com Michal Malohlava: [TRANSFORMERS] Remove usage generation of a new class per input (#108)
+2018-07-05T19:46:18-07:00  970f4dbfe6f502eaac178d6dbca3b3dcdfd34dad nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-07-05T19:45:40-07:00  (tag: v0.11.0) a548a02d847c23e1bcad085edfc4bec9cfd84270 nishant@h2o.ai Nishant Kalonia: Version up to 0.11.0
+2018-07-05T19:13:10-07:00  4698cfcb1cb12f49227b49f3d660097906ac6e42 nkalonia1@gmail.com nkalonia1: Merge pull request #111 from h2oai/median_transform
+2018-07-05T19:10:56-07:00  86b5cdac653c5726938751201934ef17f5d9bead nkalonia1@gmail.com nkalonia1: Merge pull request #110 from h2oai/momentTransformer
+2018-07-05T14:18:19-07:00  3eb1ec09b1054f6d51d28a3ee63a49ef8b2b6ad6 nkalonia1@gmail.com nkalonia1: Merge pull request #109 from h2oai/agg_impl
+2018-07-03T17:51:03-07:00  2cc5995f4e9460fc8dbcdeeb0d06a9fa1efa6b3e nkalonia1@gmail.com nkalonia1: Implemented ImputeNa transformer and added test (#107)
+2018-06-28T14:37:36-07:00  8ffd5eb79d9d6a964e45147b62cf41a0c93b5633 nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-06-28T14:36:49-07:00  (tag: v0.10.8) b0b1f9c69349c17c9601438b9ee1beba72991142 nishant@h2o.ai Nishant Kalonia: Release of version 0.10.8
+2018-06-28T13:57:09-07:00  211f94951b48c5f7f1c21ff961aed115b857b50e nkalonia1@gmail.com nkalonia1: Merge pull request #106 from h2oai/missing_list_test
+2018-06-27T16:15:32-07:00  c703a5bf13257897318669e5580e181d586e3028 nkalonia1@gmail.com nkalonia1: Merge pull request #105 from h2oai/ts_mod
+2018-06-26T17:41:48-07:00  c8171b5aaec0aa2f224c377fb3d66a985a7196ea nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-06-26T17:41:12-07:00  (tag: v0.10.7) 320a9f030e6404127599cbe0b30b3692f9108c14 nishant@h2o.ai Nishant Kalonia: Version up to 0.10.7
+2018-06-26T17:40:26-07:00  9741b8343f605092b5ff40d97f508f83c165c320 nkalonia1@gmail.com nkalonia1: Merge pull request #104 from h2oai/missing_value_check
+2018-06-26T15:57:22-07:00  db69948ebd1f11f8ef4487f389afbfd5237d3e4b nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-06-26T15:56:47-07:00  (tag: v0.10.6) d3d501c3274f62f4201ca495f6df5a6002726749 nishant@h2o.ai Nishant Kalonia: Version up to 0.10.6
+2018-06-25T17:14:56-07:00  44df16cd44fa67788da6c79f6fe52bb0331a14ee nkalonia1@gmail.com nkalonia1: Merge pull request #95 from h2oai/float_xgb
+2018-06-25T17:07:53-07:00  58028918ced299e0760f5d4009feef198521943c nkalonia1@gmail.com nkalonia1: Merge pull request #98 from h2oai/duration_transformer
+2018-06-26T01:05:00+02:00  c8479d2ddb3448b2ace57944b572a1d1c6f6c188 jakub.hava@gmail.com Jakub Háva: Improvements to parse-free API (#97)
+2018-06-22T09:48:00+02:00  b2a2b621a4d981362f4546ca697b80db201cafc5 jakub.hava@gmail.com Jakub Háva: Merge pull request #103 from h2oai/jh/proper_fix
+2018-06-22T03:15:34+02:00  a7289f25e2e4c8b76dfbed3a46c55a0fa08ef105 jakub.hava@gmail.com Jakub Háva: [HOTFIX] missing parentheses (#102)
+2018-06-21T20:09:05+02:00  b68f505fd4da50c3122b8f0b41bc7bc75fe5e29d jakub.hava@gmail.com Jakub Háva: Merge pull request #101 from h2oai/jh/jira/null_no_parse
+2018-06-20T00:37:43+02:00  8feb642a4980bd6324f9af143ee9cf36b1f85cf0 jakub.hava@gmail.com Jakub Háva: Initial suport for passing types without the need of parsing (#59)
+2018-06-19T00:10:43-07:00  b1c3b142afe00dc74d10a779fa16d8b732515cc1 michal@h2o.ai mmalohlava: Next dev version is 0.10.6
+2018-06-19T00:07:51-07:00  (tag: v0.10.5) 06fb65d5ffb6f3f853091d882f3c176d69115bed michal@h2o.ai mmalohlava: Release version 0.10.5
+2018-06-19T00:02:08-07:00  66409ffd25e1beec358951066346846046b33778 michal.malohlava@gmail.com Michal Malohlava: [FIX] :fire: Modify serialization of tree nodes. (#94)
+2018-06-18T16:50:21-07:00  71dad6a87fffe3832168d3546336d49d8ff0e0e2 nkalonia1@gmail.com nkalonia1: Merge pull request #93 from h2oai/kmeans_dist_fix
+2018-06-16T07:42:42-07:00  0545656cc9f062e2f2da8aa8609f7b0487bbce6b michal.malohlava@gmail.com Michal Malohlava: Fix capnp serialization (#92)
+2018-06-15T23:03:31-07:00  4f4636407600e2d71b6257e1115a1d660d441a46 michal@h2o.ai mmalohlava: [BUILD] Fix release report label
+2018-06-15T23:01:46-07:00  cbaa2b1fbe71090140899d80a7258e83cae71439 michal@h2o.ai mmalohlava: [BUILD] Collect jars to simplify debugging
+2018-06-13T16:10:20-07:00  3abe05149066b151db0abfa34990001d19529fd6 michal@h2o.ai mmalohlava: Dev cycle for 0.10.5
+2018-06-13T16:06:35-07:00  dd50ccfda621f72af014cbddf809b3fb13415c30 michal@h2o.ai mmalohlava: [GIT] Ignore egg-info files.
+2018-06-13T16:05:25-07:00  42e175bb6e50f4d7fdd72252174bdf0343a93c54 michal.malohlava@gmail.com Michal Malohlava: [XGB] Native cpp serializer for xgb trees (#78)
+2018-06-11T18:30:32-07:00  (tag: v0.10.4) f7cfe7792781d2e1715fb4cb2593a70ea71ced1d nkalonia1@gmail.com nkalonia1: Version up to 0.10.4 (#90)
+2018-06-11T16:24:39-07:00  (tag: v0.10.3) 1002bf66bf5f02ceb409a45677e424fff556bb9d nkalonia1@gmail.com nkalonia1: Merge pull request #89 from h2oai/0.10.3
+2018-06-11T13:49:47-07:00  0b5950d92916c5d5bb3a07e9491ad75f9312df58 nkalonia1@gmail.com nkalonia1: Merge pull request #88 from h2oai/0.10.2
+2018-06-11T08:45:57-07:00  6e3882218419e37f14db607b4d195094a40e644c michal@h2o.ai mmalohlava: Use binary model represntation (Unsafe-based) for scoring by default.
+2018-06-07T14:45:17-07:00  44650228b028f0bc4a8463ecc267562cd31cf0fa michal@h2o.ai mmalohlava: [HOTFIX] :fire: Fix merge problem
+2018-06-07T14:27:43-07:00  425aa0faa4abf9b12724124372482639ea2c1d48 michal.malohlava@gmail.com Michal Malohlava: Support for Xgboost trees serialized via Capnp (#77)
+2018-06-07T14:21:38-07:00  69581afbefc203d35be2ccc2450d7ec3b81b50d5 michal@h2o.ai mmalohlava: [HOTFIX] :fire: Fix Xgb test
+2018-06-07T13:06:23-07:00  605f8561f75ce443ef1fb533b761910560d64502 michal@h2o.ai mmalohlava: [BUILD] Collect reports
+2018-06-06T15:56:00-07:00  a819bad34d6c6397affbd14971f728b1c43365bb nishant@h2o.ai Nishant Kalonia: Small tweak on mojo file exception handling
+2018-06-05T15:57:59+02:00  8da5be7f083003110db765d7364142ff30fe2396 pacinda@seznam.cz Stefan Pacinda: 55-mojo-junit-testing (#65)
+2018-06-04T19:27:14-07:00  5baf8c5367e6e32b524a5bb840fe98eca307e62a nkalonia1@gmail.com nkalonia1: Merge pull request #84 from h2oai/iss_83
+2018-06-04T16:04:25-07:00  9c83f5979bf4cc29977e11a4c7d69130938bca99 nkalonia1@gmail.com nkalonia1: Merge pull request #80 from h2oai/parse_boolean
+2018-06-01T15:56:27-07:00  53a75378ba97b3b30386248348eaef0dd0ac7c2c nishant@h2o.ai Nishant Kalonia: Next develoopment cycle
+2018-06-01T15:55:34-07:00  (tag: v0.10.1) eb2c2459422cca559165a9e4f69110ff792a16b4 nishant@h2o.ai Nishant Kalonia: Version up to 0.10.1
+2018-06-01T15:47:22-07:00  3ff469c9fd644da2448e93ce3b75692661a9f79f nishant@h2o.ai Nishant Kalonia: SimpleCSV now considers empty fields (... ,, ...) to be null Empty quoted fields (... ,"", ...) )are considered as empty strings, though.
+2018-05-29T21:30:58+02:00  1790a8ba9bb843137cc1d7be326c7e0fd90ba61b jakub.hava@gmail.com Jakub Háva: Expose methods for getting column names and types (#72)
+2018-05-25T16:57:57-07:00  928c50b08f635eabfed8c5d1b22dc96597d93276 nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-05-25T16:56:58-07:00  (tag: v0.10.0) 655d6c125a3a7e4c3f6c42a6ed165e37c036092b nishant@h2o.ai Nishant Kalonia: Version up to 0.10.0
+2018-05-24T15:13:05-07:00  be60509a39d1251d63a5a153a6d02ef3a6b6335d nkalonia1@gmail.com nkalonia1: Merge pull request #71 from h2oai/binop_sdivide
+2018-05-24T15:00:13-07:00  7784b81e8cd20f570bcd6095fa58c5616f60ece3 nkalonia1@gmail.com nkalonia1: Merge pull request #70 from h2oai/datepart_int64
+2018-05-24T22:26:39+02:00  752cf6a50dd0fe963431176218ac8c56f41208db jakub.hava@gmail.com Jakub Háva: Merge pull request #58 from h2oai/jh/jira/fraction_of_sec
+2018-05-24T13:12:11-07:00  a84b6f42b3ff65fd3d6684a89d115e8f95131829 nishant@h2o.ai Nishant Kalonia: Changed next development version to 0.10.0
+2018-05-17T11:56:24-07:00  955ed5ad2e5125a2eb77bf8c54ff4e3fa3d91d36 michal.malohlava@gmail.com Michal Malohlava: [BUILD] Code coverage (#56)
+2018-05-14T23:34:32-07:00  fbe0d0b08cde6b2d13ddcd031b1407935da94eb0 nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-05-14T23:31:10-07:00  (tag: v0.9.9) 20c46a910fb5409c65ff84fa92415de1de97bfe8 nishant@h2o.ai Nishant Kalonia: Version up to 0.9.9
+2018-05-14T23:27:07-07:00  f53997e64264df9b36755820909ee0fde117f1bc nishant@h2o.ai Nishant Kalonia: Empty strings read by the CSVReader are no longer considered to be NAs
+2018-05-14T16:41:15-07:00  4b742f0f5a83ff47fa135f3d73e2d5bebe29d04a nishant@h2o.ai Nishant Kalonia: Refine opencsv parser to not use escape characters. Remove commented code
+2018-05-14T15:24:53-07:00  1c080afac77ba3a91a675e8c842dc0071b06edae nishant@h2o.ai Nishant Kalonia: Added ability to parse "nan"
+2018-05-14T15:23:28-07:00  e1dcfb79d8468c9b99083c7a699540702b0684e3 nishant@h2o.ai Nishant Kalonia: Revert "Changed mojo reader to accept "nan" as a valid token instead of "NaN", as per the TOML spec."
+2018-05-14T15:22:03-07:00  996f73c32a5d7791465b02b76a8b746f0031c799 nishant@h2o.ai Nishant Kalonia: Revert "Removed single-quote as a valid escape character, as per TOML specs"
+2018-05-14T14:55:23-07:00  3d25ca3ff9c824b05331bf7d1e3cff59c24e95c9 nishant@h2o.ai Nishant Kalonia: Removed single-quote as a valid escape character, as per TOML specs
+2018-05-14T14:52:27-07:00  bce60d1d57a7f642c135c6017baef13367decd1d nishant@h2o.ai Nishant Kalonia: Changed mojo reader to accept "nan" as a valid token instead of "NaN", as per the TOML spec.
+2018-05-11T17:05:49-07:00  b337b7b5fbfd81ffd8c81364d8574f3adcc51b28 nishant@h2o.ai Nishant Kalonia: Use opencsv to parse csv files
+2018-05-09T19:25:03-07:00  29ae21f48940bb2ed444d470449afee7541e39a8 nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-05-09T19:24:24-07:00  (tag: v0.9.8) 477711c1c03551c47a1d4661adcbd6f52939c077 nishant@h2o.ai Nishant Kalonia: Version up to 0.9.8
+2018-05-09T19:16:47-07:00  e6ef4a22fadc67d49575332b934efe2d70450d90 nishant@h2o.ai Nishant Kalonia: Implemented new `Replace` transformer. Added `+/-inf` parsing ability to TomlReader
+2018-05-09T15:28:03-07:00  4431125ff207866686c933794c68188c7a930b9f nishant@h2o.ai Nishant Kalonia: Cosmetics
+2018-05-09T15:25:59-07:00  bc4589fba416cccf39e46c65b540b9f4aa752fd3 nishant@h2o.ai Nishant Kalonia: Added unsupported `remove` method to Tokenizers
+2018-05-09T15:11:37-07:00  4bfc6465462f00f088ac140f21588a90c84e43ce michal@h2o.ai mmalohlava: [TEST] Fix a test
+2018-05-09T15:04:48-07:00  4c1a573825056836668f7cde001178e2f065d820 nishant@h2o.ai Nishant Kalonia: Fixed bug in LowercaseTokenizer Added ability to read escaped singe-quote characters
+2018-05-09T14:36:39-07:00  ddb3da9d3e046f61338e1439c984326d1b25058f michal@h2o.ai mmalohlava: [TEST] More license testing
+2018-05-09T13:37:25-07:00  c6ead4e2ee2ec2363d3614de2387ea1abaca8892 michal@h2o.ai mmalohlava: [HOTFIX] :fire: Fix +1 error in license parsing.
+2018-05-07T03:25:15-07:00  380ac7df772ff13b3b6a90a0536491a3d3e2b9dc nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-05-07T03:24:15-07:00  (tag: v0.9.7) 219700c483288d3a3d5b806949841279073ab406 nishant@h2o.ai Nishant Kalonia: Version up
+2018-05-07T01:34:53-07:00  ca4698a79f75083dc77baf60985c15f4c2936f3a nishant@h2o.ai Nishant Kalonia: Added normalizer tokenizer for strip accents
+2018-05-06T20:56:55-07:00  24ca2e59c07fd9c09608cc7df2b0817c818b1918 nishant@h2o.ai Nishant Kalonia: Added ability to read and utilize missing_values in mojo file
+2018-05-04T16:28:14-07:00  4ff665e642f434d484ee2a7e224b99f52acc0fb8 nishant@h2o.ai Nishant Kalonia: Bug fix for csv parser
+2018-05-04T15:59:36-07:00  2834291e1cf9ee081c518553b2df50428f7b84b4 nishant@h2o.ai Nishant Kalonia: Tweaked parse logic for simplecsv. It is now safe to parse string columns provided that it is the LAST column in the csv
+2018-05-04T15:43:03-07:00  10fc02fee95e61a789575b9bf8c3e7514cb328c0 nkalonia1@gmail.com nkalonia1: Merge pull request #53 from h2oai/texttransform
+2018-05-01T23:18:17-07:00  4ebda1e65a6499aa80182e43e5cef51ed6bc06f5 michal@h2o.ai mmalohlava: Next devel cycle
+2018-05-01T23:17:10-07:00  (tag: v0.9.6) f8f4193b7a3b62f55e084b33ee3d626e7b4eed2d michal@h2o.ai mmalohlava: Release 0.9.6
+2018-05-01T22:21:30-07:00  f100f82d2f76f80b3a5fcfbe55ac0fdcf255878a michal.malohlava@gmail.com Michal Malohlava: Print version and build properties of mojo-runtime (#51)
+2018-05-01T17:44:01-07:00  2321c21796bad22ae9653c96e0e46b8dced66f6b michal@h2o.ai mmalohlava: [BUILD] Migrate to Gradle 4.7
+2018-05-01T17:24:54-07:00  e80a92d4156a620102ded136b90441eeb65cef2b michal@h2o.ai mmalohlava: [BUILD] Switch build to Java7
+2018-05-01T17:19:19-07:00  92ae35abc804927ad0c67cf4d2746407fcb03c42 michal@h2o.ai mmalohlava: Migrate from JUnit5 to Junit4 to support Java7 builds
+2018-04-10T17:56:03-07:00  d280a9fb492838dedf80a77ff3f69572828232c3 michal@h2o.ai mmalohlava: Migrate code to Java7
+2018-04-24T01:48:19+02:00  c3ce83e9768cdb85a390b9d60d6b940e4e5cab7b jakub.hava@gmail.com Jakub Háva: Fix license check order (#46)
+2018-04-19T22:50:17-07:00  975f6c92bdcd90643b1e67ad288f7a00bbdbba21 michal.malohlava@gmail.com Michal Malohlava: [HOTFIX] Javassist classloader needs to be configured correctly. (#44)
+2018-04-18T17:49:49-07:00  2674638901f39111dea0969fc82821028d823827 nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-04-18T17:44:15-07:00  f7e5502967f71f093b1474fe75b02209ada62ce3 nishant@h2o.ai Nishant Kalonia: 0.9.5 release
+2018-04-18T17:43:21-07:00  5beb79a586af7ae1292bdecca5f4e9448ec3de56 nishant@h2o.ai Nishant Kalonia: zero-index day of week field in datetime
+2018-04-18T17:43:15-07:00  52197aec5c9df476afd657315822dab8dde93dcb nishant@h2o.ai Nishant Kalonia: Made KMeans label transformer perform more like SKlearn's version
+2018-04-18T16:40:49-07:00  440d0ac49abcf6bfac657b2a2c225f267d6f8641 michal@h2o.ai mmalohlava: [LICENSE] Remove all non-base64 characters from read data
+2018-04-18T10:33:44-07:00  128d1437e36706999827aa255695c1998b5d5c01 michal@h2o.ai mmalohlava: [PARSE] Additional time formats
+2018-04-18T13:53:07-07:00  897af0315c08cdb1fb64d88d8f605273109b5994 arno.candel@gmail.com Arno Candel: Update LicenseNotFoundException.java
+2018-04-18T09:29:35-07:00  b27c2b3928c5f073067a408b921fda5bd11de6c8 michal@h2o.ai mmalohlava: Next dev cycle 0.9.4
+2018-04-18T09:25:25-07:00  b90ef21d500b85c6841f2e301238af251a615268 michal@h2o.ai mmalohlava: Version 0.9.3
+2018-04-18T09:23:17-07:00  660923369190890e05d40af3a66ee25765715f9d michal.malohlava@gmail.com Michal Malohlava: Extend list of date formats (#42)
+2018-04-18T00:25:58-07:00  586440ab1450f30a0482a15a0a8338bc70bf73d8 michal@h2o.ai mmalohlava: Next dev cycle for 0.9.2
+2018-04-17T19:22:57-07:00  31e83199eff7f2e05049d48be49a3768ead8ea8d michal@h2o.ai mmalohlava: Release version 0.9.1
+2018-04-17T19:15:48-07:00  67141ae913b3c568f9a8676b025b518490b566f8 michal@h2o.ai mmalohlava: [DOC] Fix javadoc
+2018-04-17T19:13:22-07:00  bbf1c40dc4510714a709a39d9cbed9d5813f6260 michal@h2o.ai mmalohlava: [API] Introduce LicenceException
+2018-04-17T17:33:06-07:00  560f9696098bdd65c6fa60fca1630a8da6c49a94 michal@h2o.ai mmalohlava: Release 0.9.0
+2018-04-17T17:16:43-07:00  09af880328b00c4bc8aa3071872c6279c175ab64 michal@h2o.ai mmalohlava: [BUILD] Generate version file
+2018-04-17T12:19:07-07:00  01253f12dce89fd321ac7a8dd0a46cbc301ef960 michal@h2o.ai mmalohlava: [LICENSE] Make more informative message if license is not found.
+2018-04-17T10:49:33-07:00  e3704472a1bc3aa2bf1ed3792c14eecedcf2a0cc michal@h2o.ai mmalohlava: [LICENSE] Disable stack printing in license exceptions.
+2018-04-17T09:57:14-07:00  2d76323e8a971da1d584a33afe8a824354c446e7 michal.malohlava@gmail.com Michal Malohlava:  License check at MOJO load time. (#41)
+2018-04-16T15:54:40-07:00  ba17fd55b0965ce5c97886c12b3f25a1dc650dee nishant@h2o.ai Nishant Kalonia: Modified KMeans transformer to closer reflect SKlearn KMeans
+2018-04-16T15:30:55-07:00  ccec910957fba12eb062cc2b4303824b5a67fb1a nishant@h2o.ai Nishant Kalonia: Revert "Modified KMeans to closer reflect KMeans in SKLearn"
+2018-04-16T15:22:52-07:00  73b2ebf98c5be4e995d392d34115429489a6be59 nishant@h2o.ai Nishant Kalonia: Modified KMeans to closer reflect KMeans in SKLearn
+2018-04-16T00:02:54-07:00  61b322af698ca0bbc0b719897b67aa59e36719bf michal.malohlava@gmail.com Michal Malohlava: Obfuscation no 2: revisited version (#39)
+2018-04-13T18:55:53-07:00  381f45567a22b1fe998cb7d203e2dbce978cee57 nishant@h2o.ai Nishant Kalonia: Fixed DateTime off-by-one error in week of year
+2018-04-13T18:17:36-07:00  f4576e6f2d4b9af2bccb8662d316d7cecd859b9d nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-04-13T18:16:17-07:00  7aa46d309db7981003019b2244962a0c7215a288 nishant@h2o.ai Nishant Kalonia: Version 0.8.6 release (Obfuscation revert)
+2018-04-13T18:15:44-07:00  2f2769b0194aa5871505b54fd3b4e43c711651ee nishant@h2o.ai Nishant Kalonia: Revert "Obfuscation of FatJar (#37)"
+2018-04-13T16:24:50-07:00  750282fcf37f164c9963b6b64bc083c2b822ea33 nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-04-13T16:23:47-07:00  (tag: v0.8.5) 541e4dfb1689a80e4e52af91e578de968f5a88ed nishant@h2o.ai Nishant Kalonia: Version 0.8.5 release
+2018-04-13T16:16:02-07:00  98f9ed04dc19181b512dbd4cc078c95f3ad625f0 nishant@h2o.ai Nishant Kalonia: Accuracy fixes for map and datetime
+2018-04-13T15:44:36-07:00  41cbd0259919fa881888befb518a93c3c50cbde7 michal.malohlava@gmail.com Michal Malohlava: Obfuscation of FatJar (#37)
+2018-04-12T00:22:23+02:00  0e8fd6c7947b860e6a81398495f9075e40f08f83 jakub.hava@gmail.com Jakub Háva: Changes based on integration testing with SW (#34)
+2018-04-07T01:19:41+02:00  5c2799017ad439b7f605f58ac4d1795abd71a1ed jakub.hava@gmail.com Jakub Háva: Return the current object after calling setters on RowBuilder (#33)
+2018-03-31T20:52:38-07:00  c9130cce238f3a3d19b36df82d06a90b0f386d73 michal@h2o.ai mmalohlava: Next devel cycle for 0.8.5
+2018-03-31T20:52:00-07:00  44e224207dd7d210ae93743791893c89cafbc65a michal@h2o.ai mmalohlava: Release 0.8.4
+2018-03-31T20:50:30-07:00  ce73d8e5cf1aebaecf4f04cc1ccdd9d053dd84da michal@h2o.ai mmalohlava: [HOTFIX] Fix path conversion - make stopwatch API uniform
+2018-03-31T19:56:43-07:00  98c6f0076024438ab5dbe658076b4eec389d6fcb michal@h2o.ai mmalohlava: Start next dev cycle for 0.8.4
+2018-03-31T19:55:31-07:00  23170eb4fe08774c3c6f30c28aed44de47f8c7b2 michal@h2o.ai mmalohlava: Release v0.8.3
+2018-03-31T19:50:28-07:00  90d3989f13b874c8f6a1cc11229660e55bbf8de2 michal@h2o.ai mmalohlava: Remove references to mojo.mojo and replace by pipeline.mojo
+2018-03-31T19:43:26-07:00  0a95e53d7a6e6ef00534766c00b0bf98b90dd7c2 michal@h2o.ai mmalohlava: Print timing
+2018-03-31T19:42:57-07:00  e22d8cb2ba63882ee0d06812aed28142a5d7b854 michal@h2o.ai mmalohlava: Next dev cycle
+2018-03-31T18:01:04-07:00  (tag: v0.8.2) 831af9393d5c7cb863c25cf7a9cf5b2560b970eb nishant@h2o.ai Nishant Kalonia: Version up to 0.8.2
+2018-03-31T16:22:52-07:00  (tag: v0.8.1) 55140ea629d1b50bfac32b74c2c0b541d74c801f nishant@h2o.ai Nishant Kalonia: Update to MojoReaderBackend
+2018-03-31T15:01:43-07:00  505173fe7149f7e2eb935723ab8373ec49bceb07 nishant@h2o.ai Nishant Kalonia: Bug fix in tests
+2018-03-31T14:27:43-07:00  873940802d18267ac5d055576f42a6f34b74060b nishant@h2o.ai Nishant Kalonia: Mojo files are now read by first entering a "mojo" folder before looking for a `pipeline.toml`. Version up to 0.8.1.
+2018-03-30T22:50:16-07:00  34d34df86e866af320e9b3a80652c97313e4ab4b nishant@h2o.ai Nishant Kalonia: Next develompent cycle
+2018-03-30T22:49:04-07:00  (tag: 0.8.0) b4932c77a823e83da45f2172a18e1716cc3f66d5 nishant@h2o.ai Nishant Kalonia: 0.8.0 Release
+2018-03-30T22:48:28-07:00  533306170190d37376aa08bea66b47bdbb7d68d6 nishant@h2o.ai Nishant Kalonia: Minor API refactorings and simple javadocb
+2018-03-30T21:49:48-07:00  f1c7aabfb2b748b430381f3539f03c6a42f617ff nishant@h2o.ai Nishant Kalonia: Fixed arguments for String.split
+2018-03-30T15:45:25-07:00  b3e649963874843e783e8a81353f3d111fa1d011 nishant@h2o.ai Nishant Kalonia: Made min/max keys optional in clip transformer
+2018-03-30T15:10:46-07:00  6e43dc6fb977e4f3f8c7f3f095d7d3b4efbc2964 nishant@h2o.ai Nishant Kalonia: Added `NaN` parsing to TomlReader
+2018-03-29T15:47:30-07:00  00edafd17150b748165ae0303b0c57f51b2586ff nishant@h2o.ai Nishant Kalonia: More bug fixes
+2018-03-29T23:08:25-07:00  eb4c2d67e86d2ff6741d38f7e116c44564787fda michal@h2o.ai mmalohlava: [BUILD] Fix typo in publication script
+2018-03-29T23:06:03-07:00  1de001966468aaf8f6bb17804520fce28ea0da45 michal@h2o.ai mmalohlava: [BUILD] Javadoc publication
+2018-03-29T18:08:28-07:00  0c42ce7d8589fcc74fc6321ed59e34476cfd03f2 michal@h2o.ai mmalohlava: [BUILD] Fix name of artifact id
+2018-03-29T17:39:11-07:00  32687629cc8b404e4d24b6e797a7ed225d295a0d michal@h2o.ai mmalohlava: [BUILD] :fire: Fix name of package
+2018-03-29T17:33:49-07:00  c3001cf7bf98888390e6ae47050ea4be3f999750 michal.malohlava@gmail.com Michal Malohlava: Rename of mojo2.jar to mojo2-runtime.jar (#32)
+2018-03-29T17:11:48-07:00  f1e2af59b8c5517e4db37220fa282e4bf023570d michal.malohlava@gmail.com Michal Malohlava: API Feedback #2 (#31)
+2018-03-29T14:23:59-07:00  052d2f2ca30e21f0b034d1e1c91fd37ef2ff7161 nishant@h2o.ai Nishant Kalonia: Implemented additional transforms used for target transformations. Removed TargetTransformer class and InverseTransform classes
+2018-03-29T12:59:14-07:00  faec81b8bb0af27c74fd650541142735285a8772 michal.malohlava@gmail.com Michal Malohlava: API Feedback/Testing (#30)
+2018-03-29T08:54:54-07:00  509b2fb0f2556c2f0c7614c80d38042ac98817e8 nishant@h2o.ai Nishant Kalonia: Revert to current development cycle
+2018-03-29T08:54:28-07:00  ae2995ba4e7cc3baa92bab63cdff866cb94a1419 nishant@h2o.ai Nishant Kalonia: Additional version 7 changes
+2018-03-28T17:40:52-07:00  8018c76d9645a97477a4c7483e8f9962f8b28c66 nishant@h2o.ai Nishant Kalonia: Revert to current development cycle
+2018-03-28T17:40:07-07:00  a5ba831f484ddc9a8b0aee0a69244fcf213241e7 nishant@h2o.ai Nishant Kalonia: CSV parser adjustment
+2018-03-28T16:44:54-07:00  9e8687738042f466714ffab6073ddf5cafe049a5 nishant@h2o.ai Nishant Kalonia: Revert "Revert "Next development cycle""
+2018-03-28T16:44:24-07:00  291dbba0593f01bd3e7816cb386b76881d2cd600 nishant@h2o.ai Nishant Kalonia: Revert "Next development cycle"
+2018-03-28T16:19:01-07:00  d2396dd4e8c6cb28b544ddb2d9b790438c49a9e2 nishant@h2o.ai Nishant Kalonia: Next development cycle
+2018-03-28T16:18:18-07:00  d269a8e265335c8233381b333492c5e6d352ed98 nishant@h2o.ai Nishant Kalonia: Version up
+2018-03-28T16:16:18-07:00  2eb2fbc15b46516620fcd59f26dd55247afb5af3 nkalonia1@gmail.com nkalonia1: Merge pull request #29 from h2oai/api_refactor
+2018-03-27T11:25:23-07:00  de4636c49e9209fc8d2782686f95b31891cf0cf6 nishant@h2o.ai Nishant Kalonia: Next Development cycle
+2018-03-27T11:24:56-07:00  bbb0352244337f07530aadeceddf639f68dfe3a3 nishant@h2o.ai Nishant Kalonia: Version up
+2018-03-27T11:24:08-07:00  75b7637493603782c7c2a4f2610a8d5fb166f988 nishant@h2o.ai Nishant Kalonia: Added Target Transformers
+2018-03-22T23:40:13-07:00  12d318d7fb9d7e1bc39ed5ec453c916dbb82d82c nkalonia1@gmail.com nkalonia1: Merge pull request #23 from h2oai/jh/reader_backend
+2018-03-14T18:15:18-07:00  57c8753a19f401905ebcee9d9b56693c060cdc29 nishant@h2o.ai Nishant Kalonia: Several changes:
+2018-03-12T15:10:18-07:00  eb89d4e79b1e1ba8c809ec19d772791ecec5f4b8 nishant@h2o.ai Nishant Kalonia: Made `MojoDateTime` class (very wip)
+2018-03-08T18:29:49-08:00  c2d606fff6c4e5191e3682ad98ca6bb5538bdbf2 nishant@h2o.ai Nishant Kalonia: Added some date type support (not tested). Allow input datasets to contain columns not expected in the MojoFrame (to be revised)
+2018-03-06T12:24:31-08:00  bffdfa62613626cecded4e9199c103639ab38e91 michal.malohlava@gmail.com Michal Malohlava: Fix version of shared Jenkins library
+2018-03-06T19:01:18+01:00  11361b75d46604f97e9aacdfd2727e394e08d025 michalr@h2o.ai Michal Raška: [ITA-238] Upload jar to s3 (#21)
+2018-02-28T12:14:46-08:00  6b50d2d5dac60447328024e885c52970968ede65 nishant@h2o.ai Nishant Kalonia: next development cycle
+2018-02-28T12:14:11-08:00  f7e76ecf6174af6f7450971d823d697baa92cc64 nishant@h2o.ai Nishant Kalonia: version up
+2018-02-28T12:13:24-08:00  ce760064868980202e760ce85a83f0c6002430bb nishant@h2o.ai Nishant Kalonia: Slight tweak to structure of
+2018-02-27T17:15:25-08:00  84df464f1bead60a8351b95bb4e6e458d71933ca nkalonia1@gmail.com nkalonia1: Merge pull request #20 from h2oai/se_fix
+2018-02-21T13:53:08-08:00  016f3c6b7ad92d1f23ba6e27d55f857e0c40d891 nishant@h2o.ai Nishant Kalonia: version up
+2018-02-21T13:50:22-08:00  a5d8082ff81e6ee17f056f808ae9a7038146096b nkalonia1@gmail.com nkalonia1: Merge pull request #19 from h2oai/execpipe
+2018-02-09T17:28:49-08:00  b4e39b96868249e6235647a950c8da16757dcb67 nkalonia1@gmail.com nkalonia1: Merge pull request #18 from h2oai/new_constbinop
+2018-02-09T13:27:33-08:00  46c6d42225b69025d1f6c3c53f5d0d5067552964 nkalonia1@gmail.com nkalonia1: Merge pull request #17 from h2oai/sum_mul_agg
+2018-01-31T23:42:42-08:00  9d8db220d24e8b572362fcb08f4037b1b94bdb76 michal@h2o.ai mmalohlava: Next devel cycle
+2018-01-31T23:42:00-08:00  62591bca213b83b50151e2c983de662fefcff5d1 michal@h2o.ai mmalohlava: Release 0.3.0
+2018-01-31T09:50:44-08:00  cc2cdba95da4680d86068089d68f5c64c8971285 michal@h2o.ai mmalohlava: [BUILD] One more correction in publication of fatjars
+2018-01-31T09:44:47-08:00  fd0bc4c6a800cb15625ac36bb4601a98c1c48f98 michal@h2o.ai mmalohlava: Next development version
+2018-01-31T09:43:44-08:00  (tag: RELEASE-0.2.0) cacdf67c88d3af64ba91da4020f26db48666f4c0 michal@h2o.ai mmalohlava: Release 0.2.0
+2018-01-31T09:40:30-08:00  937ba1b70bc9c07a0bee2598e20be502977405a9 michal@h2o.ai mmalohlava: Publish fatjar to Nexus as well
+2018-01-30T18:12:22-08:00  9e60ab29766369db014b2363a52a8430ad1e3617 michal@h2o.ai mmalohlava: Next dev version
+2018-01-30T18:07:58-08:00  6572fc8b003f6328e115c26501228b525ec2f241 michal@h2o.ai mmalohlava: Change name of exported artifact
+2018-01-30T17:34:58-08:00  (tag: RELEASE-0.1.0) ae7a6d2a16cdb7c0f344b120051d98eb8717d4b9 michal@h2o.ai mmalohlava: Release 0.1.0
+2018-01-26T15:35:02-08:00  175a8186bb176bb935bec143c12f05f67eab1738 nkalonia1@gmail.com nkalonia1: Merge pull request #12 from h2oai/write_csv
+2018-01-25T17:17:40-08:00  e095e526e0f135abc44367588df7a70be8eafac5 nkalonia1@gmail.com nkalonia1: Merge pull request #11 from h2oai/MojoCBinOpTest
+2018-01-24T15:18:37-08:00  9407065f6ac3e41a852dde7d86966b8d6be4063e michal.malohlava@gmail.com Michal Malohlava: Example refactored to be part of build. (#10)
+2018-01-23T18:15:01-08:00  64961e336dce3f62f17dc5be1da6354c7d6ba3f2 michal@h2o.ai mmalohlava: [BUILD] Jenkins use IP directly
+2018-01-23T18:04:13-08:00  578811d885258637af937fa5a08af3dea78de6c8 michal@h2o.ai mmalohlava: [BUILD] remove password
+2018-01-23T18:01:22-08:00  7d1a81371b5410e38e715eed445496db7fb02d9a michal@h2o.ai mmalohlava: [BUILD] Remove redundant block of code
+2018-01-23T17:58:22-08:00  111e453a7e1c544ff15a467bdab4f7477a392f36 michal@h2o.ai mmalohlava: Pass signing parameters
+2018-01-23T17:47:19-08:00  7bb7dff1ad06139d1465831b94b074b1653ad284 michal@h2o.ai mmalohlava: Fix groupId
+2018-01-23T17:26:41-08:00  9d0c2837c0a90eca806f70676af6eb63edb09d1c nishant@h2o.ai Nishant Kalonia: Created an example file to demonstrate how to use a MOJO to transform csv data
+2018-01-23T17:25:33-08:00  e3f7f6081a4952121335811e23fd791b4d10598b michal@h2o.ai mmalohlava: Remove redundant agent
+2018-01-23T17:20:24-08:00  ca81500bb3218cf8e879adba33d34fdc7f6b9258 michal.malohlava@gmail.com Michal Malohlava: [BUILD] Switching to docker-based build (#9)
+2018-01-23T15:53:05-08:00  0c09dfc98e62a03b5f1401713d1e2a0b3a0fd4e7 michal@h2o.ai mmalohlava: [BUILD] Hotfix in Groovy syntax
+2018-01-23T15:45:47-08:00  62490a8647cfa6ba86a37510e7832fd430e32683 michal@h2o.ai mmalohlava: [BUILD] Fix path to Jenkinsfile
+2018-01-23T15:36:40-08:00  9d7be310cfc896ffc855e873a5203b35dbce854f michal@h2o.ai mmalohlava: [BUILD] Add Jenkinsfile
+2018-01-23T15:14:08-08:00  a2c4e4873af830dc7d6f91ac9a3ddfa587e532bc michal@h2o.ai mmalohlava: [BUILD] Add gradle wrapper into repo
+2018-01-18T18:25:51-08:00  9ce0cc80d448610755ba3a1287289d561743d73c nkalonia1@gmail.com nkalonia1: Merge pull request #8 from h2oai/gradle_update
+2018-01-18T17:46:22-08:00  bc6d42ecd973c052747b3cdd06f032058e2cfcd0 pasha@h2o.ai Pasha Stetsenko: Merge pull request #7 from h2oai/simple_csv
+2018-01-18T16:01:47-08:00  fdcd6288a7dd3196ffc4a29925eda94006a35ab0 pasha@h2o.ai Pasha Stetsenko: Merge pull request #6 from h2oai/make_mojo_work
+2018-01-17T17:46:55-08:00  fa381bc23cb3b539c1700a85786ded571598cba3 pasha@h2o.ai Pasha Stetsenko: Merge pull request #5 from h2oai/nishant_improvements
+2018-01-17T15:14:23-08:00  2e8f02b1069be14c762e01041686fb29ed33a358 pasha@h2o.ai Pasha Stetsenko: Merge pull request #3 from h2oai/nishant_xgboost
+2018-01-16T16:26:03-08:00  013d0a2a0cb057222a17fa33321fb5a7bdd3f1f7 pasha@h2o.ai Pasha Stetsenko: Add test for IntervalMap mojo transform
+2018-01-16T15:12:37-08:00  8fddb91d717a14dc84d5b80b758d0585f8c0d0e0 pasha@h2o.ai Pasha Stetsenko: Add mojo transform for BinaryOp
+2018-01-16T12:45:04-08:00  6f5dab8df746c55c7d4587d7f4d6a080ca53b18d pasha@h2o.ai Pasha Stetsenko: Add test for AsType transformer
+2018-01-16T11:20:55-08:00  dd359032fec3fdaa62c61c3c887c453767e07a9f pasha@h2o.ai Pasha Stetsenko: Implement IntervalMap mojo transformer
+2018-01-16T10:10:07-08:00  fd4cb5f6fd3baa7b7760e617edc155f0af041411 pasha@h2o.ai Pasha Stetsenko: Add TransformTemplate in mojo transforms Scale and Sigmoid
+2018-01-16T09:39:25-08:00  228d8ea7984eedc2d1b6fd7d9bc71c3f1cce1703 pasha@h2o.ai Pasha Stetsenko: Use TransformTemplate class in MojoTransformBinaryOp
+2018-01-16T09:31:33-08:00  74f0f802692cbcdacb055f090732a2cf2a0ea59e pasha@h2o.ai Pasha Stetsenko: Update AsType mojo transform to use new TransformTemplate parent
+2018-01-15T18:41:55-08:00  63d6270f4d52db7c906b6be30f11a89e069d5570 pasha@h2o.ai Pasha Stetsenko: Fix the Map transformer and add tests
+2018-01-15T15:10:47-08:00  1934ded27df8b714992f3050236287895dc27318 pasha@h2o.ai Pasha Stetsenko: Add helper class TransformTemplate
+2018-01-15T13:10:17-08:00  799baa348f69575c02fb58d4dd01f34f3e479a5c pasha@h2o.ai Pasha Stetsenko: Fix BinaryOp mojo transform
+2018-01-15T11:42:40-08:00  77ee73f76678c97f64135c6321fdede3ae12a136 pasha@h2o.ai Pasha Stetsenko: Fix MatrixProduct mojo transform
+2018-01-15T11:26:03-08:00  c6427f5da3729feeb21a34030213642864a4e488 pasha@h2o.ai Pasha Stetsenko: Add mojo transform for KMeans algo
+2018-01-12T17:43:43-08:00  9221530f348b72965b49249218d118a972b95f52 pasha@h2o.ai Pasha Stetsenko: Add Sigmoid mojo transformer
+2018-01-12T15:52:51-08:00  2030d25b69ec188ba80e0bef0a611d2377f1e460 pasha@h2o.ai Pasha Stetsenko: Implement additional transforms
+2018-01-11T18:48:27-08:00  266359aec414ea6f806a957d819530bff8f3df66 pasha@h2o.ai Pasha Stetsenko: Merge pull request #4 from h2oai/nishant_gradle
+2017-12-01T15:04:25-08:00  149d35353ef1ed8df96482f53d60237c19e28da9 pasha@h2o.ai Pasha Stetsenko: Refactor MojoTransformAsType
+2017-12-01T14:34:18-08:00  37fe2fbc9f5d2a549ad1b915952c1ef8d9782cf7 pasha@h2o.ai Pasha Stetsenko: Refactor MojoTransformScale
+2017-12-01T13:01:47-08:00  93611ee7be2bb495965c441c8820aba0a810ad25 pasha@h2o.ai Pasha Stetsenko: Refactor MojoTransformNormalize
+2017-12-01T11:25:28-08:00  38cf7c31d58144cfad5ad0cd421e8ac8a75b75e2 pasha@h2o.ai Pasha Stetsenko: Clean up of MojoTransform / MojoReaderContext classes; and unbreak the tests
+2017-12-01T10:11:17-08:00  39799233bc7c15212a9577c7363da5b63831602f pasha@h2o.ai Pasha Stetsenko: Fix a small bug in MojoFrame, where getting frame's nRows resulted in NPE
+2017-12-01T09:42:25-08:00  ade752aec72282a1d88298f3d51d7719182be9c1 pasha@h2o.ai Pasha Stetsenko: Remove class MojoReader, and renamed MojoReaderData into MojoReaderContext; more cleanup
+2017-11-30T17:43:36-08:00  7eb781309f9c06c7eaacd7bd600447261c1247d2 pasha@h2o.ai Pasha Stetsenko: wip refactoring MojoReader
+2017-11-30T14:33:01-08:00  5df01dab8d2e44038f6f63445198b145cba253e9 pasha@h2o.ai Pasha Stetsenko: Reimplement FillNa mojo transformer using code generation, and add a test for it
+2017-11-30T16:24:06-08:00  71d4dc9869d77cedfb71130b10f9212626e4395d pasha@h2o.ai Pasha Stetsenko: Merge pull request #2 from h2oai/public_getData
+2017-11-30T14:14:39-08:00  a371d442229d5429dafcf2158e649851b1bb0da3 pasha@h2o.ai Pasha Stetsenko: Merge pull request #1 from h2oai/containsColumn
+2017-11-30T13:40:02-08:00  8b0105ac7526a440367c1c309e67d19d867a31bc pasha@h2o.ai Pasha Stetsenko: Modify IsNa mojo transformer to use auto-generated code; add test for IsNa transformer
+2017-11-29T18:04:22-08:00  d8aa1a3df35050995f96208750b27b3bd1e3671c pasha@h2o.ai Pasha Stetsenko: Implement AsType mojo transformer
+2017-11-29T17:00:31-08:00  5df2cbf9fa04b3a08eff0e4249e2832260297a90 pasha@h2o.ai Pasha Stetsenko: Implement MatrixProduct mojo transformer
+2017-11-29T16:04:53-08:00  96d7c19d8b89dcc7cce20ea350313c418472ef99 pasha@h2o.ai Pasha Stetsenko: Implement BinaryOp mojo transformer
+2017-11-29T15:39:28-08:00  ca0dc783732264de68e58f5424a3e0fc33429711 pasha@h2o.ai Pasha Stetsenko: Implement Scale mojo transformer
+2017-11-29T15:10:12-08:00  b1a7f0e7b4420537ea60b9fd077f7afbd97dfff7 pasha@h2o.ai Pasha Stetsenko: Implement Normalize mojo transformer
+2017-11-29T14:14:06-08:00  a3dda97c13cc83299adcf88c4593c2c7e716e94b pasha@h2o.ai Pasha Stetsenko: Implement IsNa transformer
+2017-11-29T13:32:32-08:00  3c3f2bbd562c7200f83ce7b1132ea62a03bdb252 pasha@h2o.ai Pasha Stetsenko: Implement FillNA transforms
+2017-11-28T16:02:09-08:00  011f5bedd00adb37794c6469d5f05bad1caf0f81 pasha@h2o.ai Pasha Stetsenko: Add simple test for reading a Mojo model
+2017-11-28T14:25:34-08:00  87a8f64c5200aec892027a8827112f79db4bedd7 pasha@h2o.ai Pasha Stetsenko: WIP on mojo2 runtime
+2017-11-22T16:22:52-08:00  e14888d5134441c447d90e54afd3d0a2ebf89e81 pasha@h2o.ai Pasha Stetsenko: Implement creation of MojoFrames from a 2D-array of strings (as could be produced by Csv reader)
+2017-11-22T15:01:52-08:00  5e63297d612343117cc27e82e2e1952af5fed5c1 pasha@h2o.ai Pasha Stetsenko: Implement MojoFrame
+2017-11-22T14:10:18-08:00  85ac9d464b84f747dba49fdbd9067b9dbf96ccce pasha@h2o.ai Pasha Stetsenko: Continue work on mojo runtime
+2017-11-21T18:18:53-08:00  1095332e39d521ebe3322deca6634280ad9201c6 pasha@h2o.ai Pasha Stetsenko: Implement more functionality for Mojo support
+2017-11-10T11:43:18-08:00  3dcb353d7e5a216bdaaefde936b67a74b963e7dd pasha@h2o.ai Pasha Stetsenko: wip
+2017-10-31T14:14:16-07:00  ac5a02aaf59407e9b72f25de6bcf5645d4d9093c pasha@h2o.ai Pasha Stetsenko: Initial commit
+2017-10-31T14:13:51-07:00  594b85070f3b5793716bbcab25ac44c22f2e6d98 pasha@h2o.ai Pasha Stetsenko: Create LICENSE
